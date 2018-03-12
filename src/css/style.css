@@ -1,0 +1,66 @@
+/* background-color: #0081dc; BLEU */
+/* background-color: #832429; BORDEAU */
+/* background-color: #818181; GRIS */
+
+body{
+
+    font-family: Montserrat, serif;
+    background: url(../../res/images/BGville.png) no-repeat fixed;
+    background-size:cover;
+
+    border: solid blue;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.4%; /* 3 colonnes */
+    grid-template-rows: 100px;                /* 1 ligne */
+
+    border: solid red;
+
+}
+
+.logopng{
+
+    width: 73px;
+    height: 100px;
+
+}
+
+.kingdomepng{
+
+    width: 244px;
+    height: 47px;
+    margin-left: 10px;
+    /*
+    margin-top: 36px;
+
+    */
+}
+
+.kingdomepng2{
+
+    width: 244px;
+    height: 47px;
+    margin: auto;
+    /*
+    margin-top: 36px;
+
+    */
+}
+
+.logo{
+    grid-column: 1; grid-row: 1;
+
+    border: solid palegreen;
+}
+
+nav{
+    grid-column: 3; grid-row: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+
+    border: solid blueviolet;
+
+}
