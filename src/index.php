@@ -9,9 +9,12 @@
 
 <header>
 
-    <div class ="logo">
+    <div class="nom">
+        <img src="../res/images/KingDome.png" alt="Image du nom de l'application" class="kingdomepng" >
+    </div>
+
+    <div class="logo">
         <img src="../res/images/Logo.png" alt="Image du logo" class="logopng">
-        <img src="../res/images/KingDome.png" alt="Image du nom de l'application" class="kingdomepng">
     </div>
 
     <nav>
@@ -26,6 +29,7 @@
     <img src="../res/images/KingDome.png" alt="Image du nom de l'application" class="kingdomepng2">
 
 </div>
+
 
 </body>
 </html>
