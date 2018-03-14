@@ -12,18 +12,18 @@ body{
     font-family: Montserrat, serif;
     background: url(../../res/images/BGville.png) no-repeat fixed;
     background-size:cover;
-    width : 1000px;
+    width : 1200px;
     margin: auto;
 
-    border: solid blue;
+
 }
 
 header{
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.4%; /* 3 colonnes */
-    grid-template-rows: 100px;                /* 1 ligne */
-
-    border: solid red;
+    grid-template-rows: 105px;                /* 1 ligne */
+    border-bottom: solid black;
+    border-radius: 10%;
 
 }
 
@@ -31,60 +31,60 @@ button{
     background: none;
     border-width:0;
     font-family: Montserrat, serif;
+    font-size: medium;
+}
+
+button:hover{
+    background-color: #818181;
+    border-left: solid #0081dc;
+    opacity: 0.2;
 }
 
 .nom{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*Alignement horizontal*/
+    justify-content: center; /*Alignement vertical*/
     grid-column: 1; grid-row: 1;
-
 }
 
 .kingdomepng{
-
     width: 244px;
     height: 47px;
-    margin-left: 10px;
-    /*
-    margin-top: 36px;
+}
 
-    */
+.slogan{
+    grid-column: 1; grid-row: 1;
+    padding-left: 3%;
 }
 
 .logo{
     grid-column: 2; grid-row: 1;
     display: flex;
     justify-content: center;
-
-    border: solid palegreen;
+    align-items: center;
 }
 
 .logopng{
-
-    width: 73px;
-    height: 100px;
-
+    width: 17%;
+    height: 87%;
 }
 
-
-
 .kingdomepng2{
-
     width: 244px;
     height: 47px;
     margin: auto;
-    /*
-    margin-top: 36px;
 
-    */
 }
-
-
 
 nav{
     grid-column: 3; grid-row: 1;
     display: flex;
     justify-content: flex-end;
     position: sticky;
+}
 
-    border: solid blueviolet;
-
+.icone{
+    width: 40px;
+    height: 40px;
 }
