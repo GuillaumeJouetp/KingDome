@@ -12,6 +12,7 @@ body{
     font-family: Montserrat, serif;
     background: url(../../res/images/BGville.png) no-repeat fixed;
     background-size:cover;
+    background-position: 100%;
     width : 1200px;
     margin: auto;
 
@@ -24,6 +25,9 @@ header{
     grid-template-rows: 105px;                /* 1 ligne */
     border-bottom: solid black;
     border-radius: 10%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0; /* required */
 
 }
 
@@ -32,12 +36,12 @@ button{
     border-width:0;
     font-family: Montserrat, serif;
     font-size: medium;
+
 }
 
 button:hover{
-    background-color: #818181;
+    background-color: rgba(129, 129, 129,0.3);
     border-left: solid #0081dc;
-    opacity: 0.2;
 }
 
 .nom{
@@ -81,10 +85,17 @@ nav{
     grid-column: 3; grid-row: 1;
     display: flex;
     justify-content: flex-end;
-    position: sticky;
 }
 
 .icone{
     width: 40px;
     height: 40px;
+}
+
+#corps{
+    margin : 5%;
+    padding: 4%;
+    background-color: rgba(255, 255, 255, 0.30);
+    border: solid #832429;
+    border-radius: 30px;
 }
