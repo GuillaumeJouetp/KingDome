@@ -24,10 +24,13 @@ header{
     grid-template-columns: 33.3% 33.3% 33.4%; /* 3 colonnes */
     grid-template-rows: 105px;                /* 1 ligne */
     border-bottom: solid black;
-    border-radius: 10%;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0; /* required */
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+    /*position: sticky;
+    top: 0;  */
+
+
+
 
 }
 
