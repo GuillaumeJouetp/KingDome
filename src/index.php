@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css" />
     <title>Acceuil</title>
 </head>
 <body>
 
 <?php
-include "php/header.php";
+include "php/views/header.php";
 ?>
 
 <div id="corps">
@@ -48,6 +49,11 @@ include "php/header.php";
     <p>test</p>
     <p>test</p>
 </div>
+
+<?php
+include "php/views/footer.php";
+?>
+
 
 </body>
 </html>
