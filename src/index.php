@@ -15,7 +15,7 @@ include "php/controllers/fonctions.php"
 
 <div id="corps">
     <p>
-        <?php //test($bdd) ?>
+        <?php test($bdd) ?>
     </p>
     <p>test</p>
     <p>test</p>

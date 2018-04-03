@@ -15,7 +15,7 @@
                     
                     <div id="bouton">
                         <p>
-                            <button><a href="Page nous contacter">Nous contacter !</a></button>
+                            <button><a href="contact.php">Nous contacter !</a></button>
                         </p>
                     </div>
 
@@ -25,10 +25,10 @@
                     <h4>Rejoignez nous sur les réseaux sociaux !</h4>
 
                     <p>
-                        <img src="/Users/jo/Desktop/APP/KingDome/Footer/Icone/facebook.png" alt="Facebook" />
-                        <img src="/Users/jo/Desktop/APP/KingDome/Footer/Icone/instagram.png" alt="Instagram" />
-                        <img src="/Users/jo/Desktop/APP/KingDome/Footer/Icone/twitter.png" alt="twitter" />
-                        <img src="/Users/jo/Desktop/APP/KingDome/Footer/Icone/linkedin.png" alt="linkedin" />
+                        <img src="../../../res/icones/facebook.png" alt="Facebook" />
+                        <img src="../../../res/icones/instagram.png" alt="Instagram" />
+                        <img src="../../../res/icones/twitter.png" alt="twitter" />
+                        <img src="../../../res/icones/linkedin.png" alt="linkedin" />
                     </p>
                 </div>
 
