@@ -68,8 +68,6 @@ function insertion(PDO $bdd, array $values, string $table): bool {
     foreach ($values as $key => $value) {
         $requete = $requete . $key . ' : ' . $value . ', ';
         $donnees->bindParam($key, $values[$key], PDO::PARAM_STR); // pq pas juste value ?
-        print($key);echo '<br>';
-        print($values[$key]);echo '<br><br>';
     }
 
     echo $query; echo '<br><br>';
