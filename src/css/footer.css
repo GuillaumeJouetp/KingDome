@@ -1,0 +1,39 @@
+#Coordonnees
+{
+	text-align: left;
+}
+
+#pb
+{
+	text-align: center
+}
+
+#reseaux
+{
+	text-align: right
+}
+
+#Coordonnees, #pb, #reseaux
+{
+	float: left
+}
+
+#boutton
+{
+	font-style: normal;
+}
+
+#Coordonnees h4
+{
+    color: #832429;
+}
+
+#pb
+{
+	color: #832429
+}
+
+#reseaux
+{
+	color: #832429
+}

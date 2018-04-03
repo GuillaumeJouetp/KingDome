@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 .idea
 *.iml
 *.project
 
+=======
+.idea
+*.iml
+*.project
+.DS_Store
+>>>>>>> branch 'master' of https://github.com/GuillaumeJouetp/KingDome.git
