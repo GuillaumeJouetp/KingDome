@@ -1,5 +1,5 @@
 <?php
-include "php/models/connexionPDO.php";
+include "connexionPDO.php";
 
 /**
  * Récupère tous les éléments d'une table
