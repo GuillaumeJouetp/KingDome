@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/footer.css" />
-    <title>Acceuil</title>
+    <title>Accueil</title>
 </head>
 <body>
 
