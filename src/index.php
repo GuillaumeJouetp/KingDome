@@ -10,9 +10,13 @@
 
 <?php
 include "php/views/header.php";
+include "php/controllers/fonctions.php"
 ?>
 
 <div id="corps">
+    <p>
+        <?php test($bdd) ?>
+    </p>
     <p>test</p>
     <p>test</p>
     <p>test</p>
