@@ -1,32 +1,18 @@
-@font-face{
-    font-family: 'montserrat-Reg';
-    src: url('../../res/polices/montserrat/Montserrat-Regular.otf')
-}
 
-body{
-
-    font-family: Montserrat, serif;
-    background: url(../../res/images/BGville.png) no-repeat fixed;
-    background-size:cover;
-    background-position: 100%;
-    width : 1200px;
-}
-
-#corps{
+#ins_form{
 
     display: flex;
     justify-content: center;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.30);
-    border: solid #832429;
-    border-radius: 30px;
     color: rgb(50,50,50);
     font-size: 1.02em;
+    line-height: normal;
 }
 
 #Partie_Gauche{
     margin: auto;
     width: 50%;
+    padding-right: 4.5%;
 }
 
 #Partie_Droite{
@@ -39,15 +25,7 @@ body{
 
 }
 
-h1 {
-    text-align: center;
-    padding-right: 5%;
-    color: #832429;
-}
 
-h2  {
-    color: #832429;
-}
 
 .submit{
     margin: auto;
@@ -63,10 +41,3 @@ h2  {
     padding-left: 35%;
 }
 
-input, .submit_button {
-    padding:3px;
-    border:1px solid #0081dc;
-    border-radius:5px;
-    box-shadow:1px 1px 2px #C0C0C0 inset;
-    cursor:pointer;
-}

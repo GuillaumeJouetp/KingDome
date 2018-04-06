@@ -25,10 +25,10 @@
                     <h4>Rejoignez nous sur les réseaux sociaux !</h4>
 
                     <p>
-                        <img src="../../../res/icones/facebook.png" alt="Facebook" />
-                        <img src="../../../res/icones/instagram.png" alt="Instagram" />
-                        <img src="../../../res/icones/twitter.png" alt="twitter" />
-                        <img src="../../../res/icones/linkedin.png" alt="linkedin" />
+                        <img src="../res/icones/facebook.png" alt="Facebook" />
+                        <img src="../res/icones/instagram.png" alt="Instagram" />
+                        <img src="../res/icones/twitter.png" alt="twitter" />
+                        <img src="../res/icones/linkedin.png" alt="linkedin" />
                     </p>
                 </div>
 
