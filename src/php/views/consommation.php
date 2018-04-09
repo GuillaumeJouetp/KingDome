@@ -16,7 +16,7 @@
 		</head>
 		<body>
 
-			<h1> Ma consomation </h1>
+			<h1> Ma consommation </h1>
 			<p> Consommation globable : 175000 kWh </p>
 			
 			
