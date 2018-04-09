@@ -8,10 +8,7 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="..\src\css\style.css">
     <link rel="stylesheet" href="..\src\css\dashboard.css">
-    <title>Dashboard</title>
 </head>
 
 <body>
