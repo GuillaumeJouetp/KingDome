@@ -1,5 +1,12 @@
-<!doctype html>
-<html lang=fr>
+<?php
+/**
+ * VUE DE LA PAGE DASHBOARD
+ * User: Olfa
+ * En cours
+ */
+?>
+
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="..\src\css\style.css">
