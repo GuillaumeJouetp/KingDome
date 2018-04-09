@@ -47,12 +47,6 @@
             </a>
         </button>
         
-                <button>
-            <a href="index.php?cible=consommation">
-                <img src="../res/icones/monCompte.png" alt="icone compte" class="icone">Consommation
-            </a>
-        </button>
-
     </nav>
 
 </header>
