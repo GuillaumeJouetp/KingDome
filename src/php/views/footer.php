@@ -1,35 +1,35 @@
 <footer>
-			    <div id="Coordonnees">
-   				    <h4>Nos coordonnées</h4>
-                    <p>j.decaslou@gmail.com</p>
-                    <p>0660501627</p>
-                    <p>10, Rue de Vanves</p>
-                    <p>92130 Issy-Les-Moulineaux</p>
-                </div>
+			    <ul id="Coordonnees">
+   				    <h3>Nos coordonnées</h3>
+                    <li>j.decaslou@gmail.com</li>
+                    <li>0660501627</li>
+                    <li>10, Rue de Vanves</li>
+                    <li>92130 Issy-Les-Moulineaux</li>
+                </ul>
                 
             
                 
                 <div id="pb">
-                    <h4>Un problème ?</h4>
-                    <h4>Une suggestion ?</h4>
+                    <h3>Un problème ?</h3>
+                    <h3>Une suggestion ?</h3>
                     
                     <div id="bouton">
                         <p>
-                            <button><a href="contact.php">Nous contacter !</a></button>
+                            <button><a href="Page nous contacter">Nous contacter !</a></button>
                         </p>
                     </div>
 
                 </div>
 
                 <div id="reseaux">
-                    <h4>Rejoignez nous sur les réseaux sociaux !</h4>
+                    <h3>Rejoignez nous sur les réseaux sociaux !</h3>
 
                     <p>
-                        <img src="../../../res/icones/facebook.png" alt="Facebook" />
-                        <img src="../../../res/icones/instagram.png" alt="Instagram" />
-                        <img src="../../../res/icones/twitter.png" alt="twitter" />
-                        <img src="../../../res/icones/linkedin.png" alt="linkedin" />
+                        <img src="../res/icones/facebook.png" alt="Facebook" />
+                        <img src="../res/icones/instagram.png" alt="Instagram" />
+                        <img src="../res/icones/twitter.png" alt="twitter" />
+                        <img src="../res/icones/linkedin.png" alt="linkedin" />
                     </p>
                 </div>
 
-        </footer>
+</footer>
