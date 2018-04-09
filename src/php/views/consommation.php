@@ -1,7 +1,7 @@
 <?php
 /**
  * VUE DE LA PAGE MA CONSOMMATION
- * User: Nelly
+ * User: NELLY
  * EN ELABORATION
  */
 ?>
@@ -12,7 +12,8 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Ma consommation</title>
-			<link rel="stylesheet" href="C:\Users\Nelly\eclipse-workspace\KingDome2\Conso.css">
+			<link rel="stylesheet" href="..\src\css\consommation.css">
+			<link rel="stylesheet" href="..\src\css\style.css">
 		</head>
 		<body>
 
