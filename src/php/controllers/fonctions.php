@@ -2,23 +2,22 @@
 include "php/models/requetes.php";
 
 function displayTable($bdd,$table){
-    var_dump(recupereTous($bdd,$table));
+    debug(recupereTous($bdd,$table));
 }
 
 function addUserExample($bdd){
     $myDic = array(
-        "id"=>null,
-        "nom"=> 'JOUET-PASTRE',
-        "prénom"=> 'Guillaume',
-        "civilité"=> 'Mr',
-        "date de naissance"=>null,
+        "user_firstname"=> 'JOUET-PASTRE',
+        "user_name"=> 'Guillaume',
+        "civility"=> 'Mr',
+        "birth_date"=>'2018-04-09',
         "adresse"=>null,
         "ville"=>null,
-        "code postal"=>null,
-        "email"=>null,
-        "mot de passe"=>null,
-        "numéro de tel"=>null,
-        "état d'inscription"=>null,
+        "zip_code"=>null,
+        "email"=>'coucou',
+        "password"=>'yeisdf',
+        "phone"=>null,
+        "registration_state"=>null,
         "avatar"=>null);
     insertion($bdd,$myDic,'users');
 }
@@ -26,4 +25,12 @@ function addUserExample($bdd){
 function test($bdd){
     addUserExample($bdd);
     displayTable($bdd,'users') ;
+}
+
+function debug($data)
+{
+    echo "<pre>";
+    print_r($data);
+    //var_dump($data);
+    echo "</pre>";
 }

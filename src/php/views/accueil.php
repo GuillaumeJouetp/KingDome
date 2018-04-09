@@ -1,7 +1,5 @@
 <div id="corps">
-    <p>
-        <?php //test($bdd) ?>
-    </p>
+
     <p>test</p>
     <p>test</p>
     <p>test</p>

@@ -2,14 +2,14 @@
 
 
     <div class="nom">
-        <a href="../src/index.php">
+        <a href="index.php?cible=accueil">
             <img src="../res/images/KingDome.png" alt="Image du nom de l'application" class="kingdomepng" >
         </a>
             <span class="slogan"> Devenez le roi de votre maison </span>
     </div>
 
 
-    <a href="../src/index.php" class="logo">
+    <a href="index.php?cible=accueil" class="logo">
             <img src="../res/images/Logo.png" alt="Image du logo" class="logopng">
     </a>
 
