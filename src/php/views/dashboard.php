@@ -22,10 +22,10 @@
 	    			<div class="ecriture1">
 	    				
 	    				<a href="#afficher" class="afficher">Maison 1
-	    					<img class="fleche" src="C:\Users\Olfa\Documents\html\site\WebContent\fleche_gauche.png">
+	    					<img class="fleche" src="..\res\icones\fleche_gauche.png">
 	    				</a>
 	    				<a href="#masquer" class="masquer">Maison 1
-	    					<img class="fleche" src="C:\Users\Olfa\Documents\html\site\WebContent\fleche_bas.png">
+	    					<img class="fleche" src="..\res\icones\fleche_bas.png">
 	    				</a>
 	    				
 	    			</div>
