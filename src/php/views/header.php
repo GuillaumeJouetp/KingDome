@@ -5,7 +5,8 @@
         <a href="index.php?cible=accueil">
             <img src="../res/images/KingDome.png" alt="Image du nom de l'application" class="kingdomepng" >
         </a>
-            <span class="slogan"> Devenez le roi de votre maison </span>
+            <span class="slogan"> Devenez le roi de votre maison </span> <!-- Un produit Domisep -->
+            <span class="slogan"> Un produit Domisep </span>
     </div>
 
 
@@ -42,7 +43,13 @@
 
         <button>
             <a href="index.php?cible=utilisateur">
-                <img src="../res/icones/monCompte.png" alt="icone compte" class="icone">compte
+                <img src="../res/icones/monCompte.png" alt="icone compte" class="icone">Compte
+            </a>
+        </button>
+        
+                <button>
+            <a href="index.php?cible=consommation">
+                <img src="../res/icones/monCompte.png" alt="icone compte" class="icone">Consommation
             </a>
         </button>
 
