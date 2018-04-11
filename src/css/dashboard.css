@@ -1,0 +1,82 @@
+/* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par */
+#conteneur
+{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;    
+	margin: 15px 0px 0px 0px;  
+}
+
+
+/* element 1 ajouter capteur */
+.element:nth-child(1) {
+	border: 2px solid rgb(131,36,41);	
+    padding:5px 5px 5px 5px;
+}
+
+.element:nth-child(2) {
+	align-items: end;
+}
+
+/* element 2 trier par deroulant */
+.custom-dropdown__select{
+    font-size: inherit; /* inherit size from .custom-dropdown */
+   	padding:5px 5px 5px 5px; /* add some space*/
+    margin: 0; /* remove default margins */
+    border-color:rgb(0,129,220);
+    color:rgb(0,129,220);
+    font-family:Montserrat , serif;
+    font-size:0.75em;
+}
+
+.custom-dropdown__select--white {
+    background-color: rgba(129,129,129,0.3);
+    color: (0,129,220);
+}
+
+/* ecriture1/2 nous permet de definir la taille, la couleur et le type de cursor pour les ecritures dans la page */
+.ecriture1{
+	font-size:2.5em;
+	color: rgb(129,129,129);
+	cursor:pointer;
+}
+
+.ecriture2{
+	font-size:1.25em;
+	color: rgb(131,36,41);
+	background-color: rgba(129,129,129,0.3);
+	border-radius: 30px;
+	
+}
+
+/* taille de l'image des flêches bas et gauche*/
+.fleche{
+	height:30px;
+	width:auto;
+}
+
+/*faire les 2 modes differents : afficher le texte en dessous de maison ou le cacher*/
+/*enlever la decoration des liens puis mettre une autre couleur*/
+.afficher{
+	text-decoration:none;	
+	color: rgb(129,129,129);
+	margin: 10px 0px 0px 0px;
+}
+
+.pieces {
+        width: 80%;
+        height: 400px;
+        background-color: rgba(129,129,129,0.5);
+        overflow: scroll; /* showing scrollbars */
+        margin:40px 0px 40px 0px;
+        align: center;
+  }
+
+
+
+
+
+
+
+
