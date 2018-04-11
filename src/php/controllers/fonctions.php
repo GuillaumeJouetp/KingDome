@@ -27,3 +27,8 @@ function test($bdd){
     addUserExample($bdd);
     displayTable($bdd,'users') ;
 }
+
+function crypterMdp($password) {
+    //return sha1($password);
+    return password_hash($password, PASSWORD_BCRYPT);
+}

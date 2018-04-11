@@ -12,12 +12,12 @@
 
 <div id="corps">
     <section id="ins_form">
+
     <div id="Partie_Gauche">
         <h1>Nouveau chez KingDome?</h1><br>
         <h2>Mes identifiants</h2>
 
-        <p>
-            <form method="POST" action="">
+        <form method="POST" action="">
 
         <p><label>Adresse mail*<br>
                 <input type="email" name="mail" size="35" required/></label></p>
@@ -31,8 +31,8 @@
         <h2>Mes informations personnelles</h2>
 
         <p><label>Civilité *&nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="radio" name="civil" value="Mme" required/>Mme&nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="radio" name="civil" value="Mr" required/> Mr</label></p>
+                <input type="radio" name="civil" value="Mme" required/>Mme
+                <input type="radio" name="civil" value="Mr" required id="civil_mr"/> Mr</label></p>
 
         <p><label>Nom*<br>
             <input type="text" name="last_name" size="35" required/></label></p>
@@ -43,10 +43,10 @@
         <p><label>Adresse*<br>
                 <input type="text" name="adress" size="35" required/></label></p>
 
-        <p><label>Code postal* &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <label>Pays*<br>
-                    <input type="text" name="post_code" size="14" required/></label>&nbsp
-                <input type="text" name="country" size="15" required/></label></p>
+        <p><label for="post_code">Code postal*
+            <label for="city" id="ville">Ville*</label><br>
+                    <input type="text" name="post_code" id="post_code" size="11" required/></label>
+                <input type="text" name="city" id="city" size="18" required/></p>
 
         <p><label>Numéro de téléphone*<br>
                 <input type="tel" name="tel" size="35" required/></label></p>
@@ -54,25 +54,23 @@
         <p><label>Date de naissance<br>
                 <input type="date" name="mail" size="35"/></label></p>
 
-        <p><label>Je souhaite recevoir les bons plans de KingDome :<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="checkbox" name="par_mail"/> Par mail &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <input type="checkbox" name="par_sms"/> Par SMS</label><br></p>
+        <p><label>Je souhaite recevoir les bons plans de KingDome :<br>
+                <input type="checkbox" name="par_mail" id="par_mail"/> Par mail
+                <input type="checkbox" name="par_sms" id="par_sms"/> Par SMS</label><br></p>
 
         <p class="submit">
-            <button type="submit" name="submit" class="submit_button">S'inscrire</button>
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="reset" name="reset" class="submit_button">Annuler</button>
+            <button type="submit" name="creation_submit" class="submit_button">S'inscrire</button>
+            <button type="reset" name="reset" class="submit_button" id="reset_button">Annuler</button>
         </p>
         <br>
         * Champs requis
 
-        </form></p>
+        </form>
     </div>
 
     <div id="Partie_Droite">
         <h1>Déjà inscrit?</h1><br><br>
 
-        <p>
         <form method="POST" action="">
         <p><label>Mon adresse mail*<br>
                 <input type="email" name="mail" size="35" required/></label></p>
@@ -81,13 +79,13 @@
                 <input type="password" name="password" size="35" required/></label><br></p>
 
         <p class="connexion_button">
-            <button type="submit" name="submit" class="submit_button">Connexion</button>
+            <button type="submit" name="connexion_submit" class="submit_button">Connexion</button>
         </p>
         <br>
         * Champs requis
 
-        </form></p>
-
+        </form>
     </div>
+
     </section>
 </div>
