@@ -10,6 +10,7 @@
 
 
 <?php
+
 /**
  * MVC :
  * - index.php : identifie le routeur à appeler en fonction de l'url

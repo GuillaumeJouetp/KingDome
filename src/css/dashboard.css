@@ -4,8 +4,10 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: center;   
+    align-items: center;    
+	margin: 15px 0px 0px 0px;  
 }
+
 
 /* element 1 ajouter capteur */
 .element:nth-child(1) {
@@ -56,31 +58,22 @@
 
 /*faire les 2 modes differents : afficher le texte en dessous de maison ou le cacher*/
 /*enlever la decoration des liens puis mettre une autre couleur*/
-.afficher, .masquer{
+.afficher{
 	text-decoration:none;	
 	color: rgb(129,129,129);
+	margin: 10px 0px 0px 0px;
 }
 
-#afficher {
-   width:100%;
-}
-#texte {
-   display:none;
-   text-decoration: none;
-}
+.pieces {
+        width: 80%;
+        height: 400px;
+        background-color: rgba(129,129,129,0.5);
+        overflow: scroll; /* showing scrollbars */
+        margin:40px 0px 40px 0px;
+        align: center;
+  }
 
-#afficher:target #texte {
-   display:block
-}
-.masquer {
-   display:none;
-}
-#afficher:target .masquer {
-   display:inline;
-}
-#afficher:target .afficher {
-   display:none;
-}
+
 
 
 

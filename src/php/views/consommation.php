@@ -1,19 +1,13 @@
 <?php
 /**
  * VUE DE LA PAGE MA CONSOMMATION
- * User: NELLY
+ * User: Nelly
  * EN ELABORATION
  */
 ?>
 
-
-<!DOCTYPE html>
-	<html>
 		<head>
-			<meta charset="UTF-8">
-			<title>Ma consommation</title>
 			<link rel="stylesheet" href="..\src\css\consommation.css">
-			<link rel="stylesheet" href="..\src\css\style.css">
 		</head>
 		<body>
 
@@ -51,7 +45,7 @@
 				<option>Maison 1</option>
 				<option>Maison 2</option>
 				<option>Maison 3</option>
-			</select> 
+			</select>  
 			
 <!-- Tableau de consommation par pièces -->
 			<table>
@@ -86,4 +80,3 @@
 			</table>
 
 		</body>
-	</html>
