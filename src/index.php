@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/footer.css" />
-    <title>Accueil</title>
+    <title><?php echo $title; ?></title>
 </head>
 <body>
+
 
 <?php
 /**
@@ -16,9 +16,8 @@
  * - Contrôleur : Crée les variables, élabore leurs contenus, identifie la vue et lui envoie les variables
  * - Modèle : contient les fonctions liées à la BDD et appelées par les contrôleurs
  * - Vue : contient ce qui doit être affiché
+ * PHILOSOPHIE DU MVC : l'index appelle le bon controleur (grâce à la variable cible), qui lui appelle la bonne vue (gâce à la variable function) !toujours dans cet ordre!
  **/
-
-include "php/views/header.php";
 
 // Appel des fonctions du contrôleur
 include "php/controllers/fonctions.php";
@@ -39,9 +38,6 @@ if(isset($_GET['cible']) && !empty($_GET['cible'])) {
 // On appelle le contrôleur
 include('php/controllers/' . $url . '.php');
 
-
-
-include "php/views/footer.php";
 ?>
 
 

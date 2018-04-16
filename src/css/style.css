@@ -121,7 +121,7 @@ h2  {
 }
 
 
-input, .submit_button {
+input, .submit_button,textarea {
     padding:3px;
     border:1px solid #0081dc;
     border-radius:5px;
@@ -164,4 +164,11 @@ th {
     padding: 15px;
     text-align: center;
     vertical-align: middle;
+}
+
+.message{
+    display: block;
+    text-align: center;
+    font-size: large;
+    margin: 2%;
 }

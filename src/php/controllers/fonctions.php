@@ -27,6 +27,8 @@ function test($bdd){
     displayTable($bdd,'users') ;
 }
 
+//Faire une fonction qui vérifie si l'user est un admin
+
 function debug($data)
 {
     echo "<pre>";

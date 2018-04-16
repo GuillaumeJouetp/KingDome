@@ -1,3 +1,4 @@
+<head> <link rel="stylesheet" href="css/footer.css" /></head>
 <footer>
 			    <ul id="Coordonnees">
    				    <h3>Nos coordonnées</h3>
