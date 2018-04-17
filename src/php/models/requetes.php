@@ -101,4 +101,14 @@ function supprimer(PDO $bdd, int $id, string $table): bool{
     return $req->execute();
 }
 
+/**
+ * Renvoie le status d'un user ciblant son id
+ * @param PDO $bdd
+ * @param int $id
+ * @param string $table
+ * @return string
+ */
+
 ?>
+
+
