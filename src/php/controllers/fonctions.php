@@ -41,3 +41,9 @@ function crypterMdp($password) {
     //return sha1($password);
     return password_hash($password, PASSWORD_BCRYPT);
 }
+
+function isAnEmail($mail){
+    if(!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $mail)){
+        return true;
+    }
+}

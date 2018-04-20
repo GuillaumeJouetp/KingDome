@@ -27,7 +27,7 @@ switch ($function) {
 
         //Verifie l'email
         $_POST['email'] = htmlspecialchars($_POST['email']);
-        if(!preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email'])){
+        if(isAnEmail($_POST['email'])){
             $Email_Message = "Adresse mail non valide";
             $Validation = false;
         }
