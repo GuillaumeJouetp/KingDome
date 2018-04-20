@@ -109,6 +109,36 @@ function supprimer(PDO $bdd, int $id, string $table): bool{
  * @return string
  */
 
-?>
+/**
+ * Retroune le prénom, nom et mot de passe d'un utilisateur en fonction de son email
+ * @param PDO $bdd
+ * @param string $table
+ * @param string $email
+ * @return array
+ */
+function Get_Id(PDO $bdd, string $table, string $email): array {
+
+    $statement = $bdd->prepare('SELECT user_firstname, user_name, password FROM ' . $table . ' WHERE email = :email');
+    $statement->execute(array(':email' => $email));
+    return $statement->fetch();
+}
+
+/**
+ * Retroune vrai ou faux si l'email est déjà dans la base de données
+ * @param PDO $bdd
+ * @param string $table
+ * @param string $email
+ * @return bool
+ */
+function Is_Email_Exists(PDO $bdd, string $table, string $email): bool {
+    $statement = $bdd->prepare('SELECT COUNT(*) FROM ' . $table . ' WHERE email = :email');
+    $statement->execute(array(':email' => $email));
+    if($statement->fetchColumn() > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 

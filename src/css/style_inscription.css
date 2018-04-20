@@ -53,10 +53,9 @@
     margin-left: 10%;
 }
 
-#par_mail{
-    margin-left: 18%;
-}
-
-#par_sms{
-    margin-left: 9%;
+.Alerte_Message{
+    display: block;
+    text-align: center;
+    font-size: large;
+    color: #832429;
 }

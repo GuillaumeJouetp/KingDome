@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 20 avr. 2018 à 16:05
+-- Généré le :  ven. 20 avr. 2018 à 17:55
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -228,11 +228,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) NOT NULL,
   `tel` int(11) DEFAULT NULL,
   `registration_state` tinyint(1) DEFAULT NULL,
+  `registration_date` datetime NOT NULL,
   `avatar` varchar(200) DEFAULT NULL,
   `user_type_id` varchar(100) NOT NULL,
-  `child_id` int(11) NOT NULL,
+  `child_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_date`, `adress`, `city`, `zip_code`, `email`, `password`, `tel`, `registration_state`, `registration_date`, `avatar`, `user_type_id`, `child_id`) VALUES
+(9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', 75009, 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', 656679976, 0, '2018-04-20 17:37:29', NULL, '2', NULL);
 
 -- --------------------------------------------------------
 

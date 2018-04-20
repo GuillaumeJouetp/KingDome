@@ -47,3 +47,15 @@ function isAnEmail($mail){
         return true;
     }
 }
+
+function isAPassword($password){
+    if (empty($password) || strlen($password) < 8 || !preg_match('/(?=.*[0-9])[A-Z]|(?=.*[A-Z])[0-9]/', $password)) {
+        return false;
+    } else {
+        return is_string($password);
+    }
+}
+
+function isATel($tel){
+    return preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", $tel);
+}

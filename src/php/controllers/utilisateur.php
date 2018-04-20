@@ -1,5 +1,8 @@
 <?php
 
+// Définit le fuseau horaire par défaut à utiliser. Disponible depuis PHP 5.1
+date_default_timezone_set('UTC');
+
 // Si l'utilisateur n'a rien fait, on affiche la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
     $function = "notdone";
@@ -37,7 +40,7 @@ switch ($function) {
         }
 
         // Verifie le mot de passe -> doit comporter au moins 8 caractère, un chiffre et une majuscule
-        if(!estUnMotDePasse(htmlspecialchars($_POST['password']))){
+        if(!isAPassword(htmlspecialchars($_POST['password']))){
             $Alerte_Password = "Alerte_Message";
             $Validation = false;
         }
@@ -49,7 +52,7 @@ switch ($function) {
         }
 
         // Verifie le numéro de téléphone
-        if(!preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", htmlspecialchars($_POST['tel']))){
+        if(!isATel(htmlspecialchars($_POST['tel']))){
             $Tel_Message = "Numéro de téléphone non valide";
             $Validation = false;
         }
@@ -59,16 +62,19 @@ switch ($function) {
             // Bonne creation compte -> creation de la session et redirection vers l'index
 
             $Data_Inscription = array(
-                'prenom' => htmlspecialchars($_POST['first_name']),
-                'nom' => htmlspecialchars($_POST['last_name']),
-                'civilite' => htmlspecialchars($_POST['civil']),
-                'date_naissance' => htmlspecialchars($_POST['date_naissance']),
-                'adresse' => htmlspecialchars($_POST['adress']),
-                'ville' => htmlspecialchars($_POST['city']),
-                'code_postal' => htmlspecialchars($_POST['zip_code']),
+                'user_firstname' => htmlspecialchars($_POST['first_name']),
+                'user_name' => htmlspecialchars($_POST['last_name']),
+                'civility' => htmlspecialchars($_POST['civil']),
+                'birth_date' => htmlspecialchars($_POST['date_naissance']),
+                'adress' => htmlspecialchars($_POST['adress']),
+                'city' => htmlspecialchars($_POST['city']),
+                'zip_code' => htmlspecialchars($_POST['zip_code']),
                 'email' => $_POST['email'],
                 'password' => crypterMdp(htmlspecialchars($_POST['password'])),
-                'tel' => htmlspecialchars($_POST['tel']));
+                'tel' => htmlspecialchars($_POST['tel']),
+                'registration_state' => 0,
+                'registration_date' => date("Y-m-d H:i:s"),
+                'user_type_id' => 2);
 
             insertion($bdd, $Data_Inscription, 'users');
             session_start();
@@ -94,8 +100,7 @@ switch ($function) {
 
             $data = Get_Id($bdd, 'users', $_POST['email']);
 
-            // Enlever le cryptermdp lorsque mdp seront deja crypter dans base (pas ajoute a la main)
-            if(password_verify($_POST['password'], crypterMdp($data['password']))) {
+            if(password_verify($_POST['password'], $data['password'])) {
 
                 // Bonne identifacation -> creation de la session et redirection vers l'index
                 session_start();

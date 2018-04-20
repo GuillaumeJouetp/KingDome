@@ -17,16 +17,21 @@
         <h1>Nouveau chez KingDome?</h1><br>
         <h2>Mes identifiants</h2>
 
-        <form method="POST" action="">
+        <form method="POST" action="index.php?cible=utilisateur&function=inscription">
 
         <p><label>Adresse mail*<br>
-                <input type="email" name="mail" size="35" required/></label></p>
+                <input type="email" name="email" size="35" required/></label></p>
+            <?php
+            echo "<span class='Alerte_Message'>".$Email_Message."</span>"; ?>
 
         <p><label>Mot de passe*<br>
                 <input type="password" name="password" size="35" required/></label></p>
 
         <p><label>Confirmation du mot de passe*<br>
-                <input type="password" name="password_confirmation" size="35" required/></label></p><br>
+                <input type="password" name="password_confirmation" size="35" required/></label></p>
+            <?php
+            echo "<span class='Alerte_Message'>".$Password_Confirmation."</span><br>";
+            echo "<span class='$Alerte_Password'>" ?> Le mot de passe doit comporter au moins 8 caractère, ainsi qu'au moins un chiffre et une majuscule.</span><br>
 
         <h2>Mes informations personnelles</h2>
 
@@ -43,20 +48,18 @@
         <p><label>Adresse*<br>
                 <input type="text" name="adress" size="35" required/></label></p>
 
-        <p><label for="post_code">Code postal*
+        <p><label for="zip_code">Code postal*
             <label for="city" id="ville">Ville*</label><br>
-                    <input type="text" name="post_code" id="post_code" size="11" required/></label>
+                    <input type="text" name="zip_code" id="zip_code" size="11" required/></label>
                 <input type="text" name="city" id="city" size="18" required/></p>
 
         <p><label>Numéro de téléphone*<br>
                 <input type="tel" name="tel" size="35" required/></label></p>
+            <?php
+            echo "<span class='Alerte_Message'>".$Tel_Message."</span>"; ?>
 
-        <p><label>Date de naissance<br>
-                <input type="date" name="mail" size="35"/></label></p>
-
-        <p><label>Je souhaite recevoir les bons plans de KingDome :<br>
-                <input type="checkbox" name="par_mail" id="par_mail"/> Par mail
-                <input type="checkbox" name="par_sms" id="par_sms"/> Par SMS</label><br></p>
+        <p><label>Date de naissance*<br>
+                <input type="date" name="date_naissance" size="35" required/></label></p><br>
 
         <p class="submit">
             <button type="submit" name="creation_submit" class="submit_button">S'inscrire</button>
@@ -71,21 +74,23 @@
     <div id="Partie_Droite">
         <h1>Déjà inscrit?</h1><br><br>
 
-        <form method="POST" action="">
+        <form method="POST" action="index.php?cible=utilisateur&function=connexion">
         <p><label>Mon adresse mail*<br>
-                <input type="email" name="mail" size="35" required/></label></p>
+                <input type="email" name="email" size="35" required/></label></p>
 
         <p><label>Mon mot de passe*<br>
-                <input type="password" name="password" size="35" required/></label><br></p>
+                <input type="password" name="password" size="35" required/></label></p>
 
         <p class="connexion_button">
             <button type="submit" name="connexion_submit" class="submit_button">Connexion</button>
         </p>
-        <br>
-        * Champs requis
+            <p>* Champs requis</p>
 
         </form>
+        <?php
+        echo "<span class='Alerte_Message'>".$Connexion_Message."</span>"; ?>
     </div>
 
     </section>
+
 </div>
