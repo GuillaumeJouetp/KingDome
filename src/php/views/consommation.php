@@ -21,7 +21,7 @@
 <!-- Tableau de consommation par habitations -->
 			<table>
 				<tr>
-					<th>Habitation n°</th>
+					<th>Habitation nÂ°</th>
 					<th>Consommation (kWh)</th>
 			    </tr>
 				<tr>
@@ -38,7 +38,7 @@
 				</tr>
 			</table>
 			
-			<p> Consommation par pièces : </p>
+			<p> Consommation par piÃ¨ces : </p>
 			
 			<input type="text" id="theinput" name="theinput" />
 			<select name="thelist" onChange="combo(this, 'theinput')">
@@ -47,10 +47,10 @@
 				<option>Maison 3</option>
 			</select>  
 			
-<!-- Tableau de consommation par pièces -->
+<!-- Tableau de consommation par piï¿½ces -->
 			<table>
 				<tr>
-					<td>Pièces</td>
+					<td>Piï¿½ces</td>
 					<td>Consommation (kWh)</td>
 			    </tr>
 				<tr>
@@ -62,7 +62,7 @@
 					<td>-</td>
 				</tr>
 				<tr>
-					<td>Salle à manger</td>
+					<td>Salle ï¿½ manger</td>
 					<td>-</td>
 				</tr>
 				<tr>

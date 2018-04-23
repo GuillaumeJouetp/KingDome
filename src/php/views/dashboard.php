@@ -60,7 +60,15 @@
 								
 				</div>
 	    	</div>
-	        <p id="texte">eherhzeegr</p>
+	        <div class="pieces">
+	        	<div class="piece">
+	        		Pièce 1
+	        	</div>
+	        	<div class="piece">
+	        		Pièce 2
+	        	</div>
+	        </div>
+	     </div>
 	     </div>
 	</div>
 	  	 
