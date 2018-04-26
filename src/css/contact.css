@@ -2,3 +2,46 @@
     display:flex;
     flex-direction: column;
 }
+
+.allMessageContainer{
+    margin : 2%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    border: solid #0081dc;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.40);
+}
+
+.container_mail_champ_data,.container_object_champ_data{
+    margin :1%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.container_content_champ_data{
+    margin :1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_mail_data,.container_object_data{
+    margin-left: 1%;
+}
+
+.container_content_data{
+    margin-top: 1%;
+}
+
+.container_mail_champ,.container_object_champ,.container_content_champ{
+    font-weight:bold;
+}
+
+.suppr{
+    font-size: small;
+    color: #696968;
+    margin-left: 1%;
+}
+
+

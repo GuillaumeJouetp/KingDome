@@ -28,9 +28,14 @@ function test($bdd){
 }
 
 
-function debug($data){
+function debug1($data){
     echo "<pre>";
-    //print_r($data);
+    print_r($data);
+    echo "</pre>";
+}
+
+function debug2($data){
+    echo "<pre>";
     var_dump($data);
     echo "</pre>";
 }
@@ -64,6 +69,13 @@ function getCurrentUserType($bdd){ // renvoie le type de l'utilisateur actuellem
         return $array_type[0];
     }
     return false;
+}
+
+function isAnAdmin($bdd){
+    if (getCurrentUserType($bdd) == 1)
+        return true;
+    else
+        return false;
 }
 
 function testTemp($bdd){

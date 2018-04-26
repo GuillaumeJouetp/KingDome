@@ -145,8 +145,7 @@ switch ($function) {
     case 'deconnexion':
         // On détruit la session utilisateur
         session_destroy();
-        $vue = "inscription";
-        $title = "notdone";
+        header('Location: index.php?cible=utilisateur');
         break;
 
     default :

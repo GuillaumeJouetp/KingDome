@@ -11,30 +11,34 @@ $title = 'Contact';
 $mail_message='';
 $form_message = "";
 
-switch ($function) {
-    case 'notdone':
-        //cas ou le formulaire n'est pas encore rempli, On affiche le formulaire
-        $vue = "contact";
-        break;
-
-
-    case 'done':
-        //Cas ou le formulaire est rempli, On affiche que le formulaire a bien été envoyé
-        if(!isAnEmail($_POST['mail'])){
+if(isAnAdmin($bdd)) {
+    $vue = "contact_backOffice";
+}
+else{
+    switch ($function) {
+        case 'notdone':
+            //cas ou le formulaire n'est pas encore rempli, On affiche le formulaire
             $vue = "contact";
-            $form_message = "Votre message a bien été envoyé";
-            insertion($bdd, $_POST, 'incoming_messages');
-        }
-        else{
-            $vue = "contact";
-            $mail_message='Veuillez entrer une adresse email valide ou nous pourrons pas vous répondre';
-        }
-        break;
+            break;
 
-    default :
-        // si aucune fonction ne correspond au paramètre function passé en GET
-        $vue = "error404";
-        $title = "error404";
+
+        case 'done':
+            //Cas ou le formulaire est rempli, On affiche que le formulaire a bien été envoyé
+            if (!isAnEmail($_POST['mail'])) {
+                $vue = "contact";
+                $form_message = "Votre message a bien été envoyé";
+                insertion($bdd, $_POST, 'incoming_messages');
+            } else {
+                $vue = "contact";
+                $mail_message = 'Veuillez entrer une adresse email valide ou nous pourrons pas vous répondre';
+            }
+            break;
+
+        default :
+            // si aucune fonction ne correspond au paramètre function passé en GET
+            $vue = "error404";
+            $title = "error404";
+    }
 }
 include "php/views/header.php";
 include ('php/views/' . $vue . '.php');

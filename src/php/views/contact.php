@@ -10,8 +10,7 @@
     </form>
 
 <?php echo "<span class='message'>".$form_message."</span>";
-echo testTemp($bdd);
-//debug ($_SESSION);
+
 ?>
 
 </div>
