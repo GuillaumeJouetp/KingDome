@@ -48,6 +48,7 @@
         </button>
         
     </nav>
-
 </header>
+
+<span id = 'bienvenue'> <?php echo displayBienvenue() ?></span>
 

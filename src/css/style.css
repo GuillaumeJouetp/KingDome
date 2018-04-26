@@ -166,9 +166,23 @@ th {
     vertical-align: middle;
 }
 
+.errormessage{
+    display: block;
+    text-align: center;
+    font-size: large;
+    margin: 2%;
+    color: red;
+}
+
 .message{
     display: block;
     text-align: center;
     font-size: large;
     margin: 2%;
+    color: green;
+}
+
+#bienvenue{
+    display: block;
+    margin: 2% 3% 0% 77%;
 }
