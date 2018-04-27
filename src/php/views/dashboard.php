@@ -36,9 +36,27 @@
 	        	<div class="piece">
 	        		Pièce 1
 	        	</div>
+	        	
+	        	<div id="conteneur">
+	        	
+		   		<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			
+	    		</div>
+	        	
 	        	<div class="piece">
 	        		Pièce 2
 	        	</div>
+	        	
+	        	<div id="conteneur">
+	        	
+		   		<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			
+	    		</div>
+	        	
 	        </div>
 	     </div>
 		<div id="afficher">
@@ -64,9 +82,25 @@
 	        	<div class="piece">
 	        		Pièce 1
 	        	</div>
+	        	<div id="conteneur">
+	        	
+		   		<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			
+	    		</div>
+	        	
 	        	<div class="piece">
 	        		Pièce 2
 	        	</div>
+	        	
+	        	<div id="conteneur">
+	        	
+		   		<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			<div class="element , ecriture3">Texte</div>
+	 			
+	    		</div>
 	        </div>
 	     </div>
 	     </div>

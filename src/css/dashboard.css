@@ -9,15 +9,6 @@
 }
 
 
-/* element 1 ajouter capteur */
-.element:nth-child(1) {
-	border: 2px solid rgb(131,36,41);	
-    padding:5px 5px 5px 5px;
-}
-
-.element:nth-child(2) {
-	align-items: end;
-}
 
 /* element 2 trier par deroulant */
 .custom-dropdown__select{
@@ -47,8 +38,14 @@
 	color: rgb(131,36,41);
 	background-color: rgba(129,129,129,0.3);
 	border-radius: 30px;
+	align-items: end;
+	cursor:pointer;
+	border: 2px solid rgb(131,36,41);
+	padding:10px 10px 10px 10px;
 	
 }
+
+
 
 /* taille de l'image des flêches bas et gauche*/
 .fleche{
@@ -70,8 +67,21 @@
         background-color: rgba(129,129,129,0.5);
         overflow: scroll; /* showing scrollbars */
         margin:40px 0px 40px 0px;
-        align: center;
+        padding:10px 0px 0px 0px;
+        justify-content: center;
   }
+  
+  
+.ecriture3{
+	font-size:1.25em;
+	color: rgb(131,36,0);
+	border: 2px solid rgb(131,36,41);
+	padding:10px 60px 150px 60px;
+	margin:40px 0px 40px 0px;
+	text-align: left;
+	
+	
+}
 
 
 
