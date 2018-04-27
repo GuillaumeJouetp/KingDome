@@ -102,15 +102,22 @@ function supprimer(PDO $bdd, int $id, string $table): bool{
 }
 
 /**
- * Renvoie le status d'un user ciblant son id
+ * Renvoie le type d'utilisateur d'un user ciblant son id
  * @param PDO $bdd
  * @param int $id
  * @param string $table
  * @return string
  */
 
+function getUserType(PDO $bdd, $id){
+    $req = $bdd->prepare('SELECT user_type_id FROM users WHERE id=?');
+    $req->bindParam(1, $id);
+    $req->execute();
+    return $req->fetch();
+}
+
 /**
- * Retroune le prénom, nom et mot de passe d'un utilisateur en fonction de son email
+ * Retroune l'id, le prénom, nom et mot de passe d'un utilisateur en fonction de son email (identification a la connexion)
  * @param PDO $bdd
  * @param string $table
  * @param string $email
@@ -118,7 +125,7 @@ function supprimer(PDO $bdd, int $id, string $table): bool{
  */
 function Get_Id(PDO $bdd, string $table, string $email): array {
 
-    $statement = $bdd->prepare('SELECT user_firstname, user_name, password FROM ' . $table . ' WHERE email = :email');
+    $statement = $bdd->prepare('SELECT id,user_firstname, user_name, password FROM ' . $table . ' WHERE email = :email');
     $statement->execute(array(':email' => $email));
     return $statement->fetch();
 }

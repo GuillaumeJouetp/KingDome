@@ -11,6 +11,7 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
     $function = $_GET['function'];
 }
 
+
 $Connexion_Message = "";
 $Email_Message = "";
 $Validation = true;
@@ -20,10 +21,17 @@ $Tel_Message = "";
 
 switch ($function) {
     case 'notdone':
-        // formulaire pas encore rempli -> on affiche le formulaire
-        $vue = "inscription";
-        $title = "notdone";
-        break;
+        if (isUserConnected()){
+            // On affiche la vue du compte utilisateur
+            $vue = "monCompte";
+            $title = "Mon compte";
+        }
+        else {
+            // formulaire pas encore rempli -> on affiche le formulaire
+            $vue = "inscription";
+            $title = "notdone";
+        }
+            break;
 
     case 'inscription':
         // formulaire inscription rempli -> verification des données
@@ -77,11 +85,13 @@ switch ($function) {
                 'user_type_id' => 2);
 
             insertion($bdd, $Data_Inscription, 'users');
-            session_start();
-            $_SESSION['prénom'] = $Data_Inscription['prénom'];
-            $_SESSION['nom'] = $Data_Inscription['nom'];
+            $_SESSION['user_firstname'] = $Data_Inscription['user_firstname'];
+            $_SESSION['user_name'] = $Data_Inscription['user_name'];
             $_SESSION['password'] = $Data_Inscription['password'];
             $_SESSION['email'] = $_POST['email'];
+            $_SESSION['connected'] = true;
+            $_SESSION['user_id'] = $Data_Inscription['user_type_id'];
+            $_SESSION['type'] = getCurrentUserType($bdd);
             header('location: index.php');
 
         } else {
@@ -103,11 +113,13 @@ switch ($function) {
             if(password_verify($_POST['password'], $data['password'])) {
 
                 // Bonne identifacation -> creation de la session et redirection vers l'index
-                session_start();
-                $_SESSION['prenom'] = $data['prenom'];
-                $_SESSION['nom'] = $data['nom'];
+                $_SESSION['user_firstname'] = $data['user_firstname'];
+                $_SESSION['user_name'] = $data['user_name'];
                 $_SESSION['password'] = $data['password'];
                 $_SESSION['email'] = $_POST['email'];
+                $_SESSION['connected'] = true;
+                $_SESSION['user_id'] = $data['id'];
+                $_SESSION['type'] = getCurrentUserType($bdd);
                 header('location: index.php');
 
             } else {
@@ -128,6 +140,12 @@ switch ($function) {
 
         }
 
+        break;
+
+    case 'deconnexion':
+        // On détruit la session utilisateur
+        session_destroy();
+        header('Location: index.php?cible=utilisateur');
         break;
 
     default :
