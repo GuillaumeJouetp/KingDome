@@ -67,8 +67,7 @@
         background-color: rgba(129,129,129,0.5);
         overflow: scroll; /* showing scrollbars */
         margin:40px 0px 40px 0px;
-        padding:10px 0px 0px 0px;
-        justify-content: center;
+        padding:10px 0px 0px 0px;  
   }
   
   
