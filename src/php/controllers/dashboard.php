@@ -11,6 +11,13 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 if(isUserConnected($bdd)) {
 	$vue = "dashboard";
 }
+
+// si l'utilisateur est un admin alors on lui affiche la dashboard
+
+if(isAnAdmin($bdd)) {
+	$vue = "dashboard_backoffice";
+}
+
 else{
 	switch ($function) {
 		case 'notdone':
