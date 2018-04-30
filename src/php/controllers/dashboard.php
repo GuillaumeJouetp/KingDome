@@ -14,7 +14,7 @@ if(isUserConnected($bdd)) {
 
 // si l'utilisateur est un admin alors on lui affiche la dashboard
 
-elseif (isAnAdmin($bdd)) {
+elseif(isAnAdmin($bdd)) {
 	$vue = "dashboard_backoffice";
 }
 
