@@ -103,3 +103,9 @@ function isUserConnected(){
     if (isset($_SESSION['connected']) && !empty($_SESSION['connected']) && $_SESSION['connected'])
         return true;
 }
+
+function RecupereIdConnected(){
+	if (isset($_SESSION['connected']) && !empty($_SESSION['connected']) && $_SESSION['connected'])
+		$id = $_SESSION['id'];
+		return $id ;
+}
