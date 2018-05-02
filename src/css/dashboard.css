@@ -81,6 +81,7 @@
 	
 }
 
+/*fenetre modale*/
 #masque{
 	display:none;
 	position:fixed;
@@ -123,6 +124,8 @@ img.btn-fermer{
 	text-decoration:underline;
 	
 }
+
+/*fin fenetre modale*/
 
 
 

@@ -16,30 +16,22 @@
 
 	
 	<?php
+
 	
-	try
-	{
-		// On se connecte à MySQL
-		$bdd = new PDO('mysql:host=localhost;dbname=isep_kingdome;charset=utf8', 'root', '');
-	}
-	catch(Exception $e)
-	{
-		// En cas d'erreur, on affiche un message et on arrête tout
-		die('Erreur : '.$e->getMessage());
-	}
-	
-	
-	$own_home = $bdd->query('SELECT * FROM own_home');
-	$rooms = $bdd->query('SELECT * FROM rooms');
+	$own_home = recupereTous($bdd, 'own_home');
+	$rooms = recupereTous($bdd, 'rooms');
 	$cpt=0;
 	$cpt2=0;
 	$id=  $_SESSION['user_id'];
+	
+	
 	
 
 	foreach($own_home as $donnees){ //boucle pour avoir le nombre de maison
 		
 		if($id == $donnees['user_id']){
 			$cpt++;
+			debug1($cpt);
 			echo(
 					"<div class='ecriture1'>"
 					.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
@@ -47,9 +39,11 @@
 					."</div>"
 				);	
 		
-			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de maison
+			
+			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
 				if($donnees['house_id'] == $donnees2['home_id']){
 					$cpt2++;
+					debug1($cpt2);
 					echo(
 							"<div class='pieces'>"
 							."<div class='piece'> Pièce $cpt2 </div>"

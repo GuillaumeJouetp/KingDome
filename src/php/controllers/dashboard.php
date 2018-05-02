@@ -9,7 +9,7 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 
 // si l'utilisateur est connecté alors on lui affiche la dashboard
 if(isUserConnected($bdd)) {
-	$vue = "dashboard2";
+	$vue = "dashboard";
 }
 
 // si l'utilisateur est un admin alors on lui affiche la dashboard
