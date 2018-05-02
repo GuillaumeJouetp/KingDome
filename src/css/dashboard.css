@@ -16,14 +16,14 @@
    	padding:5px 5px 5px 5px; /* add some space*/
     margin: 0; /* remove default margins */
     border-color:rgb(0,129,220);
-    color:rgb(0,129,220);
+    color:rgb(0,0,0);
     font-family:Montserrat , serif;
     font-size:0.75em;
 }
 
 .custom-dropdown__select--white {
     background-color: rgba(129,129,129,0.3);
-    color: (0,129,220);
+    color:rgb(0,0,0);
 }
 
 /* ecriture1/2 nous permet de definir la taille, la couleur et le type de cursor pour les ecritures dans la page */
@@ -73,18 +73,56 @@
   
 .ecriture3{
 	font-size:1.25em;
-	color: rgb(131,36,0);
-	border: 2px solid rgb(131,36,41);
+	color: rgb(131,36,41);
+	border: 1px solid rgb(131,36,41);
 	padding:10px 60px 150px 60px;
 	margin:40px 0px 40px 0px;
-	text-align: left;
 	
 	
 }
 
+#masque{
+	display:none;
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background-color:rgb(0,0,0,0.5);
+	z-index:1000;
+}
 
+#masque:target{
+	display:block;
+}
 
+.fenetre-modale{
 
+	padding:2px;
+	border:2px solid rgb(0,129,220);
+	position:center;
+	margin:10% auto;
+	width:20%;
+	box-shadow:0px 0px 20px #000;
+    background-color: rgb(129,129,129); 
+    border-radius: 30px;
+    text-align:center;
+}
+
+img.btn-fermer{
+	float:right;
+	margin:-55px 0 0 ;
+	height:60px;
+	width:auto;
+}
+
+.capt{
+	color:rgb(131,36,41);
+	font-size:20px;
+	font-weight: bold;
+	text-decoration:underline;
+	
+}
 
 
 

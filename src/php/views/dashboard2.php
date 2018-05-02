@@ -11,8 +11,79 @@
     <link rel="stylesheet" href="..\src\css\dashboard.css">
 </head>
 
-<body>
-	<div id=corps>
+<div id=corps>
+  
+
+	
+	<?php
+	
+	try
+	{
+		// On se connecte à MySQL
+		$bdd = new PDO('mysql:host=localhost;dbname=isep_kingdome;charset=utf8', 'root', '');
+	}
+	catch(Exception $e)
+	{
+		// En cas d'erreur, on affiche un message et on arrête tout
+		die('Erreur : '.$e->getMessage());
+	}
+	
+	
+	$own_home = $bdd->query('SELECT * FROM own_home');
+	$rooms = $bdd->query('SELECT * FROM rooms');
+	$cpt=0;
+	$cpt2=0;
+	$id=  $_SESSION['user_id'];
+	
+
+	foreach($own_home as $donnees){ //boucle pour avoir le nombre de maison
+		
+		if($id == $donnees['user_id']){
+			$cpt++;
+			echo(
+					"<div class='ecriture1'>"
+					.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
+					."Maison $cpt"
+					."</div>"
+				);	
+		
+			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de maison
+				if($donnees['house_id'] == $donnees2['home_id']){
+					$cpt2++;
+					echo(
+							"<div class='pieces'>"
+							."<div class='piece'> Pièce $cpt2 </div>"
+							."</div>"
+						);
+				}
+			}
+			if($cpt2==0){
+				echo(
+						"<div class='ecriture1'>"
+						."Pas de pièce"
+						."</div>"
+						);
+			}
+			$cpt2=0;
+		}
+	}
+	
+	
+	
+	if($cpt==0){
+		echo(
+				"<div class='ecriture1'>"
+				."Pas de maison"
+				."</div>"
+				);	
+	}
+	
+	?>
+    
+</div>
+		
+		
+		<!-- 	
 	
 		<div class="ecriture1">
 			<img class="fleche" src="..\res\icones\fleche_bas.png">
@@ -57,10 +128,10 @@
 							   	
 								<input type="submit" value="Ajouter" /><br><br>
 								
-							</form>
+							</form>  
 								
-				</div> <!-- .fenetre-modale -->
-			</div> <!-- #masque -->
+				</div> 
+			</div> 
 		   		
 		   	
 	 		<div class="element">
@@ -73,28 +144,4 @@
 				</span>
 			</div>  
 			      
-	    </div>
-	    <div class="pieces">
-	        <div class="piece"> Pièce 1 </div>
-	        	
-	        	<div id="conteneur">
-	        	
-		   			<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
-	 			
-	    		</div>
-	        	
-	        	<div class="piece"> Pièce 2 </div>
-	        	
-	        	<div id="conteneur">
-	        	
-		   			<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
-	 			
-	    		</div>        	
-	    </div>
-	</div>
-</body>
-</html>
+	    </div>    --> 
