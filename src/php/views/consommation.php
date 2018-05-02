@@ -7,15 +7,15 @@
 ?>
 
 		<head>
-			<link rel="stylesheet" href="..\src\css\consommation.css">
+			<link rel="stylesheet" href="css/consommation.css">
 		</head>
-		<body>
 
+<div id="corps">
 			<h1> Ma consommation </h1>
-			<p> Consommation globable : 175000 kWh </p>
 			
-			
-			<p> Consommation par habitation : 80000 kWh </p>
+			<div id="conso">
+			<p> Consommation globable : <strong>-</strong> kWh </p>
+			<p> Consommation par habitation : <strong>-</strong> kWh </p>
 
 
 <!-- Tableau de consommation par habitations -->
@@ -39,19 +39,19 @@
 			</table>
 			
 			<p> Consommation par pièces : </p>
-			
-			<input type="text" id="theinput" name="theinput" />
+			<p> Trier par :
 			<select name="thelist" onChange="combo(this, 'theinput')">
-				<option>Maison 1</option>
-				<option>Maison 2</option>
-				<option>Maison 3</option>
+			</p>
+				<option>Habitation 1</option>
+				<option>Habitation 2</option>
+				<option>Habitation 3</option>
 			</select>  
 			
-<!-- Tableau de consommation par pi�ces -->
+<!-- Tableau de consommation par pièces -->
 			<table>
 				<tr>
-					<td>Pi�ces</td>
-					<td>Consommation (kWh)</td>
+					<th>Pièces</th>
+					<th>Consommation (kWh)</th>
 			    </tr>
 				<tr>
       				<td>Cuisine</td>
@@ -62,7 +62,7 @@
 					<td>-</td>
 				</tr>
 				<tr>
-					<td>Salle � manger</td>
+					<td>Salle à manger</td>
 					<td>-</td>
 				</tr>
 				<tr>
@@ -79,4 +79,14 @@
 				</tr>
 			</table>
 
-		</body>
+<!-- 		<div class="stats">
+				<h2>Consommation annuelle</h2>
+				<ul>
+					<li>Fonction f1 sur 10000 itérations&nbsp;: <span class="percent v70">14,7 ms</span></li>
+					<li>Fonction f2 sur 10000 itérations&nbsp;: <span class="percent v30">6,3 ms</span></li>
+					<li>Fonction f3 sur 10000 itérations&nbsp;: <span class="percent v100">21 ms</span></li>
+				</ul>
+			</div>
+		 -->
+		 </div>
+</div>
