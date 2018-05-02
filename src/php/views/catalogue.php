@@ -27,7 +27,6 @@
         <li><img src="../res/images/température/essai1.jpg" /></li>
         <li><img src="../res/images/température/essai2.jpg" /></li>
         <li><img src="../res/images/température/essai3.jpg" /></li>
-        <li><img src="../res/images/température/essai4.jpg" /></li>
     </ul>
 </div>
 
@@ -56,9 +55,6 @@
         <li><img src="../res/images/luminosité/essai1.jpg" /></li>
         <li><img src="../res/images/luminosité/essai2.jpg" /></li>
         <li><img src="../res/images/luminosité/essai3.jpg" /></li>
-        <li><img src="../res/images/luminosité/essai4.jpg" /></li>
-        <li><img src="../res/images/luminosité/essai5.jpg" /></li>
-        <li><img src="../res/images/luminosité/essai6.jpg" /></li>
     </ul>
 </div>
 
