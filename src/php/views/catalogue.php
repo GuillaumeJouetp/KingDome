@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/catalogue.css" />
+    <link rel="stylesheet" href="../src/css/catalogue.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     <title>Te st</title>
 </head>
 
-<body>
+<div id="corps">
 
 <h1>Catalogue</h1>
 
@@ -24,14 +24,14 @@
 
 <div id="carrousel">
     <ul>
-        <li><img src="température/essai1.jpg" /></li>
-        <li><img src="température/essai2.jpg" /></li>
-        <li><img src="température/essai3.jpg" /></li>
-        <li><img src="température/essai4.jpg" /></li>
+        <li><img src="../res/images/température/essai1.jpg" /></li>
+        <li><img src="../res/images/température/essai2.jpg" /></li>
+        <li><img src="../res/images/température/essai3.jpg" /></li>
+        <li><img src="../res/images/température/essai4.jpg" /></li>
     </ul>
 </div>
 
-<script src="Catalogue.js"></script>
+<script src="../src/js/Catalogue.js"></script>
 
 <div class="trait_dessus"></div>
 
@@ -39,13 +39,13 @@
 
 <div id="carrousel2">
     <ul>
-        <li><img src="humidité/essai1.jpg" /></li>
-        <li><img src="humidité/essai2.jpg" /></li>
-        <li><img src="humidité/essai3.jpg" /></li>
+        <li><img src="../res/images/humidité/essai1.jpg" /></li>
+        <li><img src="../res/images/humidité/essai2.jpg" /></li>
+        <li><img src="../res/images/humidité/essai3.jpg" /></li>
     </ul>
 </div>
 
-<script src="Catalogue2.js"></script>
+<script src="../src/js/Catalogue2.js"></script>
 
 <div class="trait_dessus"></div>
 
@@ -53,17 +53,17 @@
 
 <div id="carrousel3">
     <ul>
-        <li><img src="luminosité/essai1.jpg" /></li>
-        <li><img src="luminosité/essai2.jpg" /></li>
-        <li><img src="luminosité/essai3.jpg" /></li>
-        <li><img src="luminosité/essai4.jpg" /></li>
-        <li><img src="luminosité/essai5.jpg" /></li>
-        <li><img src="luminosité/essai6.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai1.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai2.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai3.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai4.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai5.jpg" /></li>
+        <li><img src="../res/images/luminosité/essai6.jpg" /></li>
     </ul>
 </div>
 
-<script src="Catalogue3.js"></script>
+<script src="../src/js/Catalogue3.js"></script>
 
-</body>
+</div>
 
 </html>

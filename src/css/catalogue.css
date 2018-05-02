@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    font-size: 300%;
+    color: crimson;
+    height: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.centrer {
+    text-align: center;
+}
+
+.rouge {
+    color: crimson;
+}
+
+.bleue {
+    color: blue;
+}
+
+.trait_dessus
+{
+    border-top: 1px solid #000;
+    width : 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+}
+
+#test {
+    margin-left: 85%;
+}
+
+
+#carrousel, #carrousel2, #carrousel3{
+    position:static;
+    width:340px;
+    /** 340 px de base + 225px pour le commentaire -> 565px **/ /** 360 px pour la colonne **/
+    height:200px;
+    /** 200px de base **/
+    margin: auto;
+}
+
+
+
+
+#carrousel ul li, #carrousel2 ul li, #carrousel3 ul li{
+    position: absolute;
+    margin-left: 3.75%;
+    list-style-type: none;
+}
+
+
+.prev, .prev2, .prev3{
+    float: left;
+    margin-top: 90px;
+    margin-right: 250px;
+}
+
+
+.next, .next2, .next3 {
+    float:right;
+    margin-top: 90px;
+}
+
+
+
+
+
