@@ -9,7 +9,7 @@ $(document).ready(function() {
     $img.css('display', 'none');
     $currentImg.css('display', 'block');
 
-    $carrousel.append('<div class="controls"> <span class="prev"><img src="../res/icones/gauche.png"></span> <span class="next"><img src="../res/icones/droite.png"></span> </div>');
+    $carrousel.append('<div class="controls"> <span class="prev"><img src="../res/icones/arrow-point-to-left.png"></span> <span class="next"><img src="../res/icones/arrow-point-to-right.png"></span> </div>');
 
 
     $('.next').click(function () {

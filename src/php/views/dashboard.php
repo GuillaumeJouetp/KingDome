@@ -21,7 +21,7 @@
 	    
 		<div id="conteneur">
 			<a href="#masque">
-				<div class="element , ecriture2">Ajouter un capteur</div>
+				<div class="element , ecriture2"> Ajouter un capteur </div>
 			</a>
 		   		
 			<div id="masque">
@@ -79,9 +79,46 @@
 	        	
 	        	<div id="conteneur">
 	        	
-		   			<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
-	 				<div class="element , ecriture3">Texte</div>
+		   			<div class="element , ecriture3">
+		   			
+		   				<div class="capteur_ecriture">Humidité</div>
+		   			
+		   				<img class="capteur" src="..\res\icones\humidité.png">
+		   				
+		   				<div class="capteur_ecriture">30%</div>
+		   				
+		   			</div>
+		   			
+		   			
+	 				<div class="element , ecriture3">
+		   			
+		   				<div class="capteur_ecriture">Luminosité</div>
+		   			
+		   				<img class="capteur" src="..\res\icones\luminosité.png">
+		   				
+		   				<div class="capteur_ecriture">30%</div>
+		   				
+		   			</div>
+		   			
+		   			<div class="element , ecriture3">
+		   			
+		   				<div class="capteur_ecriture">Température</div>
+		   			
+		   				<img class="capteur" src="..\res\icones\température.png">
+		   				
+		   				<div class="capteur_ecriture">15°C</div>
+		   				
+		   			</div>
+		   			
+		   			<div class="element , ecriture3">
+		   			
+		   				<div class="capteur_ecriture">Température</div>
+		   			
+		   				<img class="capteur" src="..\res\icones\température.png">
+		   				
+		   				<div class="capteur_ecriture">15°C</div>
+		   				
+		   			</div>
 	 			
 	    		</div>
 	        	
