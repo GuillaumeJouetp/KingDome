@@ -16,14 +16,14 @@
    	padding:5px 5px 5px 5px; /* add some space*/
     margin: 0; /* remove default margins */
     border-color:rgb(0,129,220);
-    color:rgb(0,129,220);
+    color:rgb(0,0,0);
     font-family:Montserrat , serif;
     font-size:0.75em;
 }
 
 .custom-dropdown__select--white {
     background-color: rgba(129,129,129,0.3);
-    color: (0,129,220);
+    color:rgb(0,0,0);
 }
 
 /* ecriture1/2 nous permet de definir la taille, la couleur et le type de cursor pour les ecritures dans la page */
@@ -73,19 +73,22 @@
   
 .ecriture3{
 	font-size:1.25em;
-	color: rgb(131,36,0);
-	border: 2px solid rgb(131,36,41);
-	padding:10px 60px 150px 60px;
-	margin:40px 0px 40px 0px;
-	text-align: left;
+	color: rgb(131,36,41);
+	border: 1px solid rgb(131,36,41);
+	padding:10px 40px 10px 40px;
+	margin:0px 0px 10px 0px;
+	text-align:center;
 	
 	
 }
+.capteur{
+	height:75px;
+	width:auto;
+}
 
-
-
-
-
+.capteur_ecriture{
+	margin:30px 0px 30px 0px;
+}
 
 
 

@@ -1,3 +1,5 @@
+<title><?php echo $title; ?></title>
+
 <header>
 
 
