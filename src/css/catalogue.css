@@ -1,7 +1,7 @@
 h1 {
     text-align: center;
     font-size: 300%;
-    color: crimson;
+    color: #832429;
     height: 50px;
 }
 
@@ -14,11 +14,11 @@ h2 {
 }
 
 .rouge {
-    color: crimson;
+    color: #832429;
 }
 
 .bleue {
-    color: blue;
+    color: #0081dc;
 }
 
 .trait_dessus
@@ -56,7 +56,6 @@ h2 {
 .prev, .prev2, .prev3{
     float: left;
     margin-top: 90px;
-    margin-right: 250px;
 }
 
 
