@@ -21,7 +21,7 @@
 	    
 		<div id="conteneur">
 			<a href="#masque">
-				<div class="element , ecriture2">Ajouter un capteur</div>
+				<div class="element , ecriture2"> Ajouter un capteur </div>
 			</a>
 		   		
 			<div id="masque">
