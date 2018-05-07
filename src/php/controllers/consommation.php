@@ -8,7 +8,28 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 }
 
 
+// si l'utilisateur est connecté alors on lui affiche la page consommation
+if(isUserConnected($bdd)) {
+	$vue = "consommation";
+}
+
+else{
+	switch ($function) {
+		case 'notdone':
+			//si l'utilisateur n'est pas connecté alors on lui demande de se connecter
+			$vue = "consommationSansCompte";
+			break;
+			
+			
+		default :
+			// si aucune fonction ne correspond au paramètre function passé en GET
+			$vue = "error404";
+			$title = "error404";
+	}
+}
+
+
 include "php/views/header.php";
-include('php/views/consommation.php');
+include('php/views/' . $vue . '.php');
 include "php/views/footer.php";
 ?>
