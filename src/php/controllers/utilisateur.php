@@ -31,7 +31,7 @@ switch ($function) {
         else {
             // formulaire pas encore rempli -> on affiche le formulaire
             $vue = "inscription";
-            $title = "notdone";
+            $title = "Connexion / Inscription";
         }
             break;
 
@@ -115,7 +115,7 @@ switch ($function) {
 
         } else {
             $vue = "inscription";
-            $title = "insciption_fail";
+            $title = "Inscription";
         }
         break;
 
@@ -145,7 +145,7 @@ switch ($function) {
 
                 // Mauvais mot de passe
                 $vue = "inscription";
-                $title = "connexion_fail";
+                $title = "Connexion";
                 $Connexion_Message = "Adresse mail ou mot de passe incorrect";
 
             }
@@ -154,7 +154,7 @@ switch ($function) {
 
             // Adresse inexistante
             $vue = "inscription";
-            $title = "connexion_fail";
+            $title = "Connexion";
             $Connexion_Message = "Adresse mail ou mot de passe incorrect";
 
         }
