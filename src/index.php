@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title><?php echo $title; ?></title>
 </head>
 <body>
 
@@ -37,8 +36,13 @@ if(isset($_GET['cible']) && !empty($_GET['cible'])) {
     $url = 'accueil';
 }
 
+//title par défaut pour toutes les pages
+$title='Non défini';
+
 // On appelle le contrôleur
 include('php/controllers/' . $url . '.php');
+
+
 
 ?>
 
