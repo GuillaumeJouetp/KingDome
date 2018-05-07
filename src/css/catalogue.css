@@ -36,10 +36,8 @@ h2 {
 
 #carrousel, #carrousel2, #carrousel3, #carrousel4, #carrousel5{
     position:static;
-    width:340px;
-    /** 340 px de base + 225px pour le commentaire -> 565px **/ /** 360 px pour la colonne **/
+    width:320px;
     height:200px;
-    /** 200px de base **/
     margin: auto;
 }
 
@@ -48,6 +46,7 @@ h2 {
     position: absolute;
     margin-left: 3.75%;
     list-style-type: none;
+    width: 10%;
 }
 
 
@@ -57,7 +56,7 @@ h2 {
 }
 
 
-.next, .next2, .next3, .next4, .next5{
+.next, .next2, .next3, .next4, .next5 {
     float: right;
     margin-top: 90px;
 }

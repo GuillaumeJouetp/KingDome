@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../src/css/catalogue.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-    <title>Te st</title>
+    <title>Test</title>
 </head>
 
 <div id="corps">
@@ -84,7 +84,7 @@
         </ul>
     </div>
 
-    <script src="../src/js/Catalogue5.js"></script> -->
+    <script src="../src/js/Catalogue5.js"></script>
 
 </div>
 
