@@ -2,8 +2,8 @@
 <footer>
 			    <ul id="Coordonnees">
    				    <h3>Nos coordonnées</h3>
-                    <li>j.decaslou@gmail.com</li>
-                    <li>0660501627</li>
+                    <li>Accueil@kingdome.com</li>
+                    <li>06 06 06 06 06</li>
                     <li>10, Rue de Vanves</li>
                     <li>92130 Issy-Les-Moulineaux</li>
                 </ul>
@@ -12,12 +12,13 @@
                 
                 <div id="pb">
                     <h3>Un problème ?</h3>
-                    <h3>Une suggestion ?</h3>
+                    <h3 id="sug">Une suggestion ?</h3>
                     
                     <div id="bouton">
-                        <p>
-                            <button><a href="Page nous contacter">Nous contacter !</a></button>
-                        </p>
+                            <button id="nc"><a href="Page nous contacter">Nous contacter !</a></button>
+                        <br>
+                            <button><a href="Page nous contacter">Mentions légales</a></button>
+                            <button><a href="Page nous contacter">Conditions générales d'utilisation</a></button>
                     </div>
 
                 </div>
@@ -25,12 +26,12 @@
                 <div id="reseaux">
                     <h3>Rejoignez nous sur les réseaux sociaux !</h3>
 
-                    <p>
-                        <img src="../res/icones/facebook.png" alt="Facebook" />
-                        <img src="../res/icones/instagram.png" alt="Instagram" />
-                        <img src="../res/icones/twitter.png" alt="twitter" />
-                        <img src="../res/icones/linkedin.png" alt="linkedin" />
-                    </p>
+                    <div class="imgsR">
+                        <img src="../res/icones/facebook.png" alt="Facebook" width="40" height="40"/>
+                        <img src="../res/icones/instagram.png" alt="Instagram" width="40" height="40" />
+                        <img src="../res/icones/twitter.png" alt="twitter" width="40" height="40" />
+                        <img src="../res/icones/linkedin.png" alt="linkedin" width="40" height="40" />
+                    </div>
                 </div>
 
 </footer>

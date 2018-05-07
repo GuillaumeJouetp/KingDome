@@ -147,5 +147,17 @@ function Is_Email_Exists(PDO $bdd, string $table, string $email): bool {
     }
 }
 
+/**
+ * Retourne la derniere entrée (en terme de date) ajouté à une table
+ * @param PDO $bdd
+ * @param string $table
+ * @param string $entre
+ * @return array
+ */
+function get_last(PDO $bdd, string $table, string $entre): array {
 
+    $statement = $bdd->prepare('SELECT * FROM ' . $table . ' WHERE email = :email');
+    $statement->execute(array(':email' => $email));
+    return $statement->fetch();
+}
 
