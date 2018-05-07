@@ -34,7 +34,7 @@ h2 {
 }
 
 
-#carrousel, #carrousel2, #carrousel3{
+#carrousel, #carrousel2, #carrousel3, #carrousel4, #carrousel5{
     position:static;
     width:340px;
     /** 340 px de base + 225px pour le commentaire -> 565px **/ /** 360 px pour la colonne **/
@@ -44,24 +44,27 @@ h2 {
 }
 
 
-
-
-#carrousel ul li, #carrousel2 ul li, #carrousel3 ul li{
+#carrousel ul li, #carrousel2 ul li, #carrousel3 ul li, #carrousel4 ul li, #carrousel5 ul li{
     position: absolute;
     margin-left: 3.75%;
     list-style-type: none;
 }
 
 
-.prev, .prev2, .prev3{
+.prev, .prev2, .prev3, .prev4, .prev5{
     float: left;
     margin-top: 90px;
 }
 
 
-.next, .next2, .next3 {
-    float:right;
+.next, .next2, .next3, .next4, .next5 {
+    float: right;
     margin-top: 90px;
+}
+
+.imgborder {
+    width: 200px;
+    height: auto;
 }
 
 

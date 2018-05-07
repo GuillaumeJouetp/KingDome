@@ -14,8 +14,8 @@
 
 <h1>Catalogue</h1>
 
-<div class="centrer">Vous trouverez ici les différents capteurs vendus par DOMISEP ainsi que leurs caractéristiques.</div>
-<div class="centrer">Pour plus d'informations n'hésitez pas à nous contacter directement, vous trouverez nos coordonnées <span class="bleue">EN CLIQUANT ICI.</span></div>
+<div class="centrer">Vous trouverez ici les différents capteurs vendus par DOMISEP.</div>
+<div class="centrer">Pour plus d'informations n'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.</div>
 <div class="centrer"> <span class="rouge">ATTENTION : </span>Il ne s'agit pas d'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.</div>
 
 <div class="trait_dessus"></div>
@@ -24,9 +24,9 @@
 
 <div id="carrousel">
     <ul>
-        <li><img src="../res/images/température/essai1.jpg" /></li>
-        <li><img src="../res/images/température/essai2.jpg" /></li>
-        <li><img src="../res/images/température/essai3.jpg" /></li>
+        <li><img src="../res/images/Catalogue/Température/Capteur1.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Température/Capteur2.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Température/Capteur3.png"  class="imgborder" /></li>
     </ul>
 </div>
 
@@ -38,9 +38,9 @@
 
 <div id="carrousel2">
     <ul>
-        <li><img src="../res/images/humidité/essai1.jpg" /></li>
-        <li><img src="../res/images/humidité/essai2.jpg" /></li>
-        <li><img src="../res/images/humidité/essai3.jpg" /></li>
+        <li><img src="../res/images/Catalogue/Humidité/Capteur1.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Humidité/Capteur2.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Humidité/Capteur3.png"  class="imgborder" /></li>
     </ul>
 </div>
 
@@ -52,13 +52,39 @@
 
 <div id="carrousel3">
     <ul>
-        <li><img src="../res/images/luminosité/essai1.jpg" /></li>
-        <li><img src="../res/images/luminosité/essai2.jpg" /></li>
-        <li><img src="../res/images/luminosité/essai3.jpg" /></li>
+        <li><img src="../res/images/Catalogue/Luminosité/Capteur1.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Luminosité/Capteur2.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Luminosité/Capteur3.png"  class="imgborder" /></li>
     </ul>
 </div>
 
 <script src="../src/js/Catalogue3.js"></script>
+
+<div class="trait_dessus"></div>
+
+<h2>Capteur de fumée</h2>
+
+<div id="carrousel4">
+    <ul>
+        <li><img src="../res/images/Catalogue/Fumée/Capteur1.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Fumée/Capteur2.png"  class="imgborder" /></li>
+    </ul>
+</div>
+
+<script src="../src/js/Catalogue4.js"></script>
+
+<div class="trait_dessus"></div>
+
+<h2>Caméra</h2>
+
+<div id="carrousel5">
+    <ul>
+        <li><img src="../res/images/Catalogue/Caméra/Capteur1.png"  class="imgborder" /></li>
+        <li><img src="../res/images/Catalogue/Caméra/Capteur2.png"  class="imgborder" /></li>
+    </ul>
+</div>
+
+<script src="../src/js/Catalogue5.js"></script>
 
 </div>
 
