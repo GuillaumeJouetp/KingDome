@@ -18,6 +18,8 @@ $Validation = true;
 $Password_Confirmation = "";
 $Alerte_Password = "";
 $Tel_Message = "";
+$Avatar_Message = "";
+
 
 switch ($function) {
     case 'notdone':
@@ -65,6 +67,22 @@ switch ($function) {
             $Validation = false;
         }
 
+        // Vérifie l'avatar
+        $avatar = null;
+        if(isset($_FILES['avatar'])) {
+
+            // Retourne un message si il y a une erreur, sinon rien
+            $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
+            // L'avatar est valide
+            // Si marche pas utiliser move_uploaded_file($_FILES['avatar']['tmp_name'])
+            if($Avatar_Message == ''){
+                $avatar = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
+            } else {
+                $validation = false;
+            }
+
+        }
+
         // Tous les champs sont validés ou non
         if($Validation){
             // Bonne creation compte -> creation de la session et redirection vers l'index
@@ -82,6 +100,7 @@ switch ($function) {
                 'tel' => htmlspecialchars($_POST['tel']),
                 'registration_state' => 0,
                 'registration_date' => date("Y-m-d H:i:s"),
+                'avatar' => $avatar,
                 'user_type_id' => 2);
 
             insertion($bdd, $Data_Inscription, 'users');
@@ -146,6 +165,11 @@ switch ($function) {
         // On détruit la session utilisateur
         session_destroy();
         header('Location: index.php?cible=utilisateur');
+        break;
+
+    case 'modification':
+        // L'utilisateur a modifié son profil
+
         break;
 
     default :

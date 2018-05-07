@@ -63,6 +63,29 @@ function isATel($tel){
     return preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", $tel);
 }
 
+function isAnAvatar($name, $size, $data, $error){
+
+    // Vérifie si le fichier s'upload sans erreur
+    if(!is_uploaded_file($data) || $error > 0){
+        return 'Erreur lors du transfert';
+    }
+
+    // Vérifie si le fichier est bien une image
+    $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+    $extension_upload = strtolower(substr(strrchr($name, '.'),1));
+    if (!in_array($extension_upload,$extensions_valides)){
+        return 'Le fichier n\'est pas une image valide';
+    }
+
+    // Vérifie que le fichier n'est pas trop lourd
+    if($size > 250000) {
+        return 'Fichier trop lourd';
+    }
+
+    return '';
+
+}
+
 function getCurrentUserType($bdd){ // renvoie le type de l'utilisateur actuellement connecté
     if (isUserConnected()) {
         $array_type = getUserType($bdd, $_SESSION['user_id']);
