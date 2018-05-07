@@ -26,7 +26,7 @@ switch ($function) {
         if (isUserConnected()){
             // On affiche la vue du compte utilisateur
             $vue = "monCompte";
-            $title = "Mon compte";
+            $title = $_SESSION['user_firstname'] . ' ' . $_SESSION['user_name'] . " | KingDome";
         }
         else {
             // formulaire pas encore rempli -> on affiche le formulaire
