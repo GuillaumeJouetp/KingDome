@@ -22,6 +22,7 @@
 	$rooms = recupereTous($bdd, 'rooms');
 	$cpt=0;
 	$cpt2=0;
+	$cpt3=0;
 	$id=  $_SESSION['user_id'];
 	
 	
@@ -46,30 +47,42 @@
 			<div id="masque">
 			
 				<div class="fenetre-modale">
+				
 					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    <div class="capt"><br>Ajouter un capteur<br><br></div>
-							<form action="traitementFormulaire.php" method="post" >
-								
-								<label> Nom :  <br><br> <input type="text" name="myText"/> </label>  <br><br>
+					    
+					    	      <form method="POST" action="index.php?cible=utilisateur&function=dashboard">
+					    	      
+					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
+					    	      	
+					    	      	<label> Pièce :  <br><br> </label>
+									   	<select class="custom-dropdown__select custom-dropdown__select--white">
+									   	
+									   	<?php 
+									   	
+									   	
+									   	foreach($rooms as $donnees3){ //boucle pour avoir le nombre de piece
+									   		if($donnees['house_id'] == $donnees3['home_id']){
+									   			$cpt3++;
+									   			echo "<option>Pièce $cmpt3</option>";
+									   		}
+									   	}
+									   	$cpt2=0;
+			
+									   	?>
+										</select><br><br>
 									
-								
-							   		
-							   	<label> Pièce :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							     	<option>Pièce 1</option>
-							       	<option>Pièce 2</option>
-							   		<option>Pièce 3</option>
-								</select><br><br>
-							   		
-						   		<label> Type de capteur :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							   		<option>Capteur de température</option>
-						       		<option>Capteur d'humidité</option>
-						       		<option>Capteur de ...</option>
-						   		</select><br><br><br>
+									<label> Type de capteur :  <br><br> </label>
+									   	<select class="custom-dropdown__select custom-dropdown__select--white">
+									   		<option>Capteur de température</option>
+								       		<option>Capteur d'humidité</option>
+								       		<option>Capteur de luminosité</option>
+								   		</select><br><br><br>
 
-							   	
-								<input type="submit" value="Ajouter" /><br><br>
+        
+									<input type="submit" name="creation_submit" value="Ajouter" /><br><br>
+					   
+					        		
 								
 							</form>
 								

@@ -2,10 +2,10 @@
 #conteneur
 {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;    
 	margin: 15px 0px 0px 0px;  
+	flex-wrap: wrap;
 }
 
 
@@ -61,13 +61,23 @@
 	margin: 10px 0px 0px 0px;
 }
 
+#conteneur2
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;   
+	flex-wrap: wrap;
+	
+}
+
 .pieces {
-        width: 80%;
+        width: 90%;
         height: 400px;
         background-color: rgba(129,129,129,0.5);
-        overflow: scroll; /* showing scrollbars */
+        overflow-x: hidden;  /*scroll*/
         margin:40px 0px 40px 0px;
-        padding:10px 0px 0px 0px;  
+        padding:10px 0px 0px 0px;
+        
   }
   
   
@@ -75,12 +85,17 @@
 	font-size:1.25em;
 	color: rgb(131,36,41);
 	border: 1px solid rgb(131,36,41);
-	padding:10px 40px 10px 40px;
-	margin:0px 0px 10px 0px;
+	padding:10px 60px 10px 60px;
+	margin:10px 10px 10px 10px;
 	text-align:center;
-	
+	min-height:240px;
+	max-height:240px;
+	min-width:130px;
+	max-width:130px;
 	
 }
+
+
 .capteur{
 	height:75px;
 	width:auto;

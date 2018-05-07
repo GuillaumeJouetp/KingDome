@@ -77,8 +77,9 @@
 	    <div class="pieces">
 	        <div class="piece"> Pièce 1 </div>
 	        	
-	        	<div id="conteneur">
-	        	
+	        
+	        		
+	        		<div id="conteneur2">
 		   			<div class="element , ecriture3">
 		   			
 		   				<div class="capteur_ecriture">Humidité</div>
@@ -120,17 +121,23 @@
 		   				
 		   			</div>
 	 			
-	    		</div>
+	   </div>
 	        	
 	        	<div class="piece"> Pièce 2 </div>
 	        	
-	        	<div id="conteneur">
+	        	<div id="conteneur2">
 	        	
 		   			<div class="element , ecriture3">Texte</div>
 	 				<div class="element , ecriture3">Texte</div>
 	 				<div class="element , ecriture3">Texte</div>
+	 				<div class="element , ecriture3">Texte</div>
+	 				<div class="element , ecriture3">Texte</div>
+	 				
+	 				<div class="element , ecriture3">Texte</div>
 	 			
-	    		</div>        	
+	    		</div>   
+	    		
+       	
 	    </div>
 	</div>
 </body>
