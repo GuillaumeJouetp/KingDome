@@ -7,31 +7,32 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 	$function = $_GET['function'];
 }
 
-// si l'utilisateur est connecté alors on lui affiche la dashboard
-if(isUserConnected($bdd)) {
-	$vue = "dashboard2";
-}
 
 // si l'utilisateur est un admin alors on lui affiche la dashboard
-
-elseif(isAnAdmin($bdd)) {
+if(isAnAdmin($bdd)) {
 	$vue = "dashboard_backoffice";
 }
-
 else{
-	switch ($function) {
-		case 'notdone':
-			//si l'utilisateur n'est pas connecté alors on lui demande de se connecter
-			$vue = "dashboardSansCompte";
-			break;
-	
-			
-		default :
-			// si aucune fonction ne correspond au paramètre function passé en GET
-			$vue = "error404";
-			$title = "error404";
-	}
+    // si l'utilisateur est connecté alors on lui affiche la dashboard
+    if(isUserConnected()) {
+        $vue = "dashboard2";
+    }
+    else{
+        switch ($function) {
+            case 'notdone':
+                //si l'utilisateur n'est pas connecté alors on lui demande de se connecter
+                $vue = "dashboardSansCompte";
+                break;
+
+
+            default :
+                // si aucune fonction ne correspond au paramètre function passé en GET
+                $vue = "error404";
+                $title = "error404";
+        }
+    }
 }
+
 
 
 include "php/views/header.php";
