@@ -37,40 +37,51 @@
 					.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
 					."Maison $cpt"
 					."</div>"
-				);	?>
-				
-		<div id="conteneur">
+				);
+			
+													
+		foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
+			if($donnees['house_id'] == $donnees2['home_id']){
+				$cpt3++;	
+			}
+		}
+	?>
+			
+		<div id="conteneur">	
 			<a href="#masque">
 				<div class="element , ecriture2">Ajouter un capteur</div>
 			</a>
 		   		
-			<div id="masque">
+			<div id="masque<?php echo($cpt); ?>">
 			
 				<div class="fenetre-modale">
 				
-					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    <div class="capt"><br>Ajouter un capteur<br><br></div>
+					    
+					   
 					    
 					    	      <form method="POST" action="index.php?cible=utilisateur&function=dashboard">
 					    	      
 					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
 					    	      	
 					    	      	<label> Pièce :  <br><br> </label>
+					    	      	
 									   	<select class="custom-dropdown__select custom-dropdown__select--white">
 									   	
-									   	<?php 
-									   	
-									   	
-									   	foreach($rooms as $donnees3){ //boucle pour avoir le nombre de piece
-									   		if($donnees['house_id'] == $donnees3['home_id']){
-									   			$cpt3++;
-									   			echo "<option>Pièce $cmpt3</option>";
+									   		<?php
+									   		
+									   		for ($i = 1; $i < $cpt3+1; $i++) {
+									   			echo(
+									   					"<option>"
+									   					."Pièce $i"
+									   					."</option>"
+									   					);
 									   		}
-									   	}
-									   	$cpt2=0;
-			
-									   	?>
-										</select><br><br>
+									   		
+									   		
+									   		?>					
+																	       		
+									 	</select><br><br>
 									
 									<label> Type de capteur :  <br><br> </label>
 									   	<select class="custom-dropdown__select custom-dropdown__select--white">
@@ -80,7 +91,7 @@
 								   		</select><br><br><br>
 
         
-									<input type="submit" name="creation_submit" value="Ajouter" /><br><br>
+									<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
 					   
 					        		
 								
@@ -102,15 +113,19 @@
 			      
 	    </div>
 		<?php
-			
+			$cpt3=0;
+			$cpt2=0;
 			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
 				if($donnees['house_id'] == $donnees2['home_id']){
 					$cpt2++;
 					echo(
 							"<div class='pieces'>"
 							."<div class='piece'> Pièce $cpt2 </div>"
-							."</div>"
 						);
+					include "php/views/dashboard.php";
+					echo(
+							"</div>"
+							);
 				}
 			}
 			if($cpt2==0){
@@ -133,7 +148,6 @@
 				."</div>"
 				);	
 	}
-	
 	?>
     
 </div>

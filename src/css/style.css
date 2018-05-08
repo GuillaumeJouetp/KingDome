@@ -203,13 +203,14 @@ th {
 	display:block;
 }
 
+
 .fenetre-modale{
 
 	padding:2px;
 	border:2px solid rgb(0,129,220);
 	position:center;
 	margin:10% auto;
-	width:20%;
+	width:300px;
 	box-shadow:0px 0px 20px #000;
     background-color: rgb(129,129,129); 
     border-radius: 30px;
@@ -223,12 +224,6 @@ img.btn-fermer{
 	width:auto;
 }
 
-.capt{
-	color:rgb(131,36,41);
-	font-size:20px;
-	font-weight: bold;
-	text-decoration:underline;
-	
-}
+
 
 /*fin fenetre modale*/
