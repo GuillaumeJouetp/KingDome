@@ -7,7 +7,7 @@
 ?>
 
 <head>
-    <link rel="stylesheet" href="css/style_inscription.css">
+    <link rel="stylesheet" href="../../css/style_inscription.css">
 </head>
 
 <div id="corps">
