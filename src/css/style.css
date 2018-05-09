@@ -188,7 +188,7 @@ th {
 }
 
 /*fenetre modale*/
-#masque{
+[id*='masque']{
 	display:none;
 	position:fixed;
 	top:0;
@@ -199,7 +199,7 @@ th {
 	z-index:1000;
 }
 
-#masque:target{
+[id*='masque']:target{
 	display:block;
 }
 

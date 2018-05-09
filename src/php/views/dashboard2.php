@@ -47,21 +47,22 @@
 		}
 	?>
 			
-		<div id="conteneur">	
-			<a href="#masque">
-				<div class="element , ecriture2">Ajouter un capteur</div>
+		<div id="conteneur">
+			
+			<?php
+        echo "<a href='#masque".$cpt."'>"; ?>
+				<div class="element , ecriture2"> Ajouter un capteur </div>
 			</a>
 		   		
-			<div id="masque">
+			<?php
+        echo "<div id='masque".$cpt."'>"; ?>
 			
 				<div class="fenetre-modale">
-				
+					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    <div class="capt"><br>Ajouter un capteur<br><br></div>
 					    
-					   	<a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    
-					    
-					    	      <form method="POST" action="#">
+					    	      <form method="POST">
 					    	      
 					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
 					    	      	
