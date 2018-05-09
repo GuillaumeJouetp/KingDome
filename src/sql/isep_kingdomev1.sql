@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 09 mai 2018 à 07:12
+-- Généré le :  jeu. 26 avr. 2018 à 17:33
 -- Version du serveur :  5.7.19
--- Version de PHP :  7.1.9
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -110,16 +110,7 @@ CREATE TABLE IF NOT EXISTS `homes` (
   `flat_number` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `homes`
---
-
-INSERT INTO `homes` (`country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
-('Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
-('Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
-('Fr', 'gghgj', 94310, 'hjhg', 2, 4);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -157,17 +148,7 @@ CREATE TABLE IF NOT EXISTS `own_home` (
   `user_id` int(11) NOT NULL,
   `house_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `own_home`
---
-
-INSERT INTO `own_home` (`id`, `user_id`, `house_id`) VALUES
-(1, 14, 1),
-(6, 1, 1),
-(7, 14, 3),
-(9, 14, 4);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -210,19 +191,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `name` varchar(100) NOT NULL,
   `home_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `rooms`
---
-
-INSERT INTO `rooms` (`id`, `name`, `home_id`) VALUES
-(1, 'A', 1),
-(14, 'AB', 4),
-(6, 'C', 4),
-(13, 'A', 4),
-(15, 'wc', 3),
-(16, 'sqh', 1);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -264,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type_id` varchar(100) NOT NULL,
   `child_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
@@ -273,8 +242,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_date`, `adress`, `city`, `zip_code`, `email`, `password`, `tel`, `registration_state`, `registration_date`, `avatar`, `user_type_id`, `child_id`) VALUES
 (9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', 75009, 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', 656679976, 0, '2018-04-20 17:37:29', NULL, '2', NULL),
 (11, 'Guillaume', 'test1', 'Mr', '2018-04-04', 'Adresse test', 'Ville test', 11111, 'primaryuser1@test.fr', '$2y$10$x7uNtousmXvMzvEcy7w4.O1eANld3aYwWP0tt.WyfiAzM7cRVTAJa', 606060606, 0, '2018-04-26 11:27:52', NULL, '2', NULL),
-(13, 'Guillaume', 'JOUET-PASTRE', 'Mr', '1997-04-01', 'Adresse de Guillaume', 'LCSC', 78170, 'guillaume.jouet-pastre@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
-(14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', 94310, 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '2', NULL);
+(13, 'Guillaume', 'JOUET-PASTRE', 'Mr', '1997-04-01', 'Adresse de Guillaume', 'LCSC', 78170, 'guillaume.jouet-pastre@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL);
 
 -- --------------------------------------------------------
 

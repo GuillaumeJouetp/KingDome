@@ -22,6 +22,7 @@
 	$rooms = recupereTous($bdd, 'rooms');
 	$cpt=0;
 	$cpt2=0;
+	$cpt3=0;
 	$id=  $_SESSION['user_id'];
 	
 	
@@ -36,40 +37,65 @@
 					.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
 					."Maison $cpt"
 					."</div>"
-				);	?>
-				
+				);
+			
+													
+		foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
+			if($donnees['house_id'] == $donnees2['home_id']){
+				$cpt3++;	
+			}
+		}
+	?>
+			
 		<div id="conteneur">
-			<a href="#masque">
-				<div class="element , ecriture2">Ajouter un capteur</div>
+			
+			<?php
+        echo "<a href='#masque".$cpt."'>"; ?>
+				<div class="element , ecriture2"> Ajouter un capteur </div>
 			</a>
 		   		
-			<div id="masque">
+			<?php
+        echo "<div id='masque".$cpt."'>"; ?>
 			
 				<div class="fenetre-modale">
 					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    <div class="capt"><br>Ajouter un capteur<br><br></div>
-							<form action="traitementFormulaire.php" method="post" >
-								
-								<label> Nom :  <br><br> <input type="text" name="myText"/> </label>  <br><br>
+					    
+					    
+					    	      <form method="POST">
+					    	      
+					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
+					    	      	
+					    	      	<label> Pièce :  <br><br> </label>
+					    	      	
+									   	<select class="custom-dropdown__select custom-dropdown__select--white">
+									   	
+									   		<?php
+									   		
+									   		for ($i = 1; $i < $cpt3+1; $i++) {
+									   			echo(
+									   					"<option>"
+									   					."Pièce $i"
+									   					."</option>"
+									   					);
+									   		}
+									   		
+									   		
+									   		?>					
+																	       		
+									 	</select><br><br>
 									
-								
-							   		
-							   	<label> Pièce :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							     	<option>Pièce 1</option>
-							       	<option>Pièce 2</option>
-							   		<option>Pièce 3</option>
-								</select><br><br>
-							   		
-						   		<label> Type de capteur :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							   		<option>Capteur de température</option>
-						       		<option>Capteur d'humidité</option>
-						       		<option>Capteur de ...</option>
-						   		</select><br><br><br>
+									<label> Type de capteur :  <br><br> </label>
+									   	<select class="custom-dropdown__select custom-dropdown__select--white">
+									   		<option>Capteur de température</option>
+								       		<option>Capteur d'humidité</option>
+								       		<option>Capteur de luminosité</option>
+								   		</select><br><br><br>
 
-							   	
-								<input type="submit" value="Ajouter" /><br><br>
+        
+									<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
+					   
+					        		
 								
 							</form>
 								
@@ -89,15 +115,19 @@
 			      
 	    </div>
 		<?php
-			
+			$cpt3=0;
+			$cpt2=0;
 			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
 				if($donnees['house_id'] == $donnees2['home_id']){
 					$cpt2++;
 					echo(
 							"<div class='pieces'>"
 							."<div class='piece'> Pièce $cpt2 </div>"
-							."</div>"
 						);
+					include "php/views/dashboard.php";
+					echo(
+							"</div>"
+							);
 				}
 			}
 			if($cpt2==0){
@@ -120,7 +150,6 @@
 				."</div>"
 				);	
 	}
-	
 	?>
     
 </div>
