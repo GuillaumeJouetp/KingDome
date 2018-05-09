@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    var $carrousel = $('#carrousel'),
-        $img = $('#carrousel img'),
+    var $carrousel4 = $('#carrousel4'),
+        $img = $('#carrousel4 img'),
         indexImg = $img.length - 1,
         i = 0,
         $currentImg = $img.eq(i);
@@ -9,9 +9,9 @@ $(document).ready(function() {
     $img.css('display', 'none');
     $currentImg.css('display', 'block');
 
-    $carrousel.append('<div class="controls"><span class="prev"><img src="../res/icones/arrow-point-to-left.png"></span><span class="next"><img src="../res/icones/arrow-point-to-right.png"></span></div>');
+    $carrousel4.append('<div class="controls"> <span class="prev4"><img src="../res/icones/arrow-point-to-left.png"></span> <span class="next4"><img src="../res/icones/arrow-point-to-right.png"></span> </div>');
 
-    $('.next').click(function () {
+    $('.next4').click(function () {
 
         i++;
 
@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     });
 
-    $('.prev').click(function () {
+    $('.prev4').click(function () {
 
         i--;
 
@@ -46,6 +46,5 @@ $(document).ready(function() {
         }
 
     });
-
 
 });

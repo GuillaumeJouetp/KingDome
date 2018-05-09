@@ -154,7 +154,7 @@ function Is_Email_Exists(PDO $bdd, string $table, string $email): bool {
  * @param string $entre
  * @return array
  */
-function get_last(PDO $bdd, string $table, string $entre): array {
+function get_last(PDO $bdd, string $table, string $email): array {
 
     $statement = $bdd->prepare('SELECT * FROM ' . $table . ' WHERE email = :email');
     $statement->execute(array(':email' => $email));
