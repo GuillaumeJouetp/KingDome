@@ -1,0 +1,125 @@
+
+#ins_form{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    color: rgb(50,50,50);
+    font-size: 1.02em;
+    line-height: normal;
+}
+
+#Partie_Gauche{
+    margin: auto;
+    width: 50%;
+    padding-right: 4.5%;
+}
+
+#Partie_Droite{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+    padding-left: 5%;
+    width: 50%;
+    border-left: 4px solid #832429;
+
+}
+
+h3{
+    font-weight: bold;
+    color: #832429;
+}
+
+.submit{
+    margin: auto;
+    padding-left: 20%;
+}
+
+.submit_button{
+    background-color: white;
+}
+
+.connexion_button{
+    margin: auto;
+    padding-left: 35%;
+}
+
+button:hover{
+    background-color: rgba(129, 129, 129,0.3);
+}
+
+#civil_mr{
+    margin-left: 12%;
+}
+
+#civil_mme{
+    margin-left: 7%;
+}
+
+#ville{
+    margin-left: 7%;
+}
+
+#reset_button{
+    margin-left: 10%;
+}
+
+.Alerte_Message{
+    display: block;
+    text-align: center;
+    font-size: large;
+    color: #832429;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    padding:20px;
+    border:2px solid #0081dc;
+    position:center;
+    margin:15% auto;
+    width:40%;
+    box-shadow:0px 0px 20px #000;
+    background-color: rgb(129,129,129);
+    border-radius: 30px;
+    text-align:center;
+
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #832429;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style buttons */
+.avatar_button {
+    background-color: white;
+    cursor: pointer;
+
+}
+
+/* Darker background on mouse-over */
+.avatar_button:hover {
+    background-color: rgba(129, 129, 129,0.3)
+}

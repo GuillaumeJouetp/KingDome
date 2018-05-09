@@ -1,0 +1,14 @@
+section{
+	display : inline-block;
+}
+
+div{
+	display : inline-block;
+}
+
+img{
+	width : 500px;
+	height : auto;
+}
+
+
