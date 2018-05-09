@@ -1,14 +1,11 @@
 section{
-	display : inline-block;
+	display : block;
+	text-align : center;
 }
 
-div{
-	display : inline-block;
-}
 
-img{
-	width : 500px;
+#img_accueil{
+	width : 700px;
 	height : auto;
+	margin : 0 auto;
 }
-
-
