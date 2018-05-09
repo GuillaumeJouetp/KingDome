@@ -52,15 +52,16 @@
 				<div class="element , ecriture2">Ajouter un capteur</div>
 			</a>
 		   		
-			<div id="masque<?php echo($cpt); ?>">
+			<div id="masque">
 			
 				<div class="fenetre-modale">
 				
 					    <div class="capt"><br>Ajouter un capteur<br><br></div>
 					    
-					   
+					   	<a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 					    
-					    	      <form method="POST" action="index.php?cible=utilisateur&function=dashboard">
+					    
+					    	      <form method="POST" action="#">
 					    	      
 					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
 					    	      	
