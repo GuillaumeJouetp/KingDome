@@ -32,7 +32,7 @@
         </button>
 
         <button>
-            <a href="index.php?cible=catalogue">
+            <a href="index.php?cible=catalogue&fonction=add">
                 <img src="../res/icones/catalogue.png" alt="icone catalogue" class="icone">Catalogue
             </a>
         </button>

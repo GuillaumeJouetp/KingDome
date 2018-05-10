@@ -126,3 +126,28 @@ function isUserConnected(){
     if (isset($_SESSION['connected']) && !empty($_SESSION['connected']) && $_SESSION['connected'])
         return true;
 }
+/**
+ * Sécurise un string à la faille POST
+ * @param array tab
+ * @return string
+ */
+function secu($myInput){
+    $myInput = htmlspecialchars($myInput);
+    return $myInput;
+}
+
+/**
+ * Sécurise un tableau à la faille XSS
+ * @param array tab
+ * @return array
+ */
+
+function secuTab($tab){
+    $myDic = array();
+    foreach ($tab as $cle => $elt) {
+        $cle = htmlspecialchars($cle);
+        $elt = htmlspecialchars($elt);
+        $myDic[$cle] = $elt;
+    }
+    return $myDic;
+}
