@@ -1,6 +1,6 @@
 <?php
 
-$_POST_SEC = secuTab($_POST); // On évite la faille xss
+
 
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
