@@ -28,8 +28,9 @@
 
 /* ecriture1/2 nous permet de definir la taille, la couleur et le type de cursor pour les ecritures dans la page */
 .ecriture1{
+	margin-left:5px ;
 	font-size:2.5em;
-	color: rgb(129,129,129);
+	color: black;
 	cursor:pointer;
 }
 
@@ -45,12 +46,17 @@
 	
 }
 
+.ecriture2:hover{
+	background-color: rgba(129,129,129,0.7);
+}
+
 
 
 /* taille de l'image des flêches bas et gauche*/
 .fleche{
 	height:30px;
 	width:auto;
+	margin-right: 10px;
 }
 
 /*faire les 2 modes differents : afficher le texte en dessous de maison ou le cacher*/
@@ -64,34 +70,43 @@
 #conteneur2
 {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;   
 	flex-wrap: wrap;
 	
 }
 
 .pieces {
-        width: 90%;
-        height: 400px;
-        background-color: rgba(129,129,129,0.5);
-        overflow-x: hidden;  /*scroll*/
-        margin:40px 0px 40px 0px;
-        padding:10px 0px 0px 0px;
-        
+	width: 90%;
+	max-height: 500px;
+	background-color: rgba(129,129,129,0.5);
+	overflow-x: hidden;  /*scroll*/
+	margin: auto;
+	margin-top: 30px;
+	border-radius: 20px;
+	padding: 30px;
+	margin-bottom: 20px;
   }
+
+.piece{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
   
   
 .ecriture3{
 	font-size:1.25em;
 	color: rgb(131,36,41);
-	border: 1px solid rgb(131,36,41);
+	border: 1.5px solid rgb(131,36,41);
 	padding:10px 60px 0px 60px;
-	margin:10px 10px 0px 10px;
+	margin:10px 10px 10px 10px;
 	text-align:center;
 	min-height:300px;
 	max-height:300px;
 	min-width:130px;
 	max-width:130px;
+	border-radius: 20px;
 	
 }
 
@@ -108,8 +123,8 @@
 .capt{
 	color:rgb(131,36,41);
 	font-size:20px;
-	font-weight: bold;
-	text-decoration:underline;
+	margin: auto;
+	margin-bottom : 20px;
 	
 }
 

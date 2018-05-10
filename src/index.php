@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="../res/images/Logo.png" />
+    <?php include ('../res/libs/jScrollPane/includes.php') ?>
 </head>
+
 <body>
 
 <?php
@@ -37,7 +40,7 @@ if(isset($_GET['cible']) && !empty($_GET['cible'])) {
 }
 
 //title par défaut pour toutes les pages
-$title='Non défini';
+$title='KingDome';
 
 // On appelle le contrôleur
 include('php/controllers/' . $url . '.php');

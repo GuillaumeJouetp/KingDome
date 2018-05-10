@@ -202,7 +202,7 @@
 							if($cpt5==0){
 								echo(
 										"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
-										."Pas de capteur"
+										."Vous n'avez pas encore de capteurs dans cette pièce :-)"
 										."</div>"
 										);
 								
