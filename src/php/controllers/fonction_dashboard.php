@@ -1,37 +1,23 @@
 <?php
 include "php/models/requetes.php";
 
-function nbr_maison(){
-	$own_home = recupereTous($bdd, 'own_home');
-	$cpt=0;
-	$id=  $_SESSION['user_id'];
+function get_id_device_types(PDO $bdd,string $type_capteur){
 	
-	foreach($own_home as $donnees){ //boucle pour avoir le nombre de maison
+	$device_type_id=0;
+	$device_types = recupereTous($bdd, 'device_types');
+	
+	foreach($device_types as $donnees){
 		
-		if($id == $donnees['user_id']){
-			$cpt++;
+		if($type_capteur=="Capteur " .$donnees['name']){
+			
+			$device_type_id = $donnees['id'];
 		}
 	}
-	return $cpt;
-}
-
-function nbr_piece(){
 	
-
-	$rooms = recupereTous($bdd, 'rooms');
-	$cpt2=0;
-	$id=  $_SESSION['user_id'];
+	return $device_type_id;
 	
-		
-	if($id == $donnees['user_id']){
-			
-		foreach($rooms as $donnees2){  //boucle pour avoir le nombre de piece
-			if($donnees['house_id'] == $donnees2['home_id']){
-			$cpt2++;	
-			}
-		}	
-	}
-	return cpt2;
+	
+	
 }
 
 ?>

@@ -88,16 +88,15 @@ function modification(PDO $bdd, array $values, int $id, string $table): bool{
 
 /**
  * REMOVE
- * Supprime une entrée d'une table ciblant son id
+ * Supprime une entrée dans devices ciblant son id
  * @param PDO $bdd
  * @param int $id
  * @param string $table
  * @return boolean
  */
-function supprimer(PDO $bdd, int $id, string $table): bool{
+function supprimer(PDO $bdd, int $id): bool{
 
-    $req = $bdd->prepare("DELETE FROM".$table."WHERE id=?");
-    $req->bindParam(1, $id);
+	$req = $bdd->prepare('DELETE FROM devices WHERE id='.$id);
     return $req->execute();
 }
 
@@ -129,6 +128,7 @@ function Get_Id(PDO $bdd, string $table, string $email): array {
     $statement->execute(array(':email' => $email));
     return $statement->fetch();
 }
+
 
 /**
  * Retroune vrai ou faux si l'email est déjà dans la base de données

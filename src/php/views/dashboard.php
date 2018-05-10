@@ -10,42 +10,6 @@
     <link rel="stylesheet" href="..\src\css\dashboard.css">
 </head>
 
-			<div id="conteneur2">
-
-					<div class="element , ecriture3">
-		   			
-		   				<div class="capteur_ecriture">Humidité</div>
-		   			
-		   				<img class="capteur" src="..\res\icones\humidité.png">
-		   				
-		   				<div class="capteur_ecriture">30%</div>
-		   				
-		   			</div>
-		   			
-		   			
-	 				<div class="element , ecriture3">
-		   			
-		   				<div class="capteur_ecriture">Luminosité</div>
-		   			
-		   				<img class="capteur" src="..\res\icones\luminosité.png">
-		   				
-		   				<div class="capteur_ecriture">30%</div>
-		   				
-		   			</div>
-		   			
-		   			<div class="element , ecriture3">
-		   			
-		   				<div class="capteur_ecriture">Température</div>
-		   			
-		   				<img class="capteur" src="..\res\icones\température.png">
-		   				
-		   				<div class="capteur_ecriture">15°C</div>
-		   				
-		   			</div>
-		   			
-		   		</div>
-
-<!--  
 
 
 <body>
@@ -179,4 +143,3 @@
 	</div>
 </body>
 </html>
--->

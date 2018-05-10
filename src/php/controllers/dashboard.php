@@ -8,14 +8,6 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 }
 
 
-// si l'utilisateur est connecté alors on lui affiche la dashboard
-if(isUserConnected($bdd)) {
-	$vue = "dashboard2";
-	
-	
-}
-
-
 // si l'utilisateur est un admin alors on lui affiche la dashboard
 if(isAnAdmin($bdd)) {
 	$vue = "dashboard_backoffice";
@@ -23,7 +15,42 @@ if(isAnAdmin($bdd)) {
 else{
     // si l'utilisateur est connecté alors on lui affiche la dashboard
     if(isUserConnected()) {
-        $vue = "dashboard2";
+    	
+    	
+    	switch($function){
+    		
+    		case 'notdone':
+    			
+    			$vue = "dashboard2";
+    			
+    			break;
+    			
+    		case 'ajouter':
+    			 			
+    			$Data_devices = array(
+    			'sens_or_eff' => 0,
+    			'name' => htmlspecialchars($_POST['nom']),
+    			'state' => 1,
+    			'device_type_id' => get_id_device_types($bdd,$_POST['type_capteur']),
+    			//'cemac_id' => htmlspecialchars($_POST['piece']),
+    			'cemac_id' => get_id_cemac($bdd,$_POST['maison'],$_POST['piece']),
+    			);
+    			
+    			insertion($bdd, $Data_devices, 'devices');
+    			
+    			$vue = "dashboard2";
+    			
+    		case 'supprimer':
+    			
+    			supprimer($bdd,$_POST['id1']);
+    			$vue = "dashboard2";
+    			
+    			
+    			
+    		
+    	}
+             
+        
     }
     else{
         switch ($function) {

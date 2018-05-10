@@ -126,3 +126,35 @@ function isUserConnected(){
     if (isset($_SESSION['connected']) && !empty($_SESSION['connected']) && $_SESSION['connected'])
         return true;
 }
+
+function get_id_device_types($bdd,string $type_capteur){
+	
+	$device_type_id=0;
+	$device_types = recupereTous($bdd, 'device_types');
+	
+	foreach($device_types as $donnees){
+		
+		if($type_capteur=="Capteur " .$donnees['name']){
+			
+			$device_type_id = $donnees['id'];
+		}
+	}
+	
+	return $device_type_id;	
+}
+
+function get_id_cemac($bdd,string $num_maison, string $num_piece){
+	
+	$cemac_id=0;
+	$rooms = recupereTous($bdd, 'rooms');
+	
+	foreach($rooms as $donnees){
+		
+		if($num_maison=="Maison " .$donnees['home_id'] && $num_piece == "Pièce " .$donnees['id']){
+			
+			$cemac_id = $donnees['id'];
+		}
+	}
+	
+	return $cemac_id;
+}

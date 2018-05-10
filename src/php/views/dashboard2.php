@@ -12,208 +12,215 @@
 </head>
 
 <div id=corps>
-  
 
-	
 	<?php
-
 	
-	$own_home = recupereTous($bdd, 'own_home');
-	$rooms = recupereTous($bdd, 'rooms');
-	$cpt=0;
-	$cpt2=0;
-	$cpt3=0;
-	$id=  $_SESSION['user_id'];
-	
-	
-	
-
-	foreach($own_home as $donnees){ //boucle pour avoir le nombre de maison
+		$own_home = recupereTous($bdd, 'own_home');              /*variables pour recuperer les données de la bdd de own_home, rooms, devices_types, devices, cemacs*/
+		$rooms = recupereTous($bdd, 'rooms');
+		$device_types = recupereTous($bdd, 'device_types');
+		$devices = recupereTous($bdd, 'devices');
+		$cemacs = recupereTous($bdd, 'cemacs');
+		$cpt=0;													/*compteur utilisés pour les boucles for*/
+		$cpt2=0;
+		$id=$_SESSION['user_id'];
 		
-		if($id == $donnees['user_id']){
-			$cpt++;	
-			echo(
-					"<div class='ecriture1'>"
-					.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
-					."Maison $cpt"
-					."</div>"
-				);
+		
+		foreach($own_home as $donnees){ /*boucle pour avoir le nombre de maison*/
 			
-													
-		foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
-			if($donnees['house_id'] == $donnees2['home_id']){
-				$cpt3++;	
-			}
-		}
-	?>
-			
-		<div id="conteneur">
-			
-			<?php
-        echo "<a href='#masque".$cpt."'>"; ?>
-				<div class="element , ecriture2"> Ajouter un capteur </div>
-			</a>
-		   		
-			<?php
-        echo "<div id='masque".$cpt."'>"; ?>
-			
-				<div class="fenetre-modale">
-					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
-					    <div class="capt"><br>Ajouter un capteur<br><br></div>
-					    
-					    
-					    	      <form method="POST">
-					    	      
-					    	      	<label> Nom :  <br><br> <input type="text" name="myText" required/> </label>  <br><br>
-					    	      	
-					    	      	<label> Pièce :  <br><br> </label>
-					    	      	
-									   	<select class="custom-dropdown__select custom-dropdown__select--white">
-									   	
-									   		<?php
-									   		
-									   		for ($i = 1; $i < $cpt3+1; $i++) {
-									   			echo(
-									   					"<option>"
-									   					."Pièce $i"
-									   					."</option>"
-									   					);
-									   		}
-									   		
-									   		
-									   		?>					
-																	       		
-									 	</select><br><br>
-									
-									<label> Type de capteur :  <br><br> </label>
-									   	<select class="custom-dropdown__select custom-dropdown__select--white">
-									   		<option>Capteur de température</option>
-								       		<option>Capteur d'humidité</option>
-								       		<option>Capteur de luminosité</option>
-								   		</select><br><br><br>
-
-        
-									<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
-					   
-					        		
-								
-							</form>
-								
-				</div> <!-- .fenetre-modale -->
-			</div> <!-- #masque -->
-		   		
-		   	
-	 		<div class="element">
-		   		<span class="custom-dropdown custom-dropdown--white">
-		    	    <select class="custom-dropdown__select custom-dropdown__select--white">
-				       	<option>Trier par : Pièce</option>
-				       	<option>Type</option>
-				       	<option>Favori</option>
-				   	</select>
-				</span>
-			</div>  
-			      
-	    </div>
-		<?php
-			$cpt3=0;
-			$cpt2=0;
-			foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
-				if($donnees['house_id'] == $donnees2['home_id']){
-					$cpt2++;
-					echo(
-							"<div class='pieces'>"
-							."<div class='piece'> Pièce $cpt2 </div>"
-						);
-					include "php/views/dashboard.php";
-					echo(
-							"</div>"
-							);
-				}
-			}
-			if($cpt2==0){
+			if($id == $donnees['user_id']){
+				$cpt++;
 				echo(
 						"<div class='ecriture1'>"
-						."Pas de pièce"
+						.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
+						."Maison $cpt"
 						."</div>"
 						);
-			}
-			$cpt2=0;
-		}
-	}
-	
-	
-	
-	if($cpt==0){
-		echo(
-				"<div class='ecriture1'>"
-				."Pas de maison"
-				."</div>"
-				);	
-	}
+				
+				foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
+					if($donnees['house_id'] == $donnees2['home_id']){
+						$cpt2++;
+					}
+				}
+				
 	?>
-    
-</div>
+			
+		<div id="conteneur">
+			
+		<?php
 		
-		
-		<!-- 	
-	
-		<div class="ecriture1">
-			<img class="fleche" src="..\res\icones\fleche_bas.png">
-	    		Maison 1
+			echo(
+					"<a href='#masque$cpt'>"
+					."<div class='element , ecriture2'> Ajouter un capteur </div>"
+					."</a>"
+					
+					
+					."<div id='masque$cpt'>" 
+					
+					);
+        	
+				
+       ?>
+			
+			<div class="fenetre-modale">
+			    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
+			    <div class="capt"><br>Ajouter un capteur<br><br></div>
+					    
+					    
+					<form method="post" action="index.php?cible=dashboard&function=ajouter" enctype="multipart/form-data">
+					    	      
+					   	<label> Nom :  <br><br> <input type="text" name="nom" required/> </label>  <br><br>
+					   	
+					   	<label> Maison :  <br><br> </label>
+					    	      	
+					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="maison">
+									   	
+					   		<?php
+								   		
+					   		
+					   			echo(
+									"<option>"
+									."Maison $cpt"
+									."</option>"
+									);
+					   		
+									   		
+					  		?>					
+																	       		
+					 	</select><br><br>
+					    	      	
+					   	<label> Pièce :  <br><br> </label>
+					    	      	
+					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">
+									   	
+					   		<?php
+								   		
+					   		for($i = 1; $i < $cpt2+1; $i++){
+					   			echo(
+									"<option>"
+									."Pièce $i"
+									."</option>"
+									);
+					   		}
+									   		
+					  		?>					
+																	       		
+					 	</select><br><br>
+							
+						<label> Type de capteur :  <br><br> </label>
+					
+						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
+
+							<?php
+								   		
+					   		foreach($device_types as $donnees3){
+					   			echo(
+									"<option>"
+									."Capteur "
+									.$donnees3['name']
+									."</option>"
+									);
+					   		}
+									   		
+					  		?>		       		
+							</select><br><br><br>        
+							<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
+					   
+					    </form>								
+				</div> <!-- .fenetre-modale -->
+			</div> <!-- #masque -->
+			
+			
+			
+			      
 	    </div>
 	    
-		<div id="conteneur">
-			<a href="#masque">
-				<div class="element , ecriture2">Ajouter un capteur</div>
-			</a>
-		   		
-			<div id="masque">
-			
-				<div class="fenetre-modale">
-					    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
-					    <div class="capt"><br>Ajouter un capteur<br><br></div>
-							<form action="traitementFormulaire.php" method="post" >
+	    
+	    <?php
+	   					echo "<div class='pieces'>";
+						$cpt2=0;
+						foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
+							if($donnees['house_id'] == $donnees2['home_id']){
+								$cpt2++;
+								echo(
+										
+										"<div class='piece'> Pièce $cpt2 </div>"
+										."<div id='conteneur2'>"
+																			
+									);
 								
-								<label> Nom :  <br><br> <input type="text" name="myText"/> </label>  <br><br>
+								
+								foreach($cemacs as $donnees5){
 									
-								<label> Habitation :  <br> <br></label>
-								<select class="custom-dropdown__select custom-dropdown__select--white">
-							    	<option>Maison 1</option>
-							    	<option>Maison 2</option>
-							    	<option>Maison 3</option>
-							   	</select><br><br>
-							   		
-							   	<label> Pièce :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							     	<option>Pièce 1</option>
-							       	<option>Pièce 2</option>
-							   		<option>Pièce 3</option>
-								</select><br><br>
-							   		
-						   		<label> Type de capteur :  <br><br> </label>
-							   	<select class="custom-dropdown__select custom-dropdown__select--white">
-							   		<option>Capteur de température</option>
-						       		<option>Capteur d'humidité</option>
-						       		<option>Capteur de ...</option>
-						   		</select><br><br><br>
-
-							   	
-								<input type="submit" value="Ajouter" /><br><br>
-								
-							</form>  
-								
-				</div> 
-			</div> 
-		   		
-		   	
-	 		<div class="element">
-		   		<span class="custom-dropdown custom-dropdown--white">
-		    	    <select class="custom-dropdown__select custom-dropdown__select--white">
-				       	<option>Trier par : Pièce</option>
-				       	<option>Type</option>
-				       	<option>Favori</option>
-				   	</select>
-				</span>
-			</div>  
-			      
-	    </div>    --> 
+									if($donnees2['id']==$donnees5['room_id'] ){
+										
+										foreach($devices as $donnees4){
+											
+											if($donnees4['cemac_id']==$donnees5['id']){
+												?>
+										
+										<div class="element , ecriture3">
+										<form method="post" action="index.php?function=supprimer" enctype="multipart/form-data">
+										
+										
+										
+											<?php 
+											$id1=$donnees4['id'];
+											echo("<input type='hidden'"
+												."name='id1'" 
+												."value='"
+												."$id1.'/>"
+												);
+											?>
+		   			
+		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>
+		   			
+		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">
+		   				
+		   									<div class="capteur_ecriture">- C ou %</div>
+		   				
+		   								
+		   								<input class="capteur_ecriture" href="#nullepart" type="submit" name="creation_submit" value="Supprimer" /><br><br>
+					   
+		   								</form>
+		   								</div>
+										
+										
+										
+										
+										<?php
+										
+										}
+									}
+								}
+							}
+							echo "</div>"; 					
+							}		
+						}
+						echo "</div>"; 
+						
+						
+						
+						
+						if($cpt2==0){
+							echo(
+									"<div class='ecriture1'>"
+									."Pas de pièce"
+									."</div>"
+									);
+						}
+						$cpt2=0;
+			}
+		}
+		
+		
+		
+		if($cpt==0){
+			echo(
+					"<div class='ecriture1'>"
+					."Pas de maison"
+					."</div>"
+					);
+		}
+		?>
+</div> 
+		

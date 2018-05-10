@@ -85,11 +85,11 @@
 	font-size:1.25em;
 	color: rgb(131,36,41);
 	border: 1px solid rgb(131,36,41);
-	padding:10px 60px 10px 60px;
-	margin:10px 10px 10px 10px;
+	padding:10px 60px 0px 60px;
+	margin:10px 10px 0px 10px;
 	text-align:center;
-	min-height:240px;
-	max-height:240px;
+	min-height:300px;
+	max-height:300px;
 	min-width:130px;
 	max-width:130px;
 	
@@ -111,5 +111,12 @@
 	font-weight: bold;
 	text-decoration:underline;
 	
+}
+
+img.btn-fermer2{
+	float:right;
+	margin:0 0 0 0 ;
+	height:60px;
+	width:auto;
 }
 
