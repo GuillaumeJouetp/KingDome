@@ -3,6 +3,7 @@
 </head>
 
 	<div id=corps>
+        <h1>Back office du dashboard</h1>
 
     </div>
 
