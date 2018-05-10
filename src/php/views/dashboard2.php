@@ -36,12 +36,6 @@
 						."</div>"
 						);
 				
-				foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
-					if($donnees['house_id'] == $donnees2['home_id']){
-						$cpt2++;
-					}
-				}
-				
 	?>
 			
 		<div id="conteneur">
@@ -70,41 +64,51 @@
 					    	      
 					   	<label> Nom :  <br><br> <input type="text" name="nom" required/> </label>  <br><br>
 					   	
-					   	<label> Maison :  <br><br> </label>
-					    	      	
-					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="maison">
-									   	
-					   		<?php
-								   		
-					   		
-					   			echo(
-									"<option>"
-									."Maison $cpt"
-									."</option>"
-									);
-					   		
-									   		
-					  		?>					
-																	       		
-					 	</select><br><br>
+					   	<?php 
+					   						$a=$donnees['house_id'];
+											echo("<input type='hidden'"
+												."name='maison'" 
+												."value='"
+												."$a'/>"
+												);
+											?>
 					    	      	
 					   	<label> Pièce :  <br><br> </label>
 					    	      	
 					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">
 									   	
 					   		<?php
-								   		
-					   		for($i = 1; $i < $cpt2+1; $i++){
-					   			echo(
-									"<option>"
-									."Pièce $i"
-									."</option>"
+							$list_id_room=array();	   		
+					   		foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
+					   			if($donnees['house_id'] == $donnees2['home_id']){
+									$cpt2++;
+									$list_id_room[]=$donnees2['id'];
+									echo(
+						   				
+										"<option>"
+										."Pièce $cpt2"
+										."</option>"
 									);
+
+								}
 					   		}
+							
+							$cpt2=0;
 									   		
 					  		?>					
 																	       		
 					 	</select><br><br>
+
+						<?php
+								$b=implode(',',$list_id_room);
+								echo("<input type='hidden'"
+									."name='id_piece'" 
+									."value='"
+									."$b'/>"
+									);
+							
+											
+						?>
 							
 						<label> Type de capteur :  <br><br> </label>
 					
@@ -148,18 +152,20 @@
 																			
 									);
 								
-								
+								$cpt5=0;
 								foreach($cemacs as $donnees5){
+									
 									
 									if($donnees2['id']==$donnees5['room_id'] ){
 										
 										foreach($devices as $donnees4){
 											
+											
 											if($donnees4['cemac_id']==$donnees5['id']){
+												$cpt5=1;
 												?>
 										
 										<div class="element , ecriture3">
-										<form method="post" action="index.php?function=supprimer" enctype="multipart/form-data">
 										
 										
 										
@@ -176,12 +182,10 @@
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">
 		   				
-		   									<div class="capteur_ecriture">- C ou %</div>
+		   									<div class="capteur_ecriture"> --- </div>
 		   				
 		   								
-		   								<input class="capteur_ecriture" href="#nullepart" type="submit" name="creation_submit" value="Supprimer" /><br><br>
-					   
-		   								</form>
+		   								
 		   								</div>
 										
 										
@@ -192,6 +196,14 @@
 										}
 									}
 								}
+							}
+							if($cpt5==0){
+								echo(
+										"<div class='capt'><br>"
+										."Il n'y a pas de capteur dans cette pièce <br><br>"
+										."</div>"
+										);
+								
 							}
 							echo "</div>"; 					
 							}		

@@ -143,6 +143,16 @@ function get_id_device_types($bdd,string $type_capteur){
 	return $device_type_id;	
 }
 
+function get_id_room(array $id_piece, string $num_piece){
+	
+	$num = substr($num_piece, -1, 1);
+	$room_id=$id_piece[$num-1];
+	
+	return $room_id;
+	
+}
+
+
 function get_id_cemac($bdd,string $num_maison, string $num_piece){
 	
 	$cemac_id=0;
@@ -150,7 +160,7 @@ function get_id_cemac($bdd,string $num_maison, string $num_piece){
 	
 	foreach($rooms as $donnees){
 		
-		if($num_maison=="Maison " .$donnees['home_id'] && $num_piece == "Pièce " .$donnees['id']){
+		if($num_maison==$donnees['home_id'] && $num_piece == $donnees['id']){
 			
 			$cemac_id = $donnees['id'];
 		}

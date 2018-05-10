@@ -26,28 +26,25 @@ else{
     			break;
     			
     		case 'ajouter':
-    			 			
+    			
+    			debug1($_POST['maison']);
+    			debug1(get_id_room(explode(",",$_POST['id_piece']),$_POST['piece']));
     			$Data_devices = array(
     			'sens_or_eff' => 0,
     			'name' => htmlspecialchars($_POST['nom']),
     			'state' => 1,
     			'device_type_id' => get_id_device_types($bdd,$_POST['type_capteur']),
-    			//'cemac_id' => htmlspecialchars($_POST['piece']),
-    			'cemac_id' => get_id_cemac($bdd,$_POST['maison'],$_POST['piece']),
+    			//get_id_cemac($bdd,$_POST['maison'],get_id_room($bdd,$POST['id_piece'],$_POST['piece'])),
+    			'cemac_id' => get_id_room(explode(",",$_POST['id_piece']),$_POST['piece']),
     			);
     			
     			insertion($bdd, $Data_devices, 'devices');
     			
     			$vue = "dashboard2";
     			
-    		case 'supprimer':
-    			
-    			supprimer($bdd,$_POST['id1']);
-    			$vue = "dashboard2";
-    			
-    			
-    			
     		
+    			
+
     	}
              
         
