@@ -157,4 +157,33 @@ function get_id_cemac($bdd,string $num_maison, string $num_piece){
 	}
 	
 	return $cemac_id;
+	
 }
+
+/**
+ * Sécurise un string à la faille POST
+ * @param array tab
+ * @return string
+ */
+function secu($myInput){
+    $myInput = htmlspecialchars($myInput);
+    return $myInput;
+}
+
+/**
+ * Sécurise un tableau à la faille XSS
+ * @param array tab
+ * @return array
+ */
+
+function secuTab($tab){
+    $myDic = array();
+    foreach ($tab as $cle => $elt) {
+        $cle = htmlspecialchars($cle);
+        $elt = htmlspecialchars($elt);
+        $myDic[$cle] = $elt;
+    }
+    return $myDic;
+}
+
+?>

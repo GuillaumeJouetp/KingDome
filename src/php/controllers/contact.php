@@ -1,5 +1,7 @@
 <?php
 
+
+
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
     $function = "notdone";
@@ -24,10 +26,10 @@ else{
 
         case 'done':
             //Cas ou le formulaire est rempli, On affiche que le formulaire a bien été envoyé
-            if (!isAnEmail($_POST['mail'])) {
+            if (!isAnEmail($_POST_SEC['mail'])) {
                 $vue = "contact";
                 $form_message = "Votre message a bien été envoyé";
-                insertion($bdd, $_POST, 'incoming_messages');
+                insertion($bdd, $_POST_SEC, 'incoming_messages');
             } else {
                 $vue = "contact";
                 $mail_message = 'Veuillez entrer une adresse email valide ou nous pourrons pas vous répondre';
