@@ -30,7 +30,7 @@
 			if($id == $donnees['user_id']){
 				$cpt++;
 				echo(
-						"<div class='ecriture1'>"
+						"<div class='ecriture1'>"      /*on affiche la maison avec son num*/
 						.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
 						."Maison $cpt"
 						."</div>"
@@ -43,7 +43,7 @@
 		<?php
 		
 			echo(
-					"<a href='#masque$cpt'>"
+					"<a href='#masque$cpt'>"    /*on affiche le lien pour pouvoir ajouter un capteur */
 					."<div class='element , ecriture2'> Ajouter un capteur </div>"
 					."</a>"
 					
@@ -55,17 +55,18 @@
 				
        ?>
 			
-			<div class="fenetre-modale">
+			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir ajouter un capteur son nom et sa pièce -->
 			    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 			    <div class="capt"><br>Ajouter un capteur<br><br></div>
 					    
 					    
-					<form method="post" action="index.php?cible=dashboard&function=ajouter" enctype="multipart/form-data">
-					    	      
-					   	<label> Nom :  <br><br> <input type="text" name="nom" required/> </label>  <br><br>
+					<form method="post" action="index.php?cible=dashboard&function=ajouter" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
+					    	       
+					   	<label> Nom :  <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
 					   	<?php 
-					   						$a=$donnees['house_id'];
+					   						$a=$donnees['house_id'];     /*on suavegarde l'id de la maison qui va etre envoyé dans le formulaire  */
+
 											echo("<input type='hidden'"
 												."name='maison'" 
 												."value='"
@@ -77,7 +78,7 @@
 					    	      	
 					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">
 									   	
-					   		<?php
+					   		<?php																					/*num de a piece */
 							$list_id_room=array();	   		
 					   		foreach($rooms as $donnees2){ //boucle pour avoir le nombre de piece
 					   			if($donnees['house_id'] == $donnees2['home_id']){
@@ -100,7 +101,7 @@
 					 	</select><br><br>
 
 						<?php
-								$b=implode(',',$list_id_room);
+								$b=implode(',',$list_id_room);   /*on suavegarde une liste de l'id de chaque piece dans le deroulant qui va etre envoyé dans le formulaire  */
 								echo("<input type='hidden'"
 									."name='id_piece'" 
 									."value='"
@@ -114,7 +115,7 @@
 					
 						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
 
-							<?php
+							<?php 														/*quel type de capteur*/
 								   		
 					   		foreach($device_types as $donnees3){
 					   			echo(
@@ -153,12 +154,12 @@
 									);
 								
 								$cpt5=0;
-								foreach($cemacs as $donnees5){
+								foreach($cemacs as $donnees5){  //boucle pour savoir si l'id dans room correspond avec l'id room dans cemac
 									
 									
 									if($donnees2['id']==$donnees5['room_id'] ){
 										
-										foreach($devices as $donnees4){
+										foreach($devices as $donnees4){  //boucle pour savoir si l'id dans cemac correspond avec l'id cemac dans device
 											
 											
 											if($donnees4['cemac_id']==$donnees5['id']){
@@ -166,11 +167,12 @@
 												?>
 										
 										<div class="element , ecriture3">
+										<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
 										
 										
 										
 											<?php 
-											$id1=$donnees4['id'];
+											$id1=$donnees4['id'];					/*on sauvegarde l'id de device qui est à supprimer  */
 											echo("<input type='hidden'"
 												."name='id1'" 
 												."value='"
@@ -178,19 +180,19 @@
 												);
 											?>
 		   			
-		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>
+		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage des capteurs -->
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">
 		   				
 		   									<div class="capteur_ecriture"> --- </div>
 		   				
 		   								
-		   								
+		   								<input class="capteur_ecriture" href="#nullepart" type="submit" name="creation_submit" value="Supprimer" /><br><br>
+					   
+		   								</form>
 		   								</div>
-										
-										
-										
-										
+
+									
 										<?php
 										
 										}
@@ -199,28 +201,30 @@
 							}
 							if($cpt5==0){
 								echo(
-										"<div class='capt'><br>"
-										."Il n'y a pas de capteur dans cette pièce <br><br>"
+										"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
+										."Pas de capteur"
 										."</div>"
 										);
 								
 							}
-							echo "</div>"; 					
+							 echo "</div>";					
 							}		
 						}
-						echo "</div>"; 
 						
 						
-						
+					
 						
 						if($cpt2==0){
 							echo(
-									"<div class='ecriture1'>"
+									"<div class='piece'>"		/*s'il n'y a pas de piece   */
 									."Pas de pièce"
 									."</div>"
 									);
 						}
 						$cpt2=0;
+					
+		echo "</div>"; 
+
 			}
 		}
 		
@@ -228,7 +232,7 @@
 		
 		if($cpt==0){
 			echo(
-					"<div class='ecriture1'>"
+					"<div class='ecriture1'>"		/*s'il n'y a pas de maison   */
 					."Pas de maison"
 					."</div>"
 					);
