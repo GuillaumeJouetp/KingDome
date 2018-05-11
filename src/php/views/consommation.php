@@ -26,15 +26,15 @@
 			    </tr>
 				<tr>
       				<td>1</td>
-      				<td>-</td>
+      				<td>87000</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td>-</td>
+					<td>27000</td>
 				</tr>
 				<tr>
 					<td>3</td>
-					<td>-</td>
+					<td>0</td>
 				</tr>
 			</table>
 			
@@ -55,27 +55,27 @@
 			    </tr>
 				<tr>
       				<td>Cuisine</td>
-      				<td>-</td>
+      				<td>14500</td>
 				</tr>
 				<tr>
 					<td>Salon</td>
-					<td>-</td>
+					<td>14500</td>
 				</tr>
 				<tr>
 					<td>Salle à manger</td>
-					<td>-</td>
+					<td>14500</td>
 				</tr>
 				<tr>
       				<td>Salle de bain</td>
-      				<td>-</td>
+      				<td>14500</td>
 				</tr>
 				<tr>
       				<td>Chambre 1</td>
-      				<td>-</td>
+      				<td>14500</td>
 				</tr>
 				<tr>
       				<td>Chambre 2</td>
-      				<td>-</td>
+      				<td>14500</td>
 				</tr>
 			</table>
 
