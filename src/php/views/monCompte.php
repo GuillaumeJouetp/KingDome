@@ -20,7 +20,7 @@
     <div id="profil">
         <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
 
-        <h2>Informations personnels</h2>
+        <h2>Informations personnelles</h2>
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $nom = $_SESSION['user_name']; ?>
@@ -71,10 +71,10 @@
         </div>
 
         <button class="accordion"><h4>Maison 3
-                <label class="switch" style="margin-left: 2%">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label></h4>
+            <label class="switch" style="margin-left: 2%">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label></h4>
         </button>
         <div class="panel">
             <p>Pièce 1</p><br>
