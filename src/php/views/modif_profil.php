@@ -32,7 +32,7 @@
             <p><input type="text" size="35" value="<?php echo $_SESSION['user_firstname']; ?>" disabled/></p>
 
             <label>Adresse</label>
-            <p><input type="text" size="35" value="<?php echo $_SESSION['adress']; ?>" disabled/></p>
+            <p><input type="text" size="35" value="" disabled/></p>
 
             <label for="zip_code">Code postal</label>
             <p><input type="text" name="zip_code" id="zip_code" size="11"/></p>
@@ -40,7 +40,7 @@
             <p><input type="text" name="city" id="city" size="18"/></p>
 
             <label>Numéro de téléphone</label>
-            <p><input type="tel" name="tel" size="35" value="<?php echo $_SESSION['tel']; ?>"/></p>
+            <p><input type="tel" name="tel" size="35" value=""/></p>
 
             <label>Date de naissance</label>
             <p><input type="date" name="date_naissance" size="35" value="<?php echo $_SESSION['birth_date']; ?>"/></p>
