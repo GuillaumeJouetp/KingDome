@@ -20,7 +20,7 @@
     <div id="profil">
         <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
 
-        <h2>Informations personnnel</h2>
+        <h2>Informations personnels</h2>
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $nom = $_SESSION['user_name']; ?>
