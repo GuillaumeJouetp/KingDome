@@ -23,12 +23,5 @@ Sed dolor mauris, rhoncus a sem eu, dignissim gravida augue. Quisque tempus temp
     <section id="section3">
          <iframe width="560" height="315" src="https://www.youtube.com/embed/_oHR59FbnOA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </section>
-
-        
-    	<button>
-		<a href="index.php?cible=consommation">
-			<img src="../res/icones/consommation.png" alt="icone compte" class="icone">Consommation
-		</a>
-    </button>
    
 </div>

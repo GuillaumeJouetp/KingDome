@@ -5,7 +5,6 @@
  * Date: 23/04/2018
  * Time: 11:29
  */
-session_start();
 
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
@@ -19,24 +18,12 @@ date_default_timezone_set('UTC');
 
 
 switch ($function) {
-    case 'notdone':
-        if (isUserConnected()){
-            // On affiche la vue du compte utilisateur
-            $vue = "profil";
-            $title = "profil";
-        }
-        else {
-            // formulaire pas encore rempli -> on affiche le formulaire
-            $vue = "inscription";
-            $title = "notdone";
-        }
-        break;
 
-    case 'inscription':
+    case 'Ajout_maison':
         // formulaire inscription rempli -> verification des données
 
         // Tous les champs sont validés ou non
-        if($Validation){
+        if($Ajout){
             // Bonne creation compte -> creation de la session et redirection vers l'index
 
             $Data_Ajout = array(

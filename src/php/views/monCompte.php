@@ -4,14 +4,13 @@
  * User: Adrien
  * En cours
  */
-session_start();
 ?>
 
 <!DOCTYPE html>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/style_profil.css">
+    <link rel="stylesheet" href="css/monCompte.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -24,11 +23,16 @@ session_start();
         <h2>Informations personnnelle</h2>
         <div id="info_perso">
             <div id="info_persop">
-                <p>Nom : <img src="" alt="Photo de profil" style="float: right; width: 100px; height: 150px;"></p>
-                <p>Prénom : </p>
-                <p>Adresse mail : </p>
-                <p>Date de naissance : </p>
-                <p style="text-align: center"><input type="submit" value="Modifier profil"></p>
+                <p>Nom : <?php echo $nom = $_SESSION['user_name']; ?>
+                    <img src="<?php $avatar = $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 100px; height: 150px;"></p>
+                <p>Prénom : <?php echo $prenom = $_SESSION['user_firstname']; ?></p>
+                <p>Adresse mail : <?php echo $email = $_SESSION['email']; ?></p>
+                <p>Téléphone : <?php echo $tel = $_SESSION['tel']; ?></p>
+                <p style="text-align: center">
+                    <button type="button">
+                        <a href="index.php?cible=modif_profil&function=modifier">Modifier le profil</a>
+                    </button>
+                </p>
             </div>
         </div>
     </div>
@@ -53,148 +57,154 @@ session_start();
             <p>Pièce 1</p><br>
         </div>
 
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="btn_maison"><h3>Ajouter Résidence +</h3></button>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="btn_maison">
+            <h3>Ajouter Résidence +</h3>
+         </button>
         <div id="id01" class="modal">
 
             <form class="modal-content animate" action="/action_page.php">
 
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-                <h4 id="formaison">Ajout de Maison</h4>
+                <h3 id="formaison">Ajout de Maison</h3>
 
                 <div class="container">
-                    <form method="post" action="../controllers/profil.php">
-                        <label for="nom_maison">Nom de la maison : </label>
-                        <input type="text" id="nom">
-                        <br><br>
+                    <label for="nom_maison">Nom de la maison : </label>
+                    <input type="text" id="nom">
+                    <br><br>
 
-                        <label for="type">Type de maison : </label>
-                        <select name="myChoice" id="type">
-                            <option selected="selected"> Maison</option>
-                            <option> Maison secondaire</option>
-                            <option> Appartement</option>
-                            <option> Appartement secondaire</option>
-                        </select>
-                        <br><br>
+                    <label for="type">Type de maison : </label>
+                    <select name="myChoice" id="type">
+                        <option selected="selected"> Maison</option>
+                        <option> Maison secondaire</option>
+                        <option> Appartement</option>
+                        <option> Appartement secondaire</option>
+                    </select>
+                    <br><br>
 
-                        <label for="chambre">Chambres : </label>
-                        <select name="myChoice" id="chambres">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="chambre">Chambres : </label>
+                    <select name="myChoice" id="chambres">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="bain">Salle de bain : </label>
-                        <select name="myChoice" id="bain">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="bain">Salle de bain : </label>
+                    <select name="myChoice" id="bain">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="bureau">Bureau : </label>
-                        <select name="myChoice" id="bureau">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="bureau">Bureau : </label>
+                    <select name="myChoice" id="bureau">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="cuisine">Cuisine : </label>
-                        <select name="myChoice" id="cuisine">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="cuisine">Cuisine : </label>
+                    <select name="myChoice" id="cuisine">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="manger">Salle à manger : </label>
-                        <select name="myChoice" id="manger">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="manger">Salle à manger : </label>
+                    <select name="myChoice" id="manger">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="salon">Salon : </label>
-                        <select name="myChoice" id="salon">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="salon">Salon : </label>
+                    <select name="myChoice" id="salon">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <label for="garage">Garage : </label>
-                        <select name="myChoice" id="garage">
-                            <option selected="selected"> O</option>
-                            <option> 1</option>
-                            <option> 2</option>
-                            <option> 3</option>
-                            <option> 4</option>
-                            <option> 5</option>
-                            <option> 6</option>
-                            <option> 7</option>
-                            <option> 8</option>
-                            <option> 9</option>
-                            <option> 10</option>
-                        </select>
-                        <br><br>
+                    <label for="garage">Garage : </label>
+                    <select name="myChoice" id="garage">
+                        <option selected="selected"> O</option>
+                        <option> 1</option>
+                        <option> 2</option>
+                        <option> 3</option>
+                        <option> 4</option>
+                        <option> 5</option>
+                        <option> 6</option>
+                        <option> 7</option>
+                        <option> 8</option>
+                        <option> 9</option>
+                        <option> 10</option>
+                    </select>
+                    <br><br>
 
-                        <button type="submit" onclick="document.getElementById('id01').style.display='none'" name="maison_submit" class="submit_button">Ajouter maison</button>
-                        <br><br>
-                    </form>
+                    <button type="submit" onclick="document.getElementById('id01').style.display='none'" name="maison_submit" class="submit_button">Ajouter maison</button>
+                    <br><br>
                 </div>
             </form>
         </div>
+
+        <button>
+            <a href="index.php?cible=consommation">
+                <img src="../res/icones/consommation.png" alt="icone compte" class="icone">Consommation
+            </a>
+        </button>
     </div>
     <br><br>
 
@@ -204,8 +214,8 @@ session_start();
 
         <section class="ins_form">
 
-            <div class="Partie_1G">
-                <h3>Liste des utilisateurs : </h3>
+            <div class="Partie_Gauche">
+                <h3>Liste des utilisateurs : </h3><br>
                 <form method="post" action="//src/php/controllers/profil.php">
                     <input type="checkbox" name="case1" id="case" /> <label for="case">Sous utilisateur 1</label><br><br>
                     <input type="checkbox" name="case2" id="case" /> <label for="case">Sous utilisateur 2</label><br><br>
@@ -214,7 +224,7 @@ session_start();
                 </form>
             </div>
 
-            <div class="Partie_1D">
+            <div class="Partie_Droite">
                 <h3>Liste des droits : </h3>
                 <form method="post" action="//src/php/controllers/profil.php">
                     <p>Droit 1
@@ -290,11 +300,13 @@ session_start();
         }
     </script>
 
-    <button style="text-align: center">
-        <a href="index.php?cible=utilisateur&function=deconnexion">
-            Deconnexion
-        </a>
-    </button>
+    <p style="text-align: center">
+        <button>
+            <a href="index.php?cible=utilisateur&function=deconnexion">
+            <h4>Deconnexion</h4>
+            </a>
+        </button>
+    </p>
 
 </div>
 </body>
