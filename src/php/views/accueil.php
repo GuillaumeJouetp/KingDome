@@ -10,6 +10,8 @@
     <section id="section1">
 	    <h1> KingDome - devenez le roi de votre maison !</h1>
 		<img src="../res/images/maison_accueil.jpg" id="img_accueil">
+
+        <img src=" <?php echo $_SESSION['avatar'];?>" id="avatar">
     </section>
     
     <!-- Deuxieme section : presentation -->
