@@ -119,6 +119,14 @@ button:hover{
 
 }
 
+.label_cgu{
+    word-spacing: 2px;
+}
+
+#cgu{
+    margin-left: 5%;
+}
+
 /* Darker background on mouse-over */
 .avatar_button:hover {
     background-color: rgba(129, 129, 129,0.3)

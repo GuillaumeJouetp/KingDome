@@ -82,6 +82,11 @@
                         </div>
                 </div>
 
+                <p>
+                    <label class="label_cgu">J'ai lu et approuvé les <a href="#" class="label_cgu">conditions générales d'utilisation</a>*
+                    <input type="checkbox" required id="cgu"></label>
+                </p>
+
                 <p class="submit">
                     <button type="submit" name="creation_submit" class="submit_button">S'inscrire</button>
                     <button type="reset" name="reset" class="submit_button" id="reset_button">Annuler</button>
