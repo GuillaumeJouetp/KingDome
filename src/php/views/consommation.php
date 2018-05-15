@@ -79,6 +79,17 @@
 				</tr>
 			</table>
 
+
+
+    	<script src="..\src\js\Chart.js"></script>
+    	
+	    <span class="row">
+	    <div class="text-center">
+	    <canvas id="graphique" width="1000" height="350"></canvas>
+	    </div>
+	    </span>
+    	
+
 <!-- 		<div class="stats">
 				<h2>Consommation annuelle</h2>
 				<ul>
