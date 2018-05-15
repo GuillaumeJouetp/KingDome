@@ -5,5 +5,10 @@
 <div id="corps">
 
 	<p> Page accueil User </p>
+
+
+	<!-- Graphique : consommation -->
+	
+
    
 </div>

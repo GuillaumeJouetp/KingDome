@@ -5,10 +5,10 @@
 <div id="corps">
 
 	<p> Page accueilAdmin </p>
-	    <!-- Graphique : nombres de connexions -->
+	
+	
+	<!-- Graphique : nombres de connexions -->
 	    
 	    
-	    
-
-   
+	     
 </div>
