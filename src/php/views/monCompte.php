@@ -20,6 +20,7 @@
     <div id="profil">
         <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
 
+        <h2>Informations personnnelles</h2>
         <h2>Informations personnelles</h2>
         <div id="info_perso">
             <div id="info_persop">
