@@ -21,10 +21,11 @@
         <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
 
         <h2>Informations personnnelles</h2>
+        <h2>Informations personnelles</h2>
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $nom = $_SESSION['user_name']; ?>
-                    <img src="<?php $avatar = $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 100px; height: 150px;"></p>
+                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 100px; height: 150px;"></p>
                 <p>Prénom : <?php echo $prenom = $_SESSION['user_firstname']; ?></p>
                 <p>Adresse mail : <?php echo $email = $_SESSION['email']; ?></p>
                 <p>Téléphone :
@@ -71,10 +72,10 @@
         </div>
 
         <button class="accordion"><h4>Maison 3
-                <label class="switch" style="margin-left: 2%">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label></h4>
+            <label class="switch" style="margin-left: 2%">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label></h4>
         </button>
         <div class="panel">
             <p>Pièce 1</p><br>

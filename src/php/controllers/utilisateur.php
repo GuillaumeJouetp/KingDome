@@ -39,30 +39,29 @@ switch ($function) {
         // formulaire inscription rempli -> verification des données
 
         //Verifie l'email
-        $_POST['email'] = htmlspecialchars($_POST['email']);
-        if(isAnEmail($_POST['email'])){
+        if(isAnEmail($_POST_SEC['email'])){
             $Email_Message = "Adresse mail non valide";
             $Validation = false;
         }
-        if(Is_Email_Exists($bdd, 'users', $_POST['email'])){
+        if(Is_Email_Exists($bdd, 'users', $_POST_SEC['email'])){
             $Email_Message = "Adresse mail déjà existante";
             $Validation = false;
         }
 
         // Verifie le mot de passe -> doit comporter au moins 8 caractère, un chiffre et une majuscule
-        if(!isAPassword(htmlspecialchars($_POST['password']))){
+        if(!isAPassword($_POST_SEC['password'])){
             $Alerte_Password = "Alerte_Message";
             $Validation = false;
         }
 
         // Verifie si le mot de passe et la confirmation sont les mêmes
-        if(htmlspecialchars($_POST['password_confirmation']) != htmlspecialchars($_POST['password'])){
+        if($_POST_SEC['password_confirmation'] != $_POST_SEC['password']){
             $Password_Confirmation = "Les mots de passe ne sont pas identiques";
             $Validation = false;
         }
 
         // Verifie le numéro de téléphone
-        if(!isATel(htmlspecialchars($_POST['tel']))){
+        if(!isATel($_POST_SEC['tel'])){
             $Tel_Message = "Numéro de téléphone non valide";
             $Validation = false;
         }
@@ -74,9 +73,13 @@ switch ($function) {
             // Retourne un message si il y a une erreur, sinon rien
             $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
             // L'avatar est valide
-            // Si marche pas utiliser move_uploaded_file($_FILES['avatar']['tmp_name'])
             if($Avatar_Message == ''){
-                $avatar = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
+                // On renomme l'image pour la mettre dans le dossier approprié avec un id unique a la fin pour eviter tout conflit
+                $dir = '../res/images/Avatar/';
+                $ext = strtolower(pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION));
+                $file = $_POST_SEC['first_name'] . '_' . $_POST_SEC['last_name'] . '_' . uniqid().'.'.$ext;
+                $avatar = $dir.$file;
+                move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
             } else {
                 $validation = false;
             }
@@ -88,29 +91,39 @@ switch ($function) {
             // Bonne creation compte -> creation de la session et redirection vers l'index
 
             $Data_Inscription = array(
-                'user_firstname' => htmlspecialchars($_POST['first_name']),
-                'user_name' => htmlspecialchars($_POST['last_name']),
-                'civility' => htmlspecialchars($_POST['civil']),
-                'birth_date' => htmlspecialchars($_POST['date_naissance']),
-                'adress' => htmlspecialchars($_POST['adress']),
-                'city' => htmlspecialchars($_POST['city']),
-                'zip_code' => htmlspecialchars($_POST['zip_code']),
-                'email' => $_POST['email'],
-                'password' => crypterMdp(htmlspecialchars($_POST['password'])),
-                'tel' => htmlspecialchars($_POST['tel']),
+                'user_firstname' => $_POST_SEC['first_name'],
+                'user_name' => $_POST_SEC['last_name'],
+                'civility' => $_POST_SEC['civil'],
+                'adress' => $_POST_SEC['adress'],
+                'city' => $_POST_SEC['city'],
+                'zip_code' => $_POST_SEC['zip_code'],
+                'email' => $_POST_SEC['email'],
+                'password' => crypterMdp($_POST_SEC['password']),
+                'tel' => $_POST_SEC['tel'],
                 'registration_state' => 0,
                 'registration_date' => date("Y-m-d H:i:s"),
-                'avatar' => $avatar,
                 'user_type_id' => 2);
+
+            // Ajoute la date de naissance si elle est renseigné
+            if($_POST_SEC['date_naissance'] != ''){
+                $Data_Inscription['birth_date'] = $_POST_SEC['date_naissance'];
+            }
+
+            // Ajoute l'avatar si il est renseingé
+            if($avatar != null){
+                $Data_Inscription['avatar'] = $avatar;
+                $_SESSION['avatar'] = $Data_Inscription['avatar'];
+            }
 
             insertion($bdd, $Data_Inscription, 'users');
             $_SESSION['user_firstname'] = $Data_Inscription['user_firstname'];
             $_SESSION['user_name'] = $Data_Inscription['user_name'];
             $_SESSION['password'] = $Data_Inscription['password'];
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['email'] = $_POST_SEC['email'];
             $_SESSION['connected'] = true;
             $_SESSION['user_id'] = $Data_Inscription['user_type_id'];
             $_SESSION['type'] = getCurrentUserType($bdd);
+
             header('location: index.php');
 
         } else {
@@ -123,19 +136,17 @@ switch ($function) {
         // formulaire connexion rempli -> verification des données;
 
         // Vérifie si l'email existe dans la base
-        $_POST['email'] = htmlspecialchars($_POST['email']);
-        $_POST['password'] = htmlspecialchars($_POST['password']);
-        if(Is_Email_Exists($bdd, 'users', $_POST['email'])){
+        if(Is_Email_Exists($bdd, 'users', $_POST_SEC['email'])){
 
-            $data = Get_Id($bdd, 'users', $_POST['email']);
+            $data = Get_Id($bdd, 'users', $_POST_SEC['email']);
 
-            if(password_verify($_POST['password'], $data['password'])) {
+            if(password_verify($_POST_SEC['password'], $data['password'])) {
 
                 // Bonne identifacation -> creation de la session et redirection vers l'index
                 $_SESSION['user_firstname'] = $data['user_firstname'];
                 $_SESSION['user_name'] = $data['user_name'];
                 $_SESSION['password'] = $data['password'];
-                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['email'] = $_POST_SEC['email'];
                 $_SESSION['connected'] = true;
                 $_SESSION['user_id'] = $data['id'];
                 $_SESSION['type'] = getCurrentUserType($bdd);

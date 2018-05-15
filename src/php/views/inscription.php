@@ -63,7 +63,7 @@
                     <label>Date de naissance<br>
                         <input type="date" name="date_naissance" size="35"/></label>
 
-                    <button id="myBtn" class="submit_button">Ajouter un avatar</button>
+                    <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
                 </p>
                 <?php
                 echo "<span class='Alerte_Message'>".$Avatar_Message."</span>"; ?>
@@ -77,7 +77,7 @@
                                 <h4>(JPG, PNG ou GIF)</h4><br>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
                                 <input type="file" name="avatar" size=50 class="avatar_button"/>
-                                <button class="submit_button" id="avatar_ok">Envoyer</button>
+                                <button type="button" class="submit_button" id="avatar_ok">Envoyer</button>
                             </p>
                         </div>
                 </div>
