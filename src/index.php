@@ -1,3 +1,5 @@
+<!-- http://localhost3/dHomeTech/src-->
+
 <?php session_start(); ?>
 <!doctype html>
 <html lang=fr>
