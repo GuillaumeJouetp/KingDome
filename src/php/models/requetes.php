@@ -161,3 +161,19 @@ function get_last(PDO $bdd, string $table, string $email): array {
     return $statement->fetch();
 }
 
+/**
+ * Retourne les villes selectionné par le code postal
+ * @param PDO $bdd
+ * @param string $table
+ * @param string $entre
+ * @return array
+ */
+function get_city(PDO $bdd, string $table, $cp){
+
+    $statement = $bdd->prepare('SELECT city FROM ' . $table . ' WHERE zip_code LIKE :zip_code ORDER BY city');
+    $statement->execute(array(':zip_code' => $cp));
+    while($statement->fetch()){
+        echo "\n<option value=\"".$statement[0]."\">".$statement[1]."</option>";
+    }
+
+}

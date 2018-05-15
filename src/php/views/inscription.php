@@ -51,7 +51,7 @@
                 <p><label for="zip_code">Code postal*
                     <label for="city" id="ville">Ville*</label><br>
                         <input type="text" name="zip_code" id="zip_code" size="14" required/></label>
-                        <input type="text" name="city" id="city" size="19" required/>
+                    <select name="city" id="city" required onkeyup="selectcp();"></select>
                 </p>
 
                 <p><label>Numéro de téléphone*<br>
@@ -120,4 +120,4 @@
 
 </div>
 
-<script src="../src/js/inscription.js"></script>
+<script type="text/javascript" src="../src/js/inscription.js"></script>

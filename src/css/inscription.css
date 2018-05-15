@@ -112,11 +112,15 @@ button:hover{
     cursor: pointer;
 }
 
+select{
+    margin-right: 145px;
+    width: 160px;
+}
+
 /* Style buttons */
 .avatar_button {
     background-color: white;
     cursor: pointer;
-
 }
 
 .label_cgu{
