@@ -9,7 +9,7 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 
 
 // si l'utilisateur est un admin alors on lui affiche la dashboard
-if(isAnAdmin($bdd)) {
+if( isAnAdmin($bdd)) {
 	$vue = "dashboard_backoffice";
 }
 else{
