@@ -9,6 +9,7 @@
 
 	<!-- Graphique : consommation -->
 	
+	<canvas id="chartUser"></canvas>
+    <script src="../src/js/chartUser.js"></script>
 
-   
 </div>

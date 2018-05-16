@@ -9,7 +9,7 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 
 
 // si l'utilisateur est un admin alors on lui affiche la dashboard
-if(isAnAdmin($bdd)) {
+if( isAnAdmin($bdd)) {
 	$vue = "dashboard_backoffice";
 }
 else{
@@ -31,24 +31,28 @@ else{
     				'sens_or_eff' => 0,
     				'name' => htmlspecialchars($_POST['nom']),
     				'state' => 1,
-    				'device_type_id' => get_id_device_types($bdd,$_POST['type_capteur']),
-    				//get_id_cemac($bdd,$_POST['maison'],get_id_room($bdd,$POST['id_piece'],$_POST['piece'])),
-    				'cemac_id' => get_id_room(explode(",",$_POST['id_piece']),$_POST['piece']),
+    				'device_type_id' => get_id_device_types($bdd,$_POST_SEC['type_capteur']),
+    				'cemac_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
     				);
     				
     				insertion($bdd, $Data_devices, 'devices');
     				
-    				$vue = "dashboard2";
+    				header('location: index?cible=dashboard');
     			}
     
     			else{
-    				$vue = "dashboard2";
+    				header('location: index?cible=dashboard');
     			}
     			break;
     			
     		case 'supprimer':
-    			supprimer($bdd,$_POST['id1']);
-    			$vue = "dashboard2";
+    			supprimer($bdd,$_POST_SEC['id1'],'devices');
+    			header('location: index?cible=dashboard');
+    			break;
+    			
+    		case 'modifier':
+    			header('location: index?cible=dashboard');
+    			break;
     			
     	}
              
