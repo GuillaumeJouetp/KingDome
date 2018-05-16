@@ -161,3 +161,5 @@ function get_last(PDO $bdd, string $table, string $email): array {
     return $statement->fetch();
 }
 
+
+
