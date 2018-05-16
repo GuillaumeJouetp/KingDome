@@ -1,7 +1,36 @@
 <?php
 
+if (!isset($_GET['function']) || empty($_GET['function'])) {
+    $function = "default";
+} else {
+    $function = $_GET['function'];
+}
+
+if( ! isAnAdmin($bdd)) {
+    switch ($function) {
+        case 'default':
+            $vue = "catalogue_backoffice";
+            break;
+        case 'modifier_texte':
+            $req = $bdd->prepare('UPDATE updatable_content SET content= :nouveau_texte WHERE id = 1');
+            $req->execute(array(
+                'nouveau_texte' => $_POST['texte_catalogue']
+            ));
+            $vue = "catalogue_backoffice";
+            break;
+    }
+}
+
+else{
+    switch ($function) {
+        case 'default':
+            $vue = "catalogue";
+            break;
+    }
+}
+
 include "php/views/header.php";
-include "php/views/catalogue.php";
+include ('php/views/' . $vue . '.php');
 include "php/views/footer.php";
 
 ?>

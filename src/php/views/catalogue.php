@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-
-<html>
-
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="../src/css/catalogue.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
@@ -22,15 +17,15 @@
 
     <h2>Capteur de température</h2>
 
-    <div id="carrousel">
-        <ul>
-            <li><img src="../res/images/Catalogue/Température/Capteur1.png"  class="imgborder" /></li>
-            <li><img src="../res/images/Catalogue/Température/Capteur2.png"  class="imgborder" /></li>
-            <li><img src="../res/images/Catalogue/Température/Capteur3.png"  class="imgborder" /></li>
-        </ul>
-    </div>
+        <div id="carrousel">
+            <ul>
+                <li><img src="../res/images/Catalogue/Température/Capteur1.png"  class="imgborder" /></li>
+                <li><img src="../res/images/Catalogue/Température/Capteur2.png"  class="imgborder" /></li>
+                <li><img src="../res/images/Catalogue/Température/Capteur3.png"  class="imgborder" /></li>
+            </ul>
+        </div>
 
-    <script src="../src/js/Catalogue.js"></script>
+        <script src="../src/js/Catalogue.js"></script>
 
     <div class="trait_dessus"></div>
 
@@ -87,5 +82,3 @@
     <script src="../src/js/Catalogue5.js"></script>
 
 </div>
-
-</html>
