@@ -1,11 +1,21 @@
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script type="text/javascript">
+
+/*On convertit le tableau php en tableau js en passant par du json*/
+
+var x_datas = <?= json_encode(setXDatas()); ?>;
+var y_datas = <?= json_encode(setYDatas()); ?>;
+
+
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: x_datas,
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: y_datas,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.8)',
                 'rgba(54, 162, 235, 0.2)',
@@ -35,4 +45,4 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-
+</script>
