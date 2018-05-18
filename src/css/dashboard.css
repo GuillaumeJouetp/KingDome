@@ -102,8 +102,8 @@
 	padding:10px 60px 0px 60px;
 	margin:10px 10px 10px 10px;
 	text-align:center;
-	min-height:300px;
-	max-height:300px;
+	min-height:230px;
+	max-height:230px;
 	min-width:130px;
 	max-width:130px;
 	border-radius: 20px;
@@ -128,10 +128,54 @@
 	
 }
 
-img.btn-fermer2{
+img.btn-fermer{
 	float:right;
-	margin:0 0 0 0 ;
+	margin:0 0 0 0;
 	height:60px;
 	width:auto;
+	
+}
+
+.btn-fermer2{
+	float:right;
+	margin:-260px -70px 0px 0px;
+	height:60px;
+	width:auto;
+	border:none;
+	box-shadow: none;
+	outline:0;
+}
+
+.btn-modifier{
+	float:right;
+	margin:-285px -20px 0px 0px;
+	height:30px;
+	width:auto;
+	border:none;
+	box-shadow: none;
+	outline:0;
+}
+
+.bouton{
+	position: absolute;
+  	top: 6em;
+  	right: 6em;
+	
+}
+
+/*fenetre modale*/
+[id*='masques']{
+	display:none;
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	background-color:rgba(0,0,0,0.5);
+	z-index:1000;
+}
+
+[id*='masques']:target{
+	display:block;
 }
 
