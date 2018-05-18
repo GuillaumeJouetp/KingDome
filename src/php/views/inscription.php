@@ -8,6 +8,9 @@
 
 <head>
     <link rel="stylesheet" href="css/inscription.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASX0Eevc77t1rhFySVK7xfMuUV9dUi-30&libraries=places"></script>
+    <script type="text/javascript" src="../src/js/autocompletion.js"></script>
+    <script type="text/javascript" src="../src/js/inscription.js"></script>
 </head>
 
 <div id="corps">
@@ -43,15 +46,23 @@
                     <input type="text" name="last_name" size="39" required/></label></p>
 
                 <p><label>Prénom*<br>
-                        <input type="text" name="first_name" size="39" required/></label></p>
+                        <input type="text" namena="first_name" size="39" required/></label></p>
 
-                <p><label>Adresse*<br>
-                        <input type="text" name="adress" size="39" required/></label></p>
+                <p>
+                    <label>Adresse*<br>
+                    <input type="text" name="adress" id="autocomplete" size="39" placeholder="Entrez votre adresse"/>
+                    </label>
+                    <input type="hidden" name="adress" id="fullAddr" size="39" disabled="true"/>
+                    <input type="hidden" id="street_number" disabled="true" />
+                    <input type="hidden" id="route" disabled="true" />
+                    <input type="hidden" id="country" disabled="true" />
+                    <input type="hidden" id="administrative_area_level_1" disabled="true" />
+                </p>
 
                 <p><label for="zip_code">Code postal*
-                    <label for="city" id="ville">Ville*</label><br>
-                        <input type="text" name="zip_code" id="zip_code" size="14" required/></label>
-                    <select name="city" id="city" required onkeyup="selectcp();"></select>
+                    <label for="ville" id="city">Ville*<br>
+                        <input type="text" name="zip_code" id="postal_code" size="14" disabled="true"/>
+                        <input type="text" name="city" id="locality" disabled="true"></label></label>
                 </p>
 
                 <p><label>Numéro de téléphone*<br>
@@ -119,5 +130,3 @@
     </section>
 
 </div>
-
-<script type="text/javascript" src="../src/js/inscription.js"></script>
