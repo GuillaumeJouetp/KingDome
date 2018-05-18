@@ -202,8 +202,12 @@ function secuTab($tab){
  * Actualise les donnés du graphique de connexion en ordonnée
  * @return array
  */
-function setXDatas(){
-    $XDatas=["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+function setXDatas($bdd){
+    $XDatas=[];
+    foreach (getdatas($bdd) as $value) {
+        $XDatas[]=$value['date'];
+    }
+
     return $XDatas;
 }
 
@@ -211,8 +215,12 @@ function setXDatas(){
  * Actualise les donnés du graphique de connexion en ordonnée
  * @return array
  */
-function setYDatas(){
-    $YDatas=[12, 19, 3, 5, 2, 3];
+function setYDatas($bdd){
+    $YDatas=[];
+    foreach (getdatas($bdd) as $value) {
+        $YDatas[]=$value['visites'];
+    }
+
     return $YDatas;
 }
 

@@ -6,11 +6,36 @@ include "connexionPDO.php";
  * @param PDO $bdd
  * @return int
  */
-
 function getNumConsultedPages(PDO $bdd) {
+    $retour = $bdd->prepare('SELECT visites FROM visites_jour WHERE date=CURRENT_DATE()');
+    $retour->execute();
+    $donnees = $retour->fetch();
+    $visites = $donnees['visites'];
+    return $visites;
+}
+
+/**
+ * retourne un array qui contient les datas du graph
+ * @param PDO $bdd
+ * @return array
+ */
+function getdatas(PDO $bdd){
+    $query = $bdd->prepare('SELECT visites,date FROM visites_jour LIMIT 7 ');
+    $query->execute();
+    $xDatas = $query->fetchAll();
+    return $xDatas;
+}
+
+/**
+ * modifie nombre de pages consultés aujourd'hui
+ * @param PDO $bdd
+ * @return int
+ */
+
+function setNumConsultedPages(PDO $bdd) {
     // Affichage du nombre de visites d'aujourd'hui
     //On compte le nombre d'entrées pour aujourd'hui
-    $retour_count = $bdd->prepare('SELECT COUNT(*) AS nbre_entrees FROM visites_jour WHERE date=CURRENT_DATE()');
+    $retour_count = $bdd->prepare('SELECT COUNT(*)  AS nbre_entrees FROM visites_jour WHERE date=CURRENT_DATE()');
     $retour_count->execute();
     //Fetch-array
     $donnees_count = $retour_count->fetch();
