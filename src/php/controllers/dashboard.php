@@ -51,6 +51,7 @@ else{
     			break;
     			
     		case 'modifier':
+    			modification($bdd, $_POST_SEC['nom'],'name', $_POST_SEC['id1'],'devices');
     			header('location: index?cible=dashboard');
     			break;
     			

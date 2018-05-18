@@ -62,7 +62,7 @@
 					    
 					<form method="post" action="index.php?cible=dashboard&function=ajouter" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
 					    	       
-					   	<label> Nom :  <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
 					   	<?php 
 					   						$a=$donnees['house_id'];     /*on suavegarde l'id de la maison qui va etre envoyé dans le formulaire  */
@@ -74,7 +74,7 @@
 												);
 											?>
 					    	      	
-					   	<label> Pièce :  <br><br> </label>
+					   	<label> <span class="blanc">Pièce :</span>  <br><br> </label>
 					    	      	
 					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">
 									   	
@@ -85,10 +85,11 @@
 									$cpt2++;
 									$list_id_room[]=$donnees2['id'];
 									echo(
-						   				
-										"<option>"
+										"<span class='blanc'>"
+										."<option>"
 										."Pièce $cpt2"
 										."</option>"
+										."</span>"
 									);
 
 								}
@@ -111,7 +112,7 @@
 											
 						?>
 							
-						<label> Type de capteur :  <br><br> </label>
+						<label> <span class='blanc'>Type de capteur : </span><br><br> </label>
 					
 						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
 
@@ -119,10 +120,12 @@
 								   		
 					   		foreach($device_types as $donnees3){
 					   			echo(
-									"<option>"
+					   				"<span class='blanc'>"
+									."<option>"
 									."Capteur "
 									.$donnees3['name']
 									."</option>"
+					   				."</span>"
 									);
 					   		}
 									   		
@@ -187,10 +190,67 @@
 		   									<div class="capteur_ecriture"> --- </div>
 		   				
 		   								
-		   								<input class="capteur_ecriture" href="#nullepart" type="submit" name="creation_submit" value="Supprimer" /><br><br>
+		   								<input href="#nullepart" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2" /><br><br>
+					   
+					   					
 					   
 		   								</form>
-		   								</div>
+		   								
+		   								
+		   								<form method="post" action="index.php?cible=dashboard&function=modifier" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
+										
+										<?php 
+											$id1=$donnees4['id'];					/*on sauvegarde l'id de device qui est à supprimer  */
+											echo("<input type='hidden'"
+												."name='id1'" 
+												."value='"
+												."$id1.'/>"
+												);
+											
+		
+			echo("<a href='#masques$cpt'> <img class='btn-modifier' src='..\res\icones\modifier.png'/> </a> <div id='masques$cpt'>");
+        	
+			/*on affiche l'icone modifier pouor pouvoir modifier un capteur */
+       ?>
+			
+			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir ajouter un capteur son nom et sa pièce -->
+			    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
+			    <div class="capt"><br>Modifier le capteur<br><br></div>
+					    
+					    
+					<form method="post" action="index.php?cible=dashboard&function=modifier" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
+					    	       
+					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	
+					   	<?php 
+					   						$a=$donnees['house_id'];     /*on suavegarde l'id de la maison qui va etre envoyé dans le formulaire  */
+
+											echo("<input type='hidden'"
+												."name='maison'" 
+												."value='"
+												."$a'/>"
+												);
+											?>
+					    	      	
+					   	<label> <span class="blanc">Pièce :</span>  <br><br> </label>
+					    	      	
+					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">											       		
+					 	</select><br><br>
+
+							
+						       
+							<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Modifier" /><br><br>
+					   
+					    </form>								
+				</div> <!-- .fenetre-modale -->
+			</div> <!-- #masque -->
+		   								
+		   								
+		   								</div>							
+		   								
+		   								
+		   								
+		   								
 
 									
 										<?php
