@@ -1,5 +1,6 @@
 <?php
 include "php/models/requetes.php";
+include "php/models/stats.php";
 
 function displayTable($bdd, $table){
     debug(recupereTous($bdd, $table));
@@ -194,6 +195,33 @@ function secuTab($tab){
         $myDic[$cle] = $elt;
     }
     return $myDic;
+}
+
+
+/**
+ * Actualise les donnés du graphique de connexion en ordonnée
+ * @return array
+ */
+function setXDatas($bdd){
+    $XDatas=[];
+    foreach (getdatas($bdd) as $value) {
+        $XDatas[]=$value['date'];
+    }
+
+    return $XDatas;
+}
+
+/**
+ * Actualise les donnés du graphique de connexion en ordonnée
+ * @return array
+ */
+function setYDatas($bdd){
+    $YDatas=[];
+    foreach (getdatas($bdd) as $value) {
+        $YDatas[]=$value['visites'];
+    }
+
+    return $YDatas;
 }
 
 ?>

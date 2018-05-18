@@ -75,15 +75,19 @@ function insertion(PDO $bdd, array $values, string $table): bool {
 
 /**
  * UPDATE
- * Modifie une entrée d'une table ciblant son id
+ * Modifie une variable dans une ligne d'une table ciblant son id
  * @param PDO $bdd
  * @param array $values
  * @param int $id (id de l'entrée à modifier)
  * @param string $table
  * @return boolean
  */
-function modification(PDO $bdd, array $values, int $id, string $table): bool{
-
+function modification(PDO $bdd, string $nouvelle_valeur,string $colonne, int $id, string $table): bool{
+	$req = $bdd->prepare('UPDATE '.$table.' SET '.$colonne.'= :nouveau_texte WHERE id ='.$id);
+	return $req->execute(array('nouveau_texte' => $nouvelle_valeur));
+	
+	
+	
 }
 
 /**
@@ -94,9 +98,9 @@ function modification(PDO $bdd, array $values, int $id, string $table): bool{
  * @param string $table
  * @return boolean
  */
-function supprimer(PDO $bdd, int $id): bool{
+function supprimer(PDO $bdd, int $id, string $table): bool{
 
-	$req = $bdd->prepare('DELETE FROM devices WHERE id='.$id);
+	$req = $bdd->prepare('DELETE FROM '.$table.' WHERE id='.$id);
     return $req->execute();
 }
 
@@ -160,4 +164,6 @@ function get_last(PDO $bdd, string $table, string $email): array {
     $statement->execute(array(':email' => $email));
     return $statement->fetch();
 }
+
+
 

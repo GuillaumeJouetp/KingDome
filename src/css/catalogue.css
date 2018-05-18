@@ -29,20 +29,17 @@ h2 {
     margin-top: 50px;
 }
 
-#test {
-    margin-left: 85%;
-}
 
-
-#carrousel, #carrousel2, #carrousel3, #carrousel4, #carrousel5{
+[id*="carrousel"]{
     position:static;
     width:320px;
     height:200px;
     margin: auto;
+    margin-left: 34%;
 }
 
 
-#carrousel ul li, #carrousel2 ul li, #carrousel3 ul li, #carrousel4 ul li, #carrousel5 ul li{
+[id*="carrousel"] ul li{
     position: absolute;
     margin-left: 3.75%;
     list-style-type: none;
@@ -50,13 +47,13 @@ h2 {
 }
 
 
-.prev, .prev2, .prev3, .prev4, .prev5{
+[class*="prev"]{
     float: left;
     margin-top: 90px;
 }
 
 
-.next, .next2, .next3, .next4, .next5 {
+[class*="next"]{
     float: right;
     margin-top: 90px;
 }
@@ -66,7 +63,93 @@ h2 {
     height: auto;
 }
 
+/*fenetre modale*/
+[id*="masque"]{
+    display:none;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:rgb(0,0,0,0.5);
+    z-index:1000;
+}
 
+[id*="masque"]:target{
+    display:block;
+}
 
+.fenetre-modale{
 
+    padding:2px;
+    border:2px solid rgb(0,129,220);
+    position:center;
+    margin:10% auto;
+    width:20%;
+    box-shadow:0px 0px 20px #000;
+    background-color: rgb(129,129,129);
+    border-radius: 30px;
+    text-align:center;
+}
 
+img.btn-fermer{
+    float:right;
+    margin:-55px 0 0 ;
+    height:60px;
+    width:auto;
+}
+
+.capt{
+    color:rgb(131,36,41);
+    font-size:20px;
+    font-weight: bold;
+    text-decoration:underline;
+
+}
+
+/*fin fenetre modale*/
+
+[class*="conteneur"] {
+    display: flex;
+}
+
+.button {
+    border: 1px solid rgb(0,97,161);
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background: rgb(0,97,161);
+    margin-top: 5px;
+}
+
+[class*="button_modif"] {
+    border: 1px solid rgb(131,36,41);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background: rgb(131,36,41);
+    margin-top: 5px;
+}
+
+a.modif{
+    width: 150px;
+    height: 30px;
+}
+
+.button_modif_capteur{
+    margin-top: 90px;
+}
+
+.button_modif_texte{
+    margin-top: 30px;
+    margin-left: 42.5%;
+}
+
+.button_modif_type{
+    margin-top: 20px;
+    margin-left: 42.5%;
+}
