@@ -10,15 +10,15 @@ var y_datas = <?= json_encode(setYDatas($bdd)); ?>;
 
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'bar', /*line bar radar pie doughnut polarArea bubble scatter*/
+    type: 'line', /*line bar radar pie doughnut polarArea bubble scatter*/
     data: {
         labels: x_datas,
         datasets: [{
             label: 'Trafic sur le site pour les 7 derniers jours',
             data: y_datas,
             backgroundColor: [
+                'rgba(0,  129, 220, 0.5)',
                 'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
                 'rgba(255, 206, 86, 0.5)',
                 'rgba(75, 192, 192, 0.5)',
                 'rgba(153, 102, 255, 0.5)',
@@ -26,8 +26,8 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 99, 132, 0.5)'
             ],
             borderColor: [
+                'rgba(0,  129, 220, 1)',
                 'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',

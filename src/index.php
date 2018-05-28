@@ -30,7 +30,7 @@ include "php/controllers/fonctions.php";
 include("php/views/fonctions.php");
 
 setNumConsultedPages($bdd); // Stats qui s'actualisent pour chaque chargement de page
-$_POST_SEC = secuTab($_POST); // On évite la faille xss POUR TOUTE KES PAGES
+$_POST_SEC = secuTab($_POST); // On évite la faille xss POUR TOUTE LES PAGES
 
 // On identifie le contrôleur à appeler dont le nom est contenu dans cible passé en GET
 if(isset($_GET['cible']) && !empty($_GET['cible'])) {

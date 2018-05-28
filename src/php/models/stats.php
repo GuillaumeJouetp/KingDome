@@ -20,7 +20,7 @@ function getNumConsultedPages(PDO $bdd) {
  * @return array
  */
 function getdatas(PDO $bdd){
-    $query = $bdd->prepare('SELECT visites,date FROM visites_jour LIMIT 7 ');
+    $query = $bdd->prepare('SELECT visites,date FROM visites_jour ORDER BY date LIMIT 7 ');
     $query->execute();
     $xDatas = $query->fetchAll();
     return $xDatas;
