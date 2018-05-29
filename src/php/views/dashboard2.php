@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="..\src\css\dashboard.css">
 </head>
 
+
+
+
+
+
 <div id=corps>
 
 	<?php
@@ -30,24 +35,22 @@
 			if($id == $donnees['user_id']){
 				$cpt++;
 				echo(
-						"<div class='ecriture1'>"      /*on affiche la maison avec son num*/
-						.'<img class="fleche" src="..\res\icones\fleche_bas.png">'
+						"<div class='ecriture1' >"      /*on affiche la maison avec son num*/
+						."<a href='javascript:AfficheCache('conteneur$cpt')'>"
+						.'<img class="fleche" src="..\res\icones\fleche_bas.png"  >'
 						."Maison $cpt"
 						."</div>"
+						."</a>"
+						."<div id='conteneur$cpt'>"
+						
 						);
 				
-	?>
-			
-		<div id="conteneur">
-			
-		<?php
+	
 		
 			echo(
 					"<a href='#masque$cpt'>"    /*on affiche le lien pour pouvoir ajouter un capteur */
 					."<div class='element , ecriture2'> Ajouter un capteur </div>"
 					."</a>"
-					
-					
 					."<div id='masque$cpt'>" 
 					
 					);
@@ -208,7 +211,7 @@
 												);
 											
 		
-			echo("<a href='#masques$cpt'> <img class='btn-modifier' src='..\res\icones\modifier.png'/> </a> <div id='masques$cpt'>");
+			echo("<a href='#masques$cpt'> <img class='btn-modifier' src='..\res\icones\modifier.png'/>  </a> <div id='masques$cpt'>");
         	
 			/*on affiche l'icone modifier pouor pouvoir modifier un capteur */
        ?>
@@ -223,7 +226,7 @@
 					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
 					   	<?php 
-					   						$a=$donnees['house_id'];     /*on suavegarde l'id de la maison qui va etre envoyé dans le formulaire  */
+					   						$a=$donnees['house_id'];     /*on sauvegarde l'id de la maison qui va etre envoyé dans le formulaire  */
 
 											echo("<input type='hidden'"
 												."name='maison'" 
@@ -231,13 +234,7 @@
 												."$a'/>"
 												);
 											?>
-					    	      	
-					   	<label> <span class="blanc">Pièce :</span>  <br><br> </label>
-					    	      	
-					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">											       		
-					 	</select><br><br>
-
-							
+					    	      						
 						       
 							<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Modifier" /><br><br>
 					   
@@ -246,7 +243,7 @@
 			</div> <!-- #masque -->
 		   								
 		   								
-		   								</div>							
+		   								</div>						
 		   								
 		   								
 		   								
@@ -284,11 +281,12 @@
 						$cpt2=0;
 					
 		echo "</div>"; 
+		
 
 			}
 		}
 		
-		
+		echo "</div>";
 		
 		if($cpt==0){
 			echo(
@@ -298,5 +296,19 @@
 					);
 		}
 		?>
+		
+<script>
+		var AficheCache = function AfficheCache(Id)
+  {
+	if (document.getElementById(Id) != null)
+    {
+		if(document.getElementById(Id).style.display=="none") document.getElementById(Id).style.display="block";
+		else document.getElementById(Id).style.display="none";
+    }
+  }
+		
+</script>
+			
+		
 </div> 
 		

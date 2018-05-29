@@ -8,6 +8,7 @@
 
 <head>
     <link rel="stylesheet" href="..\src\css\dashboard.css">
+    <script type="text/javascript" src=..\src\js\dashboard.js"> </script>
 </head>
 
 
@@ -16,10 +17,12 @@
 	<div id=corps>
 	
 		<div class="ecriture1">
-			<img class="fleche" src="..\res\icones\fleche_bas.png">
+		<a href="javascript:AfficheCache('Identifiant')">
+			<img class="fleche" src="..\res\icones\fleche_bas.png" >
 	    		Maison 1
+	    </a>
 	    </div>
-	    
+	    <div if="Identifiant">
 		<div id="conteneur">
 			<a href="#masque">
 				<div class="element , ecriture2"> Ajouter un capteur </div>
@@ -136,10 +139,16 @@
 	 				
 	 				<div class="element , ecriture3">Texte</div>
 	 			
-	    		</div>   
+	    		</div>
+	    </div>   
 	    		
        	
 	    </div>
 	</div>
+
+	
+	
+	
+	
 </body>
 </html>

@@ -1,11 +1,15 @@
 /* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par */
-#conteneur
+[id*='conteneur']
 {
     display: flex;
     justify-content: space-around;
     align-items: center;    
 	margin: 15px 0px 0px 0px;  
 	flex-wrap: wrap;
+}
+
+[id*='conteneur']:target{
+	display:block;
 }
 
 
