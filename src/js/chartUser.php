@@ -1,30 +1,5 @@
 <!-- Graphique de consommation -->
 
-
-<?php 
-
-switch ($_POST['duree']){
-	
-	case '1 mois':
-		$mois = array('Janvier');
-		$conso = array('20');
-		
-	case '3 mois' :
-		$mois = array('Janvier', 'Février', 'Mars');
-		$conso = array('20','32','45');
-		
-	case '6 mois' :
-		$mois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin');
-		$conso = array('20','32','45','59','67','74');
-		
-	case '1 an' :
-		$mois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre' ,'Décembre');
-		$conso = array('20','32','45','59','67','74','85','93','102','110','122','133');
-}
-
-
-?>
-
 <canvas id="chartUser" width="400" height="200"></canvas>
 
 <script type="text/javascript">
