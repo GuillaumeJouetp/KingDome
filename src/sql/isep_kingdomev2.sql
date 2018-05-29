@@ -25,6 +25,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `visites`
+--
+CREATE TABLE visites_jour (
+  visites mediumint(9) NOT NULL,
+  date date NOT NULL
+);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `catalog`
 --
 
@@ -103,23 +113,24 @@ CREATE TABLE IF NOT EXISTS `device_types` (
 
 DROP TABLE IF EXISTS `homes`;
 CREATE TABLE IF NOT EXISTS `homes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_home` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
   `town` varchar(100) NOT NULL,
   `zip_code` int(11) NOT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `flat_number` int(11) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adress` varchar(100) DEFAULT NULL,
+  `registration_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
-('Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
-('Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
-('Fr', 'gghgj', 94310, 'hjhg', 2, 4);
+INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `adress`, `id`, `registration_date`) VALUES
+('Maison dzsjn', 'Fr', 'Orly', 94310, '90 rue Normandie Niemen', 1, '2018-04-20 17:37:29'),
+('Maison kdnfjkvn', 'Fr', 'Issy', 92130, '1 rue de Vanves', 3, '2018-04-20 17:37:29'),
+('Maison nefini', 'Fr', 'gghgj', 94310, '2 hjhg', 4, '2018-04-20 17:37:29');
 
 -- --------------------------------------------------------
 
@@ -167,6 +178,8 @@ INSERT INTO `own_home` (`id`, `user_id`, `house_id`) VALUES
 (1, 14, 1),
 (6, 1, 1),
 (7, 14, 3),
+(10, 15, 5),
+(11, 15, 6),
 (9, 14, 4);
 
 -- --------------------------------------------------------
@@ -207,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `rights` (
 DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE IF NOT EXISTS `rooms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `home_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
@@ -260,8 +273,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `tel` int(11) DEFAULT NULL,
   `registration_state` tinyint(1) DEFAULT NULL,
   `registration_date` datetime NOT NULL,
-  `avatar` varchar(200) DEFAULT NULL,
   `user_type_id` varchar(100) NOT NULL,
+  `avatar` varchar(200) DEFAULT NULL,
   `child_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
@@ -275,6 +288,8 @@ INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_dat
 (11, 'Guillaume', 'test1', 'Mr', '2018-04-04', 'Adresse test', 'Ville test', 11111, 'primaryuser1@test.fr', '$2y$10$x7uNtousmXvMzvEcy7w4.O1eANld3aYwWP0tt.WyfiAzM7cRVTAJa', 606060606, 0, '2018-04-26 11:27:52', NULL, '2', NULL),
 (13, 'Guillaume', 'JOUET-PASTRE', 'Mr', '1997-04-01', 'Adresse de Guillaume', 'LCSC', 78170, 'guillaume.jouet-pastre@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
 (14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', 94310, 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '2', NULL);
+
+
 
 -- --------------------------------------------------------
 
