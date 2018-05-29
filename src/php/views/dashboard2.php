@@ -8,7 +8,8 @@
 
 
 <head>
-    <link rel="stylesheet" href="..\src\css\dashboard.css">
+    <link rel="stylesheet" href="..\src\css\dashboard.css">   
+    <script type="text/javascript" src="../src/js/dashboard.js"></script>
 </head>
 
 
@@ -34,6 +35,8 @@
 			
 			if($id == $donnees['user_id']){
 				$cpt++;
+				
+				
 				echo(
 						"<div class='ecriture1' >"      /*on affiche la maison avec son num*/
 						."<a href='javascript:AfficheCache('conteneur$cpt')'>"
@@ -173,6 +176,31 @@
 												?>
 										
 										<div class="element , ecriture3">
+										
+										<form method="post" action="index.php?cible=dashboard&function=state" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
+										
+										
+										
+											<?php 
+											$id1=$donnees4['id'];					/*on sauvegarde l'id de device qui est à supprimer  */
+											echo("<input type='hidden'"
+												."name='id1'" 
+												."value='"
+												."$id1'/>"
+												);
+											?>
+		   			
+		   									<label class="switch">
+  												<input href="#nullepart" type="checkbox" name="onoff">
+											  <span class="slider round"></span>
+											</label>
+					   					
+					   
+		   								</form>
+										
+										
+										
+										
 										<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
 										
 										
@@ -182,7 +210,7 @@
 											echo("<input type='hidden'"
 												."name='id1'" 
 												."value='"
-												."$id1.'/>"
+												."$id1'/>"
 												);
 											?>
 		   			
@@ -297,17 +325,8 @@
 		}
 		?>
 		
-<script>
-		var AficheCache = function AfficheCache(Id)
-  {
-	if (document.getElementById(Id) != null)
-    {
-		if(document.getElementById(Id).style.display=="none") document.getElementById(Id).style.display="block";
-		else document.getElementById(Id).style.display="none";
-    }
-  }
-		
-</script>
+
+
 			
 		
 </div> 

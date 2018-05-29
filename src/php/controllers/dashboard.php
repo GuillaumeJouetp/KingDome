@@ -44,6 +44,12 @@ else{
     				header('location: index?cible=dashboard');
     			}
     			break;
+    		
+    		case 'state':
+    			debug1($_POST_SEC['id1']);
+    			break;
+    			
+    			
     			
     		case 'supprimer':
     			supprimer($bdd,$_POST_SEC['id1'],'devices');
