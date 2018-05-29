@@ -6,8 +6,9 @@
 
 	<p>Page d'accueil Utilisateur</p>
 
+
 <!-- Formulaire : sélection de la durée en abscisse -->
-	<form method="post" action="index.php?cible=../../js/chartUser&function=selection" enctype="multipart/form-data">
+	<form method="post" action="index.php?cible=accueilUser" enctype="multipart/form-data">
 		<label for="duree">Sélectionner la durée</label>
 		<select name="duree">
 			<option value="1">1 mois</option>
