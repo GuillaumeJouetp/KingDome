@@ -54,3 +54,13 @@ section{
     color: #832429;
     text-align: center;
 }
+
+.showLogs{
+    font-weight: bold;
+    font-size: x-large;
+    display: block;
+    margin: 5% auto;
+    text-align: center;
+    border: rgba(131, 36, 41, 1);
+    border-radius: 20px;
+}
