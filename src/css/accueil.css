@@ -9,3 +9,58 @@ section{
 	height : auto;
 	margin : 0 auto;
 }
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.dataWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2%;
+
+}
+
+.prefixe{
+    color: #832429;
+    font-size: x-large;
+    margin-bottom: 10%;
+}
+
+.data{
+    color : #0081dc;
+    text-align: center;
+    font-size: large;
+    justify-content: center;
+
+
+}
+
+
+.comment{
+    display: flex;
+    color: #818181;
+    font-size: small;
+    justify-content: center;
+    position: relative;
+}
+
+.petit{
+    margin-top: 10%;
+    font-size: small;
+    color: #832429;
+    text-align: center;
+}
+
+.showLogs{
+    font-weight: bold;
+    font-size: x-large;
+    display: block;
+    margin: 5% auto;
+    text-align: center;
+    border: rgba(131, 36, 41, 1);
+    border-radius: 20px;
+}

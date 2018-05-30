@@ -199,13 +199,13 @@ function secuTab($tab){
 
 
 /**
- * Actualise les donnés du graphique de connexion en ordonnée
+ * Actualise les données du graphique de connexion en abscisse
  * @return array
  */
 function setXDatas($bdd){
     $XDatas=[];
     foreach (getdatas($bdd) as $value) {
-        $XDatas[]=$value['date'];
+        $XDatas[]=dateFr($value['date']);
     }
 
     return $XDatas;
@@ -222,6 +222,17 @@ function setYDatas($bdd){
     }
 
     return $YDatas;
+}
+
+/**
+ * Formate une date US en date FR
+ * @param string $dateUS
+ * @return string
+ */
+function dateFr($dateUS){
+    $dateFR = strftime('%d-%m-%Y',strtotime($dateUS));
+    $dateFRslash=str_replace (  '-' , ' / ' ,$dateFR);
+    return $dateFRslash;
 }
 
 ?>

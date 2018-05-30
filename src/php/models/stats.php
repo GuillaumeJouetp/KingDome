@@ -20,9 +20,12 @@ function getNumConsultedPages(PDO $bdd) {
  * @return array
  */
 function getdatas(PDO $bdd){
-    $query = $bdd->prepare('SELECT visites,date FROM visites_jour LIMIT 7 ');
+    /*On récupère les 7 derniers jours*/
+    $query = $bdd->prepare('SELECT visites,date FROM visites_jour ORDER BY date DESC LIMIT 7 ');
     $query->execute();
     $xDatas = $query->fetchAll();
+    /*On affiche les 7 derniers jours dans l'ordre chronologique*/
+    $xDatas = array_reverse($xDatas);
     return $xDatas;
 }
 
