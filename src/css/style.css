@@ -122,6 +122,12 @@ input, .submit_button,textarea, select {
     border-radius:5px;
     box-shadow:1px 1px 2px #C0C0C0 inset;
     cursor:pointer;
+    outline: none;
+}
+
+input:focus {
+    border-color: rgba(82, 168, 236, 0.75);
+    box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
 }
 
 label{

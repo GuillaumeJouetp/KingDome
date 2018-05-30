@@ -79,6 +79,10 @@ label{
     display: inline;
 }
 
+#champs_requis{
+    margin-top: 5%;
+}
+
 #cgu_label{
     margin-top: 2%;
     word-spacing: 2px;
@@ -98,6 +102,10 @@ label{
     text-align: center;
     font-size: large;
     color: #832429;
+}
+
+#deja_inscrit{
+    margin-bottom: 17%;
 }
 
 /* The Modal (background) */
@@ -156,4 +164,29 @@ select{
 /* Darker background on mouse-over */
 .avatar_button:hover {
     background-color: rgba(129, 129, 129,0.3)
+}
+
+.correct {
+    border-color: rgba(68, 191, 68, 0.75);
+}
+
+.correct:focus {
+    border-color: rgba(68, 191, 68, 0.75);
+    box-shadow: 0 0 8px rgba(68, 191, 68, 0.5);
+}
+
+.incorrect {
+    border-color: rgba(191, 68, 68, 0.75);
+}
+
+.incorrect:focus {
+    border-color: rgba(191, 68, 68, 0.75);
+    box-shadow: 0 0 8px rgba(191, 68, 68, 0.5);
+}
+
+.tooltip {
+    display: inline-block;
+    padding: 2px 4px;
+    margin-bottom: 2%;
+    color: #832429;
 }
