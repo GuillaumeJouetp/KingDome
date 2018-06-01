@@ -27,4 +27,6 @@
     </div>
     <span class="comment"> Le trafic est exprimé en nombre de pages consultées</span>
 
+    <button class="showLogs"><a href="index.php?cible=logs"> Show logs </a></button>
+
 </div>
