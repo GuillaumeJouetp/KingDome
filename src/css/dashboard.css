@@ -1,5 +1,6 @@
 /* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par */
-[id*='conteneur']
+
+#conteneur
 {
     display: flex;
     justify-content: space-around;
@@ -8,9 +9,6 @@
 	flex-wrap: wrap;
 }
 
-[id*='conteneur']:target{
-	display:block;
-}
 
 
 
@@ -80,6 +78,33 @@
 	
 }
 
+
+/*CURSEUR DEBUT */
+/* partie commune */
+input[type=range].custom-slider {
+  -webkit-appearance: none;     /*nécessaire pour Chrome */
+  padding: 0;                   /* nécessaire pour IE */
+  margin:-500px 0px 0px 0px;
+  font: inherit;                /* même rendu suivant font document */
+  outline: none;
+  color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+  opacity: .8;
+  background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+  box-sizing: border-box;       /* même modèle de boîte pour tous */
+  transition: opacity .2s;
+  cursor: pointer;
+}
+/*curseur fin*/
+
+.switch{
+	justify-content: left;
+	align-items : left;
+	padding: 0px 0px 0px 0px;
+	margin :0px 0px 0px 0px;
+}
+
+
+
 .pieces {
 	width: 90%;
 	max-height: 500px;
@@ -106,10 +131,10 @@
 	padding:10px 60px 0px 60px;
 	margin:10px 10px 10px 10px;
 	text-align:center;
-	min-height:230px;
-	max-height:230px;
-	min-width:130px;
-	max-width:130px;
+	min-height:350px;
+	max-height:350px;
+	min-width:160px;
+	max-width:160px;
 	border-radius: 20px;
 	
 }
@@ -152,7 +177,7 @@ img.btn-fermer{
 
 .btn-modifier{
 	float:right;
-	margin:-285px -20px 0px 0px;
+	margin:-283px -18px 0px 0px;
 	height:30px;
 	width:auto;
 	border:none;

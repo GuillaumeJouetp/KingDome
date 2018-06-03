@@ -146,8 +146,7 @@ function get_id_device_types($bdd,string $type_capteur){
 
 function get_id_room(array $id_piece, string $num_piece){
 	
-	$num = substr($num_piece, -1, 1);
-	$room_id=$id_piece[$num-1];
+	$room_id=$id_piece[$num_piece-1];
 	
 	return $room_id;
 	

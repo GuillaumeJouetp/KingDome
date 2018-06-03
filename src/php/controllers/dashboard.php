@@ -45,10 +45,7 @@ else{
     			}
     			break;
     		
-    		case 'state':
-    			debug1($_POST_SEC['id1']);
-    			break;
-    			
+    					
     			
     			
     		case 'supprimer':
