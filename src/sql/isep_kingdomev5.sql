@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 04 juin 2018 à 09:07
+-- Généré le :  lun. 04 juin 2018 à 07:44
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -91,18 +91,9 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `name` varchar(100) NOT NULL,
   `state` tinyint(1) NOT NULL,
   `device_type_id` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL,
+  `cemac_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `devices`
---
-
-INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `device_type_id`, `room_id`) VALUES
-(105, 0, 'sfg', 1, 1, 19),
-(106, 0, 'zefh', 1, 1, 19),
-(107, 0, 'erfg', 1, 2, 19);
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -140,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `homes` (
   `zip_code` int(11) NOT NULL,
   `street` varchar(100) DEFAULT NULL,
   `flat_number` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -148,11 +140,11 @@ CREATE TABLE IF NOT EXISTS `homes` (
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
-('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
-('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
-('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 2, 4),
-('NDC', 'Fr', 'Paris', 75, 'rue ndc', 2, 5);
+INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `street`, `flat_number`, `user_id`, `id`) VALUES
+('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 14, 1),
+('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 1, 14, 3),
+('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 2, 14, 4),
+('NDC', 'Fr', 'Paris', 75, 'rue ndc', 2, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -243,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `name` varchar(100) NOT NULL,
   `home_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `rooms`
@@ -256,8 +248,7 @@ INSERT INTO `rooms` (`id`, `name`, `home_id`) VALUES
 (17, 'Chambre parents', 5),
 (18, 'Salle de jeu', 5),
 (19, 'Toilette', 1),
-(20, 'APP', 4),
-(21, 'Cuisine', 1);
+(20, 'APP', 4);
 
 -- --------------------------------------------------------
 
@@ -355,7 +346,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (12, '2018-05-28'),
 (17, '2018-05-29'),
 (8, '2018-06-03'),
-(52, '2018-06-04');
+(13, '2018-06-04');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
