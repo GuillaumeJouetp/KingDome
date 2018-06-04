@@ -44,6 +44,9 @@ else{
     				header('location: index?cible=dashboard');
     			}
     			break;
+    		
+    		
+    			
     			
     		case 'supprimer':
     			supprimer($bdd,$_POST_SEC['id1'],'devices');
@@ -52,6 +55,11 @@ else{
     			
     		case 'modifier':
     			modification($bdd, $_POST_SEC['nom'],'name', $_POST_SEC['id1'],'devices');
+    			header('location: index?cible=dashboard');
+    			break;
+    			
+    		case 'donnees':
+    			debug1($_POST_SEC['curseur']);
     			header('location: index?cible=dashboard');
     			break;
     			
