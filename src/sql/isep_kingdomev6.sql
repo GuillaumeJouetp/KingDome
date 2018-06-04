@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 04 juin 2018 à 09:49
+-- Généré le :  lun. 04 juin 2018 à 09:07
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -75,11 +75,6 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` float NOT NULL,
   `device_id` int(11) NOT NULL,
-  `type_trame` int(11) NOT NULL,
-  `objet` varchar(255) NOT NULL,
-  `type_requete` int(11) NOT NULL,
-  `checksum` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
