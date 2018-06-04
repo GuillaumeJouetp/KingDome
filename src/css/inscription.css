@@ -1,4 +1,3 @@
-
 #ins_form{
     display: flex;
     justify-content: center;
@@ -31,6 +30,7 @@ h3{
 
 .submit{
     margin: auto;
+    padding-top: 2%;
     padding-left: 20%;
 }
 
@@ -56,11 +56,45 @@ button:hover{
 }
 
 #city{
-    margin-left: 7%;
+    margin-left: 6%;
 }
 
 #reset_button{
     margin-left: 10%;
+}
+
+input{
+    margin-bottom: 2%;
+}
+
+label{
+    display: block;
+}
+
+#num_label{
+    margin-top: 2%;
+}
+
+#zip_label, #birth_label, #city{
+    display: inline;
+}
+
+#champs_requis{
+    margin-top: 5%;
+}
+
+#cgu_label{
+    margin-top: 2%;
+    word-spacing: 2px;
+}
+
+#cgu_checkbox{
+    margin-left: 5%;
+}
+
+#cgu_link{
+    color: #832429;
+    font-weight: bold;
 }
 
 .Alerte_Message{
@@ -69,6 +103,11 @@ button:hover{
     font-size: large;
     color: #832429;
 }
+
+#deja_inscrit{
+    margin-bottom: 17%;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -123,15 +162,72 @@ select{
     cursor: pointer;
 }
 
-.label_cgu{
-    word-spacing: 2px;
-}
-
-#cgu{
-    margin-left: 5%;
-}
-
 /* Darker background on mouse-over */
 .avatar_button:hover {
     background-color: rgba(129, 129, 129,0.3)
+}
+
+.correct {
+    border-color: rgba(68, 191, 68, 0.75);
+}
+
+.correct:focus {
+    border-color: rgba(68, 191, 68, 0.75);
+    box-shadow: 0 0 8px rgba(68, 191, 68, 0.5);
+}
+
+.incorrect {
+    border-color: rgba(191, 68, 68, 0.75);
+}
+
+.incorrect:focus {
+    border-color: rgba(191, 68, 68, 0.75);
+    box-shadow: 0 0 8px rgba(191, 68, 68, 0.5);
+}
+
+.tooltip {
+    display: inline-block;
+    padding: 2px 4px;
+    margin-bottom: 2%;
+    color: #832429;
+}
+
+.button_correct{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(68, 191, 68, 0.75);
+    border-radius:5px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_correct:hover{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(68, 191, 68, 0.75);
+    box-shadow: 0 0 8px rgba(68, 191, 68, 0.5);
+    border-radius:5px;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_incorrect{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(191, 68, 68, 0.75);
+    box-shadow: 0 0 8px rgba(191, 68, 68, 0.5);
+    border-radius:5px;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_incorrect:hover{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(191, 68, 68, 0.75);
+    border-radius:5px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    cursor:pointer;
+    outline: none;
 }
