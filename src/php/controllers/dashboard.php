@@ -32,7 +32,7 @@ else{
     				'name' => htmlspecialchars($_POST['nom']),
     				'state' => 1,
     				'device_type_id' => get_id_device_types($bdd,$_POST_SEC['type_capteur']),
-    				'cemac_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
+    				'room_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
     				);
     				
     				insertion($bdd, $Data_devices, 'devices');
