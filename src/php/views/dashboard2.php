@@ -231,13 +231,13 @@
 														);
 													
 													$cpt5=0;
-													foreach($cemacs as $donnees5){  /*boucle for 6 pour savoir si l'id dans room correspond avec l'id room dans cemac*/	
+													//foreach($cemacs as $donnees5){  /*boucle for 6 pour savoir si l'id dans room correspond avec l'id room dans cemac*/	
 														
-														if($donnees2['id']==$donnees5['room_id'] ){ /*if 5*/
+														//if($donnees2['id']==$donnees5['room_id'] ){ /*if 5*/
 															
 															foreach($devices as $donnees4){  //boucle for 7 pour savoir si l'id dans cemac correspond avec l'id cemac dans device
 																									
-																if($donnees4['cemac_id']==$donnees5['id']){/*if 6*/
+																if($donnees4['room_id']==$donnees2['id']){/*if 6*/
 																	$cpt5=1;
 																	
 											?>
@@ -364,8 +364,8 @@
 										
 																}/*fin if 6*/
 															}   /*fin for 7*/
-														}  /*fin if 5*/
-													}  /*fin for 6*/
+														//}  /*fin if 5*/
+													//}  /*fin for 6*/
 													if($cpt5==0){  /* if 7 */
 														echo(
 																"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
