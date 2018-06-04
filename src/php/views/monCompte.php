@@ -117,7 +117,7 @@
                     </section>
                 <?php } ?>
             </div>
-            <script src="src/js/Collapse.js"></script>
+            <script src="../src/js/Collapse.js"></script>
         <?php }
         $var->closeCursor(); // Termine le traitement de la requête
         ?>
@@ -171,7 +171,7 @@
                 </div>
             </div>
         </div>
-        <script src="src/js/Form_Maison.js"></script>
+        <script src="../src/js/Form_Maison.js"></script>
 
     </div>
     <br><br>

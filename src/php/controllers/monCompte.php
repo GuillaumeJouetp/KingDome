@@ -47,7 +47,7 @@ else {
                 insertion($bdd, $Data_ownHome, 'own_home');
                 $_SESSION['home_id'] = $Data_ownHome['home_id'];
 
-                header('location: index.php');
+                header('location: index.php?cible=monCompte');
                 break;
 
             case 'deconnexion':
@@ -75,7 +75,7 @@ else {
                     $id = $_GET['del_home'];
                     $req = "DELETE FROM homes WHERE id = '.$id.' ";
                     $bdd->exec($req);
-                    header('location: index.php');
+                    header('location: index.php?cible=monCompte');
                 }
                 break;
 
@@ -84,7 +84,7 @@ else {
                     $id2 = $_GET['del_room'];
                     $req2 = "DELETE FROM rooms WHERE id = '.$id2.' ";
                     $bdd->exec($req2);
-                    header('location: index.php');
+                    header('location: index.php?cible=monCompte');
                 }
                 break;
 
