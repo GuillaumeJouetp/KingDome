@@ -167,3 +167,24 @@ function get_last(PDO $bdd, string $table, string $email): array {
 
 
 
+
+/**
+ * Recherche nom devices en fonction des attributs passés en paramètre
+ * @param PDO $bdd
+ * @param string $table
+ * @param array $attributs
+ * @return array
+ */
+function recherche_device(PDO $bdd, string $attributs): array {
+	
+	$query = 'SELECT name FROM device_types WHERE id=' . $attributs;
+	return $bdd->query($query)->fetchAll();
+	
+	
+	
+
+}
+
+
+
+

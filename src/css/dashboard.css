@@ -1,4 +1,5 @@
 /* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par */
+
 #conteneur
 {
     display: flex;
@@ -7,6 +8,7 @@
 	margin: 15px 0px 0px 0px;  
 	flex-wrap: wrap;
 }
+
 
 
 
@@ -76,6 +78,33 @@
 	
 }
 
+
+/*CURSEUR DEBUT */
+/* partie commune */
+input[type=range].custom-slider {
+  -webkit-appearance: none;     /*nécessaire pour Chrome */
+  padding: 0;                   /* nécessaire pour IE */
+  margin:-500px 0px 0px 0px;
+  font: inherit;                /* même rendu suivant font document */
+  outline: none;
+  color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+  opacity: .8;
+  background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+  box-sizing: border-box;       /* même modèle de boîte pour tous */
+  transition: opacity .2s;
+  cursor: pointer;
+}
+/*curseur fin*/
+
+.switch{
+	justify-content: left;
+	align-items : left;
+	padding: 0px 0px 0px 0px;
+	margin :0px 0px 0px 0px;
+}
+
+
+
 .pieces {
 	width: 90%;
 	max-height: 500px;
@@ -99,38 +128,45 @@
 	font-size:1.25em;
 	color: rgb(131,36,41);
 	border: 1.5px solid rgb(131,36,41);
-	padding:10px 60px 0px 60px;
-	margin:10px 10px 10px 10px;
+	padding:0px 60px 0px 60px;
+	margin:0px 10px 5px 10px;
 	text-align:center;
-	min-height:230px;
-	max-height:230px;
-	min-width:130px;
-	max-width:130px;
+	min-height:300px;
+	max-height:300px;
+	min-width:140px;
+	max-width:140px;
 	border-radius: 20px;
 	
 }
 
 
 .capteur{
-	height:75px;
-	width:auto;
+	height:70px;
+	width:auto;	
 }
 
+
+
 .capteur_ecriture{
-	margin:30px 0px 30px 0px;
+	margin:30px 0px 20px 0px;
+}
+
+.capteur_ecriture2{
+	margin:10px 0px 20px 0px;
+	padding:0px 0px 0px 0px;
 }
 
 .capt{
 	color:rgb(131,36,41);
 	font-size:20px;
 	margin: auto;
-	margin-bottom : 20px;
+	margin-bottom : 10px;
 	
 }
 
 img.btn-fermer{
 	float:right;
-	margin:0 0 0 0;
+	margin:0px 0px 0px 0px;
 	height:60px;
 	width:auto;
 	
@@ -138,7 +174,7 @@ img.btn-fermer{
 
 .btn-fermer2{
 	float:right;
-	margin:-260px -70px 0px 0px;
+	margin:-80px -70px 0px 0px;
 	height:60px;
 	width:auto;
 	border:none;
@@ -148,7 +184,7 @@ img.btn-fermer{
 
 .btn-modifier{
 	float:right;
-	margin:-285px -20px 0px 0px;
+	margin:-205px -18px 0px 0px;
 	height:30px;
 	width:auto;
 	border:none;
@@ -178,4 +214,26 @@ img.btn-fermer{
 [id*='masques']:target{
 	display:block;
 }
+
+/*fenetre modale*/
+
+/*Pour bouton on off*/
+
+
+/*Pour bouton on off*/
+
+.curseur{
+	margin:-20px 0px 0px 0px;
+    -webkit-appearance: none;     /*nécessaire pour Chrome */ 
+    color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    opacity: .8;
+    background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+    transition: opacity .2s;
+    
+
+}
+
+
+
+
 

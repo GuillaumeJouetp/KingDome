@@ -32,7 +32,7 @@ else{
     				'name' => htmlspecialchars($_POST['nom']),
     				'state' => 1,
     				'device_type_id' => get_id_device_types($bdd,$_POST_SEC['type_capteur']),
-    				'cemac_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
+    				'room_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
     				);
     				
     				insertion($bdd, $Data_devices, 'devices');
@@ -44,6 +44,9 @@ else{
     				header('location: index?cible=dashboard');
     			}
     			break;
+    		
+    		
+    			
     			
     		case 'supprimer':
     			supprimer($bdd,$_POST_SEC['id1'],'devices');
@@ -52,6 +55,11 @@ else{
     			
     		case 'modifier':
     			modification($bdd, $_POST_SEC['nom'],'name', $_POST_SEC['id1'],'devices');
+    			header('location: index?cible=dashboard');
+    			break;
+    			
+    		case 'donnees':
+    			debug1($_POST_SEC['curseur']);
     			header('location: index?cible=dashboard');
     			break;
     			

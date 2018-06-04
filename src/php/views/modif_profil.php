@@ -32,20 +32,20 @@
             <p><input type="text" size="35" value="<?php echo $_SESSION['user_firstname']; ?>" disabled/></p>
 
             <label>Adresse</label>
-            <p><input type="text" size="35" value="" disabled/></p>
+            <p><input type="text" size="35" value="<?php echo $_SESSION['adress']; ?>" disabled/></p>
 
             <label for="zip_code">Code postal</label>
-            <p><input type="text" name="zip_code" id="zip_code" size="11"/></p>
+            <p><input type="text" name="zip_code" id="zip_code" size="11" value="<?php echo $_SESSION['zip_code']; ?>"/></p>
             <label for="city" id="ville">Ville</label>
-            <p><input type="text" name="city" id="city" size="18"/></p>
+            <p><input type="text" name="city" id="city" size="18" value="<?php echo $_SESSION['city']; ?>"/></p>
 
             <label>Numéro de téléphone</label>
-            <p><input type="tel" name="tel" size="35" value=""/></p>
+            <p><input type="tel" name="tel" size="35" value="<?php echo $_SESSION['tel']; ?>"/></p>
 
             <label>Date de naissance</label>
             <p><input type="date" name="date_naissance" size="35" value="<?php echo $_SESSION['birth_date']; ?>"/></p>
 
-            <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
+            <button type="submit" name="modifier" class="submit_button">Modifier</button>
             <br>
         </form>
 
