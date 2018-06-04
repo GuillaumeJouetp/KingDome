@@ -22,6 +22,24 @@
 			else document.getElementById(Id).style.display='none';
 	    }
 	  }
+
+
+	  function ConfirmerSupp()
+		{
+		if (window.confirm("Confirmez vouloir supprimer le capteur "+ formsupp.name1.value +" ?"))
+		{
+		document.forms["formsupp"].submit();
+		}
+		}
+
+
+	  function ConfirmerMod()
+		{
+		if (window.confirm(" Confirmez vous vouloir modifier le nom du capteur ?"))
+		{
+		document.forms["formmod"].submit();
+		}
+		}
 	 
 	//-->
 	</SCRIPT>
@@ -226,7 +244,7 @@
 										
 			<div class="element , ecriture3">	 <!-- div de chaque données qui va être afficher -->							
 										
-				<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
+				<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data" name="formsupp">   <!--form pour supprimer un capteur -->
 										
 										
 										
@@ -242,11 +260,17 @@
 											?>
 											
 											
+											
+											 
+											
+											
 		   			
 		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage de nom du capteur donné par l'user -->
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">  <!--affichage de l'image correspondant au capteur-->
-		   									
+		   		  							<input href="#nullepart" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"  /><br><br>
+											</form>			
+		   										
 		   									
 		   									
 		   									<?php 
@@ -255,25 +279,36 @@
 										            case 'Humidité':
 										            	
 										            	?>
-										            	<div class="capteur_ecriture"> ---  % </div>
-										            	<?php
+										            	<div class="capteur_ecriture2"> ---  % </div>
+														<?php
 										            	
 										            	break;
 										                										                
 										            case 'Température':
 										            	
 										            	?>
-										              	<div class="capteur_ecriture"> ---  °C </div>
-										                <?php
+										              	<div class="capteur_ecriture2"> ---  °C </div>
+														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" id="frmName" > 
+														
+														<input class="curseur" type="range" name="curseur" />
+														
+														</form><?php
 										                
 										                break;
 										            											            	
 										            case 'Luminosité':
 										            	
 										            	?>
-										          		<div class="capteur_ecriture"> ---  % </div>
-							   							
-										                <?php
+										            	
+										            	<div class="capteur_ecriture2"> ---  % </div>
+										            	
+														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" id="frmName" > 
+														
+														<input class="curseur" type="range" name="curseur" />
+														
+														</form>
+
+							   							<?php
 										                
 										                break;							
 										
@@ -286,11 +321,9 @@
 												   									
 										   ?>
 		   				
+		   						
 		   								
-		   								
-		   		<input href="#nullepart" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2" /><br><br>
-			</form>   								
-		   														
+		   													
 		   	<a href='#masqueA$cpt'> <img class='btn-modifier' src='..\res\icones\modifier.png'/>  </a> <div id='masqueA$cpt'>  <!--icone modifier qui va permmetre d'affiher la fenêtre modale modifier -->
 											
 					
@@ -307,18 +340,18 @@
 					   	
 					   					  <?php
 					   					  
-					   						$a=$donnees['house_id'];     /*on sauvegarde l'id de la maison qui va etre envoyé dans le formulaire  */
-											echo("<input type='hidden'"
-												."name='maison'" 
+					   					  $id1=$donnees4['id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
+					   					  echo("<input type='hidden'"
+												."name='id1'"
 												."value='"
-												."$a'/>"
-												);
+										  		."$id1'/>"
+										  		);
 											
 											?>
 					    	      						
 						       
 						       
-						<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Modifier" /><br><br>
+						<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Modifier"/><br><br>
 					   
 					 </form>			
 				</div> <!-- .fenetre-modale -->
