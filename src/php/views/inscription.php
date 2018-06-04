@@ -110,8 +110,8 @@
                                     <h3>Téléchargez votre avatar</h3>
                                     <h4>(JPG, PNG ou GIF)</h4><br>
                                     <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
-                                    <input type="file" name="avatar" size=50 class="avatar_button" id="the_avatar" onchange="verifAvatar()"/>
-                                    <button type="button" class="submit_button" id="avatar_ok" onclick="verifAvatar()">Envoyer</button>
+                                    <input type="file" name="avatar" size=50 class="avatar_button" id="the_avatar"/>
+                                    <button type="button" class="submit_button" id="avatar_ok" onblur="verifAvatar()">Envoyer</button>
 
                             </div>
                     </div>

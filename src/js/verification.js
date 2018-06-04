@@ -46,7 +46,6 @@ function verifAvatar() {
         tooltipStyle = document.getElementById('avatar_tooltip').style,
         avatar_btn = document.getElementById('myBtn'),
         regex = /.(gif|jpg|jpeg|png)$/i;
-    alert(avatar.value);
     if (regex.test(avatar.value)){
         avatar_btn.className = 'button_correct';
         tooltipStyle.display = 'none';
