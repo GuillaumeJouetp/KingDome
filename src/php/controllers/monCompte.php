@@ -34,8 +34,19 @@ else {
                     'registration_state' => 0,
                     'registration_date' => date("Y-m-d H:i:s"));
 
-                    insertion($bdd, $Data_ajoutMaison, 'homes');
-                    $_SESSION['name_home'] = $Data_ajoutMaison['name_home'];
+                insertion($bdd, $Data_ajoutMaison, 'homes');
+                $_SESSION['name_home'] = $Data_ajoutMaison['name_home'];
+
+                $var = $bdd->query('SELECT * FROM homes');
+                $home = $var->fetch();
+                $home_id=$home['id'];
+
+                $Data_ownHome = array(
+                    'home_id' => $home_id,
+                    'user_id' => session_id());
+                insertion($bdd, $Data_ownHome, 'own_home');
+                $_SESSION['home_id'] = $Data_ownHome['home_id'];
+
                 header('location: index.php');
                 break;
 
@@ -44,6 +55,44 @@ else {
                 session_destroy();
                 header('Location: index.php?cible=utilisateur');
                 break;
+
+            case 'addRoom' :
+
+                /*if (empty($room)) {
+                    $errors = "Veuillez indiquer le nom de la pièce";
+                }
+                else {*/
+                $dataRooms = array();
+                $dataRooms['name'] = $_POST['name'];
+                $dataRooms['home_id'] = $_POST['home_id'];
+                insertion($bdd, $dataRooms, 'rooms');
+                header ('location: index.php');
+
+                break;
+
+            case 'delHome' :
+                if (isset($_GET['del_home'])) {
+                    $id = $_GET['del_home'];
+                    $req = "DELETE FROM homes WHERE id = '.$id.' ";
+                    $bdd->exec($req);
+                    header('location: index.php');
+                }
+                break;
+
+            case 'delRoom' :
+                if (isset($_GET['del_room'])) {
+                    $id2 = $_GET['del_room'];
+                    $req2 = "DELETE FROM rooms WHERE id = '.$id2.' ";
+                    $bdd->exec($req2);
+                    header('location: index.php');
+                }
+                break;
+
+            $query = $bdd->prepare('SELECT * FROM rooms');
+            $query->execute();
+
+            $query2 = $bdd->prepare('SELECT * FROM homes');
+            $query2->execute();
 
             default :
                 // si aucune fonction ne correspond au paramètre function passé en GET

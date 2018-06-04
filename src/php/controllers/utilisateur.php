@@ -107,6 +107,7 @@ switch ($function) {
             // Ajoute la date de naissance si elle est renseigné
             if($_POST_SEC['date_naissance'] != ''){
                 $Data_Inscription['birth_date'] = $_POST_SEC['date_naissance'];
+                $_SESSION['birth_date'] = $Data_Inscription['birth_date'];
             }
 
             // Ajoute l'avatar si il est renseingé
@@ -118,6 +119,10 @@ switch ($function) {
             insertion($bdd, $Data_Inscription, 'users');
             $_SESSION['user_firstname'] = $Data_Inscription['user_firstname'];
             $_SESSION['user_name'] = $Data_Inscription['user_name'];
+            $_SESSION['adress'] = $Data_Inscription['adress'];
+            $_SESSION['city'] = $Data_Inscription['city'];
+            $_SESSION['zip_code'] = $Data_Inscription['zip_code'];
+            $_SESSION['tel'] = $Data_Inscription['tel'];
             $_SESSION['password'] = $Data_Inscription['password'];
             $_SESSION['email'] = $_POST_SEC['email'];
             $_SESSION['connected'] = true;

@@ -20,7 +20,6 @@
     <div id="profil">
         <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
 
-        <h2>Informations personnnelles</h2>
         <h2>Informations personnelles</h2>
         <div id="info_perso">
             <div id="info_persop">
@@ -40,124 +39,88 @@
 
     <!--Gestion des résidences-->
     <div>
-        <p>
-        <h2>Mes résidences </h2>
-        </p>
+        <h3>Mes résidences</h3>
 
         <?php
-            $own_home = recupereTous($bdd, 'own_home');              /*variables pour recuperer les données de la bdd de own_home, rooms, devices_types, devices, cemacs*/
-            $homes = recupereTous($bdd, 'homes');
-            $rooms = recupereTous($bdd, 'rooms');
-            $device_types = recupereTous($bdd, 'device_types');
-            $devices = recupereTous($bdd, 'devices');
-            $cemacs = recupereTous($bdd, 'cemacs');
-            $id=$_SESSION['user_id'];
+        // On récupère tout le contenu de la table jeux_video
+        $var = $bdd->query('SELECT * FROM homes');
 
-            foreach($own_home as $donnees) { /*boucle pour avoir le nombre de maison*/
+        // On affiche chaque entrée une à une
+        while ($home = $var->fetch())
+        {
+            ?>
+            <button class='collapsible' onclick='collapse()'><?php echo $home['name_home']; ?>
+                <label class='switch' style='margin-left: 2%'>
+                    <input type='checkbox'>
+                    <span class='slider round'></span>
+                </label>
+            </button>
+        <?php $home_id=$home['id']; ?>
 
-                if ($id == $donnees['user_id']) {
-                    echo(
-                        "<button class='accordion' onclick='accordeon()'><h4>Nom de la maison"
-                            . "<label class='switch' style='margin-left: 2%'>"
-                                . "<input type='checkbox'>"
-                                . "<span class='slider round'></span>"
-                            . "</label></h4>"
-                        . "</button>"
-                        . '<div class="panel">'
-                            . '<div id="myDIV" class="header">'
-                                . '<h2 style="margin:5px; text-align: left">Ajouter une pièce</h2>'
-                                . '<input type="text" id="myInput" placeholder="Pièce...">'
-                                . '<span onclick="newElement()" class="addBtn">Add</span>'
+            <div class="content">
+                <?php
+                // On récupère tout le contenu de la table jeux_video
+                $var2 = $bdd->query('SELECT * FROM rooms');
 
-                            . '</div>'
+                // On affiche chaque entrée une à une
+                while ($room = $var2->fetch())
+                {
+                    $room['home_id'] = $home_id;
+                    ?>
+                    <form method="post" action="index.php?cible=monCompte&function=addRoom" class="addRoom">
+                        <?php if (isset($errors)) { ?>
+                            <p><?php echo $errors; ?></p>
+                        <?php } ?>
+                        <input type="text" name="home_id" value="<?php echo $room['home_id']; ?>" style="display: none">
+                        <input type="text" name="name" class="room_input" placeholder="Entrer le nom de la pièce">
+                        <button type="submit" class="room_btn" name="submit">Ajouter </button>
+                    </form>
 
-                            . '<ul id="myUL">'
-                            . '</ul>'
-                        . '</div>'
-                    );
-                }
-            }
+                    <section class="room">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Pièces</th>
+                                <th>Supprimer</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php while ($donnees2 = $var2->fetch()) { ?>
+                                <tr>
+                                    <td class="room">
+                                        <?php
+                                        if ($donnees2['home_id'] == $home_id) {
+                                            echo $donnees2['name'];}
+                                        ?>
+                                    </td>
+                                    <td class="delete">
+                                        <?php if ($donnees2['home_id'] == $home_id) { ?>
+                                            <a href="index.php?cible=monCompte&function=delRoom=<?php echo $donnees2['id2']; ?>"
+                                               onclick="if(confirm('Etes vous sûre de vouloir supprimer la pièce?')){
+                                   document.location.href=url;}
+                                   else{}">x</a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            } ?>
+                            </tbody>
+                        </table>
+                        <p style="text-align: center">
+                            <a href="index.php?cible=monCompte&function=delHome=<?php echo $home['id']; ?>"
+                               onclick="if(confirm('Etes vous sûre de vouloir supprimer la résidence?')){
+                       document.location.href=url;}
+                   else{}">Supprimer maison
+                            </a>
+                        </p>
+                    </section>
+                <?php } ?>
+            </div>
+            <script src="src/js/Collapse.js"></script>
+        <?php }
+        $var->closeCursor(); // Termine le traitement de la requête
         ?>
-        <form method="post" action="index.php?cible=monCompte&room">
-            <input type="text" name="room" class="room_input">
-            <button type="submit" class="room_btn" name="submit">Ajouter pièce</button>
-        </form>
-        <script>
-            function accordeon() {
-                var acc = document.getElementsByClassName("accordion");
-                var i;
-
-                for (i = 0; i < acc.length; i++) {
-                    acc[i].addEventListener("click", function() {
-                        this.classList.toggle("active");
-                        var panel = this.nextElementSibling;
-                        if (panel.style.maxHeight){
-                            panel.style.maxHeight = null;
-                        } else {
-                            panel.style.maxHeight = panel.scrollHeight + "px";
-                        }
-                    });
-                }
-            }
-        </script>
-        <script>
-            // Create a "close" button and append it to each list item
-            var myNodelist = document.getElementsByTagName("LI");
-            var i;
-            for (i = 0; i < myNodelist.length; i++) {
-                var span = document.createElement("SPAN");
-                var txt = document.createTextNode("\u00D7");
-                span.className = "close";
-                span.appendChild(txt);
-                myNodelist[i].appendChild(span);
-            }
-
-            // Click on a close button to hide the current list item
-            var close = document.getElementsByClassName("close");
-            var i;
-            for (i = 0; i < close.length; i++) {
-                close[i].onclick = function() {
-                    var div = this.parentElement;
-                    div.style.display = "none";
-                }
-            }
-
-            // Add a "checked" symbol when clicking on a list item
-            var list = document.querySelector('ul');
-            list.addEventListener('click', function(ev) {
-                if (ev.target.tagName === 'LI') {
-                    ev.target.classList.toggle('checked');
-                }
-            }, false);
-
-            // Create a new list item when clicking on the "Add" button
-            function newElement() {
-                var li = document.createElement("li");
-                var inputValue = document.getElementById("myInput").value;
-                var t = document.createTextNode(inputValue);
-                li.appendChild(t);
-                if (inputValue === '') {
-                    alert("You must write something!");
-                }
-                else {
-                    document.getElementById("myUL").appendChild(li);
-                }
-                document.getElementById("myInput").value = "";
-
-                var span = document.createElement("SPAN");
-                var txt = document.createTextNode("\u00D7");
-                span.className = "close";
-                span.appendChild(txt);
-                li.appendChild(span);
-
-                for (i = 0; i < close.length; i++) {
-                    close[i].onclick = function() {
-                        var div = this.parentElement;
-                        div.style.display = "none";
-                    }
-                }
-            }
-        </script>
 
         <!-- Consommation -->
         <button>
@@ -175,68 +138,40 @@
                 </div>
                 <div class="model-body">
                     <h3>Ajouter une résidence</h3>
-                    <form method="post" action="index.php?cible=monCompte&function=ajouter" enctype="multipart/form-data" class="ajout">
+                    <form method="post" action="index.php" class="ajout">
                         <p>
-                            <p><label for="name_home">Nom de la maison*<br>
-                                    <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
-                                </label>
-                            </p>
-                            <p><label for="street">Adresse*<br>
-                                    <input type="text" name="street" id="street" placeholder="Adresse de la maison" required/>
-                                </label>
-                            </p>
+                        <p><label for="name_home">Nom de la maison*<br>
+                                <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
+                            </label>
+                        </p>
+                        <p><label for="adress">Adresse*<br>
+                                <input type="text" name="adress" id="adress" placeholder="Adresse de la maison" required/>
+                            </label>
+                        </p>
 
-                            <p><label for="zip_code">Code postal*<br>
-                                    <input type="text" name="zip_code" id="zip_code" required/>
-                                </label>
-                            </p>
-                            <p><label for="town" id="ville">Ville*<br>
-                                    <input type="text" name="town" id="town" required/>
-                                </label>
-                            </p>
+                        <p><label for="zip_code">Code postal*<br>
+                                <input type="text" name="zip_code" id="zip_code" required/>
+                            </label>
+                        </p>
+                        <p><label for="town" id="ville">Ville*<br>
+                                <input type="text" name="town" id="town" required/>
+                            </label>
+                        </p>
 
-                            <p><label for="country">Pays*<br>
-                                    <input type="text" name="country" id="country" value="France" required>
-                                </label>
-                            </p>
+                        <p><label for="country">Pays*<br>
+                                <input type="text" name="country" id="country" value="France" required>
+                            </label>
+                        </p>
 
-                            <button style="width:auto;" type="submit" name="submit_home">
-                                Ajouter
-                            </button>
+                        <button style="width:auto;" type="submit" name="submit2">
+                            Ajouter
+                        </button>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
-        <script>
-            function ajoutMaison() {
-                // Get the modal
-                var model = document.getElementById('myModel');
-
-                // Get the button that opens the modal
-                var bt = document.getElementById("myBt");
-
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close2")[0];
-
-                // When the user clicks the button, open the modal
-                bt.onclick = function() {
-                    model.style.display = "block";
-                }
-
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                    model.style.display = "none";
-                }
-
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                    if (event.target == model) {
-                        model.style.display = "none";
-                    }
-                }
-            }
-        </script>
+        <script src="src/js/Form_Maison.js"></script>
 
     </div>
     <br><br>
