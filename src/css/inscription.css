@@ -108,6 +108,7 @@ label{
     margin-bottom: 17%;
 }
 
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -189,4 +190,44 @@ select{
     padding: 2px 4px;
     margin-bottom: 2%;
     color: #832429;
+}
+
+.button_correct{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(68, 191, 68, 0.75);
+    border-radius:5px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_correct:hover{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(68, 191, 68, 0.75);
+    box-shadow: 0 0 8px rgba(68, 191, 68, 0.5);
+    border-radius:5px;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_incorrect{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(191, 68, 68, 0.75);
+    box-shadow: 0 0 8px rgba(191, 68, 68, 0.5);
+    border-radius:5px;
+    cursor:pointer;
+    outline: none;
+}
+
+.button_incorrect:hover{
+    background-color: white;
+    padding:3px;
+    border:1px solid rgba(191, 68, 68, 0.75);
+    border-radius:5px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    cursor:pointer;
+    outline: none;
 }

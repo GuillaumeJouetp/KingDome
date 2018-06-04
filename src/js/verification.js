@@ -1,3 +1,65 @@
+// Verification spéciale pour l'adresse automatiquement complétée
+
+var good_adress = false,
+    good_date = true,
+    good_avatar = true;
+
+function verifAdress() {
+
+    var adress = document.getElementById('autocomplete'),
+        tooltipStyle = getTooltip(adress).style,
+        zip_code = document.getElementById('postal_code'),
+        city = document.getElementById('locality');
+
+    if (zip_code.value === "" || city.value === "") {
+        adress.className = 'incorrect';
+        zip_code.className = 'incorrect';
+        city.className = 'incorrect';
+        tooltipStyle.display = 'inline-block';
+        good_adress = false;
+    } else {
+        adress.className = 'correct';
+        zip_code.className = 'correct';
+        city.className = 'correct';
+        tooltipStyle.display = 'none';
+        good_adress = true;
+    }
+}
+
+function verifDate(){
+    var date = document.getElementById('date'),
+        tooltipStyle = document.getElementById('date_tooltip').style,
+        date_split = date.value.split('-', 3);
+    if(date_split[0] <= 1877 || date_split[0] >= 2016){
+        date.className = 'button_incorrect';
+        tooltipStyle.display = 'inline-block';
+        good_date = false;
+    } else {
+        date.className = 'button_correct';
+        tooltipStyle.display = 'none';
+        good_date = true;
+    }
+}
+
+function verifAvatar() {
+    var avatar = document.getElementById('the_avatar'),
+        tooltipStyle = document.getElementById('avatar_tooltip').style,
+        avatar_btn = document.getElementById('myBtn'),
+        regex = /.(gif|jpg|jpeg|png)$/i;
+    alert(avatar.value);
+    if (regex.test(avatar.value)){
+        avatar_btn.className = 'button_correct';
+        tooltipStyle.display = 'none';
+        avatar_btn.innerHTML = "Avatar bien ajouté!";
+        good_date = true;
+    } else {
+        avatar_btn.className = 'button_incorrect';
+        tooltipStyle.display = 'inline-block';
+        avatar_btn.innerHTML = "Avatar non ajouté...";
+        good_avatar = false;
+    }
+}
+
 // Fonction de désactivation de l'affichage des "tooltips"
 function deactivateTooltips() {
 
@@ -101,8 +163,8 @@ check['civil'] = function() {
 check['lastName'] = function(id) {
 
     var name = document.getElementById(id),
-        tooltipStyle = getTooltip(name).style;
-    var regex = /[0-9]/;
+        tooltipStyle = getTooltip(name).style,
+        regex = /[0-9]/;
 
     if (name.value.length >= 2 && !regex.test(name.value)) {
         name.className = 'correct';
@@ -116,7 +178,31 @@ check['lastName'] = function(id) {
 
 };
 
+check['autocomplete'] = good_adress;
+
 check['firstName'] = check['lastName']; // La fonction pour le prénom est la même que celle du nom
+
+check['tel'] = function() {
+
+    var tel = document.getElementById('tel'),
+        tooltipStyle = getTooltip(tel).style,
+        regex = /^0[1-68]([-. ]?[0-9]{2}){4}$/;
+
+    if (regex.test(tel.value)) {
+        tel.className = 'correct';
+        tooltipStyle.display = 'none';
+        return true;
+    } else {
+        tel.className = 'incorrect';
+        tooltipStyle.display = 'inline-block';
+        return false;
+    }
+
+};
+
+check['date'] = good_date;
+
+check['date'] = good_avatar;
 
 
 // Mise en place des événements
@@ -142,7 +228,9 @@ check['firstName'] = check['lastName']; // La fonction pour le prénom est la m�
         }
 
         if (result) {
-            alert('Le formulaire est bien rempli.');
+            e.submit();
+        } else {
+            alert('Le formulaire est mal rempli.');
         }
 
         e.preventDefault();
