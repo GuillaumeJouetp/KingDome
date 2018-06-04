@@ -128,38 +128,45 @@ input[type=range].custom-slider {
 	font-size:1.25em;
 	color: rgb(131,36,41);
 	border: 1.5px solid rgb(131,36,41);
-	padding:10px 60px 0px 60px;
-	margin:10px 10px 10px 10px;
+	padding:0px 60px 0px 60px;
+	margin:0px 10px 5px 10px;
 	text-align:center;
-	min-height:350px;
-	max-height:350px;
-	min-width:160px;
-	max-width:160px;
+	min-height:300px;
+	max-height:300px;
+	min-width:140px;
+	max-width:140px;
 	border-radius: 20px;
 	
 }
 
 
 .capteur{
-	height:75px;
-	width:auto;
+	height:70px;
+	width:auto;	
 }
 
+
+
 .capteur_ecriture{
-	margin:30px 0px 30px 0px;
+	margin:30px 0px 20px 0px;
+}
+
+.capteur_ecriture2{
+	margin:10px 0px 20px 0px;
+	padding:0px 0px 0px 0px;
 }
 
 .capt{
 	color:rgb(131,36,41);
 	font-size:20px;
 	margin: auto;
-	margin-bottom : 20px;
+	margin-bottom : 10px;
 	
 }
 
 img.btn-fermer{
 	float:right;
-	margin:0 0 0 0;
+	margin:0px 0px 0px 0px;
 	height:60px;
 	width:auto;
 	
@@ -167,7 +174,7 @@ img.btn-fermer{
 
 .btn-fermer2{
 	float:right;
-	margin:-260px -70px 0px 0px;
+	margin:-80px -70px 0px 0px;
 	height:60px;
 	width:auto;
 	border:none;
@@ -177,7 +184,7 @@ img.btn-fermer{
 
 .btn-modifier{
 	float:right;
-	margin:-283px -18px 0px 0px;
+	margin:-205px -18px 0px 0px;
 	height:30px;
 	width:auto;
 	border:none;
@@ -211,66 +218,22 @@ img.btn-fermer{
 /*fenetre modale*/
 
 /*Pour bouton on off*/
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 14px;
-}
 
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 12px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(14px);
-  -ms-transform: translateX(14px);
-  transform: translateX(14px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 14px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
 
 /*Pour bouton on off*/
+
+.curseur{
+	margin:-20px 0px 0px 0px;
+    -webkit-appearance: none;     /*nécessaire pour Chrome */ 
+    color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+    opacity: .8;
+    background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+    transition: opacity .2s;
+    
+
+}
+
+
 
 
 
