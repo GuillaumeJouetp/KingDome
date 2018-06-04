@@ -113,9 +113,7 @@ function decodeTrames ($logs){
                 <td>$x</td>
                 <td>$year,$month,$day,$hour,$min,$sec</td>
                 </tr>
-                
-  
-           
+            
         ");
     }
     echo (" </table>");
