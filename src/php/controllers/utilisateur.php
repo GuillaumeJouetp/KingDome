@@ -163,6 +163,7 @@ switch ($function) {
                 $_SESSION['connected'] = true;
                 $_SESSION['user_id'] = $data['id'];
                 $_SESSION['type'] = getCurrentUserType($bdd);
+                $_SESSION['avatar'] = $data['avatar'];
                 header('location: index.php');
 
             } else {

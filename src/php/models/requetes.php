@@ -128,7 +128,7 @@ function getUserType(PDO $bdd, $id){
  */
 function Get_Id(PDO $bdd, string $table, string $email): array {
 
-    $statement = $bdd->prepare('SELECT id,user_firstname, user_name, password FROM ' . $table . ' WHERE email = :email');
+    $statement = $bdd->prepare('SELECT id,user_firstname, user_name, password, avatar FROM ' . $table . ' WHERE email = :email');
     $statement->execute(array(':email' => $email));
     return $statement->fetch();
 }
