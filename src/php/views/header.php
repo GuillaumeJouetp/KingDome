@@ -43,11 +43,23 @@
             </a>
         </button>
 
+        <?php if(isUserConnected() && $_SESSION['avatar'] != null){?>
+
+            <button>
+                <a href="index.php?cible=utilisateur">
+                    <img src="<?php echo $_SESSION['avatar'];?>" alt="icone compte" class="icone" id="avatar">Compte
+                </a>
+            </button>
+
+        <?php } else {?>
+
         <button>
             <a href="index.php?cible=utilisateur">
                 <img src="../res/icones/monCompte.png" alt="icone compte" class="icone">Compte
             </a>
         </button>
+
+        <?php } ?>
         
     </nav>
 </header>
