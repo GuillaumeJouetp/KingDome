@@ -4,7 +4,7 @@
 
 <div id="corps">
 
-	<p>Page d'accueil Utilisateur</p>
+	<h1>Votre consommation</h1>
 
 
 <!-- Formulaire : sélection de la durée en abscisse -->

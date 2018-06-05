@@ -1,4 +1,3 @@
-
 var autocomplete;
 var componentForm = {
     street_number: 'short_name',
@@ -41,9 +40,9 @@ function fillInAddress() {
             var val = place.address_components[i][componentForm[addressType]];
             document.getElementById(addressType).value = val;
         }
-        if (addressType == "street_number") {
+        if (addressType === "street_number") {
             fullAddress[0] = val;
-        } else if (addressType == "route") {
+        } else if (addressType === "route") {
             fullAddress[1] = val;
         }
     }
@@ -52,6 +51,7 @@ function fillInAddress() {
         document.getElementById('fullAddr').disabled = false;
     }
     document.getElementById('autocomplete').value = document.getElementById('fullAddr').value;
+
 }
 
-google.maps.event.addDomListener(window, 'load', initAutocomplete)
+google.maps.event.addDomListener(window, 'load', initAutocomplete);

@@ -18,6 +18,7 @@ $Validation = true;
 $Password_Confirmation = "";
 $Alerte_Password = "";
 $Tel_Message = "";
+$CGU_Message = "";
 $Avatar_Message = "";
 
 
@@ -85,6 +86,13 @@ switch ($function) {
             }
 
         }
+
+        // Vérifie si les cgu sont cochées
+        if(empty($_POST_SEC['cgu'])){
+            $CGU_Message = "Vous devez accepter les conditions avant de continuer";
+            $Validation = false;
+        }
+
 
         // Tous les champs sont validés ou non
         if($Validation){
@@ -155,6 +163,7 @@ switch ($function) {
                 $_SESSION['connected'] = true;
                 $_SESSION['user_id'] = $data['id'];
                 $_SESSION['type'] = getCurrentUserType($bdd);
+                $_SESSION['avatar'] = $data['avatar'];
                 header('location: index.php');
 
             } else {

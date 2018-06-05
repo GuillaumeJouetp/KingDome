@@ -94,3 +94,14 @@ li {
 	margin-top: 11%;
 }
 
+.button {
+    border: 1px solid rgb(0,97,161);
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background: rgb(0,97,161);
+    margin-top: 5px;
+}
+

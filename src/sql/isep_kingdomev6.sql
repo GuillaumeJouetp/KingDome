@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 05 juin 2018 à 07:50
+-- Généré le :  lun. 04 juin 2018 à 09:07
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -31,9 +31,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `catalog`;
 CREATE TABLE IF NOT EXISTS `catalog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `device_type_name` varchar(100) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `url` varchar(20000) NOT NULL,
+  `device` varchar(100) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -76,11 +75,6 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` float NOT NULL,
   `device_id` int(11) NOT NULL,
-  `type_trame` int(11) NOT NULL,
-  `objet` varchar(255) NOT NULL,
-  `type_requete` int(11) NOT NULL,
-  `checksum` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -96,7 +90,6 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `sens_or_eff` tinyint(1) NOT NULL,
   `name` varchar(100) NOT NULL,
   `state` tinyint(1) NOT NULL,
-  `last_activation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -106,10 +99,10 @@ CREATE TABLE IF NOT EXISTS `devices` (
 -- Déchargement des données de la table `devices`
 --
 
-INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`) VALUES
-(105, 0, 'sfg', 0, '2018-05-31 08:42:44', 1, 19),
-(106, 0, 'zefh', 1, '2018-06-05 08:42:44', 1, 19),
-(107, 0, 'erfg', 1, '2018-06-05 08:42:44', 2, 19);
+INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `device_type_id`, `room_id`) VALUES
+(105, 0, 'sfg', 1, 1, 19),
+(106, 0, 'zefh', 1, 1, 19),
+(107, 0, 'erfg', 1, 2, 19);
 
 -- --------------------------------------------------------
 
@@ -121,21 +114,17 @@ DROP TABLE IF EXISTS `device_types`;
 CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `type_capteur_trame` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `device_types`
 --
 
-INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`) VALUES
-(1, 'Humidité', '4'),
-(2, 'Luminosité', '5'),
-(3, 'Température', '3'),
-(4, 'Moteur', 'a'),
-(5, 'Lampe', '5'),
-(6, 'Présence', '7');
+INSERT INTO `device_types` (`id`, `name`) VALUES
+(1, 'Humidité'),
+(2, 'Luminosité'),
+(3, 'Température');
 
 -- --------------------------------------------------------
 
@@ -366,8 +355,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (12, '2018-05-28'),
 (17, '2018-05-29'),
 (8, '2018-06-03'),
-(52, '2018-06-04'),
-(29, '2018-06-05');
+(52, '2018-06-04');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
