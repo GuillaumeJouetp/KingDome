@@ -1,4 +1,7 @@
-<head> <link rel="stylesheet" href="css/footer.css" /></head>
+<head> 
+    <link rel="stylesheet" href="css/footer.css" />
+
+</head>
 <footer>
 			    <ul id="Coordonnees">
    				    <h3>Nos coordonnées</h3>
@@ -18,7 +21,7 @@
                             <button id="nc"><a href="Page nous contacter">Nous contacter !</a></button>
                         <br>
                             <button><a href="Page nous contacter">Mentions légales</a></button>
-                            <button><a href="Page nous contacter">Conditions générales d'utilisation</a></button>
+                            <button><a href="CGU.php">Conditions Générales d'utilisation</a></button>
                     </div>
 
                 </div>
