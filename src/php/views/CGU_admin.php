@@ -1,6 +1,6 @@
 <head>
     <title>Condition d'Utilisation</title>
-    <link rel="stylesheet" href="CGU.css" />
+    <link rel="stylesheet" href="../src/css/CGU.css" />
 </head> 
 
 <div id="CGU">
@@ -14,7 +14,6 @@
         $texte = $reponse_texte->fetch()
         ?>
                 
-        <img src=".....(logo Domisep)...." class="img-cgu">
 
         <div class="p_intro"><?php echo $texte['content'] ?></div>
         

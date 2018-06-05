@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Condition d'Utilisation</title>
-    <link rel="stylesheet" href="CGU.css" />
+    <link rel="stylesheet" href="../src/css/CGU.css" />
 
 </head> 
 
@@ -39,3 +39,4 @@ Exsistit autem hoc loco quaedam quaestio subdifficilis, num quando amici novi, d
     
 
 </div>
+
