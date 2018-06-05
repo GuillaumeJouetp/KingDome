@@ -66,8 +66,13 @@ button:hover{
 }
 
 .logopng{
+    position: inherit;
     width: 17%;
     height: 87%;
+    bottom: 0;
+    right: 0;
+
+
 }
 
 .kingdomepng2{

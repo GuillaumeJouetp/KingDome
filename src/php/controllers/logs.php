@@ -91,6 +91,7 @@ function decodeTrames ($logs){
                 <th>Temps</th>
               </tr>
          ");
+
     foreach ($data_tab as $key=>$elm){
         $trame = $data_tab[$key];
         // décodage avec des substring
@@ -115,6 +116,7 @@ function decodeTrames ($logs){
                 </tr>
             
         ");
+
     }
     echo (" </table>");
 }
