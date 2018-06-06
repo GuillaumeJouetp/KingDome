@@ -1,5 +1,40 @@
-// Verification spéciale pour l'adresse automatiquement complétée
+// Requetes ajax pour vérification email si déjà utilisé
 
+function verifEmail(str)
+{
+    if (str == "")
+    {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        xmlhttp= new XMLHttpRequest();
+    } else {
+        if (window.ActiveXObject)
+            try {
+                xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    return null;
+                }
+            }
+    }
+
+    xmlhttp.onreadystatechange = function ()
+    {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+        }
+    };
+    xmlhttp.open("GET", "php/models/ajax_verifemail.php?email=" + str, true);
+    xmlhttp.send();
+}
+
+
+// Verification spéciale pour l'adresse automatiquement complétée / la date et l'avatar
 var good_adress = false,
     good_date = true,
     good_avatar = true;
