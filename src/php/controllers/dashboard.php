@@ -61,7 +61,7 @@ else{
     		case 'donnees':
     			debug1($_POST_SEC['moteur']);
     			debug1($_POST_SEC['lampe']);
-    			$vue = "dashboard2";
+    			header('location: index?cible=dashboard');
     			break;
     			
     	}

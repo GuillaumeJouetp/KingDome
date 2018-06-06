@@ -288,8 +288,7 @@
 										            	?>
 										            	<div class="capteur_ecriture2"> ---  % </div>
 														<?php
-														echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
-								   							."<div id='masqueA$cpt'> ");		            																												
+																            																												
 										            	break;
 
 													 case 'Lampe':
@@ -305,8 +304,7 @@
 
 														</form>														
 										           		<?php
-										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier2" src="..\res\icones\modifier.png"/>  </a>'					
-		   													."<div id='masqueA$cpt'> ");
+										            	
 										            	break;
 
  													case 'Moteur':
@@ -321,8 +319,7 @@
 															</form>	
 
 														<?php
-										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier3" src="..\res\icones\modifier.png"/>  </a>'					
-		   													."<div id='masqueA$cpt'> ");
+										            	
 										            	break;
 
 													 case 'Présence':
@@ -330,8 +327,7 @@
 										            	?>
 										            	<div class="capteur_ecriture2"> --- </div>
 														<?php
-										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
-		   													."<div id='masqueA$cpt'> ");
+										            	
 										            	break;
 																							                										                
 										            case 'Température':
@@ -339,8 +335,7 @@
 										            	?>
 										              	<div class="capteur_ecriture2"> ---  °C </div>
 														<?php
-										              	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
-		   													."<div id='masqueA$cpt'> ");  
+										                
 										                break;
 										            											            	
 										            case 'Luminosité':
@@ -348,8 +343,7 @@
 										            	?>
 										            	<div class="capteur_ecriture2"> ---  % </div>
 										            	<?php
-										              	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
-		   													 ."<div id='masqueA$cpt'> ");  
+										              	  
 										                break;							
 										
 										            default :
@@ -358,12 +352,12 @@
 										            	<div class="capteur_ecriture2"> --- </div>
 										            	
 										            	<?php 
-														echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
-															  ."<div id='masqueA$cpt'> "); 	
+														 	
 										        
 												}
 	
-											
+					echo("<a href='#masqueA$cpt'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>"					
+								   							."<div id='masqueA$cpt'> ");						
 		   								
 				 ?>	
 			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir moidifier le nom d'un capteur -->

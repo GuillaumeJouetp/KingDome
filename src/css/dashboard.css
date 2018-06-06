@@ -135,8 +135,8 @@ input[type=range].custom-slider {
 	padding:0px 60px 0px 60px;
 	margin:10px 10px 10px 10px;
 	text-align:center;
-	min-height:250px;
-	max-height:250px;
+	min-height:230px;
+	max-height:230px;
 	min-width:140px;
 	max-width:140px;
 	border-radius: 20px;
@@ -175,11 +175,13 @@ input[type=range].custom-slider {
 	padding:5px 5px 5px 5px;
 	margin:5px 5px 5px 5px;
 	position: relative;	
-	left: 25px;	
+	left: 15px;	
 	bottom: 10px;
-	height:40px;
-	width:auto;
-	outline:none;	
+	outline:none;
+	min-height:40px;
+	max-height:40px;
+	min-width:45px;
+	max-width:45px;	
 }
 
 .capteur_ecriture{
@@ -219,7 +221,7 @@ img.btn-fermer{
 	width:auto;
 	border:none;
 	box-shadow: none;
-	outline:0;
+	outline:none;
 }
 
 .btn-modifier{
