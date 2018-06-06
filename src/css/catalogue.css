@@ -26,18 +26,23 @@ h2 {
     border-top: 1px solid #000;
     width : 50%;
     margin-left: 25%;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
+.trait_dessus2
+{
+    border-top: 1px solid #000;
+    width : 50%;
+    margin-left: 25%;
+    margin-top: 30px;
+}
 
 [id*="carrousel"]{
     position:static;
     width:320px;
     height:200px;
-    margin: auto;
     margin-left: 34%;
 }
-
 
 [id*="carrousel"] ul li{
     position: absolute;
@@ -45,7 +50,6 @@ h2 {
     list-style-type: none;
     width: 10%;
 }
-
 
 [class*="prev"]{
     float: left;
@@ -71,7 +75,7 @@ h2 {
     right:0;
     bottom:0;
     left:0;
-    background-color:rgb(0,0,0,0.5);
+    background-color:rgba(0,0,0,0.5);
     z-index:1000;
 }
 
@@ -81,11 +85,11 @@ h2 {
 
 .fenetre-modale{
 
-    padding:2px;
+    padding:10px;
     border:2px solid rgb(0,129,220);
     position:center;
     margin:10% auto;
-    width:20%;
+    width:25%;
     box-shadow:0px 0px 20px #000;
     background-color: rgb(129,129,129);
     border-radius: 30px;
@@ -116,13 +120,14 @@ img.btn-fermer{
 .button {
     border: 1px solid rgb(0,97,161);
     border-radius: 5px;
-    width: 70px;
+    width: 100px;
     height: 30px;
     text-align: center;
     color: white;
     background: rgb(0,97,161);
     margin-top: 5px;
 }
+
 
 [class*="button_modif"] {
     border: 1px solid rgb(131,36,41);
@@ -132,7 +137,8 @@ img.btn-fermer{
     text-align: center;
     color: white;
     background: rgb(131,36,41);
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 a.modif{
@@ -140,11 +146,7 @@ a.modif{
     height: 30px;
 }
 
-.button_modif_capteur{
-    margin-top: 90px;
-}
-
-.button_modif_texte{
+.button_modif{
     margin-top: 30px;
     margin-left: 42.5%;
 }
@@ -152,4 +154,11 @@ a.modif{
 .button_modif_type{
     margin-top: 20px;
     margin-left: 42.5%;
+}
+
+.acote{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 33%;
 }
