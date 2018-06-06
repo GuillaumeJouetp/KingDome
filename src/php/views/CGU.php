@@ -9,7 +9,6 @@
         
     <h1 class="CU">Conditions d'Utilisation</h1>
            
-    <img src=".....(logo Domisep)...." class="img-cgu">
 
     <div class="p_intro">
         Domisep a le souhait d'améliorer l'expérience et l'information de ses utilisateursPour cette raison, nous intégrons les évolutions suivantes dans nos Conditions d’Utilisation et de Politique de Confidentialité qui respectent la nouvelle réglementation « Règlement (UE) 2016/679 » relatif à la protection des personnes physiques à l'égard du traitement des données à caractère  personnel et à la libre circulation de ces données.
