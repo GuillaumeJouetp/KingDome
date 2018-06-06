@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 06 juin 2018 à 12:32
+-- Généré le :  mer. 06 juin 2018 à 09:43
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -95,7 +95,6 @@ DROP TABLE IF EXISTS `datas`;
 CREATE TABLE IF NOT EXISTS `datas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` float NOT NULL,
-  `num_trame` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `type_trame` int(11) NOT NULL,
   `objet` varchar(255) NOT NULL,
@@ -103,16 +102,7 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `checksum` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `datas`
---
-
-INSERT INTO `datas` (`id`, `value`, `num_trame`, `device_id`, `type_trame`, `objet`, `type_requete`, `checksum`, `timestamp`) VALUES
-(3, 1234, 0, 1, 1, '7896', 1, '5e', '2018-06-06 11:52:29'),
-(4, 1234, 1, 2, 1, '7896', 1, '66', '2018-06-06 11:57:38'),
-(5, 1234, 2, 3, 1, '7896', 1, '66', '2018-06-06 12:04:00');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -130,14 +120,14 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `devices`
 --
 
 INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`) VALUES
-(105, 0, 'Température Salon', 0, '2018-05-31 08:42:44', 1, 19),
+(105, 0, 'sfg', 0, '2018-05-31 08:42:44', 1, 19),
 (106, 0, 'zefh', 1, '2018-06-05 08:42:44', 1, 19),
 (107, 0, 'erfg', 1, '2018-06-05 08:42:44', 2, 19);
 
@@ -320,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `updatable_content` (
 --
 
 INSERT INTO `updatable_content` (`name`, `content`, `date`, `id`) VALUES
-('catalogue', 'Vous trouverez ici les différents capteurs vendus par DOMISEP.\r\nPour plus d\'informations n\'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.\r\nATTENTION : Il ne s\'agit pas d\'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.    ', '2018-06-06', 1);
+('catalogue', 'Vous trouverez ici les différents capteurs vendus par DOMISEP.\r\nPour plus d\'informations n\'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.\r\nATTENTION : Il ne s\'agit pas d\'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.  ', '2018-06-06', 1);
 
 -- --------------------------------------------------------
 
@@ -405,7 +395,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (8, '2018-06-03'),
 (52, '2018-06-04'),
 (29, '2018-06-05'),
-(79, '2018-06-06');
+(21, '2018-06-06');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

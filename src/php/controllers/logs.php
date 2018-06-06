@@ -1,6 +1,5 @@
 <?php
-/*On récupère les logs*/
-include "php/models/logs.php";
+
 
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
