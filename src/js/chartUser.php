@@ -18,7 +18,7 @@ if(!isset($_POST['duree'])){
 		    data: {
 		        labels: x_datas,
 		        datasets: [{
-		            label: 'Consommation en kWh',
+		            label: "Durée d'activation des capteurs",
 		            data: y_datas,
 		            backgroundColor: 'rgb(0, 129, 220)',
 		            borderColor: 'rgb(0, 129, 220)',
