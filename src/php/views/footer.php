@@ -17,7 +17,7 @@
                     <h3>Un problème ?</h3>
                     <h3 id="sug">Une suggestion ?</h3>
                     
-                    <div id="bouton">
+                    <div id="bouton_footer">
                             <button id="nc"><a href="../src/php/controllers/contact.php">Nous contacter !</a></button>
                         <br>
                             <button><a href="../src/php/controllers/mentleg.php">Mentions légales</a></button>
