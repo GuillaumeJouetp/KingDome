@@ -24,7 +24,7 @@
             <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
             <form method="post" action="index.php?cible=catalogue&function=modifier_texte">
                 <label>Texte du catalogue :<br><br><textarea rows="25" cols="30" name="texte_catalogue"><?php echo $texte['content'] ?> </textarea> </label><br>
-                <button type="submit" class="button">Modifier</button>
+                <button type="submit" class="button_catalogue">Modifier</button>
             </form>
 
         </div>
@@ -54,7 +54,7 @@
                             }
                             ?></select></label><br>
                     <label>Nom : <input type="text" name="nom_capteur" </label><br>
-                    <button type="submit" class="button">Ajouter</button>
+                    <button type="submit" class="button_catalogue">Ajouter</button>
                 </form>
 
             </div>
@@ -78,7 +78,7 @@
                                 }
                             }
                             ?></select></label><br><br>
-                    <button type="submit" class="button">Supprimer</button>
+                    <button type="submit" class="button_catalogue">Supprimer</button>
                 </form>
 
             </div>
@@ -122,7 +122,7 @@
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=catalogue&function=ajouter_type">
                     <label>Nom du type : <br> <input type="text" name="nom_type"> </label>
-                    <button type="submit" class="button">Ajouter</button>
+                    <button type="submit" class="button_catalogue">Ajouter</button>
                 </form>
 
             </div>
@@ -141,7 +141,7 @@
                                 echo("<option>" .$type_capteur['name'] ."</option>");
                             }
                             ?></select></label>
-                    <button type="submit" class="button">Supprimer</button>
+                    <button type="submit" class="button_catalogue">Supprimer</button>
                 </form>
 
             </div>
