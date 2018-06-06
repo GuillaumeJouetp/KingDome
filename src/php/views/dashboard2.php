@@ -24,21 +24,28 @@
 	  }
 
 
-	  function ConfirmerSupp()
+			var buttonstate=0;
+		function onoff(element)
 		{
-		if (window.confirm("Confirmez vouloir supprimer le capteur "+ formsupp.name1.value +" ?"))
-		{
-		document.forms["formsupp"].submit();
-		}
-		}
-
-
-	  function ConfirmerMod()
-		{
-		if (window.confirm(" Confirmez vous vouloir modifier le nom du capteur ?"))
-		{
-		document.forms["formmod"].submit();
-		}
+		  buttonstate= 1 - buttonstate;
+		  var blabel, bstyle, bcolor;
+		  if(buttonstate)
+		  {
+		    bvalue="ON";
+		    bstyle="rgba(0, 129, 220,1)";
+		    bcolor="black";
+		  }
+		  else
+		  {
+		    bvalue="OFF";
+		    bstyle="rgba(131, 36, 41, 1)";
+		    bcolor="black";
+		  }
+		  var child=element.onoff;
+		  child.style.background=bstyle;
+		  child.style.color=bcolor;
+		  child.style.color=bcolor;	
+		  child.innerHTML=value;
 		}
 	 
 	//-->
@@ -175,7 +182,7 @@
 						
 						
 							
-						<label> <span class='blanc'>Type de capteur : </span><br><br> </label>    <!--choix du type de capteur -->
+						<label> <span class='blanc'>Type de capteur / effecteur : </span><br><br> </label>    <!--choix du type de capteur -->
 					
 						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
 
@@ -188,7 +195,6 @@
 									   			echo(
 									   				"<span class='blanc'>"     /*on affiche le nom capteurs ,qui sont dans la table device_type, dans le menu déroulant de la fenêtre modale ajouter un capteur*/
 													."<option>"
-													."Capteur "
 													.$donnees3['name']
 													."</option>"
 									   				."</span>"
@@ -268,12 +274,13 @@
 		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage de nom du capteur donné par l'user -->
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">  <!--affichage de l'image correspondant au capteur-->
-		   		  							<input href="#nullepart" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"  /><br><br>
+		   		  							<input href="#nullepart" type="image" name="creation_submit" src="../res/icones/bouton-fermer.png" class="btn-fermer2"><br><br> 
 											</form>			
+		   									 
 		   										
 		   									
-		   									
 		   									<?php 
+											
 		   									   									
 		   									switch (recherche_device($bdd, $donnees4['device_type_id'])[0]['name']) {    
 										            case 'Humidité':
@@ -281,53 +288,86 @@
 										            	?>
 										            	<div class="capteur_ecriture2"> ---  % </div>
 														<?php
-										            	
+														echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
+								   							."<div id='masqueA$cpt'> ");		            																												
 										            	break;
-										                										                
+
+													 case 'Lampe':
+										            	
+										            	?>
+														
+														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
+				
+														<div id = "lampe">
+																<input href="#nullepart" type="submit" name="lampe" class="lampe" value="ON"><br><br> 
+																<input href="#nullepart" type="submit" name="lampe" class="lampe" value="OFF"><br><br>
+														</div>
+
+														</form>														
+										           		<?php
+										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier2" src="..\res\icones\modifier.png"/>  </a>'					
+		   													."<div id='masqueA$cpt'> ");
+										            	break;
+
+ 													case 'Moteur':
+										            	
+										            	?>													
+										            		<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
+															<div id = "moteur">
+																<input href="#nullepart" type="image" name="moteur" src="../res/icones/haut.png" class="moteur" value="haut"><br><br> 
+																<input href="#nullepart" type="image" name="moteur" src="../res/icones/bas.png" class="moteur" value="bas"><br><br> 
+																<input href="#nullepart" type="image" name="moteur" src="../res/icones/stop.png" class="moteur" value="stop"><br><br> 
+															</div>															
+															</form>	
+
+														<?php
+										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier3" src="..\res\icones\modifier.png"/>  </a>'					
+		   													."<div id='masqueA$cpt'> ");
+										            	break;
+
+													 case 'Présence':
+										            	
+										            	?>
+										            	<div class="capteur_ecriture2"> --- </div>
+														<?php
+										            	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
+		   													."<div id='masqueA$cpt'> ");
+										            	break;
+																							                										                
 										            case 'Température':
 										            	
 										            	?>
 										              	<div class="capteur_ecriture2"> ---  °C </div>
-														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" id="frmName" > 
-														
-														<input class="curseur" type="range" name="curseur" />
-														
-														</form><?php
-										                
+														<?php
+										              	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
+		   													."<div id='masqueA$cpt'> ");  
 										                break;
 										            											            	
 										            case 'Luminosité':
 										            	
 										            	?>
-										            	
 										            	<div class="capteur_ecriture2"> ---  % </div>
-										            	
-														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" id="frmName" > 
-														
-														<input class="curseur" type="range" name="curseur" />
-														
-														</form>
-
-							   							<?php
-										                
+										            	<?php
+										              	echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
+		   													 ."<div id='masqueA$cpt'> ");  
 										                break;							
 										
 										            default :
 										            	
 										            	?>
-										            	<div class="capteur_ecriture"> --- </div>
-										            	<?php  	
-										        }
-												   									
-										   ?>
-		   				
-		   						
-		   								
-		   													
-		   	<a href='#masqueA$cpt'> <img class='btn-modifier' src='..\res\icones\modifier.png'/>  </a> <div id='masqueA$cpt'>  <!--icone modifier qui va permmetre d'affiher la fenêtre modale modifier -->
+										            	<div class="capteur_ecriture2"> --- </div>
+										            	
+										            	<?php 
+														echo('<a href="#masqueA$cpt"> <img class="btn-modifier" src="..\res\icones\modifier.png"/>  </a>'					
+															  ."<div id='masqueA$cpt'> "); 	
+										        
+												}
+	
 											
-					
+		   								
+				 ?>	
 			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir moidifier le nom d'un capteur -->
+
 			    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
 			    <div class="capt"><br>Modifier le capteur<br><br></div>
 			    
@@ -397,7 +437,7 @@
 													} /*fin if 1*/
 												}/*fin for 1*/
 											
-											echo "</div>";										
+																					
 											
 											if($cpt==0){
 												echo(
@@ -406,6 +446,7 @@
 														."</div>"
 														);
 											}
+											echo "</div>"
 											
 											?>
 				

@@ -1,4 +1,8 @@
-/* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par */
+/* conteneur et element nous permet de definir flexbox pour ajout capteur et trier par 
+  
+
+
+*/
 
 #conteneur
 {
@@ -114,7 +118,7 @@ input[type=range].custom-slider {
 	margin-top: 30px;
 	border-radius: 20px;
 	padding: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
   }
 
 .piece{
@@ -129,10 +133,10 @@ input[type=range].custom-slider {
 	color: rgb(131,36,41);
 	border: 1.5px solid rgb(131,36,41);
 	padding:0px 60px 0px 60px;
-	margin:0px 10px 5px 10px;
+	margin:10px 10px 10px 10px;
 	text-align:center;
-	min-height:300px;
-	max-height:300px;
+	min-height:250px;
+	max-height:250px;
 	min-width:140px;
 	max-width:140px;
 	border-radius: 20px;
@@ -141,17 +145,51 @@ input[type=range].custom-slider {
 
 
 .capteur{
+	position: relative;	
+	left: 35px;	
+	bottom: 0px;
 	height:70px;
 	width:auto;	
 }
+#moteur{
+	display:flex;
+}
+.moteur{
+	padding:20px 0px 0px 0px;
+	position: relative;	
+	left: 7px;	
+	bottom: 10px;
+	height:40px;
+	width:auto;
+	outline:none;
+	border:none;
+	box-shadow:none;	
+}
 
+#lampe{
+	display:flex;
+	
+}
 
+.lampe{
+	padding:5px 5px 5px 5px;
+	margin:5px 5px 5px 5px;
+	position: relative;	
+	left: 25px;	
+	bottom: 10px;
+	height:40px;
+	width:auto;
+	outline:none;	
+}
 
 .capteur_ecriture{
 	margin:30px 0px 20px 0px;
 }
 
 .capteur_ecriture2{
+	position: relative;	
+	left:5px;	
+	bottom: 0px;
 	margin:10px 0px 20px 0px;
 	padding:0px 0px 0px 0px;
 }
@@ -174,7 +212,9 @@ img.btn-fermer{
 
 .btn-fermer2{
 	float:right;
-	margin:-80px -70px 0px 0px;
+	position: relative;	
+	left: 70px;	
+	bottom: 85px;
 	height:60px;
 	width:auto;
 	border:none;
@@ -184,7 +224,33 @@ img.btn-fermer{
 
 .btn-modifier{
 	float:right;
-	margin:-205px -18px 0px 0px;
+	position: relative;	
+	left: 15px;	
+	bottom: 210px;	
+	height:30px;
+	width:auto;
+	border:none;
+	box-shadow: none;
+	outline:0;
+}
+
+.btn-modifier2{
+	float:right;
+	position: relative;	
+	left: 15px;	
+	bottom: 210px;	
+	height:30px;
+	width:auto;
+	border:none;
+	box-shadow: none;
+	outline:0;
+}
+
+.btn-modifier3{
+	float:right;
+	position: relative;	
+	left: 15px;	
+	bottom: 220px;	
 	height:30px;
 	width:auto;
 	border:none;
@@ -219,19 +285,27 @@ img.btn-fermer{
 
 /*Pour bouton on off*/
 
+.onoff
+{
+  position: relative;	
+  left: 15px;	
+  bottom: 0px;
+  width:32px;
+  height:32px;
+  padding:1px 2px 3px 3px;
+  margin:20px 20px 20px 20px;	
+  font-size:12px;
+  text-align:center;
+  background-color: none;
+  border-left: none;
+  outline:none;	
+	
+}
+
 
 /*Pour bouton on off*/
 
-.curseur{
-	margin:-20px 0px 0px 0px;
-    -webkit-appearance: none;     /*nécessaire pour Chrome */ 
-    color: #069;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
-    opacity: .8;
-    background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
-    transition: opacity .2s;
-    
 
-}
 
 
 

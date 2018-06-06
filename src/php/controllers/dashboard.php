@@ -59,8 +59,9 @@ else{
     			break;
     			
     		case 'donnees':
-    			debug1($_POST_SEC['curseur']);
-    			header('location: index?cible=dashboard');
+    			debug1($_POST_SEC['moteur']);
+    			debug1($_POST_SEC['lampe']);
+    			$vue = "dashboard2";
     			break;
     			
     	}

@@ -135,7 +135,7 @@ function get_id_device_types($bdd,string $type_capteur){
 	
 	foreach($device_types as $donnees){
 		
-		if($type_capteur=="Capteur " .$donnees['name']){
+		if($type_capteur==$donnees['name']){
 			
 			$device_type_id = $donnees['id'];
 		}
