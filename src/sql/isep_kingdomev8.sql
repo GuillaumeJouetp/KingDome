@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 06 juin 2018 à 09:43
+-- Généré le :  mar. 05 juin 2018 à 07:50
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -35,27 +35,7 @@ CREATE TABLE IF NOT EXISTS `catalog` (
   `name` varchar(50) NOT NULL,
   `url` varchar(20000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `catalog`
---
-
-INSERT INTO `catalog` (`id`, `device_type_name`, `name`, `url`) VALUES
-(1, 'Humidité', 'Rouge', '../res/images/Catalogue/Humidité_5b17abd29841b.png'),
-(2, 'Humidité', '2 bras', '../res/images/Catalogue/Humidité_5b17abd7c3cbf.png'),
-(6, 'Luminosité', 'Bleu', '../res/images/Catalogue/Luminosité_5b17ac039f311.png'),
-(5, 'Humidité', 'Bleu', '../res/images/Catalogue/Humidité_5b17abfa52e13.png'),
-(7, 'Luminosité', '2 bras', '../res/images/Catalogue/Luminosité_5b17ac0944a6a.png'),
-(8, 'Luminosité', 'Noir', '../res/images/Catalogue/Luminosité_5b17ac121315e.png'),
-(9, 'Température', '2 bras', '../res/images/Catalogue/Température_5b17ac1aba82b.png'),
-(10, 'Température', '3 bras', '../res/images/Catalogue/Température_5b17ac20dae20.png'),
-(11, 'Température', '3 bras motif 2', '../res/images/Catalogue/Température_5b17ac268dfb0.png'),
-(12, 'Moteur', 'Petit moteur', '../res/images/Catalogue/Moteur_5b17ac328d55d.png'),
-(13, 'Lampe', 'LED', '../res/images/Catalogue/Lampe_5b17ac3d6d4f8.png'),
-(14, 'Lampe', 'LED rgb', '../res/images/Catalogue/Lampe_5b17ac446fa9a.png'),
-(15, 'Présence', 'Infrarouge', '../res/images/Catalogue/Présence_5b17ac51a87aa.png'),
-(16, 'Présence', 'Infrarouge modele 2', '../res/images/Catalogue/Présence_5b17ac59198e4.png');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -298,19 +278,12 @@ INSERT INTO `rooms` (`id`, `name`, `home_id`) VALUES
 
 DROP TABLE IF EXISTS `updatable_content`;
 CREATE TABLE IF NOT EXISTS `updatable_content` (
-  `name` varchar(50) NOT NULL,
+  `name` int(11) NOT NULL,
   `content` text NOT NULL,
   `date` date NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `updatable_content`
---
-
-INSERT INTO `updatable_content` (`name`, `content`, `date`, `id`) VALUES
-('catalogue', 'Vous trouverez ici les différents capteurs vendus par DOMISEP.\r\nPour plus d\'informations n\'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.\r\nATTENTION : Il ne s\'agit pas d\'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.  ', '2018-06-06', 1);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -394,8 +367,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (17, '2018-05-29'),
 (8, '2018-06-03'),
 (52, '2018-06-04'),
-(29, '2018-06-05'),
-(21, '2018-06-06');
+(29, '2018-06-05');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
