@@ -1,6 +1,5 @@
 <?php
-/*On récupère les logs*/
-include "php/models/logs.php";
+
 
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
@@ -91,6 +90,7 @@ function decodeTrames ($logs){
                 <th>Temps</th>
               </tr>
          ");
+
     foreach ($data_tab as $key=>$elm){
         $trame = $data_tab[$key];
         // décodage avec des substring
@@ -113,10 +113,9 @@ function decodeTrames ($logs){
                 <td>$x</td>
                 <td>$year,$month,$day,$hour,$min,$sec</td>
                 </tr>
-                
-  
-           
+            
         ");
+
     }
     echo (" </table>");
 }

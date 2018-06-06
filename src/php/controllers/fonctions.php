@@ -1,5 +1,6 @@
 <?php
 include "php/models/requetes.php";
+include "php/models/logs.php";
 include "php/models/stats.php";
 
 function displayTable($bdd, $table){
@@ -29,7 +30,8 @@ function test($bdd){
 }
 
 
-function debug1($data){
+function debug1($legende,$data){
+    echo $legende;
     echo "<pre>";
     print_r($data);
     echo "</pre>";
@@ -232,6 +234,74 @@ function dateFr($dateUS){
     $dateFR = strftime('%d-%m-%Y',strtotime($dateUS));
     $dateFRslash=str_replace (  '-' , ' / ' ,$dateFR);
     return $dateFRslash;
+}
+
+/**
+ * Décode et insert les trames non existantes a la base de donnée.
+ * La trames du fichiers de logs sont classés par ordre de dernier envoie en date, ainsi pour cibler les trames qu'on a pas encore ajouteé a la bdd
+ * on parcours le fichier de logs et on ajoute les trames qui ont un timestamp supérieur a celui de la derniere trame ajoutée a la bdd
+ * @param string $logs
+ * @return void
+ */
+function insertTrame ($logs,$bdd){
+    $data_tab =str_split($logs,33);
+    foreach ($data_tab as $key=>$elm) {
+        $trame = $data_tab[$key];
+
+        // décodage avec sscanf
+        list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
+            sscanf($trame, "%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
+
+        $values = array(
+            'type_trame' => $t,
+            'objet' => $o,
+            'type_requete' => $r,
+            'device_id' => intval($n),
+            'value' => intval($v),
+            'num_trame' => $a,
+            'checksum' => $x,
+            'timestamp' => $year.'-'.$month.'-'.$day.' '.$hour.':'.$min.':'.$sec
+        );
+        $lastTrameTime1 = str_replace (' ' , '' ,get_last_trame($bdd )['maxTimestamp']);
+        $lastTrameTime2 = str_replace ('-' , '' ,$lastTrameTime1);
+        $lastTrameTime3 = str_replace (':' , '' ,$lastTrameTime2);
+        /*
+           debug1('Timestamp de la trame : ',$year.$month.$day.$hour.$min.$sec);
+           debug1('Timestamp de la trame la plus récente de la bdd',$lastTrameTime3);
+           debug1( 'test si la trame reçu est plus récente que la dernière de la bdd : ',$year.$month.$day.$hour.$min.$sec > $lastTrameTime3 ? 1:0);
+           echo '<br>';
+        */
+        if (isDateCorrect($year,$month,$day,$hour,$min,$sec)) { // test de l'intégrité de la date
+            if ($year . $month . $day . $hour . $min . $sec > $lastTrameTime3){ // On insère la trame dans la bdd seulement si elle n'y ait pas déjà
+                insertion($bdd, $values, 'datas');
+            }
+        }
+    }
+}
+
+
+function isDateCorrect($year,$month,$day,$hour,$min,$sec){
+    if( preg_match("/[A-Za-z]/",$year.$month.$day.$hour.$min.$sec )) {
+        return false;
+    }
+
+    if ($month > 12){
+        return false;
+    }
+    if ($day > 31){
+        return false;
+    }
+    if ($hour > 60){
+        return false;
+    }
+    if ($min > 60){
+        return false;
+    }
+    if ($sec > 60){
+        return false;
+    }
+    return true;
+
 }
 
 ?>
