@@ -9,6 +9,6 @@ $statement->execute(array(':email' => $email));
 
 if($statement->fetchColumn() > 0){
 
-    echo "Adresse mail déjà utilisée.";
+    echo "Adresse mail déjà utilisée";
 
 }
