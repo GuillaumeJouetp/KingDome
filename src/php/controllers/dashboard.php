@@ -1,6 +1,5 @@
 <?php
 
-include "php/models/logs.php";
 
 // si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
 if (!isset($_GET['function']) || empty($_GET['function'])) {
@@ -93,38 +92,5 @@ include "php/views/footer.php";
 
 
 
-/**
- * Décode et insert les trames non existantes a la base de donnée.
- * La trames du fichiers de logs sont classés par ordre de dernier envoie en date, ainsi pour cibler les trames qu'on a pas encore ajouteé a la bdd
- * on parcours le fichier de logs et on ajoute les trames qui ont un timestamp supérieur a celui de la derniere trame ajoutée a la bdd
- * @param string $logs
- * @return void
- */
-function insertTrame ($logs,$bdd){
-    $data_tab =str_split($logs,33);
-    foreach ($data_tab as $key=>$elm){
-        $trame = $data_tab[$key];
-        // décodage avec des substring
-        $t = substr($trame,0,1);
-        $o = substr($trame,1,4);
-// …
-// décodage avec sscanf
-        list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
-            sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
 
-        $values = array(
-            'type_trame' => $t,
-            'objet' => $o,
-            'type_requete' => $r,
-            '' => $c,
-            'devices.id' => $n,
-            'value' => $v,
-            '1' => $a,
-            '1' => $x,
-            'timestamp' => $year.$month.$day.$hour.$min.$sec
-         );
-        insertion($bdd, $values, 'datas');
-
-        }
-}
 ?>
