@@ -1,35 +1,36 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
 <?php
-// si la fonction n'est pas définie ou est vide, on choisit d'afficher la vue par default
-if (!isset($_GET['function']) || empty($_GET['function'])) {
-    $function = "default";
-} else {
-    $function = $_GET['function'];
+
+/**
+ * Renvoie le nombre total d'heures d'activation et modifie last_activation_date et on_time
+ * @param $bdd
+ * @return boolean
+**/
+
+
+function nombre_heures($bdd){
+	$capteurs = recupereTous($bdd, 'devices');
+	$nb_heures = 0;
+	foreach($capteurs as $donnees){
+		$nb_heures = $nb_heures + $donnees['on_time'];
+		if($donnees['state']==1){
+			$id = $donnees['id'];
+			$requete = $bdd->query('SELECT DATEDIFF( now(), last_activation_date) FROM devices WHERE devices.id='.$id);	// DATEFIFF renvoie un nb de jours, entier
+			$requete = $requete->fetch();
+			$requete = floatval ( $requete );
+			$intervalle = $requete*24-24;
+			$nb_heures = $nb_heures + $intervalle ;
+			$new_on_time = $donnees['on_time'] + $intervalle;
+			modification($bdd, $new_on_time, 'on_time', $id, 'devices');
+			modification($bdd, date('Y-m-d H:i:s'), 'last_activation_date', $id, 'devices');
+		}
+	}
+	return $nb_heures;
 }
 
-$title = 'Accueil';
 
-switch ($function) {
-    case 'default':
-        if(isAnAdmin($bdd)) {
-            $vue = "accueilAdmin";
-        }
-        else if (isUserConnected()) {
-            $vue = "accueilUser";
-        }
-        else{
-            $vue = "accueil";
-        }
-        break;
-
-        default :
-            // si aucune fonction ne correspond au paramètre function passé en GET
-            $vue = "error404";
-            $title = "error404";
-}
-
-include "php/views/header.php";
-include ('php/views/' . $vue . '.php');
-include "php/views/footer.php";
-?>
+/**
+ * 
+ * 
+ * 
+ * 
+**/

@@ -18,10 +18,10 @@
                     <h3 id="sug">Une suggestion ?</h3>
                     
                     <div id="bouton">
-                            <button id="nc"><a href="../src/php/controllers/contact.php">Nous contacter !</a></button>
+                            <button id="nc"><a href="index.php?cible=contact">Nous contacter !</a></button>
                         <br>
-                            <button><a href="../src/php/controllers/mentleg.php">Mentions légales</a></button>
-                            <button><a href="../src/php/controllers/CGU.php">Conditions Générales d'utilisation</a></button>
+                            <button id="nc"><a href="index.php?cible=ment_leg">Mentions légales</a></button>
+                            <button id="nc"><a href="index.php?cible=CGU">Conditions Générales d'utilisation</a></button>
                     </div>
 
                 </div>
