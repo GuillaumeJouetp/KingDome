@@ -179,9 +179,17 @@ function recherche_device(PDO $bdd, string $attributs): array {
 	
 	$query = 'SELECT name FROM device_types WHERE id=' . $attributs;
 	return $bdd->query($query)->fetchAll();
-	
-	
-	
+}
+
+/**
+ * Renvoie le nombre d'inscrits a kingdome
+ * @param PDO $bdd
+ * @return array
+ */
+function getNumInscrits($bdd){
+    $statement = $bdd->prepare('SELECT COUNT(id) FROM users ');
+    $statement->execute();
+    return $statement->fetch();
 
 }
 

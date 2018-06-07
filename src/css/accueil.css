@@ -11,6 +11,7 @@ section{
 }
 
 .wrapper{
+    margin: 20px;
     display: flex;
     justify-content: center;
 }
@@ -26,17 +27,34 @@ section{
 
 .prefixe{
     color: #832429;
-    font-size: x-large;
+    font-size: 200%;
     margin-bottom: 10%;
 }
 
 .data{
     color : #0081dc;
     text-align: center;
-    font-size: large;
+    font-size: 150%;
     justify-content: center;
+}
 
+.prefixe2{
+    color: #832429;
+    font-size: 200%;
+}
 
+.wrapper2{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.data2{
+    color : #0081dc;
+    text-align: center;
+    font-size: 230%;
+    justify-content: center;
+    margin-right: 15px;
 }
 
 
