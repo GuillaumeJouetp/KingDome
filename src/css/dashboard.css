@@ -135,8 +135,8 @@ input[type=range].custom-slider {
 	padding:0px 60px 0px 60px;
 	margin:10px 10px 10px 10px;
 	text-align:center;
-	min-height:230px;
-	max-height:230px;
+	min-height:250px;
+	max-height:250px;
 	min-width:140px;
 	max-width:140px;
 	border-radius: 20px;
@@ -145,9 +145,7 @@ input[type=range].custom-slider {
 
 
 .capteur{
-	position: relative;	
-	left: 35px;	
-	bottom: 0px;
+	
 	height:70px;
 	width:auto;	
 }
@@ -176,7 +174,7 @@ input[type=range].custom-slider {
 	margin:5px 5px 5px 5px;
 	position: relative;	
 	left: 15px;	
-	bottom: 10px;
+	bottom: 0px;
 	outline:none;
 	min-height:40px;
 	max-height:40px;
@@ -216,7 +214,7 @@ img.btn-fermer{
 	float:right;
 	position: relative;	
 	left: 70px;	
-	bottom: 85px;
+	bottom: 15px;
 	height:60px;
 	width:auto;
 	border:none;
@@ -228,7 +226,7 @@ img.btn-fermer{
 	float:right;
 	position: relative;	
 	left: 15px;	
-	bottom: 210px;	
+	bottom: 230px;	
 	height:30px;
 	width:auto;
 	border:none;
@@ -236,23 +234,12 @@ img.btn-fermer{
 	outline:0;
 }
 
-.btn-modifier2{
-	float:right;
-	position: relative;	
-	left: 15px;	
-	bottom: 210px;	
-	height:30px;
-	width:auto;
-	border:none;
-	box-shadow: none;
-	outline:0;
-}
 
 .btn-modifier3{
 	float:right;
 	position: relative;	
 	left: 15px;	
-	bottom: 220px;	
+	bottom: 240px;	
 	height:30px;
 	width:auto;
 	border:none;

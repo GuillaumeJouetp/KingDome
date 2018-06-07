@@ -8,48 +8,26 @@
 
 
 <head>
-    <link rel="stylesheet" href="..\src\css\dashboard.css">   
+    <link rel="stylesheet" href="..\src\css\dashboard.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
 
-	<SCRIPT language="Javascript">
-	<!--
-	 
-
-	function AfficheCache(Id)
-	  {
-		if (document.getElementById && document.getElementById(Id) != null)
-	    {
-			if(document.getElementById(Id).style.display=='none') document.getElementById(Id).style.display='block';
-			else document.getElementById(Id).style.display='none';
-	    }
-	  }
+		function AfficheCache(Id)
+			  {
+				if (document.getElementById && document.getElementById(Id) != null)
+			    {
+					if(document.getElementById(Id).style.display=='none') document.getElementById(Id).style.display='block';
+					else document.getElementById(Id).style.display='none';
+			    }
+			  }
 
 
-			var buttonstate=0;
-		function onoff(element)
-		{
-		  buttonstate= 1 - buttonstate;
-		  var blabel, bstyle, bcolor;
-		  if(buttonstate)
-		  {
-		    bvalue="ON";
-		    bstyle="rgba(0, 129, 220,1)";
-		    bcolor="black";
-		  }
-		  else
-		  {
-		    bvalue="OFF";
-		    bstyle="rgba(131, 36, 41, 1)";
-		    bcolor="black";
-		  }
-		  var child=element.onoff;
-		  child.style.background=bstyle;
-		  child.style.color=bcolor;
-		  child.style.color=bcolor;	
-		  child.innerHTML=value;
-		}
-	 
-	//-->
-	</SCRIPT>
+
+		
+
+		</script>
+	
+	
 </head>
 
 
@@ -65,10 +43,12 @@
 											$devices = recupereTous($bdd, 'devices');
 											$cemacs = recupereTous($bdd, 'cemacs');
 											$homes = recupereTous($bdd, 'homes');
+											$datas = recupereTous($bdd, 'datas');
 											$cpt=0;													/*compteur utilisés pour les boucles for*/
 											$cpt2=0;
+											$cpt6=0;
 											$id=$_SESSION['user_id'];
-											
+											$info=0;
 											
 											foreach($own_home as $donnees){ /*boucle for 1 pour avoir le nombre de maison*/
 												
@@ -206,7 +186,7 @@
 									  		
 									  			       		
 							</select><br><br><br>        
-							<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
+							<input id="sendmod" class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
 					   
 					    </form>								
 				</div> <!-- .fenetre-modale -->
@@ -236,21 +216,22 @@
 																								
 														);
 													
-													$cpt5=0;
+													
 													//foreach($cemacs as $donnees5){  /*boucle for 6 pour savoir si l'id dans room correspond avec l'id room dans cemac*/	
 														
 														//if($donnees2['id']==$donnees5['room_id'] ){ /*if 5*/
-															
+															$cpt5=0;
 															foreach($devices as $donnees4){  //boucle for 7 pour savoir si l'id dans cemac correspond avec l'id cemac dans device
-																									
+																$cpt5++;
+																$cpt6++;
 																if($donnees4['room_id']==$donnees2['id']){/*if 6*/
-																	$cpt5=1;
+																	
 																	
 											?>
 										
 			<div class="element , ecriture3">	 <!-- div de chaque données qui va être afficher -->							
 										
-				<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data" name="formsupp">   <!--form pour supprimer un capteur -->
+				<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
 										
 										
 										
@@ -258,37 +239,39 @@
 											
 											$id1=$donnees4['id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
 											echo("<input type='hidden'"
+												."id='id1'"
 												."name='id1'" 
 												."value='"
 												."$id1'/>"
 												);
 											
-											?>
-											
-											
-											
-											 
-											
+											?>										
 											
 		   			
-		   									<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage de nom du capteur donné par l'user -->
+		   		<input  type="image" src="../res/icones/bouton-fermer.png" class="btn-fermer2" onclick="SubmitFormDataSupprimer();"><br><br> 
+				</form>	
+											<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage de nom du capteur donné par l'user -->
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">  <!--affichage de l'image correspondant au capteur-->
-		   		  							<input href="#nullepart" type="image" name="creation_submit" src="../res/icones/bouton-fermer.png" class="btn-fermer2"><br><br> 
-											</form>			
-		   									 
-		   										
+		   		  									
 		   									
 		   									<?php 
+		   									foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   										if($donnees4['device_type_id']==$donnees8['device_id']){/*if 6.2*/ 
+		   											$info=$donnees8['value'];
+		   										
+		   										}}
 											
 		   									   									
 		   									switch (recherche_device($bdd, $donnees4['device_type_id'])[0]['name']) {    
 										            case 'Humidité':
-										            	
+										            	$chaineinfo = (string)$info;
 										            	?>
-										            	<div class="capteur_ecriture2"> ---  % </div>
+										            	<div class="capteur_ecriture2">  <?php echo substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?> % </div>
+														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>
 														<?php
-																            																												
+															            																												
 										            	break;
 
 													 case 'Lampe':
@@ -302,7 +285,9 @@
 																<input href="#nullepart" type="submit" name="lampe" class="lampe" value="OFF"><br><br>
 														</div>
 
-														</form>														
+														</form>									
+														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>					
 										           		<?php
 										            	
 										            	break;
@@ -318,48 +303,62 @@
 															</div>															
 															</form>	
 
+															<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier3' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>
+
 														<?php
 										            	
 										            	break;
 
 													 case 'Présence':
-										            	
+													 	$chaineinfo = (string)$info;
 										            	?>
-										            	<div class="capteur_ecriture2"> --- </div>
+										            	<div class="capteur_ecriture2"> <?php echo $info; ?> </div>
+														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>
 														<?php
-										            	
+										            
 										            	break;
 																							                										                
 										            case 'Température':
-										            	
+										            	$chaineinfo = (string)$info;
 										            	?>
-										              	<div class="capteur_ecriture2"> ---  °C </div>
+										            	
+										              	<div class="capteur_ecriture2"> <?php echo substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?>  °C </div>
+														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>
 														<?php
-										                
+										              
 										                break;
 										            											            	
 										            case 'Luminosité':
-										            	
+										            	$chaineinfo = (string)$info;
 										            	?>
-										            	<div class="capteur_ecriture2"> ---  % </div>
+										            	
+										            	<div class="capteur_ecriture2"> <?php echo substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?>  % </div>
+														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										            	<div id='masqueA<?php echo $cpt6; ?>'>
 										            	<?php
-										              	  
+										            	
 										                break;							
 										
 										            default :
-										            	
+										            	$chaineinfo = (string)$info;
 										            	?>
-										            	<div class="capteur_ecriture2"> --- </div>
-										            	
+										            	<div class="capteur_ecriture2"> <?php substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?> </div>
+										            	<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>				
+								   							<div id='masqueA<?php echo $cpt6; ?>'>
 										            	<?php 
-														 	
+															
 										        
-												}
+		   									}
+												?>
+													
 	
-					echo("<a href='#masqueA$cpt'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>"					
-								   							."<div id='masqueA$cpt'> ");						
-		   								
-				 ?>	
+											
+								   							
+								   							
+		   			
 			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir moidifier le nom d'un capteur -->
 
 			    <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
@@ -376,6 +375,7 @@
 					   					  
 					   					  $id1=$donnees4['id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
 					   					  echo("<input type='hidden'"
+					   					  		."id='id1'"
 												."name='id1'"
 												."value='"
 										  		."$id1'/>"
@@ -395,11 +395,14 @@
 		
 		
 										   <?php
+		   										
 										
 																}/*fin if 6*/
 															}   /*fin for 7*/
+																
 														//}  /*fin if 5*/
 													//}  /*fin for 6*/
+													
 													if($cpt5==0){  /* if 7 */
 														echo(
 																"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
@@ -412,7 +415,7 @@
 												}	/*fin if 4*/
 											}  /*fin for 5*/
 						
-						
+												
 					
 						
 												if($cpt2==0){ /* if 8 */
@@ -431,7 +434,7 @@
 													} /*fin if 1*/
 												}/*fin for 1*/
 											
-																					
+												
 											
 											if($cpt==0){
 												echo(
@@ -444,7 +447,14 @@
 											
 											?>
 				
+		<script>
+			setInterval(actualiser(),2000);
+			function actualiser(){
+				$('.capteurecriture2').load('actualiser.php')
+			}
+
 		
+		</script>
 		
 </div> 
 		
