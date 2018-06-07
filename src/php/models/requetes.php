@@ -120,15 +120,15 @@ function getUserType(PDO $bdd, $id){
 }
 
 /**
- * Retroune l'id, le prénom, nom et mot de passe d'un utilisateur en fonction de son email (identification a la connexion)
+ * Retroune toutes les infos d'un utilisateur en fonction de son email (identification a la connexion)
  * @param PDO $bdd
  * @param string $table
  * @param string $email
  * @return array
  */
-function Get_Id(PDO $bdd, string $table, string $email): array {
+function Get_User_Data(PDO $bdd, string $table, string $email): array {
 
-    $statement = $bdd->prepare('SELECT id,user_firstname, user_name, password, avatar FROM ' . $table . ' WHERE email = :email');
+    $statement = $bdd->prepare('SELECT * FROM ' . $table . ' WHERE email = :email');
     $statement->execute(array(':email' => $email));
     return $statement->fetch();
 }

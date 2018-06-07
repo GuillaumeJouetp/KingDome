@@ -151,13 +151,17 @@ switch ($function) {
         // Vérifie si l'email existe dans la base
         if(Is_Email_Exists($bdd, 'users', $_POST_SEC['email'])){
 
-            $data = Get_Id($bdd, 'users', $_POST_SEC['email']);
+            $data = Get_User_Data($bdd, 'users', $_POST_SEC['email']);
 
             if(password_verify($_POST_SEC['password'], $data['password'])) {
 
                 // Bonne identifacation -> creation de la session et redirection vers l'index
                 $_SESSION['user_firstname'] = $data['user_firstname'];
                 $_SESSION['user_name'] = $data['user_name'];
+                $_SESSION['adress'] = $data['adress'];
+                $_SESSION['city'] = $data['city'];
+                $_SESSION['zip_code'] = $data['zip_code'];
+                $_SESSION['tel'] = $data['tel'];
                 $_SESSION['password'] = $data['password'];
                 $_SESSION['email'] = $_POST_SEC['email'];
                 $_SESSION['connected'] = true;

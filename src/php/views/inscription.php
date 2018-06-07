@@ -24,10 +24,11 @@
                 <form method="post" action="index.php?cible=utilisateur&function=inscription" enctype="multipart/form-data" id="myForm">
 
                     <label>Adresse mail*<br>
-                        <input type="email" name="email" size="39" required id="email"/>
+                        <input type="email" name="email" size="39" required id="email" onblur="verifEmail(this.value)"/>
+                        <span id="txtHint"></span>
                         <span class="tooltip">Email non valide</span>
                     </label>
-                        <?php
+                    <?php
                         echo "<span class='Alerte_Message'>".$Email_Message."</span>"; ?>
 
                     <label>Mot de passe*<br>
