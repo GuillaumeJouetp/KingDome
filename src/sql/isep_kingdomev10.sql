@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 08 juin 2018 à 07:21
+-- Généré le :  mer. 06 juin 2018 à 12:32
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -88,55 +88,6 @@ INSERT INTO `cemacs` (`id`, `ref`, `state`, `name`, `room_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `conso_mois`
---
-
-DROP TABLE IF EXISTS `conso_mois`;
-CREATE TABLE IF NOT EXISTS `conso_mois` (
-  `id_user` int(11) NOT NULL,
-  `conso` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `conso_mois`
---
-
-INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
-(15, 320, '2017-06-01', 1),
-(15, 340, '2017-07-01', 2),
-(15, 310, '2017-08-01', 3),
-(15, 305, '2017-09-01', 4),
-(15, 310, '2017-09-01', 5),
-(15, 300, '2017-10-01', 6),
-(15, 340, '2017-11-01', 7),
-(15, 350, '2017-12-01', 8),
-(15, 320, '2018-01-01', 9),
-(15, 310, '2018-02-01', 10),
-(15, 295, '2018-03-01', 11),
-(15, 280, '2018-04-01', 12),
-(15, 290, '2018-05-01', 13),
-(15, 275, '2018-06-01', 14),
-(14, 320, '2017-06-01', 15),
-(14, 340, '2017-07-01', 16),
-(14, 310, '2017-08-01', 17),
-(14, 305, '2017-09-01', 18),
-(14, 310, '2017-09-01', 19),
-(14, 300, '2017-10-01', 20),
-(14, 340, '2017-11-01', 21),
-(14, 350, '2017-12-01', 22),
-(14, 320, '2018-01-01', 23),
-(14, 310, '2018-02-01', 24),
-(14, 295, '2018-03-01', 25),
-(14, 280, '2018-04-01', 26),
-(14, 290, '2018-05-01', 27),
-(14, 275, '2018-06-01', 28);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `datas`
 --
 
@@ -187,8 +138,8 @@ CREATE TABLE IF NOT EXISTS `devices` (
 
 INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`) VALUES
 (105, 0, 'Température Salon', 0, '2018-05-31 08:42:44', 1, 19),
-(106, 0, 'Température', 1, '2018-06-05 08:42:44', 1, 19),
-(107, 0, 'Humidité', 1, '2018-06-05 08:42:44', 2, 19);
+(106, 0, 'zefh', 1, '2018-06-05 08:42:44', 1, 19),
+(107, 0, 'erfg', 1, '2018-06-05 08:42:44', 2, 19);
 
 -- --------------------------------------------------------
 
@@ -226,10 +177,9 @@ DROP TABLE IF EXISTS `homes`;
 CREATE TABLE IF NOT EXISTS `homes` (
   `name_home` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
-  `town` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `zip_code` int(11) NOT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `flat_number` int(11) DEFAULT NULL,
+  `adress` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -238,11 +188,11 @@ CREATE TABLE IF NOT EXISTS `homes` (
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
-('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
-('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
-('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 2, 4),
-('NDC', 'Fr', 'Paris', 75, 'rue ndc', 2, 5);
+INSERT INTO `homes` (`name_home`, `country`, `city`, `zip_code`, `adress`, `id`) VALUES
+('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen',  1),
+('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 3),
+('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 4),
+('NDC', 'Fr', 'Paris', 75, 'rue ndc', 5);
 
 -- --------------------------------------------------------
 
@@ -454,8 +404,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (8, '2018-06-03'),
 (52, '2018-06-04'),
 (29, '2018-06-05'),
-(79, '2018-06-06'),
-(1, '2018-06-08');
+(79, '2018-06-06');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

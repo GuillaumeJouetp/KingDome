@@ -52,10 +52,10 @@
                     if ($donnees['house_id'] == $donnees2['id']) { ?>
                         <button class='collapsible' onclick='collapse()'>
                             <?php echo $donnees2['name_home']; ?>
-                            <label class='switch' style='margin-left: 2%'>
+                            <!--<label class='switch' style='margin-left: 2%'>
                                 <input type='checkbox'>
                                 <span class='slider round'></span>
-                            </label>
+                            </label>-->
                         </button>
                     <?php $home_id = $donnees2['id']; ?>
 
