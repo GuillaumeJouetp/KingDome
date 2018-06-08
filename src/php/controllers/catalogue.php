@@ -6,7 +6,7 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
     $function = $_GET['function'];
 }
 
-if( ! isAnAdmin($bdd)) {
+if( isAnAdmin($bdd)) {
     switch ($function) {
         case 'default':
             $vue = "catalogue_backoffice";
