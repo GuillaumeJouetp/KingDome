@@ -118,12 +118,6 @@ switch ($function) {
                 $_SESSION['birth_date'] = $Data_Inscription['birth_date'];
             }
 
-            // Ajoute l'avatar si il est renseingé
-            if($avatar != null){
-                $Data_Inscription['avatar'] = $avatar;
-                $_SESSION['avatar'] = $Data_Inscription['avatar'];
-            }
-
             insertion($bdd, $Data_Inscription, 'users');
             $_SESSION['user_firstname'] = $Data_Inscription['user_firstname'];
             $_SESSION['user_name'] = $Data_Inscription['user_name'];
@@ -136,6 +130,7 @@ switch ($function) {
             $_SESSION['connected'] = true;
             $_SESSION['user_id'] = $Data_Inscription['user_type_id'];
             $_SESSION['type'] = getCurrentUserType($bdd);
+            $_SESSION['avatar'] = $avatar;
 
             header('location: index.php');
 
