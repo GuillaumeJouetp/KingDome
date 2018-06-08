@@ -76,9 +76,9 @@ switch ($function) {
             modification($bdd, $_POST_SEC['zip_code'], 'zip_code', $_SESSION['user_id'], 'users');
             modification($bdd, $_POST_SEC['city'], 'city', $_SESSION['user_id'], 'users');
             modification($bdd, $_POST_SEC['tel'], 'tel', $_SESSION['user_id'], 'users');
-            modification($bdd, $_POST_SEC['date_naissance'], 'date_naissance', $_SESSION['user_id'], 'users');
+            modification($bdd, $_POST_SEC['date_naissance'], 'birth_date', $_SESSION['user_id'], 'users');
 
-            $data = Get_User_Data($bdd, 'users', $_POST_SEC['email']);
+            $data=recupereTous($bdd, 'users');
 
             $_SESSION['user_firstname'] = $data['user_firstname'];
             $_SESSION['user_name'] = $data['user_name'];
