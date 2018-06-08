@@ -14,7 +14,7 @@ if(isAnAdmin($bdd)) {
         case 'modifier_texte':
             $req = $bdd->prepare('UPDATE updatable_content SET content= :nouveau_texte WHERE id = 3');
             $req->execute(array(
-                'nouveau_texte' => $_POST['texte_catalogue']
+                'nouveau_texte' => $_POST['texte_ment_leg']
             ));
             $vue = "ment_leg_admin";
             break;
