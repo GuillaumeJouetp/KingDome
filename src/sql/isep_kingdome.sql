@@ -177,10 +177,9 @@ DROP TABLE IF EXISTS `homes`;
 CREATE TABLE IF NOT EXISTS `homes` (
   `name_home` varchar(100) NOT NULL,
   `country` varchar(100) NOT NULL,
-  `town` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `zip_code` int(11) NOT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `flat_number` int(11) DEFAULT NULL,
+  `adress` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -189,11 +188,11 @@ CREATE TABLE IF NOT EXISTS `homes` (
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
-('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
-('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
-('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 2, 4),
-('NDC', 'Fr', 'Paris', 75, 'rue ndc', 2, 5);
+INSERT INTO `homes` (`name_home`, `country`, `city`, `zip_code`, `adress`, `id`) VALUES
+('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen',  1),
+('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 3),
+('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 4),
+('NDC', 'Fr', 'Paris', 75, 'rue ndc', 5);
 
 -- --------------------------------------------------------
 

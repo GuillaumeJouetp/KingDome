@@ -24,7 +24,7 @@
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
-                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 100px; height: 150px;"></p>
+                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 200px; height: 200px;"></p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
                 <p>Adresse mail : <?php echo $_SESSION['email']; ?></p>
                 <p style="text-align: center">
@@ -42,92 +42,100 @@
         <h3>Mes résidences</h3>
 
         <?php
-        // On récupère tout le contenu de la table jeux_video
-        $var = $bdd->query('SELECT * FROM homes');
+        $homes = recupereTous($bdd, 'homes');
+        $own_home = recupereTous($bdd, 'own_home');
+        $id=$_SESSION['user_id'];
 
-        // On affiche chaque entrée une à une
-        while ($home = $var->fetch())
-        {
-            ?>
-            <button class='collapsible' onclick='collapse()'><?php echo $home['name_home']; ?>
-                <label class='switch' style='margin-left: 2%'>
-                    <input type='checkbox'>
-                    <span class='slider round'></span>
-                </label>
-            </button>
-        <?php $home_id=$home['id']; ?>
+        foreach($own_home as $donnees) {
+            if ($id == $donnees['user_id']) {
+                foreach($homes as $donnees2 ) {
+                    if ($donnees['house_id'] == $donnees2['id']) { ?>
+                        <button class='collapsible' onclick='collapse()'>
+                            <?php echo $donnees2['name_home']; ?>
+                            <label class='switch' style='margin-left: 2%'>
+                                <input type='checkbox'>
+                                <span class='slider round'></span>
+                            </label>
+                        </button>
+                    <?php $home_id = $donnees2['id']; ?>
 
-            <div class="content">
-                <?php
-                // On récupère tout le contenu de la table jeux_video
-                $var2 = $bdd->query('SELECT * FROM rooms');
+                        <div class="content">
+                            <?php
+                            $var3 = $bdd->query('SELECT * FROM rooms');
+                            while ($room = $var3->fetch()) {
+                                $room['home_id'] = $home_id;
+                                ?>
+                                <form method="post" action="index.php?cible=monCompte&function=addRoom" class="addRoom">
+                                    <?php if (isset($errors)) { ?>
+                                        <p><?php echo $errors; ?></p>
+                                    <?php } ?>
+                                    <input type="text" name="home_id" value="<?php echo $room['home_id']; ?>"
+                                           style="display: none">
+                                    <input type="text" name="name" class="room_input"
+                                           placeholder="Entrer le nom de la pièce">
+                                    <button type="submit" class="room_btn" name="submit">Ajouter</button>
+                                </form>
 
-                // On affiche chaque entrée une à une
-                while ($room = $var2->fetch())
-                {
-                    $room['home_id'] = $home_id;
-                    ?>
-                    <form method="post" action="index.php?cible=monCompte&function=addRoom" class="addRoom">
-                        <?php if (isset($errors)) { ?>
-                            <p><?php echo $errors; ?></p>
-                        <?php } ?>
-                        <input type="text" name="home_id" value="<?php echo $room['home_id']; ?>" style="display: none">
-                        <input type="text" name="name" class="room_input" placeholder="Entrer le nom de la pièce">
-                        <button type="submit" class="room_btn" name="submit">Ajouter </button>
-                    </form>
+                                <section class="room">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Pièces</th>
+                                            <th>Supprimer</th>
+                                        </tr>
+                                        </thead>
 
-                    <section class="room">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Pièces</th>
-                                <th>Supprimer</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php while ($donnees2 = $var2->fetch()) { ?>
-                                <tr>
-                                    <td class="room">
-                                        <?php
-                                        if ($donnees2['home_id'] == $home_id) {
-                                            echo $donnees2['name'];}
-                                        ?>
-                                    </td>
-                                    <td class="delete">
-                                        <?php if ($donnees2['home_id'] == $home_id) { ?>
-                                            <a href="index.php?cible=monCompte&function=delRoom=<?php echo $donnees2['id2']; ?>"
-                                               onclick="if(confirm('Etes vous sûre de vouloir supprimer la pièce?')){
-                                   document.location.href=url;}
-                                   else{}">x</a>
+                                        <?php while ($donnees3 = $var3->fetch()) { ?>
+                                            <tbody>
+                                            <?php if ($donnees3['home_id'] == $home_id) { ?>
+                                                <tr>
+                                                    <td class="room">
+                                                        <?php echo $donnees3['name']; ?>
+                                                    </td>
+                                                    <td class="delete">
+                                                        <form method="post" action="index.php?cible=monCompte&function=delRoom" name="formsupp">
+                                                            <?php
+                                                            $id2=$donnees3['id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
+                                                            echo("<input type='hidden'"
+                                                                ."name='id2'"
+                                                                ."value='"
+                                                                ."$id2'/>"
+                                                            ); ?>
+                                                            <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2">
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            </tbody>
                                         <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php
-                            } ?>
-                            </tbody>
-                        </table>
-                        <p style="text-align: center">
-                            <a href="index.php?cible=monCompte&function=delHome=<?php echo $home['id']; ?>"
-                               onclick="if(confirm('Etes vous sûre de vouloir supprimer la résidence?')){
-                       document.location.href=url;}
-                   else{}">Supprimer maison
-                            </a>
-                        </p>
-                    </section>
-                <?php } ?>
-            </div>
-            <script src="../src/js/Collapse.js"></script>
-        <?php }
-        $var->closeCursor(); // Termine le traitement de la requête
-        ?>
+                                    </table>
+                                    <p style="text-align: center">
+                                    <form method="post" action="index.php?cible=monCompte&function=delHome" name="formsupp">
+                                        <?php
+                                        $id1=$donnees2['id'];
+                                        echo("<input type='hidden'"
+                                            ."name='id1'"
+                                            ."value='"
+                                            ."$id1'/>"); ?>
+                                        <button type="submit" name="delhome">Supprimer résidence</button>
+                                    </form>
+                                    </p>
+                                </section>
+                            <?php } ?>
+                        </div>
+                        <script src="../src/js/Collapse.js"></script>
+                        <?php
+                    }
+                }
+            }
+        } ?>
 
-        <!-- Consommation -->
+        <!-- Consommation
         <button>
             <a href="index.php?cible=consommation">
                 <img src="../res/icones/consommation.png" alt="icone compte" class="icone">Consommation
             </a>
-        </button>
+        </button>-->
 
         <!-- Ajout de maison -->
         <button id="myBt" onclick="ajoutMaison()" style="float: right"><h3>Ajouter Résidence +</h3></button>
@@ -138,36 +146,39 @@
                 </div>
                 <div class="model-body">
                     <h3>Ajouter une résidence</h3>
-                    <form method="post" action="index.php" class="ajout">
+                    <form method="post" action="index.php?cible=monCompte&function=ajouter" class="ajout">
                         <p>
                         <p><label for="name_home">Nom de la maison*<br>
                                 <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
                             </label>
                         </p>
+
                         <p><label for="adress">Adresse*<br>
                                 <input type="text" name="adress" id="adress" placeholder="Adresse de la maison" required/>
                             </label>
                         </p>
 
-                        <p><label for="zip_code">Code postal*<br>
-                                <input type="text" name="zip_code" id="zip_code" required/>
-                            </label>
-                        </p>
-                        <p><label for="town" id="ville">Ville*<br>
-                                <input type="text" name="town" id="town" required/>
+                        <p><label for="city">Ville*<br>
+                                <input type="text" name="city" id="city" placeholder="" required/>
                             </label>
                         </p>
 
-                        <p><label for="country">Pays*<br>
-                                <input type="text" name="country" id="country" value="France" required>
+                        <p><label for="zip_code">Code Postale*<br>
+                                <input type="text" name="zip_code" id="zip_code" placeholder="" required/>
                             </label>
                         </p>
 
-                        <button style="width:auto;" type="submit" name="submit2">
+                        <p><label for="country">Pays<br>
+                                <input type="text" name="country" id="country" value="France" required/>
+                            </label>
+                        </p>
+
+                        <button style="width:auto;" type="submit" name="ajout">
                             Ajouter
                         </button>
                         </p>
                     </form>
+                    <script src="../src/js/autocompletion.js"></script>
                 </div>
             </div>
         </div>
