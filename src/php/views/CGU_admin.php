@@ -25,7 +25,7 @@
             <div class="fenetre-modale">
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=CGU&function=modifier_texte">
-                    <label>Texte d'introduction : <br> <br> <textarea rows="30" cols="35" name="texte_introCGU"><?php echo $texte['content'] ?> </textarea> </label>
+                    <label>Texte d'introduction : <br> <br> <textarea rows="30" cols="60" name="texte_introCGU"><?php echo $texte['content'] ?> </textarea> </label>
                     <button type="submit" class="button">Modifier</button>
                 </form>
             </div>
@@ -38,7 +38,7 @@
             <div class="fenetre-modale">
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=CGU&function=modifier_texte">
-                    <label>Texte des CGU : <br> <br> <textarea rows="90" cols="105" name="texte_CGU"><?php echo $texte['content'] ?> </textarea> </label>
+                    <label>Texte des CGU : <br> <br> <textarea rows="30" cols="35" name="texte_CGU"><?php echo $texte['content'] ?> </textarea> </label>
                     <button type="submit" class="button">Modifier</button>
                 </form>
             </div>
