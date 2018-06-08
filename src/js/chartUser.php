@@ -5,8 +5,12 @@
 <script type="text/javascript">
 <?php 
 if(!isset($_POST['duree'])){
-	$mois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre' ,'Décembre');
-	$conso = array('20','32','45','59','67','74','85','93','102','110','122','133');
+	$mois = $bdd->query('SELECT date FROM conso_mois WHERE date >= NOW() - INTERVAL 12 MONTH');
+	$mois = $mois->fetchAll();
+	$mois= array ($mois[0][0], $mois[1][0], $mois[2][0], $mois[3][0], $mois[4][0], $mois[5][0], $mois[6][0], $mois[7][0], $mois[8][0], $mois[9][0], $mois[10][0], $mois[11][0]);
+	$conso = $bdd->query('SELECT conso FROM conso_mois WHERE date >= NOW() - INTERVAL 12 MONTH');
+	$conso = $conso->fetchAll();
+	$conso=array($conso[0][0], $conso[1][0], $conso[2][0], $conso[3][0], $conso[4][0], $conso[5][0],$conso[6][0], $conso[7][0], $conso[8][0], $conso[9][0], $conso[10][0], $conso[11][0]);
 }
 ?>
 	
@@ -18,7 +22,7 @@ if(!isset($_POST['duree'])){
 		    data: {
 		        labels: x_datas,
 		        datasets: [{
-		            label: "Durée d'activation des capteurs",
+		            label: "Durée d'activation des capteurs en heures",
 		            data: y_datas,
 		            backgroundColor: 'rgb(0, 129, 220)',
 		            borderColor: 'rgb(0, 129, 220)',

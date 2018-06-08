@@ -24,7 +24,6 @@
 	<?php 
 	include 'js/chartUser.php' ;
 	include 'C:\wamp64\www\dHomeTech\src\php\controllers\consoCapteurs.php';
-	echo nombre_heures($bdd);
 	?>
 
 </div>
