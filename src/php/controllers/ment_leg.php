@@ -9,14 +9,14 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 if(isAnAdmin($bdd)) {
     switch ($function) {
         case 'default':
-            $vue = "CGU_admin";
+            $vue = "ment_leg_admin";
             break;
         case 'modifier_texte':
-            $req = $bdd->prepare('UPDATE updatable_content SET content= :nouveau_texte WHERE id = 2');
+            $req = $bdd->prepare('UPDATE updatable_content SET content= :nouveau_texte WHERE id = 3');
             $req->execute(array(
                 'nouveau_texte' => $_POST['texte_catalogue']
             ));
-            $vue = "CGU_admin";
+            $vue = "ment_leg_admin";
             break;
     }
 }
@@ -24,7 +24,7 @@ if(isAnAdmin($bdd)) {
 else{
     switch ($function) {
         case 'default':
-            $vue = "CGU";
+            $vue = "ment_leg";
             break;
     }
 }
