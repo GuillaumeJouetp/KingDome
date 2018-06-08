@@ -9,7 +9,6 @@
 
 <head>
     <link rel="stylesheet" href="..\src\css\dashboard.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 
 		function AfficheCache(Id)
