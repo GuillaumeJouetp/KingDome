@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `catalog` (
   `device_type_name` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL,
   `url` varchar(20000) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `cemacs` (
   `state` tinyint(1) NOT NULL,
   `name` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `conso_mois` (
   `conso` int(11) NOT NULL,
   `date` date NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `type_requete` int(11) NOT NULL,
   `checksum` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `last_activation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type_capteur_trame` varchar(255) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
@@ -225,22 +225,24 @@ INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`) VALUES
 DROP TABLE IF EXISTS `homes`;
 CREATE TABLE IF NOT EXISTS `homes` (
   `name_home` varchar(100) NOT NULL,
-  `adress` varchar(100) DEFAULT NULL,
-  `city` varchar(100) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
+  `country` varchar(100) NOT NULL,
+  `town` varchar(100) NOT NULL,
+  `zip_code` int(11) NOT NULL,
+  `street` varchar(100) DEFAULT NULL,
+  `flat_number` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`name_home`, `city`, `zip_code`, `adress`, `id`) VALUES
-('Casa de papel', 'Orly', 94310, '90 rue Normandie Niemen', 1),
-('NDL', 'Issy', 92130, '1 rue de Vanves', 3),
-('ETGJFGF', 'gghgj', 94310, '2 hjhg', 4),
-('NDC', 'Paris', 75, '2 rue ndc', 5);
+INSERT INTO `homes` (`name_home`, `country`, `town`, `zip_code`, `street`, `flat_number`, `id`) VALUES
+('Casa de papel', 'Fr', 'Orly', 94310, 'rue Normandie Niemen', 90, 1),
+('NDL', 'Fr', 'Issy', 92130, 'rue de Vanves', 1, 3),
+('ETGJFGF', 'Fr', 'gghgj', 94310, 'hjhg', 2, 4),
+('NDC', 'Fr', 'Paris', 75, 'rue ndc', 2, 5);
 
 -- --------------------------------------------------------
 
@@ -254,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `incoming_messages` (
   `mail` varchar(100) NOT NULL,
   `object` varchar(100) NOT NULL,
   `content` text NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
@@ -277,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `own_home` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `house_id` int(11) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
@@ -302,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `probems_reports` (
   `user_id` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `content` text NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -316,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `rights` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -330,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `home_id` int(11) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
@@ -359,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `updatable_content` (
   `content` text NOT NULL,
   `date` date NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
@@ -393,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `avatar` varchar(200) DEFAULT NULL,
   `user_type_id` varchar(100) NOT NULL,
   `child_id` int(11) DEFAULT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
@@ -417,7 +419,7 @@ DROP TABLE IF EXISTS `user_types`;
 CREATE TABLE IF NOT EXISTS `user_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --

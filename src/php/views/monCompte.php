@@ -10,6 +10,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASX0Eevc77t1rhFySVK7xfMuUV9dUi-30&libraries=places"></script>
     <link rel="stylesheet" href="css/monCompte.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -153,32 +154,33 @@
                             </label>
                         </p>
 
-                        <p><label for="adress">Adresse*<br>
-                                <input type="text" name="adress" id="adress" placeholder="Adresse de la maison" required/>
-                            </label>
-                        </p>
+                        <p><label>Adresse*<br>
+                            <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/>
 
-                        <p><label for="city">Ville*<br>
-                                <input type="text" name="city" id="city" placeholder="" required/>
-                            </label>
-                        </p>
+                            <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
+                            <input type="hidden" id="street_number" disabled="true" />
+                            <input type="hidden" id="route" disabled="true" />
+                            <input type="hidden" id="country" disabled="true" />
+                            <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
-                        <p><label for="zip_code">Code Postale*<br>
-                                <input type="text" name="zip_code" id="zip_code" placeholder="" required/>
-                            </label>
-                        </p>
+                            <label for="zip_code" id="zip_label"><br>Code postal*<br>
+                                <input type="text" name="zip_code" id="postal_code"  disabled="true" onmouseout="verifAdress()"/>
+                            </label><br><br>
 
-                        <p><label for="country">Pays<br>
-                                <input type="text" name="country" id="country" value="France" required/>
-                            </label>
-                        </p>
+                            <label for="ville" id="city">Ville*<br>
+                                <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
+                            </label><br><br>
+
+                            <span class="tooltip">Adresse non complète</span>
+                        </label></p>
 
                         <button style="width:auto;" type="submit" name="ajout">
                             Ajouter
                         </button>
                         </p>
                     </form>
-                    <script src="../src/js/autocompletion.js"></script>
+                    <script type="text/javascript" src="../src/js/autocompletion.js"></script>
+                    <script type="text/javascript" src="../src/js/verification.js"></script>
                 </div>
             </div>
         </div>

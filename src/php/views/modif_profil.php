@@ -32,15 +32,15 @@
             <p><input type="text" size="35" name="adress" value="<?php if(isset($_SESSION['adress'])){echo $_SESSION['adress'];} ?>" /></p>
 
             <label for="zip_code">Code postal</label>
-            <p><input type="text" name="zip_code" id="zip_code" size="11" placeholder="<?php if(isset($_SESSION['zip_code'])){echo $_SESSION['zip_code'];} ?>"/></p>
+            <p><input type="text" name="zip_code" id="zip_code" size="11" value="<?php if(isset($_SESSION['zip_code'])){echo $_SESSION['zip_code'];} ?>"/></p>
             <label for="city" >Ville</label>
-            <p><input type="text" name="city" id="city" size="35" placeholder="<?php if(isset($_SESSION['city'])){echo $_SESSION['city'];} ?>"/></p>
+            <p><input type="text" name="city" id="city" size="35" value="<?php if(isset($_SESSION['city'])){echo $_SESSION['city'];} ?>"/></p>
 
             <label>Numéro de téléphone</label>
-            <p><input type="tel" name="tel" size="35" placeholder="<?php if(isset($_SESSION['tel'])){echo $_SESSION['tel'];} ?>"/></p>
+            <p><input type="tel" name="tel" size="35" value="<?php if(isset($_SESSION['tel'])){echo $_SESSION['tel'];} ?>"/></p>
 
             <label>Date de naissance</label>
-            <p><input type="date" name="date_naissance" size="35" placeholder="<?php if(isset($_SESSION['birth_date'])){echo $_SESSION['birth_date'];} ?>"/></p>
+            <p><input type="date" name="date_naissance" size="35" value="<?php if(isset($_SESSION['birth_date'])){echo $_SESSION['birth_date'];} ?>"/></p>
 
             <!--<button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
             <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span><br>
