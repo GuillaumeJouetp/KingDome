@@ -121,8 +121,7 @@ switch ($function) {
             'name_home' => $_POST_SEC['name_home'],
             'adress' => $_POST_SEC['adress'],
             'city' => $_POST_SEC['city'],
-            'zip_code' => $_POST_SEC['zip_code'],
-            'country' => $_POST_SEC['country']);
+            'zip_code' => $_POST_SEC['zip_code']);
 
         insertion($bdd, $Data_ajoutMaison, 'homes');
         $_SESSION['name_home'] = $Data_ajoutMaison['name_home'];
