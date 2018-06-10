@@ -483,7 +483,7 @@
 														
 														echo(
 																"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
-																."</optgroup>	</optgroup>	"
+																."Vous n'avez pas encore de capteurs dans cette pièce :-)"
 																."</div>"
 																);
 														
