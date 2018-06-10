@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 10 juin 2018 à 14:55
+-- Généré le :  ven. 08 juin 2018 à 09:30
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `checksum` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `datas`
@@ -172,25 +172,23 @@ INSERT INTO `datas` (`id`, `value`, `num_trame`, `device_id`, `type_trame`, `obj
 DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `sens_or_eff` tinyint(1) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `state` tinyint(1) NOT NULL,
   `last_activation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `ref` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `devices`
 --
 
-INSERT INTO `devices` (`id`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`, `ref`) VALUES
-(170, 'a', 1, '2018-06-10 16:25:43', 1, 19, 1),
-(166, 'a', 1, '2018-06-10 15:20:21', 1, 19, 1),
-(172, 'a', 1, '2018-06-10 16:27:28', 1, 19, 1),
-(177, 'a', 1, '2018-06-10 16:32:23', 1, 19, 1),
-(181, 'a', 1, '2018-06-10 16:41:50', 1, 22, 1);
+INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`) VALUES
+(105, 0, 'Température Salon', 0, '2018-05-31 08:42:44', 1, 19),
+(106, 0, 'Température', 1, '2018-06-05 08:42:44', 1, 19),
+(107, 0, 'Humidité', 1, '2018-06-05 08:42:44', 2, 19);
 
 -- --------------------------------------------------------
 
@@ -203,7 +201,6 @@ CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type_capteur_trame` varchar(255) NOT NULL,
-  `sens_or_eff` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -211,13 +208,13 @@ CREATE TABLE IF NOT EXISTS `device_types` (
 -- Déchargement des données de la table `device_types`
 --
 
-INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`, `sens_or_eff`) VALUES
-(1, 'Humidité', '4', 0),
-(2, 'Luminosité', '5', 0),
-(3, 'Température', '3', 0),
-(4, 'Moteur', 'a', 1),
-(5, 'Lampe', '5', 1),
-(6, 'Présence', '7', 0);
+INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`) VALUES
+(1, 'Humidité', '4'),
+(2, 'Luminosité', '5'),
+(3, 'Température', '3'),
+(4, 'Moteur', 'a'),
+(5, 'Lampe', '5'),
+(6, 'Présence', '7');
 
 -- --------------------------------------------------------
 
@@ -336,21 +333,21 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `name` varchar(100) NOT NULL,
   `home_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `name`, `home_id`) VALUES
-(22, 'Cuisine', 3),
+(14, 'Salle à manger', 3),
+(15, 'Bureau', 3),
 (16, 'Chambre enfant', 5),
 (17, 'Chambre parents', 5),
 (18, 'Salle de jeu', 5),
 (19, 'Toilette', 1),
 (20, 'APP', 4),
-(21, 'Cuisine', 1),
-(23, 'Salle à manger', 3);
+(21, 'Cuisine', 1);
 
 -- --------------------------------------------------------
 
@@ -411,7 +408,7 @@ INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_dat
 (9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', 75009, 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', 656679976, 0, '2018-04-20 17:37:29', NULL, '2', NULL),
 (11, 'Guillaume', 'test1', 'Mr', '2018-04-04', 'Adresse test', 'Ville test', 11111, 'primaryuser1@test.fr', '$2y$10$x7uNtousmXvMzvEcy7w4.O1eANld3aYwWP0tt.WyfiAzM7cRVTAJa', 606060606, 0, '2018-04-26 11:27:52', NULL, '2', NULL),
 (13, 'Guillaume', 'JOUET-PASTRE', 'Mr', '1997-04-01', 'Adresse de Guillaume', 'LCSC', 78170, 'guillaume.jouet-pastre@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
-(14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', 94310, 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '2', NULL),
+(14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', 94310, 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '1', NULL),
 (15, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '10 rue de Vanves', 'Issy', 92130, 'olfalamti@gmail.com', '$2y$10$I5R1xWJ2AdgD4WCVfrh0KuOxS54i74RbuLfEcGkNAQTA7FxAObGy2', 600000000, 0, '2018-05-10 11:00:42', NULL, '2', NULL);
 
 -- --------------------------------------------------------
@@ -460,8 +457,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (52, '2018-06-04'),
 (29, '2018-06-05'),
 (79, '2018-06-06'),
-(44, '2018-06-08'),
-(1298, '2018-06-10');
+(44, '2018-06-08');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
