@@ -72,6 +72,7 @@
 													<?php echo $a; ?>
 												</a>
 											</div>
+											<a name='formulaire_ajouter<?php echo $cpt; ?>' ></a>
 											<div id="Identifiant<?php echo $cpt; ?>">
 												<div id='conteneur'>
 																	
@@ -80,8 +81,8 @@
 											<?php
 			
 															echo(
-																	"<a name='formulaire_ajouter' ></a>" 	
-																	."<a href='#masque$cpt'>"    /*on affiche le lien pour pouvoir ajouter un capteur dans chaque maison */
+																	 	
+																	"<a href='#masque$cpt'>"    /*on affiche le lien pour pouvoir ajouter un capteur dans chaque maison */
 																	."<div class='element , ecriture2'> Ajouter un capteur ou un effecteur </div>"
 																	."</a>"
 																	."<div id='masque$cpt'>" 
@@ -97,7 +98,7 @@
 			    <div class="capt"><br>Ajouter un capteur ou un effecteur<br><br></div>
 					    
 					    
-					<form method="post" action="index.php?cible=dashboard&function=ajouter#formulaire_ajouter" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
+					<form method="post" action="index.php?cible=dashboard&function=ajouter#formulaire_ajouter<?php echo $cpt; ?>" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
 					    	       
 					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" maxlength="12" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
