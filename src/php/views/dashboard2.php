@@ -9,6 +9,7 @@
 
 <head>
     <link rel="stylesheet" href="..\src\css\dashboard.css"> 
+	<!-- <meta http-equiv="refresh" content="10">-->
 <script>
 
 		function AfficheCache(Id)
@@ -19,6 +20,18 @@
 					else document.getElementById(Id).style.display='none';
 			    }
 			  }
+
+
+		function SubmitFormDataSupprimer() {
+			    var id1 = $("#id1").val();
+			    $.post("index.php?cible=dashboard&function=supprimer", { id1: id1 },
+			    function(data) {
+					$('#results').html(data);
+			     	$('#myForm')[0].reset();
+
+			    });
+			}
+
 
 
 
@@ -94,8 +107,9 @@
 					    
 					<form method="post" action="index.php?cible=dashboard&function=ajouter" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
 					    	       
-					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" maxlength="12" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
+					   	<label> <span class="blanc">Numéro capteur :</span>   <br><br> <input type="number" name="ref" required/> </label>  <br><br>  <!--nom du capteur -->
 					   						
 					   						
 					   						<?php 
@@ -164,13 +178,16 @@
 						<label> <span class='blanc'>Type de capteur / effecteur : </span><br><br> </label>    <!--choix du type de capteur -->
 					
 						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
-
+						   	
+								</span>
+								<span class='blanc'><optgroup label="CAPTEURS">
+								</span>
 
 
 											<?php 														/*quel type de capteur*/
 												   		
 									   		foreach($device_types as $donnees3){  /*boucle for 4 qui va parcourir la table device_types*/
-									   			
+									   			if($donnees3['sens_or_eff']==0){
 									   			echo(
 									   				"<span class='blanc'>"     /*on affiche le nom capteurs ,qui sont dans la table device_type, dans le menu déroulant de la fenêtre modale ajouter un capteur*/
 													."<option>"
@@ -178,11 +195,26 @@
 													."</option>"
 									   				."</span>"
 													);
-									   		}/*fin for 4*/
+									   			}}/*fin for 4*/
+									   			?>
+						</optgroup>			   			
+						<span class='blanc'><optgroup label="EFFECTEURS">
+						</span>
+									   			<?php								/*quel type d'effecteur*/
+									   			foreach($device_types as $donnees3){  /*boucle for 4 qui va parcourir la table device_types*/
+									   				if($donnees3['sens_or_eff']==1){
+									   					echo(
+									   							"<span class='blanc'>"     /*on affiche le nom capteurs ,qui sont dans la table device_type, dans le menu déroulant de la fenêtre modale ajouter un capteur*/
+									   							."<option>"
+									   							.$donnees3['name']
+									   							."</option>"
+									   							."</span>"
+									   							);
+									   				}}/*fin for 4*/
 													   		
 									  		?>	
-									  		
-									  		
+							</optgroup>		  		
+										  		
 									  			       		
 							</select><br><br><br>        
 							<input id="sendmod" class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
@@ -230,7 +262,7 @@
 										
 			<div class="element , ecriture3">	 <!-- div de chaque données qui va être afficher -->							
 										
-				<form method="post" action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data">   <!--form pour supprimer un capteur -->
+				<form method="post"  enctype="multipart/form-data" id=supp<?php echo $cpt6; ?>>   <!--form pour supprimer un capteur -->
 										
 										
 										
@@ -249,22 +281,31 @@
 		   			
 		   		<input  type="image" src="../res/icones/bouton-fermer.png" class="btn-fermer2" onclick="SubmitFormDataSupprimer();"><br><br> 
 				</form>	
+											<div class="divent">
 											<div class="capteur_ecriture"><?php echo $donnees4['name']; ?></div>     <!--affichage de nom du capteur donné par l'user -->
 		   			
 		   									<img class="capteur" src="..\res\icones\<?php echo $donnees4['device_type_id']; ?>.png">  <!--affichage de l'image correspondant au capteur-->
-		   		  									
 		   									
 		   									<?php 
-		   									foreach($datas as $donnees8){  /*boucle for 7.2 */
-		   										if($donnees4['device_type_id']==$donnees8['device_id']){/*if 6.2*/ 
-		   											$info=$donnees8['value'];
+		   									
+		   									if($donnees4['state']==0){
+		   										?>
+		   										<div class="capteur_ecriture2">Capteur non actif</div>
+		   										<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
+										        <div id='masqueA<?php echo $cpt6; ?>'>
+		   										<?php
 		   										
-		   										}}
-											
-		   									   									
+		   									}
+		   									else{
 		   									switch (recherche_device($bdd, $donnees4['device_type_id'])[0]['name']) {    
 										            case 'Humidité':
-										            	$chaineinfo = (string)$info;
+														foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
+													    $chaineinfo = (string)$info;
 										            	?>
 										            	<div class="capteur_ecriture2">  <?php echo substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?> % </div>
 														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
@@ -274,7 +315,12 @@
 										            	break;
 
 													 case 'Lampe':
-										            	
+										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
 										            	?>
 														
 														<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
@@ -292,7 +338,12 @@
 										            	break;
 
  													case 'Moteur':
-										            	
+										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
 										            	?>													
 										            		<form method="post" action="index.php?cible=dashboard&function=donnees" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
 															<div id = "moteur">
@@ -310,6 +361,12 @@
 										            	break;
 
 													 case 'Présence':
+														foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
 													 	$chaineinfo = (string)$info;
 										            	?>
 										            	<div class="capteur_ecriture2"> <?php echo $info; ?> </div>
@@ -320,7 +377,14 @@
 										            	break;
 																							                										                
 										            case 'Température':
-										            	$chaineinfo = (string)$info;
+
+										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
+														$chaineinfo = (string)$info;
 										            	?>
 										            	
 										              	<div class="capteur_ecriture2"> <?php echo substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?>  °C </div>
@@ -331,6 +395,12 @@
 										                break;
 										            											            	
 										            case 'Luminosité':
+														foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}		
 										            	$chaineinfo = (string)$info;
 										            	?>
 										            	
@@ -342,6 +412,12 @@
 										                break;							
 										
 										            default :
+														foreach($datas as $donnees8){  /*boucle for 7.2 */
+		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
+		   													$info=$donnees8['value'];
+		   										
+					   										}
+					   									}
 										            	$chaineinfo = (string)$info;
 										            	?>
 										            	<div class="capteur_ecriture2"> <?php substr( $chaineinfo , 0,2).','.substr( $chaineinfo , 2,2); ?> </div>
@@ -350,13 +426,9 @@
 										            	<?php 
 															
 										        
-		   									}
-												?>
-													
-	
-											
-								   							
-								   							
+		   									}}
+		 												?>
+							   							
 		   			
 			<div class="fenetre-modale">      <!--fenetre modale qui s'affiche pour pouvoir moidifier le nom d'un capteur -->
 
@@ -366,7 +438,7 @@
 					    
 					<form method="post" action="index.php?cible=dashboard&function=modifier" enctype="multipart/form-data">  <!--form pour modifier un capteur -->
 					    	       
-					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" maxlength="12" value="<?php echo $donnees4['name']; ?>" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
 					   	
 					   	
@@ -382,20 +454,25 @@
 											
 											?>
 					    	      						
-						       
+						 <label> <span class="blanc">Etat du capteur :</span>  <br><br>  
+
+							<input type="radio" name="etat" value="actif" checked="checked" required> Actif
+							<input type="radio" name="etat" value="non_actif" required> Non actif  </label>  <br><br>  
 						       
 						<input class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Modifier"/><br><br>
-					   
+				   
 					 </form>			
 				</div> <!-- .fenetre-modale -->
-			</div> <!-- #masque -->  								
+			</div> <!-- #masque -->
+							
+		 	</div>							
 		</div>	
 		
 		
 		
 										   <?php
 		   										
-										
+		   									
 																}/*fin if 6*/
 															}   /*fin for 7*/
 																
@@ -403,9 +480,10 @@
 													//}  /*fin for 6*/
 													
 													if($cpt5==0){  /* if 7 */
+														
 														echo(
 																"<div class='capt'><br>"					/*s'il n'y a pas de capteur   */
-																."Vous n'avez pas encore de capteurs dans cette pièce :-)"
+																."</optgroup>	</optgroup>	"
 																."</div>"
 																);
 														
@@ -446,14 +524,7 @@
 											
 											?>
 				
-		<script>
-			setInterval(actualiser(),2000);
-			function actualiser(){
-				$('.capteurecriture2').load('actualiser.php')
-			}
 
-		
-		</script>
 		
 </div> 
 		
