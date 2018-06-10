@@ -182,6 +182,20 @@ function recherche_device(PDO $bdd, string $attributs): array {
 }
 
 /**
+ * Recherche nom devices en fonction des attributs passés en paramètre
+ * @param PDO $bdd
+ * @param string $table
+ * @param array $attributs
+ * @return array
+ */
+function recherche_type_capteur_trame(PDO $bdd, string $attributs): array {
+	$query = 'SELECT type_capteur_trame FROM device_types WHERE name='. $attributs;
+    return $bdd->query($query)->fetchAll();
+}
+
+
+
+/**
  * Renvoie le nombre d'inscrits a kingdome
  * @param PDO $bdd
  * @return array

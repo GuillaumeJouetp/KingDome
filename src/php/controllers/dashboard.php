@@ -59,6 +59,7 @@ else{
     			
     		case 'modifier':
     			modification($bdd, $_POST_SEC['nom'],'name', $_POST_SEC['id1'],'devices');
+    			modification($bdd, $_POST_SEC['ref'],'ref', $_POST_SEC['id1'],'devices');
     			if($_POST_SEC['etat']=='actif'){
     				modification($bdd, 1 ,'state', $_POST_SEC['id1'],'devices');
     			}
