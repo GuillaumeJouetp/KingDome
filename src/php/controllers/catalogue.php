@@ -17,8 +17,8 @@ if( isAnAdmin($bdd)) {
             $vue = "catalogue_backoffice";
             break;
         case 'ajouter_type':
-            $req = $bdd->prepare('INSERT INTO device_types(name) VALUES( :nom)');
-            $req->execute(array('nom' => $_POST['nom_type']));
+            $req = $bdd->prepare('INSERT INTO device_types(name, categorie) VALUES( :nom, :categorie)');
+            $req->execute(array('nom' => $_POST['nom_type'], 'categorie' => $_POST['categorie_type']));
             $vue = "catalogue_backoffice";
             break;
         case 'supprimer_type':
