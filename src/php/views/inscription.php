@@ -118,7 +118,7 @@
                     </div>
 
 
-                    <label id="cgu_label">J'ai lu et approuvé les <a href="#" id="cgu_link">conditions générales d'utilisation*</a>
+                    <label id="cgu_label">J'ai lu et approuvé les <a href="index.php?cible=CGU" id="cgu_link">conditions générales d'utilisation*</a>
                             <input type="checkbox" name="cgu" required id="cgu_checkbox">
                         <span class="tooltip">Vous devez accepter les conditions avant de continuer</span>
                     </label>
