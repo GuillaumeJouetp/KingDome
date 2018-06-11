@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../src/css/CGU.css" />
 </head> 
 
-<div id="CGU">
+<div id="corps">
 
     <div id="intro">
         
@@ -22,7 +22,7 @@
             <div class="fenetre-modale">
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=CGU&function=modifier_texte">
-                    <label>Vos Conditions Générales d'Utilisation<br> <br> <textarea rows="10" cols="100" name="texte_CGU"><?php echo $texte['content'] ?> </textarea> </label>
+                    <label>Vos Conditions Générales d'Utilisation<br> <br> <textarea rows="30" cols="100" name="texte_CGU"><?php echo $texte['content'] ?> </textarea> </label>
                     <button type="submit" class="button">Modifier</button>
                 </form>
             </div>
@@ -46,9 +46,5 @@
         <a href="#masque" class="modif">
             <button type="button" class="button_modif_texte">Modifier le texte</button>
         </a>
-    
-
-    </div>
-
         
 </div> 

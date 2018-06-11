@@ -17,8 +17,13 @@ if( isAnAdmin($bdd)) {
             $vue = "catalogue_backoffice";
             break;
         case 'ajouter_type':
-            $req = $bdd->prepare('INSERT INTO device_types(name, categorie) VALUES( :nom, :categorie)');
-            $req->execute(array('nom' => $_POST['nom_type'], 'categorie' => $_POST['categorie_type']));
+            $req = $bdd->prepare('INSERT INTO device_types(name, sens_or_eff) VALUES( :nom, :categorie)');
+            if ($_POST['categorie_type']=='Capteur'){
+                $req->execute(array('nom' => $_POST['nom_type'], 'categorie' => 0));
+            }
+            if ($_POST['categorie_type']=='Effecteur'){
+                $req->execute(array('nom' => $_POST['nom_type'], 'categorie' => 1));
+            }
             $vue = "catalogue_backoffice";
             break;
         case 'supprimer_type':

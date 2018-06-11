@@ -32,6 +32,12 @@ if( isAnAdmin($bdd)) {
             }
             $vue = "dashboard_backoffice";
             break;
+
+        case 'modif_footer':
+            $req = $bdd->prepare('UPDATE footer SET address= :address, phone_number= :tel, mail_address= :mail, postal_code= :cp, city= :ville');
+            $req->execute(array('address' => $_POST_SEC['adress'], 'tel' => $_POST_SEC['tel'], 'mail' => $_POST_SEC['email'], 'cp' => $_POST_SEC['zip_code'], 'ville' => $_POST_SEC['city']));
+            $vue = "dashboard_backoffice";
+            break;
     }
 }
 else{

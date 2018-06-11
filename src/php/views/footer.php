@@ -3,12 +3,18 @@
 
 </head>
 <footer>
+
+    <?php
+    $reponse_footer = $bdd->query('SELECT * FROM footer');
+    $info_footer = $reponse_footer->fetch();
+    ?>
+
 			    <ul id="Coordonnees">
    				    <h3>Nos coordonnées</h3>
-                    <li>Accueil@kingdome.com</li>
-                    <li>06 06 06 06 06</li>
-                    <li>10, Rue de Vanves</li>
-                    <li>92130 Issy-Les-Moulineaux</li>
+                    <li><?php echo $info_footer['mail_address'] ?></li>
+                    <li><?php echo $info_footer['phone_number'] ?></li>
+                    <li><?php echo $info_footer['address'] ?></li>
+                    <li><?php echo $info_footer['postal_code'] . " " . $info_footer['city'] ?></li>
                 </ul>
                 
             
@@ -18,9 +24,8 @@
                     <h3 id="sug">Une suggestion ?</h3>
                     
                     <div id="bouton">
-                            <button><a href="index.php?cible=contact">Nous contacter !</a></button>
-                        <br>
-                            <button><a href="index.php?cible=ment_leg">Mentions légales</a></button>
+                            <button><a href="index.php?cible=contact">Nous contacter !</a></button><br>
+                            <button><a href="index.php?cible=ment_leg">Mentions légales</a></button><br>
                             <button><a href="index.php?cible=CGU">Conditions Générales d'utilisation</a></button>
                     </div>
 

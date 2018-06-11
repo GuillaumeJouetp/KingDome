@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../src/css/ment_leg.css" />
 </head> 
 
-<div id="ment_leg">
+<div id="corps">
 
     <div id="intro">
         
@@ -22,7 +22,7 @@
             <div class="fenetre-modale">
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=ment_leg&function=modifier_texte">
-                    <label>Vos mentions légales<br> <br> <textarea rows="10" cols="100" name="texte_ment_leg"><?php echo $texte['content'] ?> </textarea> </label>
+                    <label>Vos mentions légales<br> <br> <textarea rows="30" cols="100" name="texte_ment_leg"><?php echo $texte['content'] ?> </textarea> </label>
                     <button type="submit" class="button">Modifier</button>
                 </form>
             </div>
@@ -43,7 +43,7 @@
             </div>
         </div>        
 
-    </div>
+
     
     	<a href="#masque" class="modif">
             <button type="button" class="button_modif_texte">Modifier le texte</button>
