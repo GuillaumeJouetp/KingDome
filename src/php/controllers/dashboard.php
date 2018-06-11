@@ -38,6 +38,12 @@ if( isAnAdmin($bdd)) {
             $req->execute(array('address' => $_POST_SEC['adress'], 'tel' => $_POST_SEC['tel'], 'mail' => $_POST_SEC['email'], 'cp' => $_POST_SEC['zip_code'], 'ville' => $_POST_SEC['city']));
             $vue = "dashboard_backoffice";
             break;
+
+        case 'modif_accueil':
+            $req = $bdd->prepare('UPDATE accueil SET content= :content, url= :url');
+            $req->execute(array('content' => $_POST_SEC['texte_accueil'], 'url' => $_POST_SEC['video']));
+            $vue = "dashboard_backoffice";
+            break;
     }
 }
 else{

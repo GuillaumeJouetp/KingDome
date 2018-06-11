@@ -12,7 +12,7 @@
 
     <div class="p_intro">
         Domisep a le souhait d'améliorer l'expérience et l'information de ses utilisateurs. Pour cette raison, nous intégrons les évolutions suivantes dans nos mentions et de Politique de Confidentialité qui respectent la nouvelle réglementation « Règlement (UE) 2016/679 » relatif à la protection des personnes physiques à l'égard du traitement des données à caractère  personnel et à la libre circulation de ces données.
-    </div>            
+    </div>   <br>
               
     
     <div class="para">Et est admodum mirum videre plebem innumeram mentibus ardore quodam infuso cum dimicationum curulium eventu pendentem. haec similiaque memorabile nihil vel serium agi Romae permittunt. ergo redeundum ad textum.
