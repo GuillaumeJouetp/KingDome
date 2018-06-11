@@ -121,7 +121,8 @@
             <div class="fenetre-modale">
                 <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a>
                 <form method="post" action="index.php?cible=catalogue&function=ajouter_type">
-                    <label>Nom du type : <br> <input type="text" name="nom_type"> </label>
+                    <label>Nom du type : <input type="text" name="nom_type"> </label> <br>
+                    <label>Catégorie : <select name="categorie_type"><option>Capteur</option> <option>Effecteur</option> </select></label><br>
                     <button type="submit" class="button_catalogue">Ajouter</button>
                 </form>
 
