@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 11 juin 2018 à 08:15
+-- Généré le :  Dim 10 juin 2018 à 14:55
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -109,6 +109,7 @@ INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
 (15, 340, '2017-07-01', 2),
 (15, 310, '2017-08-01', 3),
 (15, 305, '2017-09-01', 4),
+(15, 310, '2017-09-01', 5),
 (15, 300, '2017-10-01', 6),
 (15, 340, '2017-11-01', 7),
 (15, 350, '2017-12-01', 8),
@@ -122,6 +123,7 @@ INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
 (14, 340, '2017-07-01', 16),
 (14, 310, '2017-08-01', 17),
 (14, 305, '2017-09-01', 18),
+(14, 310, '2017-09-01', 19),
 (14, 300, '2017-10-01', 20),
 (14, 340, '2017-11-01', 21),
 (14, 350, '2017-12-01', 22),
@@ -130,7 +132,7 @@ INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
 (14, 295, '2018-03-01', 25),
 (14, 280, '2018-04-01', 26),
 (14, 290, '2018-05-01', 27),
-(14, 206, '2018-06-01', 28);
+(14, 275, '2018-06-01', 28);
 
 -- --------------------------------------------------------
 
@@ -172,7 +174,6 @@ CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `state` tinyint(1) NOT NULL,
-  `on_time` int(11) NOT NULL,
   `last_activation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
@@ -184,11 +185,12 @@ CREATE TABLE IF NOT EXISTS `devices` (
 -- Déchargement des données de la table `devices`
 --
 
-INSERT INTO `devices` (`id`, `name`, `state`, `on_time`, `last_activation_date`, `device_type_id`, `room_id`, `ref`) VALUES
-(170, 'a', 1, 44, '2018-06-11 08:03:38', 1, 19, 1),
-(172, 'a', 1, 64, '2018-06-11 08:03:38', 1, 19, 1),
-(177, 'a', 1, 44, '2018-06-11 08:03:38', 1, 19, 1),
-(181, 'a', 1, 54, '2018-06-11 08:03:38', 1, 22, 1);
+INSERT INTO `devices` (`id`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`, `ref`) VALUES
+(170, 'a', 1, '2018-06-10 16:25:43', 1, 19, 1),
+(166, 'a', 1, '2018-06-10 15:20:21', 1, 19, 1),
+(172, 'a', 1, '2018-06-10 16:27:28', 1, 19, 1),
+(177, 'a', 1, '2018-06-10 16:32:23', 1, 19, 1),
+(181, 'a', 1, '2018-06-10 16:41:50', 1, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,7 @@ DROP TABLE IF EXISTS `device_types`;
 CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `type_capteur_trame` varchar(255) DEFAULT NULL,
+  `type_capteur_trame` varchar(255) NOT NULL,
   `sens_or_eff` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
@@ -216,21 +218,6 @@ INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`, `sens_or_eff`) V
 (4, 'Moteur', 'a', 1),
 (5, 'Lampe', '5', 1),
 (6, 'Présence', '7', 0);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `footer`
---
-
-DROP TABLE IF EXISTS `footer`;
-CREATE TABLE IF NOT EXISTS `footer` (
-  `address` varchar(255) NOT NULL,
-  `phone_number` int(11) NOT NULL,
-  `mail_address` varchar(255) NOT NULL,
-  `postal_code` int(11) NOT NULL,
-  `city` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -474,8 +461,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (29, '2018-06-05'),
 (79, '2018-06-06'),
 (44, '2018-06-08'),
-(1298, '2018-06-10'),
-(24, '2018-06-11');
+(1298, '2018-06-10');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

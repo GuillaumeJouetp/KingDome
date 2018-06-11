@@ -11,7 +11,11 @@ function nombre_heures($bdd){
 	$capteurs = recupereTous($bdd, 'devices');
 	$nb_heures = 0;
 	foreach($capteurs as $donnees){
-		if($donnees['user_id'] == $_SESSION['user_id']){
+		$device_user_id = $bdd->query('SELECT own_home.user_id FROM own_home INNER JOIN rooms ON own_home.house_id = rooms.home_id INNER JOIN devices ON '.$donnees['room_id'].' = rooms.id');
+		$device_user_id = $device_user_id->fetch();
+		$device_user_id = $device_user_id['user_id'];
+		$device_user_id = intval($device_user_id);
+		if($device_user_id == $_SESSION['user_id']){
 			$nb_heures = $nb_heures + $donnees['on_time'];
 			if($donnees['state']==1){
 				$id = $donnees['id'];
