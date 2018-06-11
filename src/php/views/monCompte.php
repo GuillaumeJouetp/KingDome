@@ -102,7 +102,9 @@
                                                                 ."value='"
                                                                 ."$id2'/>"
                                                             ); ?>
-                                                            <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2">
+                                                            <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"
+                                                                   onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
+                                                                       document.location.href = url;} else {}">
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -118,7 +120,8 @@
                                             ."name='id1'"
                                             ."value='"
                                             ."$id1'/>"); ?>
-                                        <button type="submit" name="delhome">Supprimer résidence</button>
+                                        <button type="submit" name="delhome" onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
+                                               document.location.href = url;} else {}">Supprimer résidence</button>
                                     </form>
                                     </p>
                                 </section>
@@ -181,6 +184,7 @@
                     </form>
                     <script type="text/javascript" src="../src/js/autocompletion.js"></script>
                     <script type="text/javascript" src="../src/js/verification.js"></script>
+                    <script type="text/javascript" src="../src/js/inscription.js"></script>
                 </div>
             </div>
         </div>
@@ -190,7 +194,7 @@
     <br><br>
 
     <!--Utilisateurs secondaires et droits-->
-    <div>
+    <!--<div>
         <h2>Utilisateurs secondaires et droits</h2>
 
         <section class="ins_form">
@@ -279,7 +283,7 @@
                 modal.style.display = "none";
             }
         }
-    </script>
+    </script>-->
 
     <p style="text-align: center">
         <button>

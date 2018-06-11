@@ -42,11 +42,9 @@ switch ($function) {
 
     case 'modificationInfos' :
 
-        /*if(isset($_POST_SEC['tel'])) {
-            if (!isATel($_POST_SEC['tel'])) {
-                $Tel_Message = "Numéro de téléphone non valide";
-                $Validation = false;
-            }
+        if (!isATel($_POST_SEC['tel'])) {
+            $Tel_Message = "Numéro de téléphone non valide";
+            $Validation = false;
         }
 
         $avatar = null;
@@ -68,7 +66,7 @@ switch ($function) {
 
         }
 
-        if($Validation==true){*/
+        if($Validation){
 
             modification($bdd, $_POST_SEC['user_name'], 'user_name', $_SESSION['user_id'], 'users');
             modification($bdd, $_POST_SEC['user_firstname'], 'user_firstname', $_SESSION['user_id'], 'users');
@@ -76,16 +74,21 @@ switch ($function) {
             modification($bdd, $_POST_SEC['zip_code'], 'zip_code', $_SESSION['user_id'], 'users');
             modification($bdd, $_POST_SEC['city'], 'city', $_SESSION['user_id'], 'users');
             modification($bdd, $_POST_SEC['tel'], 'tel', $_SESSION['user_id'], 'users');
-            modification($bdd, $_POST_SEC['date_naissance'], 'birth_date', $_SESSION['user_id'], 'users');
+
+            // Ajoute la date de naissance si elle est renseigné
+            if($_POST_SEC['date_naissance'] != ''){
+               modification($bdd, $_POST_SEC['birth_date'], 'birth_date', $_SESSION['user_id'], 'users');
+            }
 
             $data=recupereTous($bdd, 'users');
 
             $_SESSION['user_firstname'] = $data['user_firstname'];
             $_SESSION['user_name'] = $data['user_name'];
             $_SESSION['avatar'] = $data['avatar'];
-        /*}*/
 
-        header('location: index?cible=monCompte');
+            session_destroy();
+            header('location:index.php?cible=utilisateur');
+        }
         break;
 
     case 'modificationMdp' :
@@ -165,12 +168,12 @@ switch ($function) {
         $req2 = $bdd->prepare('DELETE FROM own_home WHERE house_id='.$id1);
         $req2->execute();
         supprimer($bdd,$id1,'homes');
-        header('location: index?cible=monCompte');
+        header('location: index.php?cible=monCompte');
         break;
 
     case 'delRoom' :
         supprimer($bdd,$_POST_SEC['id2'],'rooms');
-        header('location: index?cible=monCompte');
+        header('location: index.php?cible=monCompte');
         break;
 
     default :
