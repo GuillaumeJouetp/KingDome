@@ -23,7 +23,7 @@
 	
 	<?php 
 	include 'js/chartUser.php' ;
-	include 'php\controllers\consoCapteurs.php';
+	include 'php/controllers/consoCapteurs.php';
 	?>
 
 </div>

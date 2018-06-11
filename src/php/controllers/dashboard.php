@@ -50,11 +50,11 @@ else{
     		case 'ajouter':
     			if($_POST['id_piece']!=null){
     				$Data_devices = array(
-    				'sens_or_eff' => 0,
     				'name' => htmlspecialchars($_POST['nom']),
     				'state' => 1,
     				'device_type_id' => get_id_device_types($bdd,$_POST_SEC['type_capteur']),
     				'room_id' => get_id_room(explode(",",$_POST_SEC['id_piece']),$_POST_SEC['piece']),
+    				'ref' => $_POST_SEC['ref'],
     				);
     				
     				insertion($bdd, $Data_devices, 'devices');
@@ -75,16 +75,24 @@ else{
     			header('location: index?cible=dashboard');
     			break;
     			
+    		 			
     			
     			
     		case 'modifier':
     			modification($bdd, $_POST_SEC['nom'],'name', $_POST_SEC['id1'],'devices');
+    			modification($bdd, $_POST_SEC['ref'],'ref', $_POST_SEC['id1'],'devices');
+    			if($_POST_SEC['etat']=='actif'){
+    				modification($bdd, 1 ,'state', $_POST_SEC['id1'],'devices');
+    			}
+    			else{
+    				modification($bdd, 0 ,'state', $_POST_SEC['id1'],'devices');
+    			}
     			header('location: index?cible=dashboard');
     			break;
     			
     		case 'donnees':
-    			debug1($_POST_SEC['moteur']);
-    			debug1($_POST_SEC['lampe']);
+    			debug2($_POST_SEC['moteur']);
+    			debug2($_POST_SEC['lampe']);
     			header('location: index?cible=dashboard');
     			break;
     			

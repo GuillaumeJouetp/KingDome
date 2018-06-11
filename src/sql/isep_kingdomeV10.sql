@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 10 juin 2018 à 14:55
+-- Généré le :  mer. 06 juin 2018 à 12:32
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -88,55 +88,6 @@ INSERT INTO `cemacs` (`id`, `ref`, `state`, `name`, `room_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `conso_mois`
---
-
-DROP TABLE IF EXISTS `conso_mois`;
-CREATE TABLE IF NOT EXISTS `conso_mois` (
-  `id_user` int(11) NOT NULL,
-  `conso` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `conso_mois`
---
-
-INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
-(15, 320, '2017-06-01', 1),
-(15, 340, '2017-07-01', 2),
-(15, 310, '2017-08-01', 3),
-(15, 305, '2017-09-01', 4),
-(15, 310, '2017-09-01', 5),
-(15, 300, '2017-10-01', 6),
-(15, 340, '2017-11-01', 7),
-(15, 350, '2017-12-01', 8),
-(15, 320, '2018-01-01', 9),
-(15, 310, '2018-02-01', 10),
-(15, 295, '2018-03-01', 11),
-(15, 280, '2018-04-01', 12),
-(15, 290, '2018-05-01', 13),
-(15, 275, '2018-06-01', 14),
-(14, 320, '2017-06-01', 15),
-(14, 340, '2017-07-01', 16),
-(14, 310, '2017-08-01', 17),
-(14, 305, '2017-09-01', 18),
-(14, 310, '2017-09-01', 19),
-(14, 300, '2017-10-01', 20),
-(14, 340, '2017-11-01', 21),
-(14, 350, '2017-12-01', 22),
-(14, 320, '2018-01-01', 23),
-(14, 310, '2018-02-01', 24),
-(14, 295, '2018-03-01', 25),
-(14, 280, '2018-04-01', 26),
-(14, 290, '2018-05-01', 27),
-(14, 275, '2018-06-01', 28);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `datas`
 --
 
@@ -152,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `datas` (
   `checksum` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `datas`
@@ -172,25 +123,23 @@ INSERT INTO `datas` (`id`, `value`, `num_trame`, `device_id`, `type_trame`, `obj
 DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `sens_or_eff` tinyint(1) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `state` tinyint(1) NOT NULL,
   `last_activation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `device_type_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `ref` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `devices`
 --
 
-INSERT INTO `devices` (`id`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`, `ref`) VALUES
-(170, 'a', 1, '2018-06-10 16:25:43', 1, 19, 1),
-(166, 'a', 1, '2018-06-10 15:20:21', 1, 19, 1),
-(172, 'a', 1, '2018-06-10 16:27:28', 1, 19, 1),
-(177, 'a', 1, '2018-06-10 16:32:23', 1, 19, 1),
-(181, 'a', 1, '2018-06-10 16:41:50', 1, 22, 1);
+INSERT INTO `devices` (`id`, `sens_or_eff`, `name`, `state`, `last_activation_date`, `device_type_id`, `room_id`) VALUES
+(105, 0, 'Température Salon', 0, '2018-05-31 08:42:44', 1, 19),
+(106, 0, 'zefh', 1, '2018-06-05 08:42:44', 1, 19),
+(107, 0, 'erfg', 1, '2018-06-05 08:42:44', 2, 19);
 
 -- --------------------------------------------------------
 
@@ -203,7 +152,6 @@ CREATE TABLE IF NOT EXISTS `device_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type_capteur_trame` varchar(255) NOT NULL,
-  `sens_or_eff` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -211,13 +159,13 @@ CREATE TABLE IF NOT EXISTS `device_types` (
 -- Déchargement des données de la table `device_types`
 --
 
-INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`, `sens_or_eff`) VALUES
-(1, 'Humidité', '4', 0),
-(2, 'Luminosité', '5', 0),
-(3, 'Température', '3', 0),
-(4, 'Moteur', 'a', 1),
-(5, 'Lampe', '5', 1),
-(6, 'Présence', '7', 0);
+INSERT INTO `device_types` (`id`, `name`, `type_capteur_trame`) VALUES
+(1, 'Humidité', '4'),
+(2, 'Luminosité', '5'),
+(3, 'Température', '3'),
+(4, 'Moteur', 'a'),
+(5, 'Lampe', '5'),
+(6, 'Présence', '7');
 
 -- --------------------------------------------------------
 
@@ -336,21 +284,21 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `name` varchar(100) NOT NULL,
   `home_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `name`, `home_id`) VALUES
-(22, 'Cuisine', 3),
+(14, 'Salle à manger', 3),
+(15, 'Bureau', 3),
 (16, 'Chambre enfant', 5),
 (17, 'Chambre parents', 5),
 (18, 'Salle de jeu', 5),
 (19, 'Toilette', 1),
 (20, 'APP', 4),
-(21, 'Cuisine', 1),
-(23, 'Salle à manger', 3);
+(21, 'Cuisine', 1);
 
 -- --------------------------------------------------------
 
@@ -365,16 +313,14 @@ CREATE TABLE IF NOT EXISTS `updatable_content` (
   `date` date NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `updatable_content`
 --
 
 INSERT INTO `updatable_content` (`name`, `content`, `date`, `id`) VALUES
-('catalogue', 'Vous trouverez ici les différents capteurs vendus par DOMISEP.\r\nPour plus d\'informations n\'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.\r\nATTENTION : Il ne s\'agit pas d\'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.    ', '2018-06-06', 1),
-('cgu', 'Et Epigonus quidem amictu tenus philosophus, ut apparuit, prece frustra temptata, sulcatis lateribus mortisque metu admoto turpi confessione cogitatorum socium, quae nulla erant, fuisse firmavit cum nec vidisset quicquam nec audisset penitus expers forensium rerum; Eusebius vero obiecta fidentius negans, suspensus in eodem gradu constantiae stetit latrocinium illud esse, non iudicium clamans.\r\nSed tamen haec cum ita tutius observentur, quidam vigore artuum inminuto rogati ad nuptias ubi aurum dextris manibus cavatis offertur, inpigre vel usque Spoletium pergunt. haec nobilium sunt instituta.\r\nPost haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\nNec minus feminae quoque calamitatum participes fuere similium. nam ex hoc quoque sexu peremptae sunt originis altae conplures, adulteriorum flagitiis obnoxiae vel stuprorum. inter quas notiores fuere Claritas et Flaviana, quarum altera cum duceretur ad mortem, indumento, quo vestita erat, abrepto, ne velemen quidem secreto membrorum sufficiens retinere permissa est. ideoque carnifex nefas admisisse convictus inmane, vivus exustus est.\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\nQuare talis improborum consensio non modo excusatione amicitiae tegenda non est sed potius supplicio omni vindicanda est, ut ne quis concessum putet amicum vel bellum patriae inferentem sequi; quod quidem, ut res ire coepit, haud scio an aliquando futurum sit. Mihi autem non minori curae est, qualis res publica post mortem meam futura, quam qualis hodie sit.\r\nProinde die funestis interrogationibus praestituto imaginarius iudex equitum resedit magister adhibitis aliis iam quae essent agenda praedoctis, et adsistebant hinc inde notarii, quid quaesitum esset, quidve responsum, cursim ad Caesarem perferentes, cuius imperio truci, stimulis reginae exsertantis aurem subinde per aulaeum, nec diluere obiecta permissi nec defensi periere conplures.\r\nEmensis itaque difficultatibus multis et nive obrutis callibus plurimis ubi prope Rauracum ventum est ad supercilia fluminis Rheni, resistente multitudine Alamanna pontem suspendere navium conpage Romani vi nimia vetabantur ritu grandinis undique convolantibus telis, et cum id inpossibile videretur, imperator cogitationibus magnis attonitus, quid capesseret ambigebat.\r\nQuam ob rem cave Catoni anteponas ne istum quidem ipsum, quem Apollo, ut ais, sapientissimum iudicavit; huius enim facta, illius dicta laudantur. De me autem, ut iam cum utroque vestrum loquar, sic habetote.\r\nQuod si rectum statuerimus vel concedere amicis, quidquid velint, vel impetrare ab iis, quidquid velimus, perfecta quidem sapientia si simus, nihil habeat res vitii; sed loquimur de iis amicis qui ante oculos sunt, quos vidimus aut de quibus memoriam accepimus, quos novit vita communis. Ex hoc numero nobis exempla sumenda sunt, et eorum quidem maxime qui ad sapientiam proxime accedunt.\r\nTantum autem cuique tribuendum, primum quantum ipse efficere possis, deinde etiam quantum ille quem diligas atque adiuves, sustinere. Non enim neque tu possis, quamvis excellas, omnes tuos ad honores amplissimos perducere, ut Scipio P. Rupilium potuit consulem efficere, fratrem eius L. non potuit. Quod si etiam possis quidvis deferre ad alterum, videndum est tamen, quid ille possit sustinere.\r\nCirca hos dies Lollianus primae lanuginis adulescens, Lampadi filius ex praefecto, exploratius causam Maximino spectante, convictus codicem noxiarum artium nondum per aetatem firmato consilio descripsisse, exulque mittendus, ut sperabatur, patris inpulsu provocavit ad principem, et iussus ad eius comitatum duci, de fumo, ut aiunt, in flammam traditus Phalangio Baeticae consulari cecidit funesti carnificis manu.\r\nUt enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit. Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius; sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo. Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.\r\nOportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.\r\nAuxerunt haec vulgi sordidioris audaciam, quod cum ingravesceret penuria commeatuum, famis et furoris inpulsu Eubuli cuiusdam inter suos clari domum ambitiosam ignibus subditis inflammavit rectoremque ut sibi iudicio imperiali addictum calcibus incessens et pugnis conculcans seminecem laniatu miserando discerpsit. post cuius lacrimosum interitum in unius exitio quisque imaginem periculi sui considerans documento recenti similia formidabat.\r\n', '2018-06-08', 2),
-('mentions légales', 'Auxerunt haec vulgi sordidioris audaciam, quod cum ingravesceret penuria commeatuum, famis et furoris inpulsu Eubuli cuiusdam inter suos clari domum ambitiosam ignibus subditis inflammavit rectoremque ut sibi iudicio imperiali addictum calcibus incessens et pugnis conculcans seminecem laniatu miserando discerpsit. post cuius lacrimosum interitum in unius exitio quisque imaginem periculi sui considerans documento recenti similia formidabat.\r\nNec vox accusatoris ulla licet subditicii in his malorum quaerebatur acervis ut saltem specie tenus crimina praescriptis legum committerentur, quod aliquotiens fecere principes saevi: sed quicquid Caesaris implacabilitati sedisset, id velut fas iusque perpensum confestim urgebatur impleri.\r\nQuanta autem vis amicitiae sit, ex hoc intellegi maxime potest, quod ex infinita societate generis humani, quam conciliavit ipsa natura, ita contracta res est et adducta in angustum ut omnis caritas aut inter duos aut inter paucos iungeretur.\r\nSin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel uxoriae condicionis vel commodi alicuius, quod idem adipisci uterque non posset. Quod si qui longius in amicitia provecti essent, tamen saepe labefactari, si in honoris contentionem incidissent; pestem enim nullam maiorem esse amicitiis quam in plerisque pecuniae cupiditatem, in optimis quibusque honoris certamen et gloriae; ex quo inimicitias maximas saepe inter amicissimos exstitisse.\r\nMensarum enim voragines et varias voluptatum inlecebras, ne longius progrediar, praetermitto illuc transiturus quod quidam per ampla spatia urbis subversasque silices sine periculi metu properantes equos velut publicos signatis quod dicitur calceis agitant, familiarium agmina tamquam praedatorios globos post terga trahentes ne Sannione quidem, ut ait comicus, domi relicto. quos imitatae matronae complures opertis capitibus et basternis per latera civitatis cuncta discurrunt.\r\nApud has gentes, quarum exordiens initium ab Assyriis ad Nili cataractas porrigitur et confinia Blemmyarum, omnes pari sorte sunt bellatores seminudi coloratis sagulis pube tenus amicti, equorum adiumento pernicium graciliumque camelorum per diversa se raptantes, in tranquillis vel turbidis rebus: nec eorum quisquam aliquando stivam adprehendit vel arborem colit aut arva subigendo quaeritat victum, sed errant semper per spatia longe lateque distenta sine lare sine sedibus fixis aut legibus: nec idem perferunt diutius caelum aut tractus unius soli illis umquam placet.\r\nIllud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.\r\nHaec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. Etenim eo loco, Fanni et Scaevola, locati sumus ut nos longe prospicere oporteat futuros casus rei publicae. Deflexit iam aliquantum de spatio curriculoque consuetudo maiorum.\r\nPrincipium autem unde latius se funditabat, emersit ex negotio tali. Chilo ex vicario et coniux eius Maxima nomine, questi apud Olybrium ea tempestate urbi praefectum, vitamque suam venenis petitam adseverantes inpetrarunt ut hi, quos suspectati sunt, ilico rapti conpingerentur in vincula, organarius Sericus et Asbolius palaestrita et aruspex Campensis.\r\nEt olim licet otiosae sint tribus pacataeque centuriae et nulla suffragiorum certamina set Pompiliani redierit securitas temporis, per omnes tamen quotquot sunt partes terrarum, ut domina suscipitur et regina et ubique patrum reverenda cum auctoritate canities populique Romani nomen circumspectum et verecundum.\r\nHanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.\r\nPost haec indumentum regale quaerebatur et ministris fucandae purpurae tortis confessisque pectoralem tuniculam sine manicis textam, Maras nomine quidam inductus est ut appellant Christiani diaconus, cuius prolatae litterae scriptae Graeco sermone ad Tyrii textrini praepositum celerari speciem perurgebant quam autem non indicabant denique etiam idem ad usque discrimen vitae vexatus nihil fateri conpulsus est.\r\nSaraceni tamen nec amici nobis umquam nec hostes optandi, ultro citroque discursantes quicquid inveniri poterat momento temporis parvi vastabant milvorum rapacium similes, qui si praedam dispexerint celsius, volatu rapiunt celeri, aut nisi impetraverint, non inmorantur.\r\nConstituendi autem sunt qui sint in amicitia fines et quasi termini diligendi. De quibus tres video sententias ferri, quarum nullam probo, unam, ut eodem modo erga amicum adfecti simus, quo erga nosmet ipsos, alteram, ut nostra in amicos benevolentia illorum erga nos benevolentiae pariter aequaliterque respondeat, tertiam, ut, quanti quisque se ipse facit, tanti fiat ab amicis.\r\n', '2018-06-08', 3);
+('catalogue', 'Vous trouverez ici les différents capteurs vendus par DOMISEP.\r\nPour plus d\'informations n\'hésitez pas à nous contacter directement, vous trouverez nos coordonnées en bas de la page.\r\nATTENTION : Il ne s\'agit pas d\'une platforme de vente en ligne, vous ne pourrez donc pas acheter les capteurs directement sur le site.    ', '2018-06-06', 1);
 
 -- --------------------------------------------------------
 
@@ -459,9 +405,7 @@ INSERT INTO `visites_jour` (`visites`, `date`) VALUES
 (8, '2018-06-03'),
 (52, '2018-06-04'),
 (29, '2018-06-05'),
-(79, '2018-06-06'),
-(44, '2018-06-08'),
-(1298, '2018-06-10');
+(79, '2018-06-06');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
