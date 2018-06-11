@@ -301,6 +301,22 @@ img.btn-fermer{
 	color:rgb(131,36,41);
 }
 
+.backoffice{
+	width: 250px;
+}
+
+[class*="button_modif"] {
+	border: 1px solid rgb(0,97,161);
+	border-radius: 5px;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	color: white;
+	background: rgb(0,97,161);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 
 
 
