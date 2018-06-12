@@ -103,7 +103,7 @@
                                                                 ."$id2'/>"
                                                             ); ?>
                                                             <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"
-                                                                   onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
+                                                                   onclick="if(confirm('Etes vous sur de bien vouloir supprimer la pièce ?')){
                                                                        document.location.href = url;} else {}">
                                                         </form>
                                                     </td>
@@ -120,7 +120,7 @@
                                             ."name='id1'"
                                             ."value='"
                                             ."$id1'/>"); ?>
-                                        <button type="submit" name="delhome" onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
+                                        <button type="submit" name="delhome" onclick="if(confirm('Etes vous sur de bien vouloir supprimer la résidence ?')){
                                                document.location.href = url;} else {}">Supprimer résidence</button>
                                     </form>
                                     </p>
