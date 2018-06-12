@@ -30,7 +30,7 @@ switch ($function) {
     case 'notdone':
         if (isUserConnected()){
             if (isAnAdmin($bdd)){
-                $vue = "monCompteAdmin.php";
+                $vue = "monCompteAdmin";
                 $title = "Mon Compte | Kingdome";
             }
             else {
