@@ -282,7 +282,7 @@ INSERT INTO `homes` (`name_home`, `city`, `zip_code`, `adress`, `id`) VALUES
 ('Casa de papel', 'Orly', 94310, '90 rue Normandie Niemen', 1),
 ('NDL', 'Issy', 92130, '1 rue de Vanves', 3),
 ('ETGJFGF', 'gghgj', 94310, '2 hjhg', 4),
-('NDC', 'Fr', 'Paris', 75, '2 rue ndc', 5);
+('NDC', 'Paris', 75, '2 rue ndc', 5);
 
 -- --------------------------------------------------------
 
