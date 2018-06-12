@@ -44,4 +44,14 @@
     margin-left: 1%;
 }
 
-
+[class*="button_modif"] {
+    border: 1px solid rgb(131,36,41);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background: rgb(131,36,41);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

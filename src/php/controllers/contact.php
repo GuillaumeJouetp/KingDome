@@ -14,7 +14,16 @@ $mail_message='';
 $form_message = "";
 
 if(isAnAdmin($bdd)) {
-    $vue = "contact_backOffice";
+    switch ($function) {
+        case 'notdone':
+            $vue = "contact_backOffice";
+            break;
+        case  'suppr_message':
+            $req = $bdd->prepare('DELETE FROM incoming_messages WHERE id= :message_id');
+            $req->execute(array('message_id' => $_GET['message_id']));
+            $vue = "contact_backOffice";
+            break;
+    }
 }
 else{
     switch ($function) {
