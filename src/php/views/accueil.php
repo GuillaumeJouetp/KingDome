@@ -8,6 +8,7 @@
     <?php
     $reponse_accueil = $bdd->query('SELECT * FROM accueil');
     $accueil = $reponse_accueil->fetch();
+    $youtube=$accueil['url'];
     ?>
     
     <!-- Premiere section : nouveaute -->
@@ -25,7 +26,7 @@
     
     <!-- Troisieme section : video -->
     <section id="section3">
-         <iframe width="560" height="315" src="<?php echo $accueil['url'] ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+         <iframe width="560" height="315" src="<?php echo Youtube_video ($youtube) ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </section>
    
 </div>
