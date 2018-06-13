@@ -9,6 +9,19 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 $logs = curl_exec($ch);
 curl_close($ch);
 
+function send_trame(string $trame){
+    $ch = curl_init();
+    curl_setopt(
+        $ch,
+        CURLOPT_URL,
+        "http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=7896&TRAME=". $trame);
+    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    $logs = curl_exec($ch);
+    curl_close($ch);
+}
+
+
 /**
  * READ
  * Renvoie la dernière trame inséré dans la base de donnée
