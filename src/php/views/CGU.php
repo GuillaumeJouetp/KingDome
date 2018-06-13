@@ -11,9 +11,9 @@
            
 
     <div class="p_intro">
-        Domisep a le souhait d'améliorer l'expérience et l'information de ses utilisateursPour cette raison, nous intégrons les évolutions suivantes dans nos Conditions d’Utilisation et de Politique de Confidentialité qui respectent la nouvelle réglementation « Règlement (UE) 2016/679 » relatif à la protection des personnes physiques à l'égard du traitement des données à caractère  personnel et à la libre circulation de ces données.
+        Domisep a le souhait d'améliorer l'expérience et l'information de ses utilisateurs. Pour cette raison, nous intégrons les évolutions suivantes dans nos Conditions d’Utilisation et de Politique de Confidentialité qui respectent la nouvelle réglementation « Règlement (UE) 2016/679 » relatif à la protection des personnes physiques à l'égard du traitement des données à caractère  personnel et à la libre circulation de ces données.
     </div>            
-              
+    <br>
     
     <div class="para">Et quia Montius inter dilancinantium manus spiritum efflaturus Epigonum et Eusebium nec professionem nec dignitatem ostendens aliquotiens increpabat, qui sint hi magna quaerebatur industria, et nequid intepesceret, Epigonus e Lycia philosophus ducitur et Eusebius ab Emissa Pittacas cognomento, concitatus orator, cum quaestor non hos sed tribunos fabricarum insimulasset promittentes armorum si novas res agitari conperissent.
 

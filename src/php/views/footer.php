@@ -26,7 +26,7 @@
                     <div id="bouton">
                             <button><a href="index.php?cible=contact">Nous contacter !</a></button><br>
                             <button><a href="index.php?cible=ment_leg">Mentions légales</a></button><br>
-                            <button><a href="index.php?cible=CGU">Conditions Générales d'utilisation</a></button>
+                            <button><a href="index.php?cible=CGU">Conditions Générales d'Utilisation</a></button>
                     </div>
 
                 </div>
