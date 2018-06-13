@@ -304,4 +304,11 @@ function isDateCorrect($year,$month,$day,$hour,$min,$sec){
 
 }
 
+function Youtube_video ($youtube){
+    $beginning = 'https://www.youtube.com/embed/';
+    $end = substr($youtube, 32);
+    $youtube = $beginning . $end;
+    return $youtube;
+}
+
 ?>

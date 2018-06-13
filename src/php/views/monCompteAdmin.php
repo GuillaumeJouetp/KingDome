@@ -19,7 +19,7 @@
 <div id="corps">
 
     <div id="profil">
-        <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
+        <h1 style="text-align: left">Mon profil - Administrateur</h1></br>
 
         <h2>Informations personnelles</h2>
         <div id="info_perso">
@@ -38,12 +38,16 @@
     </div>
     <br><br>
 
-    <div>
-        <h3>Nombre de résidences enregistrées</h3>
-
-
+    <div class="wrapper2">
+        <span class="data2">  <?= getNumHome($bdd)[0] ?> </span>
+        <span class="prefixe2"> maisons sont enregistrées sur KingDome !</span>
     </div>
-    <br><br>
+
+    <div class="wrapper2">
+        <span class="prefixe2">Ainsi que &nbsp;</span>
+        <span class="data2">  <?= getNumRoom($bdd)[0] ?> </span>
+        <span class="prefixe2"> pièces !</span>
+    </div>
 
     <p style="text-align: center">
         <button>
