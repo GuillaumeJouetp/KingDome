@@ -718,4 +718,21 @@ button:hover{
     background-color: rgba(129, 129, 129,0.3);
 }
 
+.prefixe2{
+    color: #832429;
+    font-size: 200%;
+}
 
+.wrapper2{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.data2{
+    color : #0081dc;
+    text-align: center;
+    font-size: 230%;
+    justify-content: center;
+    margin-right: 15px;
+}

@@ -207,6 +207,19 @@ function getNumInscrits($bdd){
 
 }
 
+function getNumHome($bdd){
+    $statement = $bdd->prepare('SELECT COUNT(id) FROM homes ');
+    $statement->execute();
+    return $statement->fetch();
+
+}
+
+function getNumRoom($bdd){
+    $statement = $bdd->prepare('SELECT COUNT(id) FROM rooms ');
+    $statement->execute();
+    return $statement->fetch();
+
+}
 
 
 
