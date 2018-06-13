@@ -46,10 +46,11 @@
 
         <script type="text/javascript" src="../src/js/autocompletion.js"></script>
 
-        <form method="post" action="index.php?cible=dashboard&function=modif_accueil">
+        <form method="post" action="index.php?cible=dashboard&function=modif_accueil" enctype="multipart/form-data">
             <legend><h2>Modifier la page d'accueil</h2></legend>
+            <label>Image : <br><input type="file" name="image_accueil"></label> <br><br>
             <label>Texte : <br><textarea cols="120" rows="10" name="texte_accueil"><?php echo $accueil['content'] ?> </textarea></label> <br><br>
-            <label>Lien de la vidéo : <br><input class="backoffice" type="url" name="video"></label> <br><br>
+            <label>Lien de la vidéo Youtube : <br><input class="backoffice" type="url" name="video"></label> <br><br>
             <button type="submit" class="button_modif">Modifier</button>
     </div>
 

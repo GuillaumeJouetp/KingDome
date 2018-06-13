@@ -40,8 +40,18 @@ if( isAnAdmin($bdd)) {
             break;
 
         case 'modif_accueil':
-            $req = $bdd->prepare('UPDATE accueil SET content= :content, url= :url');
-            $req->execute(array('content' => $_POST_SEC['texte_accueil'], 'url' => $_POST_SEC['video']));
+            $req = $bdd->prepare('UPDATE accueil SET content= :content, url= :url, image= :image');
+
+            if(isset($_FILES['image_accueil'])) {
+                $Avatar_Message = isAnAvatar($_FILES['image_accueil']['name'], $_FILES['image_accueil']['size'], $_FILES['image_accueil']['tmp_name'], $_FILES['image_accueil']['error']);
+                $dir = '../res/images/';
+                $ext = strtolower(pathinfo($_FILES['image_accueil']['name'],PATHINFO_EXTENSION));
+                $file = uniqid().'.'.$ext;
+                $img = $dir.$file;
+                move_uploaded_file($_FILES['image_accueil']['tmp_name'], $img);
+            }
+
+            $req->execute(array('content' => $_POST_SEC['texte_accueil'], 'url' => $_POST_SEC['video'], 'image' => $img));
             $vue = "dashboard_backoffice";
             break;
     }
