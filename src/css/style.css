@@ -238,4 +238,11 @@ img.btn-fermer{
 	color:rgb(0,0,0);
 }
 
+.titre{
+    color:rgb(131,36,41);
+    font-size:20px;
+    margin: auto;
+    margin-bottom : 10px;
+}
+
 /*fin fenetre modale*/
