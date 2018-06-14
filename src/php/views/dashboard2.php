@@ -40,6 +40,7 @@
 <div id='refresh'>		
 			
 										<?php
+											
 											$own_home = recupereTous($bdd, 'own_home');              /*variables pour recuperer les données de la bdd de own_home, rooms, devices_types, devices, cemacs*/
 											$rooms = recupereTous($bdd, 'rooms');
 											$device_types = recupereTous($bdd, 'device_types');
@@ -255,8 +256,7 @@
 											?>
 										
 			<div class="element , ecriture3">	 <!-- div de chaque données qui va être afficher -->							
-				<a name='formulaire_supprimer<?php echo $cpt6; ?>' ></a>						
-				<form method="post"  action="index.php?cible=dashboard&function=supprimer#formulaire_supprimer<?php echo $cpt6; ?>" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
+				<form method="post"  action="index.php?cible=dashboard&function=supprimer" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
 										
 										
 										
@@ -295,7 +295,7 @@
 										            case 'Humidité':
 														foreach($datas as $donnees8){  /*boucle for 7.2 */
 															if($donnees4['ref']==$donnees8[3] ){/*if 6.2*/ 
-		   														$info=$donnees8['value'];
+																$info=val_trame($bdd,$donnees4['ref'])[0][0];
 																$resultat = $info. '%';
 																break;
 																
@@ -314,12 +314,7 @@
 										            	break;
 
 													 case 'Lampe':
-										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
-		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
-		   													$info=$donnees8['value'];
-		   										
-					   										}
-					   									}
+										            	
 										            	?>
 														<a name='formulaire_donnes<?php echo $cpt6; ?>' ></a>
 														<form method="post" action="index.php?cible=dashboard&function=donnees#formulaire_donnes<?php echo $cpt6; ?>" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
@@ -328,6 +323,18 @@
 																<input href="#nullepart" type="submit" name="lampe" class="lampe" value="ON"><br><br> 
 																<input href="#nullepart" type="submit" name="lampe" class="lampe" value="OFF"><br><br>
 														</div>
+														
+																		<?php 
+															
+															$ref_lampe=$donnees4['device_type_id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
+															echo("<input type='hidden'"
+																."id='ref_lampe'"
+																."name='ref_lampe'" 
+																."value='"
+																."$ref_lampe'/>"
+																);
+															
+															?>	
 
 														</form>									
 														<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier' src='..\res\icones\modifier.png'/> </div> </a>
@@ -337,20 +344,27 @@
 										            	break;
 
  													case 'Moteur':
-										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
-		   													if($donnees4['ref']==$donnees8['device_id']){/*if 6.2*/ 
-		   													$info=$donnees8['value'];
-		   										
-					   										}
-					   									}
+										            	
 										            	?>	
-										            		<a name='formulaire_donnes<?php echo $cpt6; ?>' ></a>												
-										            		<form method="post" action="index.php?cible=dashboard&function=donnees#formulaire_donnes<?php echo $cpt6; ?>" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
+										            		<a name='formulaire_donnees2<?php echo $cpt6; ?>' ></a>												
+										            		<form method="post" action="index.php?cible=dashboard&function=donnees2#formulaire_donnees2<?php echo $cpt6; ?>" enctype="multipart/form-data" >   <!--form pour supprimer un capteur -->
 															<div id = "moteur">
 																<input href="#nullepart" type="image" name="moteur" src="../res/icones/haut.png" class="moteur" value="haut"><br><br> 
 																<input href="#nullepart" type="image" name="moteur" src="../res/icones/bas.png" class="moteur" value="bas"><br><br> 
 																<input href="#nullepart" type="image" name="moteur" src="../res/icones/stop.png" class="moteur" value="stop"><br><br> 
-															</div>															
+															</div>
+																<?php 
+															
+															$ref_mot=$donnees4['device_type_id'];					/*on sauvegarde l'id de device  qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
+															echo("<input type='hidden'"
+																."id='ref_mot'"
+																."name='ref_mot'" 
+																."value='"
+																."$ref_mot'/>"
+																);
+															
+															?>	
+																														
 															</form>	
 
 															<a href='#masqueA<?php echo $cpt6; ?>'> <div><img class='btn-modifier3' src='..\res\icones\modifier.png'/> </div> </a>
@@ -361,9 +375,16 @@
 										            	break;
 
 													 case 'Présence':
+										
 													 	foreach($datas as $donnees8){  /*boucle for 7.2 */
 													 		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-													 			$resultat =$donnees8['value'];
+													 			$info=val_trame($bdd,$donnees4['ref'])[0][0];
+													 			if($info>700){
+													 				$resultat="Il y a une personne";
+													 			}
+													 			else{
+													 				$resultat="Il n'y a personne";
+													 			}
 													 			break;
 													 			
 													 		}
@@ -384,8 +405,8 @@
 
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-										            			$info=$donnees8['value'];
-										            			$resultat = substr($info,0,2).','.substr( $info ,2). ')C';
+										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
+										            			$resultat = $info. '°C';
 										            			break;
 										            			
 										            		}
@@ -405,8 +426,9 @@
 										            case 'Luminosité':
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-										            			$info=$donnees8['value'];
-										            			$resultat = $info. '%';
+										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
+										            			$info2=number_format(100*$info/3000,1);
+										            			$resultat = $info2. '%';
 										            			break;
 										            			
 										            		}
@@ -426,7 +448,7 @@
 										            default :
 														foreach($datas as $donnees8){  /*boucle for 7.2 */
 															if($donnees4['ref']==$donnees8[3]){/*if 6.2*/ 
-																$resultat = $donnees8['value'];
+																$resultat = val_trame($bdd,$donnees4['ref'])[0][0];
 																break;
 																
 					   										}

@@ -221,5 +221,10 @@ function getNumRoom($bdd){
 
 }
 
+function val_trame(PDO $bdd,string $attributs): array {
+	
+	$query = 'SELECT value,MAX(timestamp) AS maxTimestamp FROM datas WHERE device_id=' . $attributs;
+	return $bdd->query($query)->fetchAll();
+}
 
 
