@@ -207,6 +207,24 @@ function getNumInscrits($bdd){
 
 }
 
+function getNumHome($bdd){
+    $statement = $bdd->prepare('SELECT COUNT(id) FROM homes ');
+    $statement->execute();
+    return $statement->fetch();
 
+}
+
+function getNumRoom($bdd){
+    $statement = $bdd->prepare('SELECT COUNT(id) FROM rooms ');
+    $statement->execute();
+    return $statement->fetch();
+
+}
+
+function val_trame(PDO $bdd,string $attributs): array {
+	
+	$query = 'SELECT value,MAX(timestamp) AS maxTimestamp FROM datas WHERE device_id=' . $attributs;
+	return $bdd->query($query)->fetchAll();
+}
 
 

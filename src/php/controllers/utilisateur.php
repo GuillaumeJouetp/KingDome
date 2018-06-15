@@ -25,9 +25,15 @@ $Avatar_Message = "";
 switch ($function) {
     case 'notdone':
         if (isUserConnected()){
-            // On affiche la vue du compte utilisateur
-            $vue = "monCompte";
-            $title = $_SESSION['user_firstname'] . ' ' . $_SESSION['user_name'] . " | KingDome";
+            if (isAnAdmin($bdd)) {
+                $vue = "monCompteAdmin";
+                $title = "Mon Compte | Kingdome";
+            }
+            else {
+                // On affiche la vue du compte utilisateur
+                $vue = "monCompte";
+                $title = $_SESSION['user_firstname'] . ' ' . $_SESSION['user_name'] . " | KingDome";
+            }
         }
         else {
             // formulaire pas encore rempli -> on affiche le formulaire

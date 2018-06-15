@@ -30,8 +30,12 @@ include "php/controllers/fonctions.php";
 // Appel des fonctions liées à l'affichage
 include("php/views/fonctions.php");
 
+/*On précise le fuseau horaire pour toutes les fonctions relatives au temps*/
+date_default_timezone_set('Europe/Paris');
+
 setNumConsultedPages($bdd); // Stats qui s'actualisent pour chaque chargement de page
 insertTrame ($logs,$bdd); // On update la base de donnée en ajoutant les trames manquantes à chaque chargement de pages.
+//send_trame('2789616040000FF'.date("YmdHis"));
 
 $_POST_SEC = secuTab($_POST); // On évite la faille xss POUR TOUTE LES PAGES
 

@@ -40,7 +40,7 @@
 
     <!--Gestion des résidences-->
     <div>
-        <h3>Mes résidences</h3>
+        <h2>Mes résidences</h2>
 
         <?php
         $homes = recupereTous($bdd, 'homes');
@@ -103,7 +103,7 @@
                                                                 ."$id2'/>"
                                                             ); ?>
                                                             <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"
-                                                                   onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
+                                                                   onclick="if(confirm('Êtes-vous sûr de bien vouloir supprimer la pièce ?')){
                                                                        document.location.href = url;} else {}">
                                                         </form>
                                                     </td>
@@ -120,8 +120,9 @@
                                             ."name='id1'"
                                             ."value='"
                                             ."$id1'/>"); ?>
-                                        <button type="submit" name="delhome" onclick="if(confirm('Etes vous sur de bien vouloir supprimer cet enregistrement ?')){
-                                               document.location.href = url;} else {}">Supprimer résidence</button>
+                                        <button type="submit" name="delhome"
+                                                onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer la résidence ?'));"
+                                                >Supprimer résidence</button>
                                     </form>
                                     </p>
                                 </section>
@@ -132,7 +133,7 @@
                     }
                 }
             }
-        } ?>
+        } ?><br>
 
         <!-- Consommation
         <button>
@@ -142,53 +143,53 @@
         </button>-->
 
         <!-- Ajout de maison -->
-        <button id="myBt" onclick="ajoutMaison()" style="float: right"><h3>Ajouter Résidence +</h3></button>
-        <div id="myModel" class="model">
-            <div class="model-content">
-                <div class="model-header">
-                    <span class="close2">&times;</span>
-                </div>
-                <div class="model-body">
-                    <h3>Ajouter une résidence</h3>
-                    <form method="post" action="index.php?cible=monCompte&function=ajouter" class="ajout">
-                        <p>
-                        <p><label for="name_home">Nom de la maison*<br>
-                                <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
-                            </label>
-                        </p>
+        <a href='#masque' style="float: right; color: #832429;">
+            <div class='element , ecriture2'> Ajouter une residence </div>
+        </a>
+        <div id='masque'>
+        <button id="myBt" onclick="AfficheCache()" href='#masque' style="float: right"><h3>Ajouter Résidence +</h3></button>
+        <div id="myModel" class="fenetre-modale">
+            <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a><br>
+            <div class="titre">
+                <h3>Ajouter une résidence</h3><br>
+                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
+                    <p>
+                    <p><label for="name_home"><span class="blanc">Nom de la maison*</span><br>
+                            <input type="text" name="name_home" id="name_home" maxlength="12" placeholder="Maison principale" required/>
+                        </label>
+                    </p>
 
-                        <p><label>Adresse*<br>
-                            <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/>
+                    <p><label<span class="blanc">Adresse*</span><br>
+                        <input type="text" name="adress" id="autocomplete" maxlength="12" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
 
-                            <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
-                            <input type="hidden" id="street_number" disabled="true" />
-                            <input type="hidden" id="route" disabled="true" />
-                            <input type="hidden" id="country" disabled="true" />
-                            <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
+                        <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
+                        <input type="hidden" id="street_number" disabled="true" />
+                        <input type="hidden" id="route" disabled="true" />
+                        <input type="hidden" id="country" disabled="true" />
+                        <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
-                            <label for="zip_code" id="zip_label"><br>Code postal*<br>
-                                <input type="text" name="zip_code" id="postal_code"  disabled="true" onmouseout="verifAdress()"/>
-                            </label><br><br>
+                        <label for="zip_code" id="zip_label"><span class="blanc">Code postal*</span><br>
+                            <input type="text" name="zip_code" id="postal_code"  maxlength="12" disabled="true" onmouseout="verifAdress()"/><br>
+                        </label><br>
 
-                            <label for="ville" id="city">Ville*<br>
-                                <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
-                            </label><br><br>
+                        <label for="ville" id="city"><span class="blanc">Ville*</span><br>
+                            <input type="text" name="city" id="locality" maxlength="12" disabled="true" onmouseout="verifAdress()">
+                        </label><br><br>
 
-                            <span class="tooltip">Adresse non complète</span>
-                        </label></p>
+                        <span class="tooltip">Adresse non complète</span>
+                    </label></p>
 
-                        <button style="width:auto;" type="submit" name="ajout">
-                            Ajouter
-                        </button>
-                        </p>
-                    </form>
-                    <script type="text/javascript" src="../src/js/autocompletion.js"></script>
-                    <script type="text/javascript" src="../src/js/verification.js"></script>
-                    <script type="text/javascript" src="../src/js/inscription.js"></script>
-                </div>
+                    <button style="width:auto;" type="submit" name="ajout">
+                        Ajouter
+                    </button>
+                    </p>
+                </form>
+                <script type="text/javascript" src="../src/js/autocompletion.js"></script>
+                <script type="text/javascript" src="../src/js/verification.js"></script>
+                <script type="text/javascript" src="../src/js/inscription.js"></script>
             </div>
         </div>
-        <script src="../src/js/Form_Maison.js"></script>
+        <script src="../src/js/dashbord.js"></script>
 
     </div>
     <br><br>

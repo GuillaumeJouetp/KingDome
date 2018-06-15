@@ -54,7 +54,8 @@
                     );
                 }
             }
-            echo "<a class='suppr' href=''> Supprimer le message (A venir !) </a>";
+            $get = $incoming_messages[$cle]['id'];
+            echo ("<form action='index.php?cible=contact&function=suppr_message&message_id=$get' method='post'><button class='button_modif' type='submit'>Supprimer</button></form>");
             echo "</section>";
 
         }
