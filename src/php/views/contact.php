@@ -1,6 +1,16 @@
 <head><link rel="stylesheet" href="css/contact.css"></head>
 
 <div id ='corps'>
+
+<h1>Nous contacter</h1>
+	
+	<button>
+            <a href="index.php?cible=panne">
+            Signaler une panne
+            </a>
+    </button>
+	
+
     <form id="f1" action="index.php?cible=contact&function=done" method="post">
         <label> Adresse mail <input type="text" name="mail" required /> </label>
         <?php echo "<span class='errormessage'>".$mail_message."</span>"; ?>

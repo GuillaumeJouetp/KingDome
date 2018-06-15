@@ -8,17 +8,12 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 }
 
 
-$donnees=recupereTous($bdd, 'devices');
-$nom_capt=$donnees['name'];
-
-
-
 $title = 'Panne';
 $mail_message='';
 $form_message = "";
 
 if(isAnAdmin($bdd)) {
-    $vue = "panne_admin";
+    $vue = "contact_backoffice";
 }
 else{
     switch ($function) {
@@ -33,7 +28,15 @@ else{
             if (!isAnEmail($_POST_SEC['mail'])) {
                 $vue = "panne";
                 $form_message = "Votre message a bien été envoyé";
-                insertion($bdd, $_POST_SEC, 'incoming_messages');
+                
+                $new_values = array(
+                		'mail' => $_POST_SEC['mail'],
+                		'content' => $_POST_SEC['content'],
+                		'nom_capt' => $_POST_SEC['select'] );
+                
+                insertion($bdd, $new_values, 'incoming_messages_panne');
+                
+
             } else {
                 $vue = "panne";
                 $mail_message = 'Veuillez entrer une adresse email valide ou nous pourrons pas vous répondre';
