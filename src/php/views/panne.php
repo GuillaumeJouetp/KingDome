@@ -13,8 +13,11 @@
 							<label for="Capteur">Sélectionner un capteur :</label>
 							<label>
 								<select id="Capteur">
-									<?php foreach ($nom_capt as $n){
-										echo "<option>" . $n . "</option>";
+									<?php 
+									$donnees=recupereTous($bdd, 'devices');
+									foreach ($donnees as $d){
+										$nom_capt=$d['name'];
+										echo "<option>" . $nom_capt . "</option>";
 									}?>
 								</select>
 							</label>

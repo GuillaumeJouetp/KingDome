@@ -8,10 +8,6 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 }
 
 
-$donnees=recupereTous($bdd, 'devices');
-$nom_capt=$donnees['name'];
-
-
 
 $title = 'Panne';
 $mail_message='';
