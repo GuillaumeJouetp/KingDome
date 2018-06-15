@@ -8,16 +8,6 @@ if (!isset($_GET['function']) || empty($_GET['function'])) {
 }
 
 
-<<<<<<< HEAD
-$donnees=recupereTous($bdd, 'devices');
-$nom_capt=$donnees['name'];
-var_dump($donnees);
-die();
-
-
-=======
->>>>>>> fb59659bd0a4a12d46791509c61eaa0f06daad06
-
 $title = 'Panne';
 $mail_message='';
 $form_message = "";
