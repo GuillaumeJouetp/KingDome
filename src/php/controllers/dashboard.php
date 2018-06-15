@@ -116,12 +116,12 @@ else{
     			if(strlen((string)$_POST_SEC['ref_lampe'])==1){
     				if($_POST_SEC['lampe']=='ON'){
     					
-    					$trame='278961D0'. $_POST_SEC['ref_lampe'] .'1111FF';
+    					$trame='2009A1D0'. $_POST_SEC['ref_lampe'] .'1111FF';
     					send_trame($trame.date("YmdHis"));
     				}
     				
     				if($_POST_SEC['lampe']=='OFF'){
-    					$trame='278961D0'. $_POST_SEC['ref_lampe']. '0000FF';
+    					$trame='2009A1D0'. $_POST_SEC['ref_lampe']. '0000FF';
     					send_trame($trame.date("YmdHis"));
     				}
     			}
@@ -129,12 +129,12 @@ else{
     			if(strlen((string)$_POST_SEC['ref_lampe'])==2){
     				if($_POST_SEC['lampe']=='on'){
     					
-    					$trame='278961D'. $_POST_SEC['ref_lampe'] .'1111FF';
+    					$trame='2009A1D'. $_POST_SEC['ref_lampe'] .'1111FF';
     					send_trame($trame.date("YmdHis"));
     					
     				}
     				if($_POST_SEC['lampe']=='off'){
-    					$trame='278961D'. $_POST_SEC['ref_lampe']. '0000FF';
+    					$trame='2009A1D'. $_POST_SEC['ref_lampe']. '0000FF';
     					send_trame($trame.date("YmdHis"));
     				}
     			}
@@ -146,30 +146,30 @@ else{
     			if(strlen((string)$_POST_SEC['ref_mot'])==1){
     				if($_POST_SEC['moteur']=='haut'){
     					
-    					$trame='278961D0'. $_POST_SEC['ref_mot'] .'0001FF';
+    					$trame='1009A1D0'. $_POST_SEC['ref_mot'] .'0001FF';
     					send_trame($trame.date("YmdHis"));
     				}
     				if($_POST_SEC['moteur']=='bas'){
-    					$trame='278961D0'. $_POST_SEC['ref_mot'] .'0002FF';
+    					$trame='1009A1D0'. $_POST_SEC['ref_mot'] .'0002FF';
     					send_trame($trame.date("YmdHis"));
     				}
     				if($_POST_SEC['moteur']=='stop'){
-    					$trame='278961D0'. $_POST_SEC['ref_mot'] .'0000FF';
+    					$trame='1009A1D0'. $_POST_SEC['ref_mot'] .'0000FF';
     					send_trame($trame.date("YmdHis"));
     				}
     			}
     			if(strlen((string)$_POST_SEC['ref_mot'])==2){
     				if($_POST_SEC['moteur']=='haut'){
     					
-    					$trame='278961D'. $_POST_SEC['ref_mot'] .'0001FF';
+    					$trame='1009A1D'. $_POST_SEC['ref_mot'] .'0001FF';
     					send_trame($trame.date("YmdHis"));
     				}
     				if($_POST_SEC['moteur']=='bas'){
-    					$trame='278961D'. $_POST_SEC['ref_mot'] .'0002FF';
+    					$trame='1009A1D'. $_POST_SEC['ref_mot'] .'0002FF';
     					send_trame($trame.date("YmdHis"));
     				}
     				if($_POST_SEC['moteur']=='stop'){
-    					$trame='278961D'. $_POST_SEC['ref_mot'] .'0000FF';
+    					$trame='1009A1D'. $_POST_SEC['ref_mot'] .'0000FF';
     					send_trame($trame.date("YmdHis"));
     				}
     			}
