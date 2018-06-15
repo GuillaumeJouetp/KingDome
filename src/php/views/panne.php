@@ -9,20 +9,20 @@
 				
 			
 		    			<form id="panne" action="index.php?cible=panne&function=done" method="post">
-							<label> Adresse mail <input type="text" name="mail" required /> </label>
-							<label for="Capteur">Sélectionner un capteur :</label>
+							<label> Adresse mail : <input type="text" name="mail" required /> </label>
+							<label for="Capteur">Sélectionner la référence de votre capteur défaillant :</label>
 							<label>
-								<select id="Capteur">
+								<select id="Capteur" name='select'>
 									<?php 
 									$donnees=recupereTous($bdd, 'devices');
 									foreach ($donnees as $d){
-										$nom_capt=$d['name'];
+										$nom_capt=$d['ref'];
 										echo "<option>" . $nom_capt . "</option>";
 									}?>
 								</select>
 							</label>
-							<label><textarea rows="6" cols="100" name="content" placeholder="Veuillez nous décrire votre panne."></textarea></label>
-							<button  type="submit" id="Bouton">Envoyer</button>
+							<label><textarea rows="6" cols="131" name="content" placeholder="Veuillez nous décrire votre panne."></textarea></label>
+							<button  type="submit">Envoyer</button>
 		   				</form>
 
 		   			<?php echo "<span class='message'>".$form_message."</span>";?>
