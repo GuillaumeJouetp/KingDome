@@ -13,7 +13,7 @@ $mail_message='';
 $form_message = "";
 
 if(isAnAdmin($bdd)) {
-    $vue = "panne_admin";
+    $vue = "contact_backoffice";
 }
 else{
     switch ($function) {
