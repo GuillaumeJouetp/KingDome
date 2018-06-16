@@ -60,23 +60,34 @@ if (isUserConnected()) {
                     $Validation = false;
                 }
 
-                $avatar = null;
-                if (isset($_FILES['avatar'])) {
-
-                    // Retourne un message si il y a une erreur, sinon rien
-                    $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
-                    // L'avatar est valide
-                    if ($Avatar_Message == '') {
-                        // On renomme l'image pour la mettre dans le dossier approprié avec un id unique a la fin pour eviter tout conflit
-                        $dir = '../res/images/Avatar/';
-                        $ext = strtolower(pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION));
-                        $file = $_POST_SEC['first_name'] . '_' . $_POST_SEC['last_name'] . '_' . uniqid() . '.' . $ext;
-                        $avatar = $dir . $file;
-                        move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
-                    } else {
+                if (isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
+                    $tailleMax = 250000;
+                    $ext_Valides = array('jpg', 'jpeg', 'gif', 'png');
+                    if ($_FILES['avatar']['size'] <= $tailleMax) {
+                        $ext_Upload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+                        if (in_array($ext_Upload, $ext_Valides)) {
+                            $chemin = '../res/images/Avatar/'.$_SESSION['user_id'].'.'.$ext_Upload;
+                            $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                            if ($resultat) {
+                                $updateavatar = $bdd->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
+                                $updateavatar->execute(array(
+                                    'avatar' => $_SESSION['user_id'].".".$ext_Upload,
+                                    'id' => $_SESSION['user_id']));
+                            }
+                            else {
+                                $msg = "Erreur durant l'importation de la photo";
+                                $Validation = false;
+                            }
+                        }
+                        else {
+                            $msg = "Votre photo doit être au format jpg, jpeg, gif, png";
+                            $Validation = false;
+                        }
+                    }
+                    else {
+                        $msg = "Votre photo ne doit pas dépasser 2Mo";
                         $Validation = false;
                     }
-
                 }
 
                 if ($Validation) {
@@ -88,19 +99,10 @@ if (isUserConnected()) {
                     modification($bdd, $_POST_SEC['city'], 'city', $_SESSION['user_id'], 'users');
                     modification($bdd, $_POST_SEC['tel'], 'tel', $_SESSION['user_id'], 'users');
 
-                    // Ajoute la date de naissance si elle est renseigné
-                    if ($_POST_SEC['date_naissance'] != '') {
-                        modification($bdd, $_POST_SEC['birth_date'], 'birth_date', $_SESSION['user_id'], 'users');
-                    }
-
-                    $data = recupereTous($bdd, 'users');
-
-                    $_SESSION['user_firstname'] = $data['user_firstname'];
-                    $_SESSION['user_name'] = $data['user_name'];
-                    $_SESSION['avatar'] = $data['avatar'];
-
                     session_destroy();
                     header('location:index.php?cible=utilisateur');
+                } else {
+                    $vue = "modif_profil";
                 }
                 break;
 
@@ -108,26 +110,61 @@ if (isUserConnected()) {
 
                 if (password_verify($_POST_SEC['password'], $_SESSION['password'])) {
                     // Verifie le mot de passe -> doit comporter au moins 8 caractère, un chiffre et une majuscule
-                    if (!isAPassword($_POST_SEC['newmdp1'])) {
+                    if (!isAPassword($_POST_SEC['newmdp'])) {
                         $Alerte_Password = "Alerte_Message";
                         $Validation = false;
+                        $vue = "modif_profil";
                     }
 
                     // Verifie si le mot de passe et la confirmation sont les mêmes
-                    if ($_POST_SEC['password_confirmation'] != $_POST_SEC['newmdp2']) {
+                    if ($_POST_SEC['confirmation_newmdp'] != $_POST_SEC['newmdp']) {
                         $Password_Confirmation = "Les mots de passe ne sont pas identiques";
                         $Validation = false;
                     }
-                    modification($bdd, crypterMdp($_POST_SEC['newmdp2']), 'password', $_SESSION['user_id'], users);
+                    if ($Validation == true) {
+                        modification($bdd, crypterMdp($_POST_SEC['newmdp']), 'password', $_SESSION['user_id'], 'users');
+                        session_destroy();
+                        header('location: index.php?cible=utilisateur');
+                    }
+                    else {
+                        $vue = "modif_profil";
+                    }
                 } else {
 
                     // Mauvais mot de passe
-                    $vue = "monCompte";
-                    $Connexion_Message = "Adresse mail ou mot de passe incorrect";
+                    $vue = "modif_profil";
+                    $Connexion_Message = "Mot de passe incorrect";
+
+                }
+                break;
+
+            case 'modificationMail':
+
+                // Vérifie si l'email existe dans la base
+                if(Is_Email_Exists($bdd, 'users', $_POST_SEC['email'])){
+                    //Verifie l'email
+                    if(isAnEmail($_POST_SEC['newMail'])){
+                        $Email_Message = "Adresse mail non valide";
+                        $Validation = false;
+                    }
+                    if(Is_Email_Exists($bdd, 'users', $_POST_SEC['newMail'])){
+                        $Email_Message = "Adresse mail déjà existante";
+                        $Validation = false;
+                    }
+                    if ($Validation == true) {
+                        modification($bdd, $_POST_SEC['newMail'], 'email', $_SESSION['user_id'], 'users');
+                        session_destroy();
+                        header('location: index.php?cible=utilisateur');
+                    }
+
+                } else {
+
+                    // Adresse inexistante
+                    $vue = "modif_profil";
+                    $Connexion_Message = "Adresse mail incorrecte";
 
                 }
 
-                header('location: index?cible=monCompte');
                 break;
 
             case 'ajouter':

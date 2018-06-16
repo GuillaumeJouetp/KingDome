@@ -25,7 +25,11 @@
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
-                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 200px; height: 200px;"></p>
+                    <?php if ($_SESSION['avatar']!=null){ ?>
+                    <img src="<?php echo $_SESSION['avatar']; ?>"
+                    alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                    <?php } ?>
+                </p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
                 <p>Adresse mail : <?php echo $_SESSION['email']; ?></p>
                 <p style="text-align: center">
@@ -103,8 +107,7 @@
                                                                 ."$id2'/>"
                                                             ); ?>
                                                             <input href="#" type="image" name="creation_submit" src="..\res\icones\bouton-fermer.png" class="btn-fermer2"
-                                                                   onclick="if(confirm('Êtes-vous sûr de bien vouloir supprimer la pièce ?')){
-                                                                       document.location.href = url;} else {}">
+                                                                   onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer la résidence ?'));">
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -121,8 +124,9 @@
                                             ."value='"
                                             ."$id1'/>"); ?>
                                         <button type="submit" name="delhome"
-                                                onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer la résidence ?'));"
-                                                >Supprimer résidence</button>
+                                                onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer la résidence ?'));">
+                                            Supprimer résidence
+                                        </button>
                                     </form>
                                     </p>
                                 </section>
