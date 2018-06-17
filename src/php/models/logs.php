@@ -3,7 +3,7 @@ $ch = curl_init();
 curl_setopt(
     $ch,
     CURLOPT_URL,
-    "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=7896");
+    "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=009A");
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 $logs = curl_exec($ch);
@@ -14,7 +14,7 @@ function send_trame(string $trame){
     curl_setopt(
         $ch,
         CURLOPT_URL,
-        "http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=7896&TRAME=". $trame);
+        "http://projets-tomcat.isep.fr:8080/appService?ACTION=COMMAND&TEAM=009A&TRAME=". $trame);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
     $logs = curl_exec($ch);
