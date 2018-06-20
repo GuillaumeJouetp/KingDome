@@ -171,6 +171,7 @@ if (isUserConnected()) {
 
                 $Data_ajoutMaison = array(
                     'name_home' => $_POST_SEC['name_home'],
+                    'superficie' => $_POST_SEC['superficie'],
                     'adress' => $_POST_SEC['adress'],
                     'city' => $_POST_SEC['city'],
                     'zip_code' => $_POST_SEC['zip_code']);

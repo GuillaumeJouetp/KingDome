@@ -158,8 +158,13 @@
                 <h3>Ajouter une résidence</h3><br>
                 <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
                     <p>
-                    <p><label for="name_home"><span class="blanc">Nom de la maison*</span><br>
+                    <p><label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
                             <input type="text" name="name_home" id="name_home" maxlength="12" placeholder="Maison principale" required/>
+                        </label>
+                    </p>
+
+                    <p><label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
+                            <input type="number" name="superficie" id="superficie" maxlength="12" required />m²
                         </label>
                     </p>
 
