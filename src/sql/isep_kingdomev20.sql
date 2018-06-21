@@ -284,7 +284,6 @@ CREATE TABLE IF NOT EXISTS `homes` (
   `city` varchar(100) NOT NULL,
   `zip_code` varchar(50) NOT NULL,
   `adress` varchar(100) DEFAULT NULL,
-  `superficie` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
@@ -293,10 +292,10 @@ CREATE TABLE IF NOT EXISTS `homes` (
 -- Déchargement des données de la table `homes`
 --
 
-INSERT INTO `homes` (`name_home`, `city`, `zip_code`, `adress`, `superficie`, `id`) VALUES
-(' Valaskjálf', 'Asgard', '1218', 'Asgard', '8000', 9),
-('ETGJFGF', 'gghgj', '94310', '2 hjhg', '150', 4),
-('NDC', 'Paris', '75', '2 rue ndc', '1500', 5);
+INSERT INTO `homes` (`name_home`, `city`, `zip_code`, `adress`, `id`) VALUES
+(' Valaskjálf', 'Asgard', '1218', 'Asgard', 9),
+('ETGJFGF', 'gghgj', '94310', '2 hjhg', 4),
+('NDC', 'Paris', '75', '2 rue ndc', 5);
 
 -- --------------------------------------------------------
 
