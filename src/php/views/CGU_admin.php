@@ -7,7 +7,7 @@
 
     <div id="intro">
         
-        <h1>Conditions d'Utilisation</h1>
+        <h1>Conditions Générales d'Utilisation</h1>
         
         <?php
         $reponse_texte = $bdd->query('SELECT * FROM updatable_content WHERE id = 2');

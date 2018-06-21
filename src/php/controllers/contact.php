@@ -23,6 +23,11 @@ if(isAnAdmin($bdd)) {
             $req->execute(array('message_id' => $_GET['message_id']));
             $vue = "contact_backOffice";
             break;
+        case  'suppr_message_panne':
+            $req = $bdd->prepare('DELETE FROM incoming_messages_panne WHERE id= :message_id');
+            $req->execute(array('message_id' => $_GET['message_id_panne']));
+            $vue = "contact_backOffice";
+            break;
     }
 }
 else{
