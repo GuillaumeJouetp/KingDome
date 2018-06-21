@@ -199,6 +199,15 @@ function secuTab($tab){
 }
 
 
+function setXDatas($bdd){
+	$XDatas=[];
+	foreach (getdatas($bdd) as $value) {
+		$XDatas[]=dateFr($value['date']);
+	}
+	
+	return $XDatas;
+
+
 /**
  * Actualise les données du graphique de connexion en abscisse
  * @return array
