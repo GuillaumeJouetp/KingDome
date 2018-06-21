@@ -111,8 +111,7 @@ input[type=range].custom-slider {
 
 .pieces {
 	width: 90%;
-	max-height: 5px;
-	min-height : 250px;
+	min-height : 500px;
 	background-color: rgba(129,129,129,0.5);
 	overflow-x: hidden;  /*scroll*/
 	margin: auto;

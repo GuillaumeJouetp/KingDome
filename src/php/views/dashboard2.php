@@ -20,17 +20,48 @@
 					else document.getElementById(Id).style.display='none';
 			    }
 			  }
-		function loadNowPlaying(){
+		/*function loadNowPlaying(){
 		  $("#refresh").load("index?cible=dashboard #refresh");
 		}
+		,
+	                    
 		setInterval(function(){loadNowPlaying()}, 350000);
 
 		
 
 
-				
+		$(document).ready(function(){
 
-		</script>
+		    $("#submit_ajouter").click(function{
+
+		    	  $.post(
+				    	  'index.php?cible=dashboard&function=ajouter',
+		                    
+	                    {
+		                nom : $("#nom").val(), 
+		                ref : $("#ref").val(),
+		                maison : $("#maison").val(),
+		                piece : $("#piece").val(),
+		                id_piece : $("#id_piece").val(),
+		                type_capteur : $("#type_capteur").val()
+		                
+		                },
+		                );
+		    	 return false; // permet de ne pas recharger la page 
+		    });
+
+		});		*/	
+
+
+
+		
+
+
+
+
+
+
+</script>
 	
 	
 </head>
@@ -73,7 +104,7 @@
 													<?php echo $a; ?>
 												</a>
 											</div>
-											<a name='formulaire_ajouter<?php echo $cpt; ?>' ></a>
+											
 											<div id="Identifiant<?php echo $cpt; ?>">
 												<div id='conteneur'>
 																	
@@ -99,11 +130,11 @@
 			    <div class="capt"><br>Ajouter un capteur ou un effecteur<br><br></div>
 					    
 					    
-					<form method="post" action="index.php?cible=dashboard&function=ajouter#formulaire_ajouter<?php echo $cpt; ?>" enctype="multipart/form-data">  <!--form pour ajouter un capteur -->
+					<form enctype="multipart/form-data" method="post" action="index.php?cible=dashboard&function=ajouter">  <!--form pour ajouter un capteur -->
 					    	       
-					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" maxlength="12" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	<label> <span class="blanc">Nom :</span>   <br><br> <input type="text" name="nom" id="nom" maxlength="12" required/> </label>  <br><br>  <!--nom du capteur -->
 					   	
-					   	<label> <span class="blanc">Numéro capteur :</span>   <br><br> <input type="number" name="ref" required/> </label>  <br><br>  <!--nom du capteur -->
+					   	<label> <span class="blanc">Numéro capteur :</span>   <br><br> <input type="number" name="ref" id="ref" required/> </label>  <br><br>  <!--nom du capteur -->
 					   						
 					   						
 					   						<?php 
@@ -111,6 +142,7 @@
 					   						$a=$donnees['house_id'];     /*on sauvegarde l'id de la maison qui n'est pas visible das la page et va etre envoyé dans le formulaire  */
 											echo("<input type='hidden'"
 												."name='maison'" 
+												."id='maison'"
 												."value='"
 												."$a'/>"
 												);
@@ -121,7 +153,7 @@
 					    	      	
 					   	<label> <span class="blanc">Pièce :</span>  <br><br> </label>   <!--choix de la pièce -->
 					    	      	
-					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece">
+					   	<select class="custom-dropdown__select custom-dropdown__select--white" name="piece" id="piece">
 					   	
 					   	
 									   	
@@ -161,6 +193,7 @@
 													$b=implode(',',$list_id_room);  
 													echo("<input type='hidden'"  /*on sauvegarde l'array avec les id des pièces qui n'est pas visible dans la page et va etre envoyé dans le formulaire  */
 														."name='id_piece'" 
+														."id='id_piece'"
 														."value='"
 														."$b'/>"
 														);
@@ -171,7 +204,7 @@
 							
 						<label> <span class='blanc'>Type de capteur / effecteur : </span><br><br> </label>    <!--choix du type de capteur -->
 					
-						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur">
+						   	<select class="custom-dropdown__select custom-dropdown__select--white" name="type_capteur" id="type_capteur">
 						   	
 								</span>
 								<span class='blanc'><optgroup label="CAPTEURS">
@@ -211,7 +244,7 @@
 										  		
 									  			       		
 							</select><br><br><br>        
-							<input id="sendmod" class="fermer" href="#nullepart" type="submit" name="creation_submit" value="Ajouter" /><br><br>
+							<input id="submit_ajouter" class="fermer"  type="submit" name="submit_ajouter" value="Ajouter" /><br><br>
 					   
 					    </form>								
 				</div> <!-- .fenetre-modale -->
@@ -294,14 +327,17 @@
 		   									switch (recherche_device($bdd, $donnees4['device_type_id'])[0]['name']) {    
 										            case 'Humidité':
 														foreach($datas as $donnees8){  /*boucle for 7.2 */
-															if($donnees4['ref']==$donnees8[3] ){/*if 6.2*/ 
-																$info=val_trame($bdd,$donnees4['ref'])[0][0];
-																$resultat = $info. '%';
-																break;
+															if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
+																if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
+																	$info=val_trame($bdd,$donnees4['ref'])[0][0];
+																	$resultat="Non connecté";
+																	break;
+																	
+																}
 																
 					   										}
 															else{
-																$resultat="Pas d'info";
+																$resultat="Non connecté";
 															}
 					   									}
 													    
@@ -378,18 +414,19 @@
 										
 													 	foreach($datas as $donnees8){  /*boucle for 7.2 */
 													 		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
+													 			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
 													 			$info=val_trame($bdd,$donnees4['ref'])[0][0];
-													 			if($info>700){
-													 				$resultat="Il y a une personne";
+													 			if($info>700 && $info<1000){
+													 				$resultat="Il y a quelqu'un";
 													 			}
-													 			else{
+													 			else if ($info>1000 && $info<3000){
 													 				$resultat="Il n'y a personne";
 													 			}
 													 			break;
 													 			
-													 		}
+													 			}}
 													 		else{
-													 			$resultat="Pas d'info";
+													 			$resultat="Non connecté";
 													 		}
 													 	}
 													 	
@@ -405,13 +442,14 @@
 
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
+										            			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
 										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
-										            			$resultat = $info. '°C';
+										            			$resultat="Non connecté";
 										            			break;
 										            			
-										            		}
+										            			}}
 										            		else{
-										            			$resultat="Pas d'info";
+										            			$resultat="Non connecté";
 										            		}
 										            	}
 										            	
@@ -426,14 +464,15 @@
 										            case 'Luminosité':
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
+										            			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
 										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
 										            			$info2=number_format(100*$info/3000,1);
 										            			$resultat = $info2. '%';
 										            			break;
 										            			
-										            		}
+										            			}}
 										            		else{
-										            			$resultat="Pas d'info";
+										            			$resultat="Non connecté";
 										            		}
 										            	}
 										            	
@@ -448,12 +487,13 @@
 										            default :
 														foreach($datas as $donnees8){  /*boucle for 7.2 */
 															if($donnees4['ref']==$donnees8[3]){/*if 6.2*/ 
+																if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
 																$resultat = val_trame($bdd,$donnees4['ref'])[0][0];
 																break;
-																
+																}
 					   										}
 															else{
-																$resultat="Pas d'info";
+																$resultat="Non connecté";
 															}
 					   									}
 													    
