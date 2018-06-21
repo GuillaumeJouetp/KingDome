@@ -4,6 +4,9 @@
 
 <div id='corps'>
     <?php
+
+    echo("<h1> Messagerie </h1>");
+
     $incoming_messages = recupereTous($bdd, 'incoming_messages');
     if (empty($incoming_messages)){
         echo "Vous n'avez pas de nouveaux messages.";
@@ -54,19 +57,19 @@
                     );
                 }
             }
-            $get = $incoming_messages[$cle]['id'];
-            echo ("<form action='index.php?cible=contact&function=suppr_message&message_id=$get' method='post'><button class='button_modif' type='submit'>Supprimer</button></form>");
+            $get1 = $incoming_messages[$cle]['id'];
+            echo ("<form action='index.php?cible=contact&function=suppr_message&message_id=$get1' method='post'><button class='button_modif' type='submit'>Supprimer</button></form>");
             echo "</section>";
 
         }
     }
     
     
-    
+    echo("<h1> Panne des utilisateurs </h1>");
     
     $incoming_messages_panne = recupereTous($bdd, 'incoming_messages_panne');
     if (empty($incoming_messages_panne)){
-    	echo "Vous n'avez pas de nouveaux messages.";
+    	echo "Vous n'avez pas de nouveaux messages de panne.";
     }
     else {
     	$cpt = 0;
@@ -114,8 +117,8 @@
     						);
     			}
     		}
-    		$get = $incoming_messages_panne[$cle]['id'];
-    		echo ("<form action='index.php?cible=contact&function=suppr_message&message_id=$get' method='post'><button class='button_modif' type='submit'>Supprimer</button></form>");
+    		$get2 = $incoming_messages_panne[$cle]['id'];
+    		echo ("<form action='index.php?cible=contact&function=suppr_message_panne&message_id_panne=$get2' method='post'><button class='button_modif' type='submit'>Supprimer</button></form>");
     		echo "</section>";
     		
     	}

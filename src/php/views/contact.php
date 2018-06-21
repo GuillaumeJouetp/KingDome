@@ -4,7 +4,7 @@
 
 <h1>Nous contacter</h1>
 	
-	<button>
+	<button id="jobutton">
             <a href="index.php?cible=panne">
             Signaler une panne
             </a>

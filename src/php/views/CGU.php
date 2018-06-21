@@ -7,7 +7,7 @@
 
 <div id="corps">            
         
-    <h1 class="CU">Conditions d'Utilisation</h1>
+    <h1 class="CU">Conditions Générales d'Utilisation</h1>
            
 
     <div class="p_intro">
