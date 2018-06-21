@@ -206,6 +206,7 @@ function setXDatas($bdd){
 	}
 	
 	return $XDatas;
+}
 
 
 /**
