@@ -3,6 +3,20 @@
     flex-direction: column;
 }
 
+#jobutton
+{
+    padding:3px;
+    border:1px solid #0081dc;
+    border-radius:5px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+    cursor:pointer;
+    outline: none;
+    width: 300px;
+    margin-left: 700px;
+    background-color: rgba(212,60,66,0.78);
+}
+
+
 .allMessageContainer{
     margin : 2%;
     padding: 2%;
