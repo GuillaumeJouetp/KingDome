@@ -11,10 +11,11 @@ if(!isset($_POST['duree'])){
 	$conso = $bdd->query('SELECT conso FROM conso_mois WHERE date >= NOW() - INTERVAL 1 YEAR AND id_user='.$_SESSION['user_id']);
 	$conso = $conso->fetchAll();
 	$conso=array($conso[0][0], $conso[1][0], $conso[2][0], $conso[3][0], $conso[4][0], $conso[5][0],$conso[6][0], $conso[7][0], $conso[8][0], $conso[9][0], $conso[10][0], $conso[11][0]);
+	$duree = 12;
 }
 ?>
 	
-		var x_datas = <?=json_encode($mois);?>;
+		var x_datas = <?=json_encode(setXDatasConso($bdd, $duree));?>;
 		var y_datas = <?=json_encode($conso)?>;
 		var ctx = document.getElementById("chartUser").getContext('2d');
 		var myChart = new Chart(ctx, {
