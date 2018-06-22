@@ -71,7 +71,7 @@
 <div id='refresh'>		
 			
 										<?php
-											
+										
 											$own_home = recupereTous($bdd, 'own_home');              /*variables pour recuperer les données de la bdd de own_home, rooms, devices_types, devices, cemacs*/
 											$rooms = recupereTous($bdd, 'rooms');
 											$device_types = recupereTous($bdd, 'device_types');
@@ -325,15 +325,13 @@
 		   									}
 		   									else{
 		   									switch (recherche_device($bdd, $donnees4['device_type_id'])[0]['name']) {    
-										            case 'Humidité':
+										            case 'Humidité': 	
 														foreach($datas as $donnees8){  /*boucle for 7.2 */
 															if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-																if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
-																	$info=val_trame($bdd,$donnees4['ref'])[0][0];
 																	$resultat="Non connecté";
 																	break;
 																	
-																}
+																
 																
 					   										}
 															else{
@@ -414,15 +412,17 @@
 										
 													 	foreach($datas as $donnees8){  /*boucle for 7.2 */
 													 		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-													 			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
-													 			$info=val_trame($bdd,$donnees4['ref'])[0][0];
-													 			if($info>700 && $info<1000){
+													 			if(val_trame($bdd,$donnees4['ref'])[1]<10){
+													 				$info=val_trame($bdd,$donnees4['ref'])[0];
+													 				if($info>700 && $info<=1000){
 													 				$resultat="Il y a quelqu'un";
+													 				break;
 													 			}
-													 			else if ($info>1000 && $info<3000){
+													 			if ($info>1000 && $info<3000){
 													 				$resultat="Il n'y a personne";
+													 				break;
 													 			}
-													 			break;
+													 			
 													 			
 													 			}}
 													 		else{
@@ -442,12 +442,12 @@
 
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-										            			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
-										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
 										            			$resultat="Non connecté";
 										            			break;
 										            			
-										            			}}
+										            			
+										            			
+										            		}
 										            		else{
 										            			$resultat="Non connecté";
 										            		}
@@ -464,8 +464,8 @@
 										            case 'Luminosité':
 										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
 										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
-										            			if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
-										            			$info=val_trame($bdd,$donnees4['ref'])[0][0];
+										            			if(val_trame($bdd,$donnees4['ref'])[1]<10){
+										            			$info=val_trame($bdd,$donnees4['ref'])[0];
 										            			$info2=number_format(100*$info/3000,1);
 										            			$resultat = $info2. '%';
 										            			break;
@@ -485,16 +485,18 @@
 										            	break;
 										
 										            default :
-														foreach($datas as $donnees8){  /*boucle for 7.2 */
-															if($donnees4['ref']==$donnees8[3]){/*if 6.2*/ 
-																if(val_trame($bdd,$donnees4['ref'])[0][2]<10){
-																$resultat = val_trame($bdd,$donnees4['ref'])[0][0];
-																break;
-																}
-					   										}
-															else{
-																$resultat="Non connecté";
-															}
+										            	foreach($datas as $donnees8){  /*boucle for 7.2 */
+										            		if($donnees4['ref']==$donnees8[3]){/*if 6.2*/
+										            			$resultat="Non connecté";
+										            			break;
+										            			
+										            			
+										            			
+										            		}
+										            		else{
+										            			$resultat="Non connecté";
+										            		}
+										            	
 					   									}
 													    
 										            	?>

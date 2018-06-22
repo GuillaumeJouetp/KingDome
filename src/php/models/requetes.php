@@ -223,8 +223,14 @@ function getNumRoom($bdd){
 
 function val_trame(PDO $bdd,string $attributs): array {
 	
-	$query = 'SELECT value,MAX(timestamp) AS maxTimestamp,DATEDIFF(NOW(),timestamp) FROM datas WHERE device_id=' . $attributs;
-	return $bdd->query($query)->fetchAll();
+	
+	
+	
+	
+	
+	$statement = $bdd->prepare('select value,TIMESTAMPDIFF(second , timestamp, NOW()) from datas where timestamp = (select max(timestamp) from datas where device_id='.$attributs.')'); 
+	$statement->execute();
+	return $statement->fetch();
 }
 
 
