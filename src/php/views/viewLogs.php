@@ -1,6 +1,6 @@
 <div id="corps">
     <?php
-    //viewTabLogs ($logs);
-    decodeTrames($logs);
+    //Affiche les 100 dernieres trames
+    decodeTrames($logs,100);
     ?>
 </div>

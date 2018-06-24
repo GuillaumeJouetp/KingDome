@@ -1,4 +1,6 @@
 <!-- http://localhost3/dHomeTech/src-->
+<!--http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=009A -->
+<!-- http://projets-tomcat.isep.fr:8080/clientVaadin/ -->
 
 <?php session_start(); ?>
 <!doctype html>

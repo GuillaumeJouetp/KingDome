@@ -255,9 +255,12 @@ function dateFr($dateUS){
  * @return void
  */
 function insertTrame ($logs,$bdd){
-    $data_tab =str_split($logs,33);
+    $data_tab =str_split(strrev($logs),33);
+    $lastTrameTime1 = str_replace (' ' , '' ,get_last_trame($bdd )['maxTimestamp']);
+    $lastTrameTime2 = str_replace ('-' , '' ,$lastTrameTime1);
+    $lastTrameTime3 = str_replace (':' , '' ,$lastTrameTime2);
     foreach ($data_tab as $key=>$elm) {
-        $trame = $data_tab[$key];
+        $trame = strrev($data_tab[$key]);
 
         // décodage avec sscanf
         list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
@@ -273,9 +276,7 @@ function insertTrame ($logs,$bdd){
             'checksum' => $x,
             'timestamp' => $year.'-'.$month.'-'.$day.' '.$hour.':'.$min.':'.$sec
         );
-        $lastTrameTime1 = str_replace (' ' , '' ,get_last_trame($bdd )['maxTimestamp']);
-        $lastTrameTime2 = str_replace ('-' , '' ,$lastTrameTime1);
-        $lastTrameTime3 = str_replace (':' , '' ,$lastTrameTime2);
+
         /*
            debug1('Timestamp de la trame : ',$year.$month.$day.$hour.$min.$sec);
            debug1('Timestamp de la trame la plus récente de la bdd',$lastTrameTime3);
@@ -283,8 +284,11 @@ function insertTrame ($logs,$bdd){
            echo '<br>';
         */
         if (isDateCorrect($year,$month,$day,$hour,$min,$sec)) { // test de l'intégrité de la date
-            if ($year . $month . $day . $hour . $min . $sec > $lastTrameTime3){ // On insère la trame dans la bdd seulement si elle n'y ait pas déjà
+            if ($year . $month . $day . $hour . $min . $sec >= $lastTrameTime3){ // On insère la trame dans la bdd seulement si elle n'y ait pas déjà
                 insertion($bdd, $values, 'datas');
+            }
+            else{
+                break;
             }
         }
     }
