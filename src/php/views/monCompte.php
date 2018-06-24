@@ -197,6 +197,7 @@
         <script src="../src/js/dashbord.js"></script>
 
     </div>
+    </div>
     <br><br>
 
     <!--Utilisateurs secondaires et droits-->
