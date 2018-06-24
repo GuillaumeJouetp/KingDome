@@ -159,17 +159,17 @@
                 <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
                     <p>
                     <p><label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
-                            <input type="text" name="name_home" id="name_home" maxlength="12" placeholder="Maison principale" required/>
+                            <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
                         </label>
                     </p>
 
                     <p><label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
-                            <input type="number" name="superficie" id="superficie" maxlength="12" required />m²
+                            <input type="number" name="superficie" id="superficie" required />m²
                         </label>
                     </p>
 
                     <p><label<span class="blanc">Adresse*</span><br>
-                        <input type="text" name="adress" id="autocomplete" maxlength="12" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
+                        <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
 
                         <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
                         <input type="hidden" id="street_number" disabled="true" />
@@ -178,11 +178,11 @@
                         <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
                         <label for="zip_code" id="zip_label"><span class="blanc">Code postal*</span><br>
-                            <input type="text" name="zip_code" id="postal_code"  maxlength="12" disabled="true" onmouseout="verifAdress()"/><br>
+                            <input type="text" name="zip_code" id="postal_code" disabled="true" onmouseout="verifAdress()"/><br>
                         </label><br>
 
                         <label for="ville" id="city"><span class="blanc">Ville*</span><br>
-                            <input type="text" name="city" id="locality" maxlength="12" disabled="true" onmouseout="verifAdress()">
+                            <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
                         </label><br><br>
 
                         <span class="tooltip">Adresse non complète</span>
