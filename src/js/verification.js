@@ -220,7 +220,7 @@ check['tel'] = function() {
 
     var tel = document.getElementById('tel'),
         tooltipStyle = getTooltip(tel).style,
-        regex = /^0[1-68]([-. ]?[0-9]{2}){4}$/;
+        regex = /^0[1-9]([-. ]?[0-9]{2}){4}$/;
 
     if (regex.test(tel.value)) {
         tel.className = 'correct';

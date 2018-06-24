@@ -63,7 +63,7 @@ function isAPassword($password){
 }
 
 function isATel($tel){
-    return preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", $tel);
+    return preg_match("#^0[1-9]([-. ]?[0-9]{2}){4}$#", $tel);
 }
 
 function isAnAvatar($name, $size, $data, $error){
