@@ -17,7 +17,7 @@
 <body>
 <div id="corps">
 
-    <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
+    <h1 style="text-align: left">Mon profil</h1></br>
 
     <section style="display: flex">
         <article style="width: 50%">
