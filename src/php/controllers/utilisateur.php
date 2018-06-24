@@ -138,12 +138,30 @@ switch ($function) {
             $_SESSION['type'] = getCurrentUserType($bdd);
             $_SESSION['avatar'] = $avatar;
 
+            
+            for ($i=0 ; $i<=12 ; $i++){
+            	$d = '01';
+            	$date = date('Y-m-'.$d, strtotime(' - ' .$i. ' MONTH'));
+            	$data = Get_User_Data($bdd, 'users', $_POST_SEC['email']);
+            	
+            	$_SESSION['user_id'] = $data['id'];
+            	$Data_Conso =array (
+            			'id_user' => $_SESSION['user_id'],
+            			'conso' => 0,
+            			'date' => $date
+            	);
+            	insertion($bdd, $Data_Conso, 'conso_mois');
+            }
+            
+            
             header('location: index.php');
 
         } else {
             $vue = "inscription";
             $title = "Inscription";
-        }
+        }    
+        
+        
         break;
 
     case 'connexion':
