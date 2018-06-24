@@ -14,53 +14,69 @@
     <link rel="stylesheet" href="css/inscription.css">
 </head>
 
-<body>
 <div id="corps">
 
-    <h1 style="text-align: left">Mon profil</h1></br>
+    <h1 style="text-align: left">Mon profil - Utilisateur</h1></br>
 
     <section style="display: flex">
         <article style="width: 50%">
-            <form method="post" action="index.php?cible=monCompte&function=modificationInfos" enctype="multipart/form-data" id="myForm">
-                <h2>Mes informations personnelles</h2>
+            <h2>Mes informations personnelles</h2>
 
-                <label>Nom*</label>
-                <p><input type="text" size="35" name="user_name" value="<?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?>" required/></p>
+            <form method="post" action="index.php?cible=monCompte&function=modifInfos" enctype="multipart/form-data">
+                <label>Nom*<br>
+                    <input type="text" size="35" name="newUser_name" value="<?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?>" required/>
+                </label>
 
-                <label>Prénom*</label>
-                <p><input type="text" size="35" name="user_firstname" value="<?php if(isset($_SESSION['user_firstname'])){echo $_SESSION['user_firstname'];} ?>" required/></p>
+                <label>Prénom*<br>
+                    <input type="text" size="35" name="newUser_firstname" value="<?php if(isset($_SESSION['user_firstname'])){echo $_SESSION['user_firstname'];} ?>" required/>
+                </label>
 
                 <label>Adresse*<br>
-                    <input type="text" name="adress" id="autocomplete" size="35" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/>
+                    <input type="text" name="newAdress" id="autocomplete" size="35" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/>
 
-                    <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
+                    <input type="hidden" name="newAdress" id="fullAddr" disabled="true"/>
                     <input type="hidden" id="street_number" disabled="true" />
                     <input type="hidden" id="route" disabled="true" />
                     <input type="hidden" id="country" disabled="true" />
                     <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
                     <label for="zip_code" id="zip_label"><br>Code postal*<br>
-                        <input type="text" name="zip_code" id="postal_code"  size="35" disabled="true" onmouseout="verifAdress()"/>
-                    </label><br><br>
+                        <input type="text" name="newZip_code" id="postal_code"  size="35" disabled="true" onmouseout="verifAdress()"/>
+                    </label><br>
 
-                    <label for="ville" id="city">Ville*<br>
-                        <input type="text" name="city" id="locality" size="35" disabled="true" onmouseout="verifAdress()">
-                    </label><br><br>
+                    <label for="ville" id="city"><br>Ville*<br>
+                        <input type="text" name="newCity" id="locality" size="35" disabled="true" onmouseout="verifAdress()">
+                    </label><br>
 
                     <span class="tooltip">Adresse non complète</span>
                 </label>
 
                 <label id="num_label">Numéro de téléphone*<br>
-                    <input type="tel" name="tel" size="35" id="tel" value="<?php if(isset($_SESSION['tel'])){echo $_SESSION['tel'];} ?>" required/>
-                    <span class="tooltip">Numéro de téléphone non valide</span>
+                    <input type="tel" name="newTel" size="35" id="tel" value="<?php if(isset($_SESSION['tel'])){echo $_SESSION['tel'];} ?>" required/>
                 </label><br>
 
-                <?php if (isset($Tel_message)) {
-                    echo "<span class='Alerte_Tel'>".$Tel_message."</span>";} ?>
+                <button type="submit" name="modifier" class="submit_button">Modifier</button>
+                <br>
+            </form>
 
-                <button type="button" id="myBtn" class="submit_button">Modifier votre avatar</button>
+            <!--<h2>Modifier avatar</h2>
+            <form method="post" action="index.php?cible=monCompte&function=modifAvatar" enctype="multipart/form-data">
+
+                <?php if ($_SESSION['avatar']!=null){ ?>
+                    <img src="<?php echo $_SESSION['avatar']; ?>"
+                         alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+
+                    <button type="button" name="myBtn" class="submit_button">Modifier l'Avatar</button>
+                    <button type="button" name="Supprimer" class="submit_button">Supprimer l'avatar</button>
+                <?php } else { ?>
+
+                <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
                 <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
-                <div id="myModal" class="modal">
+
+                <?php } ?>
+
+                <!-- Modal pop-up for upload avatar -->
+                <!--<div id="myModal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
 
@@ -73,61 +89,60 @@
                     </div>
                 </div><br><br>
 
-                <?php if (isset($msg)) {
-                echo "<span class='Alerte_Message'>".$msg."</span>";} ?>
+                <button type="submit" name="creation_submit" class="submit_button">Valider</button>
 
-                <button type="submit" name="modifier" class="submit_button">Modifier</button>
-                <br>
-            </form>
-
-            <script type="text/javascript" src="../src/js/autocompletion.js"></script>
-            <script type="text/javascript" src="../src/js/inscription.js"></script>
-            <script type="text/javascript" src="../src/js/verification.js"></script>
+            </form>-->
         </article>
 
+        <script type="text/javascript" src="../src/js/autocompletion.js"></script>
+        <script type="text/javascript" src="../src/js/inscription.js"></script>
+
         <aside style="width: 50%">
-            <form method="post" action="index.php?cible=monCompte&function=modificationMail">
+            <form method="post" action="index.php?cible=monCompte&function=modifMail" id="formMail">
                 <h2>Modifier adresse mail</h2>
 
-                <p><label>Entrez votre ancienne adresse mail *</label>
+                <label>Entrez votre ancienne adresse mail *<br>
                     <input type="email" name="email" size="35" required />
-                </p>
+                </label><br>
 
-                <p><label>Entrez votre nouvelle adresse mail *</label>
-                    <input type="email" name="newMail" size="35" required />
-                </p>
+                <label>Entrez votre nouvelle adresse mail *<br>
+                    <input type="email" name="newMail" size="35" required  id="email" onblur="verifEmail(this.value)" />
+                </label><br>
 
                 <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
 
-                <?php if (isset($Connexion_Message)) {
-                echo "<span class='Alerte_Message'>".$Connexion_Message."</span>";} ?>
             </form><br><br>
+            <script type="text/javascript" src="../src/js/verifMail.js"></script>
 
-            <form method="post" action="index.php?cible=monCompte&function=modificationMdp">
+            <form method="post" action="index.php?cible=monCompte&function=modifMdp" id="formMDP">
                 <h2>Modifier mot de passe</h2>
 
-                <p><label>Entrez votre ancien mot de passe *</label>
+                <label>Entrez votre ancien mot de passe *<br>
                     <input type="password" name="password" size="35" required />
-                </p>
+                </label><br>
 
-                <p><label>Entrez votre nouveau mot de passe *</label>
-                    <input type="password" name="newmdp" size="35" required />
-                </p>
+                <label>Entrez votre nouveau mot de passe *<br>
+                    <input type="password" name="newMdp" id="newMdp" size="35" required />
+                </label><br>
 
-                <p><label>Confirmation du nouveau mot de passe*</label>
-                    <input type="password" name="confirmation_newmdp" size="35" required />
-                    <span class="tooltip">Le mot de passe de confirmation doit être identique à votre nouveau mot de passe</span>
-                </p>
+                <label>Confirmation du nouveau mot de passe*<br>
+                    <input type="password" name="confirmation_newMdp" id="confirmation_newMdp" size="35" required />
+                    <span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span>
+                </label>
+
+                <span class='$Alerte_Password' id='alert_newMdp'> Le mot de passe doit comporter au moins 8 caractère, ainsi qu'au moins un chiffre et une majuscule.</span><br><br>
 
                 <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
 
-                <?php if (isset($Password_Confirmation)) {
-                    echo "<div class='Alerte_Message'>".$Password_Confirmation."</div>";}
-                if (isset($Alerte_Password)) {
-                    echo "<span class=".$Alerte_Password." id='newmdp'> Le mot de passe doit comporter au moins 8 caractère, ainsi qu'au moins un chiffre et une majuscule.</span>";}?>
             </form><br><br>
+            <script type="text/javascript" src="../src/js/verifMdp.js"></script>
         </aside>
     </section>
 
+    <button>
+        <a href="index.php?cible=monCompte&function=dellAll">
+            <h4>Supprimer compte</h4>
+        </a>
+    </button>
+
 </div>
-</body>

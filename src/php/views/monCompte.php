@@ -15,11 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
 <div id="corps">
 
     <div id="profil">
-        <h1 style="text-align: left">Mon profil</h1></br>
+        <h1 style="text-align: left">Mon profil - Utilisateur </h1></br>
 
         <h2>Informations personnelles</h2>
         <div id="info_perso">
@@ -156,37 +155,35 @@
             <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a><br>
             <div class="titre">
                 <h3>Ajouter une résidence</h3><br>
-                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
-                    <p>
-                    <p><label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
-                            <input type="text" name="name_home" id="name_home" maxlength="12" placeholder="Maison principale" required/>
-                        </label>
-                    </p>
+                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="margin-left: 5px; font-size: medium">
 
-                    <p><label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
-                            <input type="number" name="superficie" id="superficie" maxlength="12" required />m²
-                        </label>
-                    </p>
+                    <label for="name_home"><br><span class="blanc">Nom de la résidence*</span><br>
+                        <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
+                    </label><br><br>
 
-                    <p><label<span class="blanc">Adresse*</span><br>
-                        <input type="text" name="adress" id="autocomplete" maxlength="12" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
+                    <label for="superficie"><br><span class="blanc">Superficie de la résidence*</span><br>
+                        <input type="number" name="superficie" id="superficie" required />m²
+                    </label><br><br>
+
+                    <label><span class="blanc">Adresse*</span><br>
+                        <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
 
                         <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
                         <input type="hidden" id="street_number" disabled="true" />
                         <input type="hidden" id="route" disabled="true" />
                         <input type="hidden" id="country" disabled="true" />
-                        <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
+                        <input type="hidden" id="administrative_area_level_1" disabled="true" /><br><br>
 
                         <label for="zip_code" id="zip_label"><span class="blanc">Code postal*</span><br>
-                            <input type="text" name="zip_code" id="postal_code"  maxlength="12" disabled="true" onmouseout="verifAdress()"/><br>
-                        </label><br>
+                            <input type="text" name="zip_code" id="postal_code"  disabled="true" onmouseout="verifAdress()"/><br>
+                        </label><br><br>
 
                         <label for="ville" id="city"><span class="blanc">Ville*</span><br>
-                            <input type="text" name="city" id="locality" maxlength="12" disabled="true" onmouseout="verifAdress()">
+                            <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
                         </label><br><br>
 
                         <span class="tooltip">Adresse non complète</span>
-                    </label></p>
+                    </label><br><br>
 
                     <button style="width:auto;" type="submit" name="ajout">
                         Ajouter
@@ -199,7 +196,7 @@
             </div>
         </div>
         <script src="../src/js/dashbord.js"></script>
-
+        </div>
     </div>
     <br><br>
 
@@ -304,4 +301,3 @@
     </p>
 
 </div>
-</body>
