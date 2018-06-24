@@ -11,14 +11,14 @@ if(isset($_POST['duree'])){
 		case 1:
 			$conso = $bdd->query('SELECT conso FROM conso_mois WHERE date >= NOW() - INTERVAL 1 MONTH AND id_user='.$_SESSION['user_id']);
 			$conso = $conso->fetch();
-			$conso=array($conso['0']);
-
+			$conso=array($conso[0]);
 			break;
 			
 		case 3 :
 			$conso = $bdd->query('SELECT conso FROM conso_mois WHERE date >= NOW() - INTERVAL 3 MONTH AND id_user='.$_SESSION['user_id']);
 			$conso = $conso->fetchAll();
 			$conso=array($conso[0][0], $conso[1][0], $conso[2][0]);
+			
 			break;
 			
 		case 6 :

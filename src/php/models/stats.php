@@ -42,7 +42,7 @@ function getdatasConso(PDO $bdd,$duree){
 		case 1:
 			$mois = $bdd->query('SELECT date FROM conso_mois WHERE date >= NOW() - INTERVAL 1 MONTH AND id_user='.$_SESSION['user_id']);
 			$mois = $mois->fetch();
-			//$mois = array($mois['date']);
+			$mois = array($mois);
 			break;
 			
 		case 3 :
@@ -64,7 +64,6 @@ function getdatasConso(PDO $bdd,$duree){
 			//$mois= array ($mois[0][0], $mois[1][0], $mois[2][0], $mois[3][0], $mois[4][0], $mois[5][0], $mois[6][0], $mois[7][0], $mois[8][0], $mois[9][0], $mois[10][0], $mois[11][0]);
 			break;
 	}
-	/*On récupère les */
 
 	return $mois;
 }

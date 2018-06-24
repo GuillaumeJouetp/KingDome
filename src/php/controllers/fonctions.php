@@ -216,7 +216,7 @@ function setXDatas($bdd){
 function setXDatasConso($bdd, $mois){
     $XDatas=[];
     foreach (getdatasConso($bdd, $mois) as $value) {
-        $XDatas[]=dateFr($value['date']);
+        $XDatas[]=dateFr($value[0]);
     }
 
     return $XDatas;
