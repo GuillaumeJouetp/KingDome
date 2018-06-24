@@ -16,7 +16,7 @@
 
 <div id="corps">
 
-    <h1 style="text-align: left">Mon profil - Utilisateur</h1></br>
+    <h1 style="text-align: left">Editer mon profil</h1></br>
 
     <section style="display: flex">
         <article style="width: 50%">
