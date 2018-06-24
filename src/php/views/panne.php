@@ -9,17 +9,7 @@
 			
 		    			<form id="panne" action="index.php?cible=panne&function=done" method="post">
 							<input type="hidden" name="mail" required value="<?php echo $_SESSION['email'];?>"/>
-							<label for="Capteur">Sélectionner la référence de votre capteur défaillant :</label>
-							<label>
-								<select id="Capteur" name='select'>
-									<?php 
-									$donnees=recupereTous($bdd, 'devices');
-									foreach ($donnees as $d){
-									    $nom_capt=$d['ref'];
-										echo "<option>" . $nom_capt . "</option>";
-									}?>
-								</select>
-							</label>
+                            <label>Veuillez indiquer la référence de votre capteur défaillant (vous pourrez la trouver sur la boîte de votre capteur) : <br><input type="text" name='select'></label>
 							<label><textarea rows="6" cols="131" name="content" placeholder="Veuillez nous décrire votre panne."></textarea></label>
 							<button  type="submit">Envoyer</button>
 		   				</form>

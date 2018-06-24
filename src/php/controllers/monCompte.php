@@ -19,10 +19,12 @@ date_default_timezone_set('UTC');
 $Connexion_Message = "";
 $Email_Message = "";
 $Validation = true;
+$ValidationMdp = true;
+$ValidationMail = true;
+$validationAvatar = true;
 $Password_Confirmation = "";
 $Alerte_Password = "";
 $Tel_Message = "";
-$CGU_Message = "";
 $Avatar_Message = "";
 
 if (isUserConnected()) {
@@ -53,78 +55,101 @@ if (isUserConnected()) {
                 $title = $_SESSION['user_firstname'] . ' ' . $_SESSION['user_name'] . " | KingDome";
                 break;
 
-            case 'modificationInfos' :
+            case 'modifInfos' :
 
-                if (!isATel($_POST_SEC['tel'])) {
-                    $Tel_Message = "Numéro de téléphone non valide";
-                    $Validation = false;
+                if (isset($_POST_SEC['newUser_name']) and !empty($_POST_SEC['newUser_name']) and $_POST_SEC['newUser_name'] != $_SESSION['user_name']) {
+                    modification($bdd, $_POST_SEC['newUser_name'], 'user_name', $_SESSION['user_id'],'users');
+                    $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                    $_SESSION['user_name'] = $data['user_name'];
+                    header('Location: index.php?cible=monCompte');
                 }
 
-                if (isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
-                    $tailleMax = 250000;
-                    $ext_Valides = array('jpg', 'jpeg', 'gif', 'png');
-                    if ($_FILES['avatar']['size'] <= $tailleMax) {
-                        $ext_Upload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
-                        if (in_array($ext_Upload, $ext_Valides)) {
-                            $chemin = '../res/images/Avatar/'.$_SESSION['user_id'].'.'.$ext_Upload;
-                            $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
-                            if ($resultat) {
-                                $updateavatar = $bdd->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
-                                $updateavatar->execute(array(
-                                    'avatar' => $_SESSION['user_id'].".".$ext_Upload,
-                                    'id' => $_SESSION['user_id']));
-                            }
-                            else {
-                                $msg = "Erreur durant l'importation de la photo";
-                                $Validation = false;
-                            }
-                        }
-                        else {
-                            $msg = "Votre photo doit être au format jpg, jpeg, gif, png";
-                            $Validation = false;
-                        }
-                    }
-                    else {
-                        $msg = "Votre photo ne doit pas dépasser 2Mo";
-                        $Validation = false;
-                    }
+                if (isset($_POST_SEC['newUser_firstname']) and !empty($_POST_SEC['newUser_firstname']) and $_POST_SEC['newUser_firstname'] != $_SESSION['user_firstname']) {
+                    modification($bdd, $_POST_SEC['newUser_firstname'], 'user_firstname', $_SESSION['user_id'],'users');
+                    $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                    $_SESSION['user_firstname'] = $data['user_firstname'];
+                    header('Location: index.php?cible=monCompte');
                 }
 
-                if ($Validation) {
+                if (isset($_POST_SEC['newAdress']) and !empty($_POST_SEC['newAdress']) and $_POST_SEC['newAdress'] != $_SESSION['adress']) {
+                    modification($bdd, $_POST_SEC['newAdress'], 'adress', $_SESSION['user_id'],'users');
+                    modification($bdd, $_POST_SEC['newCity'], 'city', $_SESSION['user_id'],'users');
+                    modification($bdd, $_POST_SEC['newZip_code'], 'zip_code', $_SESSION['user_id'],'users');
+                    $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                    $_SESSION['adress'] = $data['adress'];
+                    $_SESSION['city'] = $data['city'];
+                    $_SESSION['zip_code'] = $data['zip_code'];
+                    header('Location: index.php?cible=monCompte');
+                }
 
-                    modification($bdd, $_POST_SEC['user_name'], 'user_name', $_SESSION['user_id'], 'users');
-                    modification($bdd, $_POST_SEC['user_firstname'], 'user_firstname', $_SESSION['user_id'], 'users');
-                    modification($bdd, $_POST_SEC['adress'], 'adress', $_SESSION['user_id'], 'users');
-                    modification($bdd, $_POST_SEC['zip_code'], 'zip_code', $_SESSION['user_id'], 'users');
-                    modification($bdd, $_POST_SEC['city'], 'city', $_SESSION['user_id'], 'users');
-                    modification($bdd, $_POST_SEC['tel'], 'tel', $_SESSION['user_id'], 'users');
+                if (isset($_POST_SEC['newTel']) and !empty($_POST_SEC['newTel']) and $_POST_SEC['newTel'] != $_SESSION['tel']) {
+                    modification($bdd, $_POST_SEC['newTel'], 'user_name', $_SESSION['user_id'],'users');
+                    $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                    $_SESSION['tel'] = $data['tel'];
+                    header('Location: index.php?cible=monCompte');
+                }
 
-                    session_destroy();
-                    header('location:index.php?cible=utilisateur');
+                $vue = "modif_profil";
+                break;
+
+            case 'modifAvatar' :
+
+                // Vérifie l'avatar
+                $avatar = null;
+                if(isset($_FILES['avatar'])) {
+
+                    // Retourne un message si il y a une erreur, sinon rien
+                    $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
+                    // L'avatar est valide
+                    if($Avatar_Message == ''){
+                        // On renomme l'image pour la mettre dans le dossier approprié avec un id unique a la fin pour eviter tout conflit
+                        $dir = '../res/images/Avatar/';
+                        $ext = strtolower(pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION));
+                        $file = $_SESSION['user_firstname'] . '_' . $_SESSION['user_name'] . '_' . uniqid().'.'.$ext;
+                        $avatar = $dir.$file;
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
+                    } else {
+                        $validationAvatar = false;
+                    }
+
+                }
+
+                if (isset($_POST_SEC['Supprimer'])) {
+                    $_SESSION['avatar'] = $avatar;
+                    header('Location: index.php?cible=monCompte');
+                } elseif ($validationAvatar and isset($_POST_SEC['Valider'])) {
+                    $_SESSION['avatar'] = $avatar;
+                    header('Location: index.php?cible=monCompte');
                 } else {
                     $vue = "modif_profil";
                 }
+
+                header('Location: index.php?cible=monCompte');
                 break;
 
-            case 'modificationMdp' :
+            case 'modifMdp' :
 
-                if (password_verify($_POST_SEC['password'], $_SESSION['password'])) {
+                $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+
+                if (password_verify($_POST_SEC['password'], $data['password'])) {
                     // Verifie le mot de passe -> doit comporter au moins 8 caractère, un chiffre et une majuscule
-                    if (!isAPassword($_POST_SEC['newmdp'])) {
+                    if (!isAPassword($_POST_SEC['newMdp'])) {
                         $Alerte_Password = "Alerte_Message";
-                        $Validation = false;
+                        $ValidationMdp = false;
                         $vue = "modif_profil";
                     }
 
                     // Verifie si le mot de passe et la confirmation sont les mêmes
-                    if ($_POST_SEC['confirmation_newmdp'] != $_POST_SEC['newmdp']) {
+                    if ($_POST_SEC['confirmation_newMdp'] != $_POST_SEC['newMdp']) {
                         $Password_Confirmation = "Les mots de passe ne sont pas identiques";
-                        $Validation = false;
+                        $ValidationMdp = false;
                     }
-                    if ($Validation == true) {
-                        modification($bdd, crypterMdp($_POST_SEC['newmdp']), 'password', $_SESSION['user_id'], 'users');
-                        session_destroy();
-                        header('location: index.php?cible=utilisateur');
+
+                    if ($ValidationMdp) {
+                        modification($bdd, crypterMdp($_POST_SEC['newMdp']), 'password', $_SESSION['user_id'], 'users');
+                        $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                        $_SESSION['password'] = $data['password'];
+                        header('Location: index.php?cible=monCompte');
                     }
                     else {
                         $vue = "modif_profil";
@@ -138,23 +163,26 @@ if (isUserConnected()) {
                 }
                 break;
 
-            case 'modificationMail':
+            case 'modifMail':
 
                 // Vérifie si l'email existe dans la base
                 if(Is_Email_Exists($bdd, 'users', $_POST_SEC['email'])){
                     //Verifie l'email
                     if(isAnEmail($_POST_SEC['newMail'])){
                         $Email_Message = "Adresse mail non valide";
-                        $Validation = false;
+                        $ValidationMail = false;
                     }
                     if(Is_Email_Exists($bdd, 'users', $_POST_SEC['newMail'])){
                         $Email_Message = "Adresse mail déjà existante";
-                        $Validation = false;
+                        $ValidationMail = false;
                     }
-                    if ($Validation == true) {
+                    if ($ValidationMail == true) {
                         modification($bdd, $_POST_SEC['newMail'], 'email', $_SESSION['user_id'], 'users');
-                        session_destroy();
-                        header('location: index.php?cible=utilisateur');
+                        $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
+                        $_SESSION['email'] = $data['email'];
+                        header('Location: index.php?cible=monCompte');
+                    } else {
+                        $vue = "modif_profil";
                     }
 
                 } else {
@@ -224,6 +252,46 @@ if (isUserConnected()) {
             case 'delRoom' :
                 supprimer($bdd, $_POST_SEC['id2'], 'rooms');
                 header('location: index.php?cible=monCompte');
+                break;
+
+            case 'dellAll' :
+                $homes = recupereTous($bdd, 'homes');
+                $own_home = recupereTous($bdd, 'own_home');
+                $rooms = recupereTous($bdd, 'rooms');
+                $capteurs = recupereTous($bdd, 'devices');
+                $id=$_SESSION['user_id'];
+
+                foreach($own_home as $donnees) {
+                    if ($id == $donnees['user_id']) {
+                        foreach ($homes as $donnees2) {
+                            if ($donnees['house_id'] == $donnees2['id']) {
+                                foreach ($rooms as $donnees3) {
+                                    if ($donnees3['home_id'] == $donnees2['id']) {
+                                        foreach ($capteurs as $donnees4) {
+                                            if ($donnees4['room_id'] == $donnees3['id']) {
+                                                $req = $bdd->prepare('DELETE FROM devices WHERE room_id =' . $donnees4['room_id']);
+                                                $req->execute();
+                                            }
+                                        }
+                                        $req = $bdd->prepare('DELETE FROM rooms WHERE home_id =' . $donnees2['id']);
+                                        $req->execute();
+                                    }
+                                }
+                                $req = $bdd->prepare('DELETE FROM homes WHERE id =' . $donnees['house_id']);
+                                $req->execute();
+                            }
+                        }
+                        $req = $bdd->prepare('DELETE FROM own_home WHERE user_id=' . $id);
+                        $req->execute();
+                    }
+                }
+
+                $req = $bdd->prepare('DELETE FROM users WHERE id=' . $id);
+                $req->execute();
+
+                session_destroy();
+                header('Location: index.php');
+
                 break;
 
             default :

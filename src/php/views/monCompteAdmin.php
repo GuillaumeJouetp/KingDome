@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
 <div id="corps">
 
     <div id="profil">
@@ -25,7 +24,11 @@
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
-                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 200px; height: 200px;"></p>
+                    <?php if ($_SESSION['avatar']!=null){ ?>
+                        <img src="<?php echo $_SESSION['avatar']; ?>"
+                             alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                    <?php } ?>
+                </p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
                 <p>Adresse mail : <?php echo $_SESSION['email']; ?></p>
                 <p style="text-align: center">
@@ -58,4 +61,3 @@
     </p>
 
 </div>
-</body>

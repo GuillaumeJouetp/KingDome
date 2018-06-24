@@ -3,12 +3,16 @@
 <div id ='corps'>
 
 <h1>Nous contacter</h1>
+
+    <?php if(isUserConnected()) { ?>
 	
 	<button id="jobutton">
             <a href="index.php?cible=panne">
             Signaler une panne
             </a>
     </button>
+
+     <?php } ?>
 	
 
     <form id="f1" action="index.php?cible=contact&function=done" method="post">

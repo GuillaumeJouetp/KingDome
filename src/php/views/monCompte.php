@@ -19,7 +19,7 @@
 <div id="corps">
 
     <div id="profil">
-        <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
+        <h1 style="text-align: left">Mon profil</h1></br>
 
         <h2>Informations personnelles</h2>
         <div id="info_perso">
@@ -27,7 +27,7 @@
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
                     <?php if ($_SESSION['avatar']!=null){ ?>
                     <img src="<?php echo $_SESSION['avatar']; ?>"
-                    alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                    alt="Photo de profil" style="float: right; width: 150px; height: 150px;">
                     <?php } ?>
                 </p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
@@ -156,20 +156,18 @@
             <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a><br>
             <div class="titre">
                 <h3>Ajouter une résidence</h3><br>
-                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
-                    <p>
-                    <p><label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
-                            <input type="text" name="name_home" id="name_home" maxlength="12" placeholder="Maison principale" required/>
-                        </label>
-                    </p>
+                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: left; margin-left: 5px; font-size: medium">
 
-                    <p><label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
-                            <input type="number" name="superficie" id="superficie" maxlength="12" required />m²
-                        </label>
-                    </p>
+                    <label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
+                            <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
+                    </label><br><br>
 
-                    <p><label<span class="blanc">Adresse*</span><br>
-                        <input type="text" name="adress" id="autocomplete" maxlength="12" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
+                    <label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
+                            <input type="number" name="superficie" id="superficie" required />m²
+                    </label><br><br>
+
+                    <label<span class="blanc">Adresse*</span><br>
+                        <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
 
                         <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
                         <input type="hidden" id="street_number" disabled="true" />
@@ -178,15 +176,15 @@
                         <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
                         <label for="zip_code" id="zip_label"><span class="blanc">Code postal*</span><br>
-                            <input type="text" name="zip_code" id="postal_code"  maxlength="12" disabled="true" onmouseout="verifAdress()"/><br>
+                            <input type="text" name="zip_code" id="postal_code" disabled="true" onmouseout="verifAdress()"/><br>
                         </label><br>
 
                         <label for="ville" id="city"><span class="blanc">Ville*</span><br>
-                            <input type="text" name="city" id="locality" maxlength="12" disabled="true" onmouseout="verifAdress()">
+                            <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
                         </label><br><br>
 
                         <span class="tooltip">Adresse non complète</span>
-                    </label></p>
+                    </label><br>
 
                     <button style="width:auto;" type="submit" name="ajout">
                         Ajouter
@@ -296,7 +294,7 @@
     </script>-->
 
     <p style="text-align: center">
-        <button>
+        <button class="submit_button" >
             <a href="index.php?cible=utilisateur&function=deconnexion">
             <h4>Deconnexion</h4>
             </a>

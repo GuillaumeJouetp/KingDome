@@ -6,11 +6,12 @@
 	<div id=corps>
         <?php
         $droit=recupereTous($bdd,'user_types');
-        ?>
 
-        <?php
         $reponse_accueil = $bdd->query('SELECT * FROM accueil');
         $accueil = $reponse_accueil->fetch();
+
+        $reponse_footer = $bdd->query('SELECT * FROM footer');
+        $footer = $reponse_footer->fetch();
         ?>
 
        <form method="post" action="index.php?cible=dashboard&function=changer_droit">
@@ -27,10 +28,10 @@
 
         <form method="post" action="index.php?cible=dashboard&function=modif_footer" enctype="multipart/form-data" id="myForm">
             <legend><h2>Modifier le footer</h2></legend>
-            <label>Adresse mail : <br><input class="backoffice" type="email" name="email"></label><br><br>
-            <label>Numéro de téléphone : <br><input class="backoffice" type="tel" name="tel"></label><br><br>
+            <label>Adresse mail : <br><input class="backoffice" type="email" name="email" value="<?php echo $footer['mail_address'] ?>"></label><br><br>
+            <label>Numéro de téléphone : <br><input class="backoffice" type="tel" name="tel" value="<?php echo $footer['phone_number'] ?>"></label><br><br>
             <label>Adresse :
-                <br><input class="backoffice" type="text" name="adress" id="autocomplete" size="39" placeholder="Entrez votre adresse" >
+                <br><input class="backoffice" type="text" name="adress" id="autocomplete" size="39" value="<?php echo $footer['address'] ?>" >
 
                 <input type="hidden" name="adress" id="fullAddr" size="39" disabled="true"/>
                 <input type="hidden" id="street_number" disabled="true" />

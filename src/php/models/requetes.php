@@ -133,6 +133,20 @@ function Get_User_Data(PDO $bdd, string $table, string $email): array {
     return $statement->fetch();
 }
 
+/**
+ * Actualise toutes les infos d'un utilisateur en fonction de son id (modification info perso)
+ * @param PDO $bdd
+ * @param string $table
+ * @param string $email
+ * @return array
+ */
+function Update_User_Data(PDO $bdd, string $table, string $id): array {
+
+    $statement = $bdd->prepare('SELECT * FROM ' . $table . ' WHERE id = :id');
+    $statement->execute(array(':id' => $id));
+    return $statement->fetch();
+}
+
 
 /**
  * Retroune vrai ou faux si l'email est déjà dans la base de données
