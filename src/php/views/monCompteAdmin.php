@@ -25,7 +25,11 @@
         <div id="info_perso">
             <div id="info_persop">
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
-                    <img src=" <?php echo $_SESSION['avatar'];?>" alt="Photo de profil" style="float: right; width: 200px; height: 200px;"></p>
+                    <?php if ($_SESSION['avatar']!=null){ ?>
+                        <img src="<?php echo $_SESSION['avatar']; ?>"
+                             alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                    <?php } ?>
+                </p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
                 <p>Adresse mail : <?php echo $_SESSION['email']; ?></p>
                 <p style="text-align: center">

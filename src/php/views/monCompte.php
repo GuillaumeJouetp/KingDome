@@ -19,7 +19,7 @@
 <div id="corps">
 
     <div id="profil">
-        <h1 style="text-align: left">Mon profil - Utilisateur principal</h1></br>
+        <h1 style="text-align: left">Mon profil</h1></br>
 
         <h2>Informations personnelles</h2>
         <div id="info_perso">

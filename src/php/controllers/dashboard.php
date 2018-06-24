@@ -51,6 +51,10 @@ if( isAnAdmin($bdd)) {
                 move_uploaded_file($_FILES['image_accueil']['tmp_name'], $img);
             }
 
+            if($ext == null) {
+                $img=null;
+            }
+
             $req->execute(array('content' => $_POST_SEC['texte_accueil'], 'url' => $_POST_SEC['video'], 'image' => $img));
             $vue = "dashboard_backoffice";
             break;
