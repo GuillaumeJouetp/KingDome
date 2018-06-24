@@ -156,19 +156,17 @@
             <a class="fermer" href="#nullepart"><img src="..\res\icones\bouton-fermer.png"class="btn-fermer"/></a><br>
             <div class="titre">
                 <h3>Ajouter une résidence</h3><br>
-                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: center">
-                    <p>
-                    <p><label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
+                <form method="post" action="index.php?cible=monCompte&function=ajouter"  style="text-align: left; margin-left: 5px; font-size: medium">
+
+                    <label for="name_home"><span class="blanc">Nom de la résidence*</span><br>
                             <input type="text" name="name_home" id="name_home" placeholder="Maison principale" required/>
-                        </label>
-                    </p>
+                    </label><br><br>
 
-                    <p><label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
+                    <label for="superficie"><span class="blanc">Superficie de la résidence*</span><br>
                             <input type="number" name="superficie" id="superficie" required />m²
-                        </label>
-                    </p>
+                    </label><br><br>
 
-                    <p><label<span class="blanc">Adresse*</span><br>
+                    <label<span class="blanc">Adresse*</span><br>
                         <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
 
                         <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
@@ -186,7 +184,7 @@
                         </label><br><br>
 
                         <span class="tooltip">Adresse non complète</span>
-                    </label></p>
+                    </label><br>
 
                     <button style="width:auto;" type="submit" name="ajout">
                         Ajouter
