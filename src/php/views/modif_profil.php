@@ -59,16 +59,18 @@
                 <br>
             </form>
 
-            <!--<h2>Modifier avatar</h2>
+            <h2>Modifier avatar</h2>
             <form method="post" action="index.php?cible=monCompte&function=modifAvatar" enctype="multipart/form-data">
 
                 <?php if ($_SESSION['avatar']!=null){ ?>
                     <img src="<?php echo $_SESSION['avatar']; ?>"
-                         alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                         alt="Photo de profil" style="float: center; width: 150px; height: 150px;"><br><br>
 
-                    <button type="button" name="myBtn" class="submit_button">Modifier l'Avatar</button>
-                    <button type="button" name="Supprimer" class="submit_button">Supprimer l'avatar</button>
-                <?php } else { ?>
+                    <button type="button" id="myBtn" class="submit_button">Modifier un avatar</button>
+                    <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
+
+                    <button type="submit" name="Supprimer" value="Supprimer" class="submit_button">Supprimer l'avatar</button>
+                <?php } else {?>
 
                 <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
                 <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
@@ -76,7 +78,7 @@
                 <?php } ?>
 
                 <!-- Modal pop-up for upload avatar -->
-                <!--<div id="myModal" class="modal">
+                <div id="myModal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
 
@@ -90,8 +92,8 @@
                 </div><br><br>
 
                 <button type="submit" name="creation_submit" class="submit_button">Valider</button>
-
-            </form>-->
+            </form>
+            <script type="text/javascript" src="../src/js/verifAvatar.js"></script>
         </article>
 
         <script type="text/javascript" src="../src/js/autocompletion.js"></script>
@@ -137,12 +139,14 @@
             </form><br><br>
             <script type="text/javascript" src="../src/js/verifMdp.js"></script>
         </aside>
-    </section>
+    </section><br><br><br>
 
-    <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button">
+    <p style="text-align: center">
+    <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button" >
         <a href="index.php?cible=monCompte&function=dellAll">
             <h4>Supprimer compte</h4>
         </a>
     </button>
+    </p>
 
 </div>

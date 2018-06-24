@@ -27,7 +27,7 @@
                 <p>Nom : <?php echo $_SESSION['user_name']; ?>
                     <?php if ($_SESSION['avatar']!=null){ ?>
                     <img src="<?php echo $_SESSION['avatar']; ?>"
-                    alt="Photo de profil" style="float: right; width: 200px; height: 200px;">
+                    alt="Photo de profil" style="float: right; width: 150px; height: 150px;">
                     <?php } ?>
                 </p>
                 <p>Prénom : <?php echo $_SESSION['user_firstname']; ?></p>
@@ -296,7 +296,7 @@
     </script>-->
 
     <p style="text-align: center">
-        <button>
+        <button class="submit_button" >
             <a href="index.php?cible=utilisateur&function=deconnexion">
             <h4>Deconnexion</h4>
             </a>

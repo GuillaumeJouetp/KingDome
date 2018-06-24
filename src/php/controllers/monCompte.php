@@ -21,6 +21,7 @@ $Email_Message = "";
 $Validation = true;
 $ValidationMdp = true;
 $ValidationMail = true;
+$validationAvatar = true;
 $Password_Confirmation = "";
 $Alerte_Password = "";
 $Tel_Message = "";
@@ -91,31 +92,46 @@ if (isUserConnected()) {
                 $vue = "modif_profil";
                 break;
 
-            /*case 'modifAvatar' :
+            case 'modifAvatar' :
 
-                if (isset($_POST_SEC['Ajouter'])) {
-                    // Vérifie l'avatar
-                    $avatar = null;
-                    if(isset($_FILES['avatar'])) {
+                // Vérifie l'avatar
+                $avatar = null;
+                if(isset($_FILES['avatar'])) {
 
-                        // Retourne un message si il y a une erreur, sinon rien
-                        $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
-                        // L'avatar est valide
-                        if($Avatar_Message == ''){
-                            // On renomme l'image pour la mettre dans le dossier approprié avec un id unique a la fin pour eviter tout conflit
-                            $dir = '../res/images/Avatar/';
-                            $ext = strtolower(pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION));
-                            $file = $_POST_SEC['first_name'] . '_' . $_POST_SEC['last_name'] . '_' . uniqid().'.'.$ext;
-                            $avatar = $dir.$file;
-                            move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
-                        } else {
-                            $validation = false;
-                        }
-
+                    // Retourne un message si il y a une erreur, sinon rien
+                    $Avatar_Message = isAnAvatar($_FILES['avatar']['name'], $_FILES['avatar']['size'], $_FILES['avatar']['tmp_name'], $_FILES['avatar']['error']);
+                    // L'avatar est valide
+                    if($Avatar_Message == ''){
+                        // On renomme l'image pour la mettre dans le dossier approprié avec un id unique a la fin pour eviter tout conflit
+                        $dir = '../res/images/Avatar/';
+                        $ext = strtolower(pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION));
+                        $file = $_SESSION['user_firstname'] . '_' . $_SESSION['user_name'] . '_' . uniqid().'.'.$ext;
+                        $avatar = $dir.$file;
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], $avatar);
+                    } else {
+                        $validationAvatar = false;
                     }
+
                 }
 
-                break;*/
+                if (isset($_POST_SEC['Supprimer'])) {
+                    $avatar = null;
+                    header('Location: index.php?cible=monCompte');
+                } else {
+                    $vue = "modif_profil";
+                }
+
+
+                if ($validationAvatar) {
+                    $_SESSION['avatar'] = $avatar;
+
+                    header('Location: index.php?cible=monCompte');
+                } else {
+                    $vue = "modif_profil";
+                }
+
+                header('Location: index.php?cible=monCompte');
+                break;
 
             case 'modifMdp' :
 
