@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 24 juin 2018 à 23:26
+-- Généré le :  Dim 24 juin 2018 à 23:38
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -2379,12 +2379,12 @@ INSERT INTO `devices` (`id`, `name`, `state`, `on_time`, `last_activation_date`,
 (187, 'Humidité', 1, 264, '2018-06-23 16:43:26', 1, 36, 6),
 (188, 'Humidité', 1, 264, '2018-06-23 16:43:26', 1, 37, 7),
 (189, 'test moteur', 1, 48, '2018-06-23 16:43:26', 4, 37, 4),
-(191, 'Destroyer', 1, 0, '2018-06-25 01:25:57', 4, 38, 4),
-(192, 'Canon laser', 1, 0, '2018-06-25 01:25:57', 5, 38, 5),
-(194, 'Présence', 1, 0, '2018-06-25 01:25:57', 6, 39, 2),
-(195, 'Luminosité', 1, 0, '2018-06-25 01:25:57', 2, 39, 3),
-(196, 'Température', 1, 0, '2018-06-25 01:25:57', 3, 39, 6),
-(197, 'Humidité', 1, 0, '2018-06-25 01:25:57', 1, 41, 7);
+(191, 'Destroyer', 1, 0, '2018-06-25 01:29:40', 4, 38, 4),
+(192, 'Canon laser', 1, 0, '2018-06-25 01:29:40', 5, 38, 5),
+(194, 'Présence', 1, 0, '2018-06-25 01:29:40', 6, 39, 2),
+(195, 'Luminosité', 1, 0, '2018-06-25 01:29:40', 2, 39, 3),
+(196, 'Température', 1, 0, '2018-06-25 01:29:40', 3, 39, 6),
+(197, 'Humidité', 1, 0, '2018-06-25 01:29:40', 1, 41, 7);
 
 -- --------------------------------------------------------
 
@@ -2657,7 +2657,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_date`, `adress`, `city`, `zip_code`, `email`, `password`, `tel`, `registration_state`, `registration_date`, `avatar`, `user_type_id`, `child_id`) VALUES
 (9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', '75009', 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', 656679976, 0, '2018-04-20 17:37:29', NULL, '2', NULL),
-(13, 'Guillaume', 'JOUET-PASTRE', 'Mr', '1997-04-01', 'Adresse de Guillaume', 'LCSC', '78170', 'guillaume.jouet-pastre@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
+(13, 'admin', 'domisep', 'Mr', '1997-04-01', '28 Rue Notre Dame des Champs', 'Paris', '75006', 'admin@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
 (14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', '94310', 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '2', NULL),
 (15, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '10 rue de Vanves', 'Issy', '92130', 'olfalamti@gmail.com', '$2y$10$I5R1xWJ2AdgD4WCVfrh0KuOxS54i74RbuLfEcGkNAQTA7FxAObGy2', 600000000, 0, '2018-05-10 11:00:42', NULL, '2', NULL),
 (16, 'Dark', 'Vador', 'Mme', '1975-01-01', ' Rue de l\'Étoile', 'Paris', '75017', 'dark.vador@darkside.com', '$2y$10$iI1yn9AysyTquFyyufA4H.lBQk.YZw.j.JA5eNP6ppDcakLVF98BS', 612345678, 0, '2018-06-24 11:20:29', NULL, '2', NULL);
@@ -2718,7 +2718,7 @@ INSERT INTO `visites_jour` (`id`, `visites`, `date`) VALUES
 (13, 94, '2018-06-22'),
 (14, 66, '2018-06-23'),
 (15, 61, '2018-06-24'),
-(16, 167, '2018-06-25');
+(16, 189, '2018-06-25');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

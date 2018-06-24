@@ -12,6 +12,6 @@ mdp : Darkside1
 - Compte administrateur (accès au backoffice)
 
 ```
-mail : guillaume.jouet-pastre@isep.fr
+mail : admin@isep.fr
 mdp : ShKM=q?Vb6!5bxS~j"lou
 ```
