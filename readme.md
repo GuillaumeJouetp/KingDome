@@ -1,2 +1,1 @@
-Instructions concernant la lecture du code :
-
+Pour toute information complémentaire concernant la structure du code source ou encore la structure de la base de donnée, veuillez vous référer au document de conception du site web.
