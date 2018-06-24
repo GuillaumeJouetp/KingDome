@@ -91,7 +91,7 @@
                     </div>
                 </div><br><br>
 
-                <button type="submit" name="creation_submit" class="submit_button">Valider</button>
+                <button type="submit" name="Valider" value="Valider" class="submit_button">Valider</button>
             </form>
             <script type="text/javascript" src="../src/js/verifAvatar.js"></script>
         </article>

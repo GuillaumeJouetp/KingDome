@@ -115,16 +115,10 @@ if (isUserConnected()) {
                 }
 
                 if (isset($_POST_SEC['Supprimer'])) {
-                    $avatar = null;
-                    header('Location: index.php?cible=monCompte');
-                } else {
-                    $vue = "modif_profil";
-                }
-
-
-                if ($validationAvatar) {
                     $_SESSION['avatar'] = $avatar;
-
+                    header('Location: index.php?cible=monCompte');
+                } elseif ($validationAvatar and isset($_POST_SEC['Valider'])) {
+                    $_SESSION['avatar'] = $avatar;
                     header('Location: index.php?cible=monCompte');
                 } else {
                     $vue = "modif_profil";
