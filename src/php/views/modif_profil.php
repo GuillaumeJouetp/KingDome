@@ -139,7 +139,7 @@
         </aside>
     </section>
 
-    <button>
+    <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button">
         <a href="index.php?cible=monCompte&function=dellAll">
             <h4>Supprimer compte</h4>
         </a>
