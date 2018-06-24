@@ -181,6 +181,8 @@ if (isUserConnected()) {
                         $data = Update_User_Data($bdd, 'users', $_SESSION['user_id']);
                         $_SESSION['email'] = $data['email'];
                         header('Location: index.php?cible=monCompte');
+                    } else {
+                        $vue = "modif_profil";
                     }
 
                 } else {
