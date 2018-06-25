@@ -116,7 +116,8 @@ switch ($function) {
                 'tel' => $_POST_SEC['tel'],
                 'registration_state' => 0,
                 'registration_date' => date("Y-m-d H:i:s"),
-                'user_type_id' => 2);
+                'user_type_id' => 2,
+                'avatar' => $avatar);
 
             // Ajoute la date de naissance si elle est renseigné
             if($_POST_SEC['date_naissance'] != ''){
