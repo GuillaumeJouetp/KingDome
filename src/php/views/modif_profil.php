@@ -66,7 +66,7 @@
 
                 <?php if ($_SESSION['avatar']!=null){ ?>
                     <img src="<?php echo $_SESSION['avatar']; ?>"
-                         alt="Photo de profil" style="float: center; width: 150px; height: 150px; margin-left: 17%;"><br><br>
+                         alt="Photo de profil" style="float: contour; width: 150px; height: 150px; margin-left: 17%;"><br><br>
 
                     <button type="button" id="myBtn" class="submit_button">Modifier un avatar</button>
 
