@@ -39,8 +39,8 @@
                 <input type="hidden" id="country" disabled="true" />
                 <input type="hidden" id="administrative_area_level_1" disabled="true" /></label><br>
 
-                <label for="zip_code" id="zip_label"><br>Code postal : <br><input class="backoffice" type="text" name="zip_code" id="postal_code" size="13" disabled="true" ></label><br><br>
-                <label for="ville" id="city">Ville : <br><input class="backoffice" type="text" name="city" id="locality" disabled="true" ></label><br><br>
+                <label for="zip_code" id="zip_label"><br>Code postal : <br><input class="backoffice" type="text" name="zip_code" id="postal_code" size="13" value="<?php echo $footer['postal_code'] ?>"></label><br><br>
+                <label for="ville" id="city">Ville : <br><input class="backoffice" type="text" name="city" id="locality"  value="<?php echo $footer['city'] ?>" ></label><br><br>
 
             <button type="submit" class="button_modif">Modifier</button>
         </form>

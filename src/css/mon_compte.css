@@ -1,3 +1,6 @@
+/* CSS pas mon compte */
+
+
 #info_perso {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.30);
@@ -734,4 +737,12 @@ button:hover{
     font-size: 230%;
     justify-content: center;
     margin-right: 15px;
+}
+
+#bouton_mod{
+    margin-left: 20%;
+}
+
+#bouton_val{
+    margin-left: 26%;
 }

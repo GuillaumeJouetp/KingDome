@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 25 juin 2018 à 08:50
+-- Généré le :  Dim 24 juin 2018 à 23:38
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `conso_mois` (
   `date` date NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `conso_mois`
@@ -163,20 +163,7 @@ INSERT INTO `conso_mois` (`id_user`, `conso`, `date`, `id`) VALUES
 (16, 1530, '2018-03-01', 38),
 (16, 1470, '2018-04-01', 39),
 (16, 1420, '2018-05-01', 40),
-(16, 481, '2018-06-01', 41),
-(17, 0, '2018-06-01', 42),
-(17, 0, '2018-05-01', 43),
-(17, 0, '2018-04-01', 44),
-(17, 0, '2018-03-01', 45),
-(17, 0, '2018-02-01', 46),
-(17, 0, '2018-01-01', 47),
-(17, 0, '2017-12-01', 48),
-(17, 0, '2017-11-01', 49),
-(17, 0, '2017-10-01', 50),
-(17, 0, '2017-09-01', 51),
-(17, 0, '2017-08-01', 52),
-(17, 0, '2017-07-01', 53),
-(17, 0, '2017-06-01', 54);
+(16, 0, '2018-06-01', 41);
 
 -- --------------------------------------------------------
 
@@ -2392,12 +2379,12 @@ INSERT INTO `devices` (`id`, `name`, `state`, `on_time`, `last_activation_date`,
 (187, 'Humidité', 1, 264, '2018-06-23 16:43:26', 1, 36, 6),
 (188, 'Humidité', 1, 264, '2018-06-23 16:43:26', 1, 37, 7),
 (189, 'test moteur', 1, 48, '2018-06-23 16:43:26', 4, 37, 4),
-(191, 'Destroyer', 1, 481, '2018-06-25 10:49:42', 4, 38, 4),
-(192, 'Canon laser', 1, 0, '2018-06-25 10:49:42', 5, 38, 5),
-(194, 'Présence', 1, 0, '2018-06-25 10:49:42', 6, 39, 2),
-(195, 'Luminosité', 1, 0, '2018-06-25 10:49:42', 2, 39, 3),
-(196, 'Température', 1, 0, '2018-06-25 10:49:42', 3, 39, 6),
-(197, 'Humidité', 1, 0, '2018-06-25 10:49:42', 1, 41, 7);
+(191, 'Destroyer', 1, 0, '2018-06-25 01:29:40', 4, 38, 4),
+(192, 'Canon laser', 1, 0, '2018-06-25 01:29:40', 5, 38, 5),
+(194, 'Présence', 1, 0, '2018-06-25 01:29:40', 6, 39, 2),
+(195, 'Luminosité', 1, 0, '2018-06-25 01:29:40', 2, 39, 3),
+(196, 'Température', 1, 0, '2018-06-25 01:29:40', 3, 39, 6),
+(197, 'Humidité', 1, 0, '2018-06-25 01:29:40', 1, 41, 7);
 
 -- --------------------------------------------------------
 
@@ -2655,26 +2642,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `zip_code` varchar(50) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `tel` varchar(25) DEFAULT NULL,
+  `tel` int(11) DEFAULT NULL,
   `registration_state` tinyint(1) DEFAULT NULL,
   `registration_date` datetime NOT NULL,
   `avatar` varchar(200) DEFAULT NULL,
   `user_type_id` varchar(100) NOT NULL,
   `child_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `user_firstname`, `user_name`, `civility`, `birth_date`, `adress`, `city`, `zip_code`, `email`, `password`, `tel`, `registration_state`, `registration_date`, `avatar`, `user_type_id`, `child_id`) VALUES
-(9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', '75009', 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', '0656679976', 0, '2018-04-20 17:37:29', NULL, '2', NULL),
-(13, 'admin', 'domisep', 'Mr', '1997-04-01', '28 Rue Notre Dame des Champs', 'Paris', '75006', 'admin@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', '0678987654', 0, '2018-04-26 14:28:08', NULL, '1', NULL),
-(14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', '94310', 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', '0618760947', 0, '2018-05-01 13:13:31', NULL, '2', NULL),
-(15, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '10 rue de Vanves', 'Issy', '92130', 'olfalamti@gmail.com', '$2y$10$I5R1xWJ2AdgD4WCVfrh0KuOxS54i74RbuLfEcGkNAQTA7FxAObGy2', '0600000000', 0, '2018-05-10 11:00:42', NULL, '2', NULL),
-(16, 'Dark', 'Vador', 'Mme', '1975-01-01', ' Rue de l\'Étoile', 'Paris', '75017', 'dark.vador@darkside.com', '$2y$10$iI1yn9AysyTquFyyufA4H.lBQk.YZw.j.JA5eNP6ppDcakLVF98BS', '0612345678', 0, '2018-06-24 11:20:29', NULL, '2', NULL),
-(17, 'Je suis', 'Admin', 'Mr', NULL, '28 Rue Notre Dame des Champs', 'Paris', '75006', 'administrateur@isep.fr', '$2y$10$t1hBUZlYtauMP6aRI5k9guxkAMA.hPa/SnmtIlCsYwdjGtwu6YGO6', '0612345678', 0, '2018-06-25 08:45:57', NULL, '1', NULL);
+(9, 'Adrien', 'Rabiot', 'Mr', '1997-02-12', '20 rue du parc', 'Paris', '75009', 'adrien.rabiot@isep.fr', '$2y$10$DuT09paQRyFACZcM4wbhG.ftwBxiCt8buQRUF1lVCCyy190Y7byjK', 656679976, 0, '2018-04-20 17:37:29', NULL, '2', NULL),
+(13, 'admin', 'domisep', 'Mr', '1997-04-01', '28 Rue Notre Dame des Champs', 'Paris', '75006', 'admin@isep.fr', '$2y$10$CvqRLGck3HLqO9HxMo/Uj..8WgrFLX3Q/3pR0/F5jIi3O4ARsi/bi', 678987654, 0, '2018-04-26 14:28:08', NULL, '1', NULL),
+(14, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '02 rue Normandie Niemen', 'Orly', '94310', 'olfa.lamti@isep.fr', '$2y$10$V/F79W.wLAQ9zcktpcy.WOXoy24XNjpVmpylS68Ch96RL1SjIGEWm', 618760947, 0, '2018-05-01 13:13:31', NULL, '2', NULL),
+(15, 'Olfa', 'Lamti', 'Mme', '1997-08-12', '10 rue de Vanves', 'Issy', '92130', 'olfalamti@gmail.com', '$2y$10$I5R1xWJ2AdgD4WCVfrh0KuOxS54i74RbuLfEcGkNAQTA7FxAObGy2', 600000000, 0, '2018-05-10 11:00:42', NULL, '2', NULL),
+(16, 'Dark', 'Vador', 'Mme', '1975-01-01', ' Rue de l\'Étoile', 'Paris', '75017', 'dark.vador@darkside.com', '$2y$10$iI1yn9AysyTquFyyufA4H.lBQk.YZw.j.JA5eNP6ppDcakLVF98BS', 612345678, 0, '2018-06-24 11:20:29', NULL, '2', NULL);
 
 -- --------------------------------------------------------
 
@@ -2695,7 +2681,8 @@ CREATE TABLE IF NOT EXISTS `user_types` (
 
 INSERT INTO `user_types` (`id`, `name`) VALUES
 (1, 'admin'),
-(2, 'primary_user');
+(2, 'primary_user'),
+(3, 'secondary_user');
 
 -- --------------------------------------------------------
 
@@ -2731,7 +2718,7 @@ INSERT INTO `visites_jour` (`id`, `visites`, `date`) VALUES
 (13, 94, '2018-06-22'),
 (14, 66, '2018-06-23'),
 (15, 61, '2018-06-24'),
-(16, 202, '2018-06-25');
+(16, 189, '2018-06-25');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

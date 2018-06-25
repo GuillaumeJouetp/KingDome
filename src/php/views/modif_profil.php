@@ -1,8 +1,9 @@
+
 <?php
 /**
  * Created by PhpStorm.
- * User: PC-Adrien
- * Date: 30/04/2018
+ * User: Alexandre
+ * Date: 25/06/2018
  * Time: 09:33
  */
 ?>
@@ -32,7 +33,7 @@
                 </label>
 
                 <label>Adresse*<br>
-                    <input type="text" name="newAdress" id="autocomplete" size="35" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/>
+                    <input type="text" name="newAdress" id="autocomplete" size="35" onmouseout="verifAdress()" value="<?php echo $_SESSION['adress']?>"/>
 
                     <input type="hidden" name="newAdress" id="fullAddr" disabled="true"/>
                     <input type="hidden" id="street_number" disabled="true" />
@@ -41,11 +42,11 @@
                     <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
                     <label for="zip_code" id="zip_label"><br>Code postal*<br>
-                        <input type="text" name="newZip_code" id="postal_code"  size="35" disabled="true" onmouseout="verifAdress()"/>
+                        <input type="text" name="newZip_code" id="postal_code"  size="35" onmouseout="verifAdress()" value="<?php echo $_SESSION['zip_code']?>" />
                     </label><br>
 
                     <label for="ville" id="city"><br>Ville*<br>
-                        <input type="text" name="newCity" id="locality" size="35" disabled="true" onmouseout="verifAdress()">
+                        <input type="text" name="newCity" id="locality" size="35" onmouseout="verifAdress()" value="<?php echo $_SESSION['city']?>" >
                     </label><br>
 
                     <span class="tooltip">Adresse non complète</span>
@@ -55,8 +56,10 @@
                     <input type="tel" name="newTel" size="35" id="tel" value="<?php if(isset($_SESSION['tel'])){echo $_SESSION['tel'];} ?>" required/>
                 </label><br>
 
-                <button type="submit" name="modifier" class="submit_button">Modifier</button>
-                <br>
+                <div id="bouton_mod">
+                    <button type="submit" name="modifier" class="submit_button">Modifier</button>
+                </div>
+                <br><br>
             </form>
 
             <h2>Modifier avatar</h2>
@@ -64,16 +67,18 @@
 
                 <?php if ($_SESSION['avatar']!=null){ ?>
                     <img src="<?php echo $_SESSION['avatar']; ?>"
-                         alt="Photo de profil" style="float: center; width: 150px; height: 150px;"><br><br>
+                         alt="Photo de profil" style="float: contour; width: 150px; height: 150px; margin-left: 17%;"><br><br>
 
                     <button type="button" id="myBtn" class="submit_button">Modifier un avatar</button>
+
                     <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
 
                     <button type="submit" name="Supprimer" value="Supprimer" class="submit_button">Supprimer l'avatar</button>
+
                 <?php } else {?>
 
-                <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
-                <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
+                    <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
+                    <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
 
                 <?php } ?>
 
@@ -91,7 +96,10 @@
                     </div>
                 </div><br><br>
 
-                <button type="submit" name="Valider" value="Valider" class="submit_button">Valider</button>
+                <div id="bouton_val">
+                    <button type="submit" name="Valider" value="Valider" class="submit_button">Valider</button>
+                </div>
+
             </form>
             <script type="text/javascript" src="../src/js/verifAvatar.js"></script>
         </article>
@@ -111,7 +119,9 @@
                     <input type="email" name="newMail" size="35" required  id="email" onblur="verifEmail(this.value)" />
                 </label><br>
 
-                <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
+                <div id="bouton_mod">
+                    <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
+                </div>
 
             </form><br><br>
             <script type="text/javascript" src="../src/js/verifMail.js"></script>
@@ -134,7 +144,10 @@
 
                 <span class='$Alerte_Password' id='alert_newMdp'> Le mot de passe doit comporter au moins 8 caractère, ainsi qu'au moins un chiffre et une majuscule.</span><br><br>
 
-                <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
+                <div id="bouton_mod">
+                    <button type="submit" name="creation_submit" class="submit_button">Modifier</button>
+                </div>
+
 
             </form><br><br>
             <script type="text/javascript" src="../src/js/verifMdp.js"></script>
@@ -142,11 +155,11 @@
     </section><br><br><br>
 
     <p style="text-align: center">
-    <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button" >
-        <a href="index.php?cible=monCompte&function=dellAll">
-            <h4>Supprimer compte</h4>
-        </a>
-    </button>
+        <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button" >
+            <a href="index.php?cible=monCompte&function=dellAll">
+                <h4>Supprimer compte</h4>
+            </a>
+        </button>
     </p>
 
 </div>
