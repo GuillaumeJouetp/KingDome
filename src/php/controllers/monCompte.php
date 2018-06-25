@@ -102,9 +102,11 @@ if (isUserConnected()) {
 
                 if (isset($_POST_SEC['Supprimer'])) {
                     $_SESSION['avatar'] = $avatar;
+                    $req-> execute(array('avatar' => $_SESSION['avatar'], 'id' => $_SESSION['user_id']));
                     header('Location: index.php?cible=monCompteAdmin');
                 } elseif ($validationAvatar and isset($_POST_SEC['Valider'])) {
                     $_SESSION['avatar'] = $avatar;
+                    $req-> execute(array('avatar' => $_SESSION['avatar'], 'id' => $_SESSION['user_id']));
                     header('Location: index.php?cible=monCompteAdmin');
                 } else {
                     $vue = "modif_profil";
