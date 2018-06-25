@@ -1,8 +1,9 @@
+
 <?php
 /**
  * Created by PhpStorm.
- * User: PC-Adrien
- * Date: 30/04/2018
+ * User: Alexandre
+ * Date: 25/06/2018
  * Time: 09:33
  */
 ?>
@@ -76,8 +77,8 @@
 
                 <?php } else {?>
 
-                <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
-                <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
+                    <button type="button" id="myBtn" class="submit_button">Ajouter un avatar</button>
+                    <span class="tooltip" id="avatar_tooltip">L'avatar n'est pas une image valide</span>
 
                 <?php } ?>
 
@@ -154,11 +155,11 @@
     </section><br><br><br>
 
     <p style="text-align: center">
-    <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button" >
-        <a href="index.php?cible=monCompte&function=dellAll">
-            <h4>Supprimer compte</h4>
-        </a>
-    </button>
+        <button onclick="return(confirm('Êtes-vous sûr de bien vouloir supprimer définivement votre compte ?'));" class="submit_button" >
+            <a href="index.php?cible=monCompte&function=dellAll">
+                <h4>Supprimer compte</h4>
+            </a>
+        </button>
     </p>
 
 </div>
