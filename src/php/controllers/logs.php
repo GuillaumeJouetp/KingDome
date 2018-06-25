@@ -75,7 +75,8 @@ function decodeTrame ($logs){
  * @return void
  */
 function decodeTrames ($logs, $limit){
-    $data_tab =str_split(strrev($logs),33);
+    $data_tab =str_split($logs,33);
+    $data_tab_reverse = array_reverse ( $data_tab);
     echo ("
     <table>
               <tr>
@@ -92,8 +93,8 @@ function decodeTrames ($logs, $limit){
          ");
 
     $stop = 0;
-    foreach ($data_tab as $key=>$elm){
-        $trame = strrev($data_tab[$key]);
+    foreach ($data_tab_reverse as $key=>$elm){
+        $trame = $data_tab[$key];
 
 // décodage avec sscanf
         list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
