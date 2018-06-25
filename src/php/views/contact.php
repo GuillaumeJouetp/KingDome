@@ -19,7 +19,7 @@
         <label> Adresse mail <input type="text" name="mail" required /> </label>
         <?php echo "<span class='errormessage'>".$mail_message."</span>"; ?>
         <label> Objet du message <input type="text" name="object" required /> </label>
-        <label> <textarea rows = "6" cols = "100" name = "content" placeholder="Veuillez nous exposer votre requête, dans le cas d'une panne, référez-vous à l'onglet 'Signaler une panne' "></textarea>  </label>
+        <label> <textarea rows = "6" cols = "100" name = "content" placeholder="Veuillez nous exposer votre requête<?php if(isUserConnected()) { ?>, dans le cas d'une panne, référez-vous à l'onglet 'Signaler une panne'<?php } ?> "></textarea>  </label>
         <button type="submit"> Envoyer </button>
     </form>
 
