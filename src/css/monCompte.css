@@ -735,3 +735,11 @@ button:hover{
     justify-content: center;
     margin-right: 15px;
 }
+
+#bouton_mod{
+    margin-left: 20%;
+}
+
+#bouton_val{
+    margin-left: 26%;
+}
