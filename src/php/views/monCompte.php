@@ -165,7 +165,7 @@
                     </label><br><br>
 
                     <label<span class="blanc">Adresse*</span><br>
-                        <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()"/><br>
+                        <input type="text" name="adress" id="autocomplete" placeholder="Entrez votre adresse" onmouseout="verifAdress()" value="<?php echo $_SESSION['adress']?>"/><br>
 
                         <input type="hidden" name="adress" id="fullAddr" disabled="true"/>
                         <input type="hidden" id="street_number" disabled="true" />
@@ -174,11 +174,11 @@
                         <input type="hidden" id="administrative_area_level_1" disabled="true" /><br>
 
                         <label for="zip_code" id="zip_label"><span class="blanc">Code postal*</span><br>
-                            <input type="text" name="zip_code" id="postal_code" disabled="true" onmouseout="verifAdress()"/><br>
+                            <input type="text" name="zip_code" id="postal_code" value="<?php echo $_SESSION['zip_code']?>" onmouseout="verifAdress()"/><br>
                         </label><br>
 
                         <label for="ville" id="city"><span class="blanc">Ville*</span><br>
-                            <input type="text" name="city" id="locality" disabled="true" onmouseout="verifAdress()">
+                            <input type="text" name="city" id="locality" value="<?php echo $_SESSION['city']?>" onmouseout="verifAdress()">
                         </label><br><br>
 
                         <span class="tooltip">Adresse non complète</span>

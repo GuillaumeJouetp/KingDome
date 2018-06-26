@@ -14,7 +14,7 @@
 <body>
 	<div id=corps>
 	
-			<h1> Pour pouvoir accéder à votre dashboard, veuillez vous connecter <a class='lien' href='index?cible=monCompte'> en cliquant ici</a> </h1>
+			<h1> Pour pouvoir accéder à votre dashboard, veuillez vous connecter <a class='lien' href='index.php?cible=utilisateur'> en cliquant ici</a> </h1>
 
 	</div>
 	  	 

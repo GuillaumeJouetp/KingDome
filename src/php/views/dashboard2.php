@@ -496,7 +496,7 @@
                                                 if (val_trame($bdd, $donnees4['ref'])[1] < 10) {
 
                                                     $info = val_trame($bdd, $donnees4['ref'])[0];
-                                                    $info2 = number_format(100 * ($info - 1450) / (3900 - 1450), 1);
+                                                    $info2 = number_format(100 * ($info) / (3900), 1);
                                                     $resultat = $info2 . '%';
                                                     break;
 
